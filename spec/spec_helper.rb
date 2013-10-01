@@ -15,6 +15,7 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, :type => :controller
+  config.include Mongoid::Matchers, type: :model
 
 
   # ## Mock Framework

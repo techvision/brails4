@@ -29,16 +29,16 @@ gem 'devise'
 gem 'cancan'
 
 group :development, :test do
+  gem 'mongoid-rspec'
   gem "rspec-rails", ">= 2.0.1"
   gem "factory_girl_rails", "~> 4.0"
   gem 'faker'
   gem 'shoulda'
-  gem 'shoulda-matchers'
-  gem 'mongoid-rspec'
 end
 
 group :test do
   gem 'simplecov', :require => false
+  gem 'shoulda-matchers'
 end
 
 

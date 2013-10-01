@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :level do
+    name 'test'
+    seq_number '1'
   end
 end
