@@ -1,40 +1,42 @@
 require 'spec_helper'
 
 describe Level do
+
+  before(:all) do
+    @level = build(:level)
+  end
+
   context "Fields" do
-    it { should have_field(:name).of_type(String)}
-    it { should have_field(:seq_number).of_type(Integer)}
+    it "has field called 'name'" do
+      expect(@level).to have_field(:name).of_type(String)
+    end
   end
 
   context "Validations" do
     it 'has a valid factory' do
-      expect(build(:level)).to be_valid
+      expect(@level).to be_valid
     end
 
-    describe 'has a valid name' do
-      it { should_not allow_value("123@").for(:name) }
+    it 'has a valid name' do
+      expect(build(:level, name: "123@")).to_not be_valid
     end
 
-    describe 'has a valid seq_number' do
-      it { should validate_numericality_of(:seq_number).to_allow(:only_integer => true, :greater_than => 0) }
+    it 'is invalid without a name' do
+      expect(@level).to validate_presence_of(:name)
     end
 
-    describe 'is invalid without a name' do
-     it {should validate_presence_of(:name)}
-    end
-
-    describe 'is invalid without a seq_number' do
-      it {should validate_presence_of(:seq_number)}
-    end
-
-    describe 'is invalid without a topic' do
-      it {should validate_presence_of(:topics)}
+    it 'is invalid without a topic' do
+      expect(@level).to validate_presence_of(:topics)
     end
   end
 
   context "Associations" do
-    it { should have_many(:topics) }
-    it { should embed_many (:questions)}
-  end
+    it 'it has many topics' do 
+      expect(@level).to have_many(:topics) 
+    end
 
+    it 'it has many embbebed questions' do 
+      expect(@level).to embed_many (:questions)
+    end
+  end
 end

@@ -1,44 +1,52 @@
 require 'spec_helper'
 
 describe Topic do
+  before(:all) do
+    @topic = build(:topic)
+  end
 
   context 'Fields' do
-    it { should have_field(:title).of_type(String) }
-    it { should have_field(:seq_number).of_type(Integer) }
+    it "has a field called 'title'" do
+      expect(@topic).to have_field(:title).of_type(String)
+    end
+
+    it "has a field called 'seq_number'" do
+      expect(@topic).to have_field(:seq_number).of_type(Integer) 
+    end
   end
 
   context 'Validations' do
     it 'has a valid factory' do
-      expect(build(:topic)).to be_valid
+      expect(@topic).to be_valid
     end
 
-    describe 'has a valid title' do
-      it { should_not allow_value("123@").for(:title) }
+    it 'has a valid title' do
+      expect(build(:topic, title: "123@")).not_to be_valid
     end
 
-    describe 'has at least one valid content' do
-      pending "IMplement test"
+    it 'has a valid seq_number' do
+      expect(@topic).to validate_numericality_of(:seq_number).to_allow(:only_integer => true, :greater_than => 0)
     end
 
-    describe 'has a valid seq_number' do
-      it {should validate_numericality_of(:seq_number).to_allow(:only_integer => true, :greater_than => 0)}
+    it 'its invalid without a title' do
+      expect(@topic).to validate_presence_of(:title)
     end
 
-    describe 'its invalid without a title' do
-      it {should validate_presence_of(:title)}
+    it 'its invalid without a seq_number' do
+      expect(@topic).to validate_presence_of(:seq_number)
     end
 
-    describe 'its invalid without a seq_number' do
-      it {should validate_presence_of(:seq_number)}
-    end
-
-    describe 'its invalid without a content' do
-      it { should validate_presence_of(:contents)}
+    it 'its invalid without a content' do
+      expect(@topic).to validate_presence_of(:contents)
     end
   end
 
   context 'Associations' do
-    it {should embed_many(:questions)}
-    it {should have_many(:contents)}
+    it 'has many embbebed questions' do
+      expect(@topic).to embed_many(:questions)
+    end
+    it 'has many contents' do
+      expect(@topic).to have_many(:contents)
+    end
   end
 end
