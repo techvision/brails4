@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :content do
     title "MyString"
     content_body "MyString"
-    sq_no 1
+    sq_no '1'
     transcript "MyString"
   end
 end

@@ -16,7 +16,7 @@ describe Level do
     end
 
     describe 'has a valid seq_number' do
-      it { should validate_numericality_of(:seq_number) }
+      it { should validate_numericality_of(:seq_number).to_allow(:only_integer => true, :greater_than => 0) }
     end
 
     describe 'is invalid without a name' do
@@ -24,12 +24,17 @@ describe Level do
     end
 
     describe 'is invalid without a seq_number' do
-      it{should validate_presence_of(:seq_number)}
+      it {should validate_presence_of(:seq_number)}
+    end
+
+    describe 'is invalid without a topic' do
+      it {should validate_presence_of(:topics)}
     end
   end
 
   context "Associations" do
     it { should have_many(:topics) }
+    it { should embed_many (:questions)}
   end
 
 end
