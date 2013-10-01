@@ -3,6 +3,7 @@ class Topic
 
   belongs_to :level
   has_many :contents
-  has_many :attempts
+
+  embeds_many :questions, as: :questionable
 
 end

@@ -4,4 +4,6 @@ class Content
   belongs_to :topic
   has_many :questions
   
+  embeds_many :questions, as: :questionable
+
 end

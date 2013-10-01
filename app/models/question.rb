@@ -3,6 +3,6 @@ class Question
 
   has_many :options
   has_many :attempts
-  belongs_to :level
-  belongs_to :content
+
+  embedded_in :questionable, polymorphic: true
 end
