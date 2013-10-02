@@ -4,7 +4,7 @@ class Option
   field :text, type: String
   field :correct, type: Boolean
 
-  belongs_to :question
+  embedded_in :question
 
   validates :text, length: { maximum: 30 }
   validates :text, :correct, :presence => true

@@ -5,13 +5,13 @@ describe Comment do
     @comment = build(:comment)
   end
 
-  context "Fields" do
+  describe "Fields" do
     it "has a field called 'text'" do
       expect(@comment).to have_field(:text).of_type(String)
     end
   end
 
-  context "Validations" do
+  describe "Validations" do
     it 'has a valid factory' do
       expect(@comment).to be_valid
     end
@@ -21,7 +21,7 @@ describe Comment do
     end
   end
 
-  context "Associations" do
+  describe "Associations" do
     it 'is a polymorphic association' do
       expect(@comment).to belong_to(:commentable)
     end

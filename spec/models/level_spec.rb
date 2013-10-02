@@ -6,13 +6,13 @@ describe Level do
     @level = build(:level)
   end
 
-  context "Fields" do
+  describe "Fields" do
     it "has field called 'name'" do
       expect(@level).to have_field(:name).of_type(String)
     end
   end
 
-  context "Validations" do
+  describe "Validations" do
     it 'has a valid factory' do
       expect(@level).to be_valid
     end
@@ -26,7 +26,7 @@ describe Level do
     end
   end
 
-  context "Associations" do
+  describe "Associations" do
     it 'has many topics' do 
       expect(@level).to have_many(:topics) 
     end

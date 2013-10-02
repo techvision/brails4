@@ -5,7 +5,7 @@ describe Difficulty do
     @difficulty = build(:difficulty)
   end
 
-  context "Fields" do
+  describe "Fields" do
     it "has a field called 'Name'" do
       expect(@difficulty).to have_field(:name).of_type(String)
     end
@@ -15,7 +15,7 @@ describe Difficulty do
     end
   end
 
-  context "Validations" do
+  describe "Validations" do
 
     it "has a valid factory" do
       expect(@difficulty).to be_valid
@@ -28,10 +28,9 @@ describe Difficulty do
     it 'is invalid without points' do
       expect(build(:difficulty,points: nil)).not_to be_valid
     end
-
   end
 
-  context "Associations" do
+  describe "Associations" do
     it "belongs to a question" do
       expect(@difficulty).to belong_to(:question)
     end

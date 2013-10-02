@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require "paperclip/matchers"
+require 'simplecov'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -18,6 +19,7 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.include Mongoid::Matchers, type: :model
   config.include Paperclip::Shoulda::Matchers
+  SimpleCov.start 'rails'
 
 
   # ## Mock Framework

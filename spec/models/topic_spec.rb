@@ -5,7 +5,7 @@ describe Topic do
     @topic = build(:topic)
   end
 
-  context 'Fields' do
+  describe 'Fields' do
     it "has a field called 'title'" do
       expect(@topic).to have_field(:title).of_type(String)
     end
@@ -15,7 +15,7 @@ describe Topic do
     end
   end
 
-  context 'Validations' do
+  describe 'Validations' do
     it 'has a valid factory' do
       expect(@topic).to be_valid
     end
@@ -37,7 +37,7 @@ describe Topic do
     end
   end
 
-  context 'Associations' do
+  describe 'Associations' do
     it 'has many embbebed questions' do
       expect(@topic).to embed_many(:questions)
     end

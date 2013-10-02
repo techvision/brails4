@@ -5,13 +5,13 @@ describe Question do
     @question = build(:question)
   end
 
-  context "Fields" do
+  describe "Fields" do
     it "has a field called 'Title'" do
       expect(@question).to have_field(:title).of_type(String)
     end
   end
 
-  context "Validations" do
+  describe "Validations" do
     it 'has a valid factory' do
       expect(@question).to be_valid
     end
@@ -20,7 +20,7 @@ describe Question do
       expect(build(:question, title: nil)).to_not be_valid
     end
 
-    context 'Options' do
+    describe 'Options' do
       it 'is invalid without options' do
         expect(build(:question,options: nil)).not_to be_valid
       end
@@ -47,7 +47,7 @@ describe Question do
     end
   end
 
-  context "Associations" do
+  describe "Associations" do
     it 'has many embedded options' do
       expect(@question).to embed_many(:options)
     end

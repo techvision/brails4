@@ -10,6 +10,7 @@ class Profile
   embedded_in :user
   has_many :attempts
   has_many :comments, as: :commentable
+  embeds_many :invitations
 
   validates :name, :birthdate, :gender, :address, :country, :presence => true
   

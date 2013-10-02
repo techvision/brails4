@@ -5,7 +5,7 @@ describe Option do
     @option = build(:option)
   end
 
-  context "Fields" do
+  describe "Fields" do
     it "has a field called 'Text'" do
       expect(@option).to have_field(:text).of_type(String)
     end
@@ -15,7 +15,7 @@ describe Option do
     end
   end
 
-  context "Validations" do
+  describe "Validations" do
     it "has a valid factory" do
       expect(@option).to be_valid
     end
@@ -34,6 +34,12 @@ describe Option do
 
     it "validates the length of the text field" do
       expect(@option).to validate_length_of(:text)
+    end
+  end
+
+  describe "Associations" do
+    it "is embedded in Question" do
+      expect(@option).to be_embedded_in(:question)
     end
   end
 end

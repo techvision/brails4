@@ -5,7 +5,7 @@ describe Profile do
     @profile = build(:profile)
   end
 
-  context "Fields" do
+  describe "Fields" do
     it "has a field called 'name'" do
       expect(@profile).to have_field(:name).of_type(String)
     end
@@ -27,7 +27,7 @@ describe Profile do
     end
   end
 
-  context "Validations" do
+  describe "Validations" do
     it "has a valid factory" do
       expect(@profile).to be_valid
     end
@@ -53,7 +53,7 @@ describe Profile do
     end
   end
 
-  context "Associations" do
+  describe "Associations" do
     it "belongs to an 'User'" do
       expect(@profile).to be_embedded_in(:user)
     end

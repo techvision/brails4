@@ -5,7 +5,7 @@ describe Content do
     @content = build(:content)
   end
 
-  context "Fields" do
+  describe "Fields" do
     it "has a field called 'Title' " do
       expect(@content).to have_field(:title).of_type(String)
     end
@@ -27,7 +27,7 @@ describe Content do
     end
   end
 
-  context "Validations" do
+  describe "Validations" do
     it 'has a valid factory' do
       expect(@content).to be_valid
     end
@@ -77,7 +77,7 @@ describe Content do
     end 
   end
 
-  context "Associations" do
+  describe "Associations" do
     it 'has embedded questions' do
       expect(@content).to embed_many(:questions)
     end
