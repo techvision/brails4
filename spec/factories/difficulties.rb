@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :difficulty do
-    name "test"
+    name {Faker::Lorem.sentence(1)}
     points 1
   end
 end

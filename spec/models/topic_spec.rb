@@ -20,10 +20,6 @@ describe Topic do
       expect(@topic).to be_valid
     end
 
-    it 'has a valid title' do
-      expect(build(:topic, title: "123@")).not_to be_valid
-    end
-
     it 'has a valid seq_number' do
       expect(@topic).to validate_numericality_of(:seq_number).to_allow(:only_integer => true, :greater_than => 0)
     end

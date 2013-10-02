@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :question do |q|
-    q.title "test"
+    q.title {Faker::Lorem.sentence(1)}
     q.options {[ FactoryGirl.build(:option), FactoryGirl.build(:option, correct: false), FactoryGirl.build(:option, correct: false) ]}
     q.attempts { [ FactoryGirl.build(:attempt)]}
     q.difficulty { FactoryGirl.build(:difficulty)}

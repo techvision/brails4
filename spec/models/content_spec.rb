@@ -32,10 +32,6 @@ describe Content do
       expect(@content).to be_valid
     end
 
-    it 'has a valid title' do
-      expect(build(:content, title: "@123abc")).not_to be_valid
-    end
-
     it 'is invalid without a mp3 audio file' do
       expect(build(:content, audio_mp3: nil)).not_to be_valid
     end
@@ -53,13 +49,11 @@ describe Content do
     end
 
     it 'has a valid mp3 audio file' do
-      expect(build(:content, audio_mp3: fixture_file_upload
-        ("#{Rails.root}/spec/factories/support/Lighthouse.jpg", "image/jpg"))).to_not be_valid
+      expect(build(:content, audio_mp3: fixture_file_upload("#{Rails.root}/spec/factories/support/Lighthouse.jpg", "image/jpg"))).to_not be_valid
     end
 
     it 'has a valid ogg audio file' do
-      expect(build(:content, audio_ogg: fixture_file_upload
-        ("#{Rails.root}/spec/factories/support/Lighthouse.jpg", "image/jpg"))).to_not be_valid
+      expect(build(:content, audio_ogg: fixture_file_upload("#{Rails.root}/spec/factories/support/Lighthouse.jpg", "image/jpg"))).to_not be_valid
     end
 
     it 'validates the lenght of Title' do

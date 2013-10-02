@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :comment do
-    text "test"
+    text {Faker::Lorem.sentence(10)}
   end
 end

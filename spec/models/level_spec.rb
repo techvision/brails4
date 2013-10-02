@@ -17,10 +17,6 @@ describe Level do
       expect(@level).to be_valid
     end
 
-    it 'has a valid name' do
-      expect(build(:level, name: "123@")).to_not be_valid
-    end
-
     it 'is invalid without a name' do
       expect(@level).to validate_presence_of(:name)
     end

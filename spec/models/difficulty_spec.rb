@@ -29,9 +29,6 @@ describe Difficulty do
       expect(build(:difficulty,points: nil)).not_to be_valid
     end
 
-    it 'validates the format of the name' do
-      expect(build(:difficulty,name: "@a2")).not_to be_valid
-    end
   end
 
   context "Associations" do
