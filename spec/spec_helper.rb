@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require "paperclip/matchers"
 require 'simplecov'
+require 'coveralls'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -20,6 +21,7 @@ RSpec.configure do |config|
   config.include Mongoid::Matchers, type: :model
   config.include Paperclip::Shoulda::Matchers
   SimpleCov.start 'rails'
+  Coveralls.wear!
 
 
   # ## Mock Framework
