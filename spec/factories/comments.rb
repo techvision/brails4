@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :comment do
-    description "MyString"
+    text "test"
   end
 end

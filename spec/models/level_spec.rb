@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Level do
 
-  before(:all) do
+  before(:each) do
     @level = build(:level)
   end
 
@@ -31,11 +31,11 @@ describe Level do
   end
 
   context "Associations" do
-    it 'it has many topics' do 
+    it 'has many topics' do 
       expect(@level).to have_many(:topics) 
     end
 
-    it 'it has many embbebed questions' do 
+    it 'has many embbebed questions' do 
       expect(@level).to embed_many (:questions)
     end
   end

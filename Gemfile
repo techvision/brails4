@@ -25,6 +25,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'mongoid', git: 'git://github.com/mongoid/mongoid.git'
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'devise'
 gem 'cancan'
 

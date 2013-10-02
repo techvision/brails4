@@ -2,5 +2,12 @@
 
 FactoryGirl.define do
   factory :option do
+    text "test"
+    correct true
+  end
+
+  factory :incorrect_option, class: Option do
+    text "test"
+    correct false
   end
 end

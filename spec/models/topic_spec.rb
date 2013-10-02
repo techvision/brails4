@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Topic do
-  before(:all) do
+  before(:each) do
     @topic = build(:topic)
   end
 
@@ -45,6 +45,7 @@ describe Topic do
     it 'has many embbebed questions' do
       expect(@topic).to embed_many(:questions)
     end
+
     it 'has many contents' do
       expect(@topic).to have_many(:contents)
     end

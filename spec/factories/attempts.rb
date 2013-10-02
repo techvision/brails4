@@ -2,8 +2,5 @@
 
 FactoryGirl.define do
   factory :attempt do
-    increase_count 1
-    solved false
-    coins 1
   end
 end

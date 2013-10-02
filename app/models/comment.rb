@@ -1,5 +1,10 @@
 class Comment
   include Mongoid::Document
 
-  belongs_to :request
+  field :text, type: String
+
+  belongs_to :commentable, polymorphic: true
+
+  validates :text, :presence => true
+
 end
