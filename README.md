@@ -1,8 +1,8 @@
-== Brails + Rails4
+# Brails + Rails4
 
-{<img src="https://codeclimate.com/github/techvision/brails4.png" />}[https://codeclimate.com/github/techvision/brails4]
-{<img src="https://circleci.com/gh/techvision/brails4.png?circle-token=2ea0221e6405edc8c3001d7cc09e77695dc95bc5" />}[https://circleci.com/gh/techvision/brails4]
-{<img src="https://coveralls.io/repos/techvision/brails4/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/techvision/brails4]
+[![Code Climate](https://codeclimate.com/github/techvision/brails4.png)](https://codeclimate.com/github/techvision/brails4)
+[![Cirle CI](https://circleci.com/gh/techvision/brails4.png?circle-token=2ea0221e6405edc8c3001d7cc09e77695dc95bc5)](https://circleci.com/gh/techvision/brails4)
+[![Coverage Status](https://coveralls.io/repos/techvision/brails4/badge.png)](https://coveralls.io/r/techvision/brails4)
 
 brails.org is a learning portal for the blind and even built by the blind with support from the Ruby community. This boasts of extensive adherence to accessibility standards for the visually impaired.
 
