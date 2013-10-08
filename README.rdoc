@@ -1,4 +1,4 @@
 == Brails + Rails4
 
 {<img src="https://codeclimate.com/github/techvision/brails4.png" />}[https://codeclimate.com/github/techvision/brails4]
-{<img src="https://circleci.com/gh/techvision/master.png?circle-token=2ea0221e6405edc8c3001d7cc09e77695dc95bc5" />}[https://circleci.com/gh/techvision/brails4]
+{<img src="https://circleci.com/gh/techvision/brails4.png?circle-token=2ea0221e6405edc8c3001d7cc09e77695dc95bc5" />}[https://circleci.com/gh/techvision/brails4]
