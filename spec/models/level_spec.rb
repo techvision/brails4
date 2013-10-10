@@ -39,16 +39,18 @@ describe Level do
       it "returns true if the user completed level" do
         user = build(:user)
         question = level.topics.first.contents.first.questions.first
-        correct_option = question.options.where(:correct => true).first
+        correct_option = question.options.find_by(correct: true)
         question.answer(correct_option.id, user.id)
+
         expect(level.complete?(user.id)).to be_true 
       end
 
       it "returns false if the user did not completed the level" do
         user = build(:user)
         question = level.topics.first.contents.first.questions.first
-        false_option = question.options.where(:correct => false).first
+        false_option = question.options.find_by(correct: false)
         question.answer(false_option.id, user.id)
+
         expect(level.complete?(user.id)).to be_false
       end
     end

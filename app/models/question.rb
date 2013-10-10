@@ -20,4 +20,3 @@ class Question
     end
   end
 end 
-
