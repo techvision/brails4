@@ -2,14 +2,14 @@ class Question
   include Mongoid::Document
 
   field :title, type: String
+  field :difficulty, type: Integer
 
   embeds_many :options
   has_many :attempts
-  has_one :difficulty
   has_many :comments, as: :commentable
   embedded_in :questionable, polymorphic: true
 
-  validates :title,:options, presence: true
+  validates :title,:options,:difficulty, presence: true
   validates :options, length: { minimum: 3, maximum: 5}
   validate :only_one_correct_answer
 

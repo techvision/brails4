@@ -5,6 +5,6 @@ FactoryGirl.define do
     q.title {Faker::Lorem.sentence(1)}
     q.options {[ FactoryGirl.build(:option), FactoryGirl.build(:incorrect_option), FactoryGirl.build(:incorrect_option) ]}
     q.attempts { [ FactoryGirl.build(:attempt)]}
-    q.difficulty { FactoryGirl.build(:difficulty)}
+    q.difficulty EASY
   end
 end

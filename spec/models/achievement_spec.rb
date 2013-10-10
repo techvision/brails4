@@ -27,11 +27,11 @@ describe Achievement do
       expect(achievement).to validate_presence_of(:user_id)
     end
 
-    it "is invalid without an topic_id" do
+    it "is invalid without a topic_id" do
       expect(achievement).to validate_presence_of(:topic_id)
     end
 
-    it "is invalid without an score" do
+    it "is invalid without a score" do
       expect(achievement).to validate_presence_of(:score)
     end
   end

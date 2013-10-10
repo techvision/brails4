@@ -7,6 +7,10 @@ describe Question do
     it "has a field called 'Title'" do
       expect(question).to have_field(:title).of_type(String)
     end
+
+    it "has a field called 'Difficulty'" do
+      expect(question).to have_field(:difficulty).of_type(Integer)
+    end
   end
 
   describe "Validations" do
@@ -53,10 +57,6 @@ describe Question do
     it 'has many attempts' do
       expect(question).to have_many(:attempts)
     end
-
-    it 'has one difficulty' do
-      expect(question).to have_one(:difficulty)
-    end
   end
 
   describe "Behavior" do
@@ -87,7 +87,7 @@ describe Question do
           option = question.options.find_by(correct: true)
           total_points = user.profile.total_points
 
-          expect(question.answer(option.id, user.id)).to change{user.profile.total_points}.by(question.difficulty.points)
+          expect(question.answer(option.id, user.id)).to change{user.profile.total_points}.by(question.difficulty)
         end
       end
 
