@@ -1,19 +1,17 @@
 require 'spec_helper'
 
 describe Comment do
-  before(:each) do
-    @comment = build(:comment)
-  end
+  let(:comment) {FactoryGirl.build(:comment)}
 
   describe "Fields" do
     it "has a field called 'text'" do
-      expect(@comment).to have_field(:text).of_type(String)
+      expect(comment).to have_field(:text).of_type(String)
     end
   end
 
   describe "Validations" do
     it 'has a valid factory' do
-      expect(@comment).to be_valid
+      expect(comment).to be_valid
     end
 
     it 'is invalid without a text' do
@@ -23,7 +21,7 @@ describe Comment do
 
   describe "Associations" do
     it 'is a polymorphic association' do
-      expect(@comment).to belong_to(:commentable)
+      expect(comment).to belong_to(:commentable)
     end
   end
 end

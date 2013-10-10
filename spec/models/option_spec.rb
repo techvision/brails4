@@ -1,23 +1,21 @@
 require 'spec_helper'
 
 describe Option do
-  before(:each) do
-    @option = build(:option)
-  end
+  let(:option) { FactoryGirl.build(:option)}
 
   describe "Fields" do
     it "has a field called 'Text'" do
-      expect(@option).to have_field(:text).of_type(String)
+      expect(option).to have_field(:text).of_type(String)
     end
 
     it "has a field called 'Correct'" do
-      expect(@option).to have_field(:correct).of_type(Boolean)
+      expect(option).to have_field(:correct).of_type(Boolean)
     end
   end
 
   describe "Validations" do
     it "has a valid factory" do
-      expect(@option).to be_valid
+      expect(option).to be_valid
     end
 
     it "has a valid 'correct' field value" do
@@ -33,13 +31,13 @@ describe Option do
     end
 
     it "validates the length of the text field" do
-      expect(@option).to validate_length_of(:text)
+      expect(option).to validate_length_of(:text)
     end
   end
 
   describe "Associations" do
     it "is embedded in Question" do
-      expect(@option).to be_embedded_in(:question)
+      expect(option).to be_embedded_in(:question)
     end
   end
 end

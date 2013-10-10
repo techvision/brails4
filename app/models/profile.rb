@@ -6,12 +6,13 @@ class Profile
   field :gender, type: String
   field :address, type: String
   field :country, type: String
+  field :total_points, type: Integer, default: 0
 
-  embedded_in :user
+  belongs_to :user
   has_many :attempts
   has_many :comments, as: :commentable
   embeds_many :invitations
+  embeds_many :achievements
 
-  validates :name, :birthdate, :gender, :address, :country, :presence => true
-  
+  validates :name, :birthdate, :gender, :address, :country, presence: true
 end

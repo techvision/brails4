@@ -23,6 +23,10 @@ RSpec.configure do |config|
   SimpleCov.start 'rails'
   Coveralls.wear!
 
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+
 
   # ## Mock Framework
   #

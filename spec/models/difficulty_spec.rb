@@ -1,24 +1,22 @@
 require 'spec_helper'
 
 describe Difficulty do
-  before(:each) do
-    @difficulty = build(:difficulty)
-  end
+  let(:difficulty) { FactoryGirl.build(:difficulty)}
 
   describe "Fields" do
     it "has a field called 'Name'" do
-      expect(@difficulty).to have_field(:name).of_type(String)
+      expect(difficulty).to have_field(:name).of_type(String)
     end
 
     it "has a field called 'Points'" do
-      expect(@difficulty).to have_field(:points).of_type(Integer)
+      expect(difficulty).to have_field(:points).of_type(Integer)
     end
   end
 
   describe "Validations" do
 
     it "has a valid factory" do
-      expect(@difficulty).to be_valid
+      expect(difficulty).to be_valid
     end
 
     it 'is invalid without a name' do
@@ -32,7 +30,7 @@ describe Difficulty do
 
   describe "Associations" do
     it "belongs to a question" do
-      expect(@difficulty).to belong_to(:question)
+      expect(difficulty).to belong_to(:question)
     end
   end
 end

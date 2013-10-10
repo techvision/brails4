@@ -1,31 +1,29 @@
 require 'spec_helper'
 
 describe Feedback do
-  before(:each) do
-    @feedback = build(:feedback)
-  end
+  let(:feedback) { FactoryGirl.build(:feedback)}
 
   describe "Fields" do
     it "has a field called 'name'" do
-      expect(@feedback).to have_field(:name).of_type(String)
+      expect(feedback).to have_field(:name).of_type(String)
     end
 
     it "has a field called 'email'" do
-      expect(@feedback).to have_field(:email).of_type(String)
+      expect(feedback).to have_field(:email).of_type(String)
     end
 
     it "has a field called 'country'" do
-      expect(@feedback).to have_field(:country).of_type(String)
+      expect(feedback).to have_field(:country).of_type(String)
     end
 
     it "has a field called 'text'" do
-      expect(@feedback).to have_field(:text).of_type(String)
+      expect(feedback).to have_field(:text).of_type(String)
     end
   end
 
   describe "Validations" do
     it "has valid factory" do
-      expect(@feedback).to be_valid
+      expect(feedback).to be_valid
     end
 
     it "is invalid without a name" do

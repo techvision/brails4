@@ -3,4 +3,8 @@
 FactoryGirl.define do
   factory :attempt do
   end
+
+  factory :solved_attempt do
+    solved true
+  end
 end

@@ -1,35 +1,33 @@
 require 'spec_helper'
 
 describe Content do
-  before(:each) do
-    @content = build(:content)
-  end
+  let(:content) { FactoryGirl.build(:content)}
 
   describe "Fields" do
     it "has a field called 'Title' " do
-      expect(@content).to have_field(:title).of_type(String)
+      expect(content).to have_field(:title).of_type(String)
     end
 
     it "has a field called 'Body' " do
-      expect(@content).to have_field(:body).of_type(String)
+      expect(content).to have_field(:body).of_type(String)
     end
 
     it "has a field called 'Summary' " do
-      expect(@content).to have_field(:summary).of_type(String)
+      expect(content).to have_field(:summary).of_type(String)
     end
 
     it "has an embbebed mp3 audio file" do
-      expect(@content).to validate_attachment_presence(:audio_mp3)
+      expect(content).to validate_attachment_presence(:audio_mp3)
     end
 
     it "has and embbebed ogg audio file" do
-      expect(@content).to validate_attachment_presence(:audio_ogg)
+      expect(content).to validate_attachment_presence(:audio_ogg)
     end
   end
 
   describe "Validations" do
     it 'has a valid factory' do
-      expect(@content).to be_valid
+      expect(content).to be_valid
     end
 
     it 'is invalid without a mp3 audio file' do
@@ -41,11 +39,11 @@ describe Content do
     end
 
     it 'validates the content type of mp3 audio file' do
-      expect(@content).to validate_attachment_content_type(:audio_mp3).allowing('audio/mp3')
+      expect(content).to validate_attachment_content_type(:audio_mp3).allowing('audio/mp3')
     end
 
     it 'validates the content type of ogg audio file' do
-      expect(@content).to validate_attachment_content_type(:audio_ogg).allowing('audio/ogg')
+      expect(content).to validate_attachment_content_type(:audio_ogg).allowing('audio/ogg')
     end
 
     it 'has a valid mp3 audio file' do
@@ -57,7 +55,7 @@ describe Content do
     end
 
     it 'validates the lenght of Title' do
-      expect(@content).to validate_length_of(:title)
+      expect(content).to validate_length_of(:title)
     end
 
     it 'is invalid without a title' do
@@ -79,12 +77,11 @@ describe Content do
 
   describe "Associations" do
     it 'has embedded questions' do
-      expect(@content).to embed_many(:questions)
+      expect(content).to embed_many(:questions)
     end
     
     it 'has embedded comments' do
-      expect(@content).to embed_many(:comments)
+      expect(content).to embed_many(:comments)
     end
   end
-
 end

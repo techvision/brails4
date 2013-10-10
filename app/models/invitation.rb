@@ -7,7 +7,7 @@ class Invitation
   field :phone_number, type: String
   field :text, type: String
 
-   embedded_in :user
+  embedded_in :user
 
-  validates :name, :email, :presence => true
+  validates :name, :email, presence: true
 end

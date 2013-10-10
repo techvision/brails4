@@ -6,6 +6,6 @@ class Difficulty
 
   belongs_to :question
 
-  validates :name, :points, :presence => true
+  validates :name, :points, presence: true
 
 end
