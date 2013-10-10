@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Topic do
-  let(:topic) { FactoryGirl.build(:topic)}
+  let(:topic) { FactoryGirl.build(:topic) }
 
   describe 'Fields' do
     it "has a field called 'title'" do
@@ -55,9 +55,9 @@ describe Topic do
         level.topics << topic
 
         question = topic.questions.first
-        correct_option = topic.questions.first.options.where(correct: true)
+        correct_option = topic.contents.first.questions.first.options.find_by(correct: true)
 
-        question.answer(correct_option.id,user_id)
+        question.answer(correct_option.id,user.id)
 
         expect(topic.complete?(user.id)).to be_true
       end
@@ -68,9 +68,9 @@ describe Topic do
         level.topics << topic
 
         question = topic.questions.first
-        incorrect_option = topic.questions.first.options.where(correct: false)
+        incorrect_option = topic.contents.first.questions.first.options.find_by(correct: false)
 
-        question.answer(incorrect_option.id,user_id)
+        question.answer(incorrect_option.id,user.id)
 
         expect(topic.complete?(user.id)).to be_false
       end

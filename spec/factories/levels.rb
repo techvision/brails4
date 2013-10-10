@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :level do |l|
-    l.name {Faker::Lorem.sentence(3)}
-    l.topics { [ FactoryGirl.build(:topic) ]}
+    l.name { Faker::Lorem.characters(10) }
+    l.topics { [ FactoryGirl.build(:topic)] }
   end
 end
