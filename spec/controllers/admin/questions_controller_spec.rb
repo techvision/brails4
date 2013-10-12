@@ -104,7 +104,7 @@ describe Admin::QuestionsController do
       end
 
       it "saves the new Question in the database" do
-       expect { post :create, content_id: content.id question: attrs}.to change(Question,:count).by(1)
+       expect { post :create, content_id: content.id, question: attrs}.to change(Question,:count).by(1)
       end
 
       it "redirects to the :show view" do

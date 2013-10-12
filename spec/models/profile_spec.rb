@@ -82,14 +82,16 @@ describe Profile do
       it "returns true when the user finished all the level previous topics" do
         achievement = create(:achievement, topic_id: topic1.id, user_id: user.id)
 
-        level.topics << topic1, topic2
+        level.topics << topic1
+        level.topics << topic2
         user.profile.achievements << achievement
 
         expect(user.profile.finished_previous_topics(topic2.id,level.id)).to be_true
       end
 
       it "returns false when the user has not finished all the level previous topics" do
-        level.topics << topic1, topic2
+        level.topics << topic1
+        level.topics << topic2
         user.profile.achievements << achievement
 
         expect(user.profile.finished_previous_topics(topic2.id,level.id)).to be_false

@@ -13,7 +13,8 @@ describe TopicsController do
       it "assigns the requested Topic to @topic" do
         achievement = create(:achievement, user_id: user.id, topic_id: topic1.id)
 
-        level.topics << topic1, topic2
+        level.topics << topic1
+        level.topics << topic2
         user.profile.achievements << achievement
 
         get :show, id: topic2.id, level_id: level.id
@@ -24,7 +25,8 @@ describe TopicsController do
 
       it "renders the :show template" do
         achievement = create(:achievement, user_id: user.id, topic_id: topic1.id)
-        level.topics << topic1, topic2
+        level.topics << topic1
+        level.topics << topic2
         user.profile.achievements << achievement
 
         get :show, id: topic2.id, level_id: level.id
@@ -35,14 +37,16 @@ describe TopicsController do
 
     context "when user did not finished previous topics" do
       it "redirects to :index view" do
-        level.topics << topic1, topic2
+        level.topics << topic1
+        level.topics << topic2
         get :show, id: topic2.id, level_id: level.id
 
         expect(response).to redirect_to :index
       end
 
       it "shows an alert message" do
-        level.topics << topic1, topic2
+        level.topics << topic1
+        level.topics << topic2
         get :show, id: topic2.id, level_id: level.id
 
         expect(flash[:error]).to eql "You can not access this topic yet"
