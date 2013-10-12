@@ -46,6 +46,7 @@ describe Topic do
   end
 
   describe 'Behavior' do
+    #Return true if user has completed all contents and solved topic questions
 
     describe "#complete?(user_id)" do
 

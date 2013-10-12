@@ -27,7 +27,6 @@ describe Profile do
     it "has a field called 'total_points" do
       expect(profile).to have_field(:total_points).of_type(Integer)
     end
-
   end
 
   describe "Validations" do
@@ -63,10 +62,6 @@ describe Profile do
 
     it "has many Attempts" do
       expect(profile).to have_many(:attempts)
-    end
-
-    it "has many 'Comments'" do
-      expect(profile).to have_many(:comments)
     end
 
     it "embeds many 'invitations'" do

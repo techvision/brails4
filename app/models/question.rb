@@ -6,7 +6,7 @@ class Question
 
   embeds_many :options
   has_many :attempts
-  has_many :comments, as: :commentable
+  embeds_many :comments, as: :commentable
   embedded_in :questionable, polymorphic: true
 
   validates :title,:options,:difficulty, presence: true
@@ -19,4 +19,4 @@ class Question
       errors.add(:options, "question can only have one correct answer")
     end
   end
-end 
+end

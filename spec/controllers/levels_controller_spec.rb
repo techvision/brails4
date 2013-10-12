@@ -1,11 +1,24 @@
 require 'spec_helper'
 
-describe LevelsController do
-  it 'enables the bonus round questions when the user finishes all the level topics'
-  it 'does not allow an user to reach a topic before reading all the topics before it'
+describe LevelsController do 
+  before(:each) do
+    let(:user) { FactoryGirl.create(:user) } 
+    let(:level) { FactoryGirl.create(:level) }
+    let(:question) { FactoryGirl.create(:question) }
+  end
 
   describe "GET #show" do
-    it "assigns the requested Level to @level"
-    it "renders the :show template"
+    it "assigns the requested Level to @level" do
+      get :show, id: level.id
+      page_level = assigns[:level]
+
+      expect(level).to eql page_level
+    end
+
+    it "renders the :show template" do
+      get :show, id: level.id
+
+      expect(response).to render_template :show
+    end
   end
 end

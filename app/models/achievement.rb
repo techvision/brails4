@@ -6,5 +6,4 @@ class Achievement
   field :score, type: Integer, default: 0
 
   validates :user_id, :topic_id, :score, presence: true
-
 end

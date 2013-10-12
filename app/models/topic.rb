@@ -6,7 +6,7 @@ class Topic
 
   belongs_to :level
   has_many :contents
-  has_many :comments, as: :commentable
+  embeds_many :comments, as: :commentable
   embeds_many :questions, as: :questionable
 
   validates :seq_number, :title, :contents, :presence => true

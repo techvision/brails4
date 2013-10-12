@@ -23,4 +23,5 @@
 .rvmrc
 recover
 /coverage
+/public/system
 

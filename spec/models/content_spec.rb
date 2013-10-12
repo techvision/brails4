@@ -84,4 +84,31 @@ describe Content do
       expect(content).to embed_many(:comments)
     end
   end
+
+  describe "Behavior" do
+    #returns true when the user has solved atempts for all the content questions
+    let(:user){ FactoryGirl.build(:user) }
+
+    describe "#complete?(user.id)" do
+      context "when user has completed the content" do
+        it "returns true" do
+          question = content.questions.first
+          correct_option = question.options.find_by(correct: true)
+          question.answer(correct_option.id, user.id)
+
+          expect(content.complete?(user.id)).to be_true
+        end
+      end
+
+      context "when user has not completed the content" do
+        it "returns false" do
+          question = content.questions.first
+          correct_option = question.options.find_by(correct: false)
+          question.answer(correct_option.id, user.id)
+
+          expect(content.complete?(user.id)).to be_false
+        end
+      end
+    end
+  end
 end

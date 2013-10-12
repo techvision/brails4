@@ -10,7 +10,6 @@ class Profile
 
   belongs_to :user
   has_many :attempts
-  has_many :comments, as: :commentable
   embeds_many :invitations
   embeds_many :achievements
 

@@ -10,5 +10,6 @@ class Attempt
 
   validates :count, numericality: { only_integer: true }
 
-  scope :solved, ->(user_id){ where(solved: true) }
+  scope :solved, where(solved: true)
+  scope :unsolved, where(solved: false)
 end

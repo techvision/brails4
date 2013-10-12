@@ -6,52 +6,45 @@ Brails::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  namespace :admin do
+    resources :level
+      resources :comments
+      resources :questions, as: "bonus_questions"
+      resources :topics, shallow: true
+    end
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+    resources :topic do
+      resources :comments
+      resources :contents, shallow: true
+      resources :questions
+    end
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+    resources :content do
+      resources :comments
+      resources :questions
+    end
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+    resources :invitation, except: [:new, :create]
+    resources :feedback, only: [:index, :show]
+  end
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+  resources :level, only: [:show, :index] do
+    resources :comments
+    resources :questions, as: "bonus_questions", only: [:answer]
+    resources :topics, only: [:show, :index]
+  end
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-  
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
+  resources :topic, only: [:show, :index] do
+    resources :comments
+    resources :contents,only: [:show, :index]
+    resources :questions, only: [:show, :index, :answer]
+  end
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  resources :content, only: [:show, :index] do
+    resources :comments
+    resources :questions, only: [:answer]
+  end
+
+  resources :invitation, only: [:new, :create]
+  resources :feedback, only: [:new, :create]
 end

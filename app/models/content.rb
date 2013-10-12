@@ -9,7 +9,7 @@ class Content
   has_mongoid_attached_file :audio_ogg
   
   belongs_to :topic
-  embeds_many :comments
+  embeds_many :comments, as: :commentable
   embeds_many :questions, as: :questionable
 
   validates :title, :body, :summary, :questions, presence: true

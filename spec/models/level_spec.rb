@@ -34,7 +34,7 @@ describe Level do
   end
 
   describe "Behavior" do
-
+    # Returns true if user has achievements for all level topics
     describe "#complete?(user.id)" do
       it "returns true if the user completed level" do
         user = build(:user)
