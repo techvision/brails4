@@ -7,7 +7,7 @@ Brails::Application.routes.draw do
   root 'welcome#index'
 
   namespace :admin do
-    resources :level
+    resources :level do
       resources :comments
       resources :questions, as: "bonus_questions"
       resources :topics, shallow: true

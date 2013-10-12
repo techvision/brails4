@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe LevelsController do 
   before(:each) do
-    let(:user) { FactoryGirl.create(:user) } 
     let(:level) { FactoryGirl.create(:level) }
-    let(:question) { FactoryGirl.create(:question) }
   end
 
   describe "GET #show" do

@@ -1,30 +1,33 @@
 require 'spec_helper'
 
 describe TopicsController do
-  let(:user){ FactoryGirl.create(:user)}
+  before(:each) do
+    let(:level){ FactoryGirl.create(:level)}
+    let(:user){ FactoryGirl.create(:user)}
+    let(:topic1){ FactoryGirl.create(:topic,seq_number: 1)}
+    let(:topic2){ FactoryGirl.create(:topic,seq_number: 2)}
+  end
 
   describe "GET #show" do
     context "when user finished previous topics" do
       it "assigns the requested Topic to @topic" do
-        topic = create(:topic)
-        achievement = create(:achievement, user_id: user.id, topic_id: topic.id)
+        achievement = create(:achievement, user_id: user.id, topic_id: topic1.id)
 
-        level.topics << topic
+        level.topics << topic1, topic2
         user.profile.achievements << achievement
 
-        get :show, id: topic.id
+        get :show, id: topic2.id, level_id: level.id
         page_topic = assigns[:topic]
 
         expect(topic).to be eql page_topic
       end
 
       it "renders the :show template" do
-        topic = create(:topic)
-        achievement = create(:achievement, user_id: user.id, topic_id: topic.id)
-
+        achievement = create(:achievement, user_id: user.id, topic_id: topic1.id)
+        level.topics << topic1, topic2
         user.profile.achievements << achievement
 
-        get :show, id: topic.id
+        get :show, id: topic2.id, level_id: level.id
 
         expect(response).to render_template :show
       end
@@ -32,15 +35,15 @@ describe TopicsController do
 
     context "when user did not finished previous topics" do
       it "redirects to :index view" do
-        topic = create(:topic)
-        get :show, id: topic.id
+        level.topics << topic1, topic2
+        get :show, id: topic2.id, level_id: level.id
 
         expect(response).to redirect_to :index
       end
 
       it "shows an alert message" do
-        topic = create(:topic)
-        get :show, id: topic.id
+        level.topics << topic1, topic2
+        get :show, id: topic2.id, level_id: level.id
 
         expect(flash[:error]).to eql "You can not access this topic yet"
       end

@@ -61,7 +61,7 @@ describe Question do
 
   describe "Behavior" do
     
-    describe "#answer(option_id, user_id)" do
+    describe "PUT #answer(option_id, user_id)" do
       context "when correct option selected" do
         it "creates a new solved attempt database record" do
           user = build(:user)
