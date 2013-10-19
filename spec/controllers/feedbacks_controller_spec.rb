@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "FeedbacksController" do
+describe FeedbacksController do
   
   describe "GET #new" do
     it "assigns a new feedback object" do
@@ -18,9 +18,7 @@ describe "FeedbacksController" do
   end
 
   describe "POST #create" do
-    before do
-      let(:attrs) { FactoryGirl.attributes_for(:feedback) }
-    end
+    let(:attrs) { FactoryGirl.attributes_for(:feedback) }
 
     it "creates a new database record" do
       expect{ put :create, feedback: attrs}.to change(Feedback,:count).by(1)

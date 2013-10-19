@@ -1,12 +1,10 @@
 require 'spec_helper'
 
 describe TopicsController do
-  before(:each) do
-    let(:level){ FactoryGirl.create(:level)}
-    let(:user){ FactoryGirl.create(:user)}
-    let(:topic1){ FactoryGirl.create(:topic,seq_number: 1)}
-    let(:topic2){ FactoryGirl.create(:topic,seq_number: 2)}
-  end
+  let(:level){ FactoryGirl.create(:level)}
+  let(:user){ FactoryGirl.create(:user)}
+  let(:topic1){ FactoryGirl.create(:topic,seq_number: 1)}
+  let(:topic2){ FactoryGirl.create(:topic,seq_number: 2)}
 
   describe "GET #show" do
     context "when user finished previous topics" do

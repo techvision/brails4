@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe LevelsController do 
-  before(:each) do
-    let(:level) { FactoryGirl.create(:level) }
-  end
+  let(:level) { FactoryGirl.create(:level) }
+
+  it_behaves_like "Commentable"
 
   describe "GET #show" do
     it "assigns the requested Level to @level" do

@@ -90,9 +90,7 @@ describe Admin::LevelsController do
 
   describe "POST #create" do
     context "with valid attributes" do
-      before(:each) do
-        let(:attrs) {FactoryGirl.attributes_for(:level)}
-      end
+      let(:attrs) {FactoryGirl.attributes_for(:level)}
 
       it "saves the new Level in the database" do
         expect { post :create, level: attrs}.to change(Level,:count).by(1)
@@ -106,9 +104,7 @@ describe Admin::LevelsController do
     end
 
     context "with invalid attributes" do
-      before(:each) do
-        let(:attrs) {FactoryGirl.attributes_for(:level, title: nil)}
-      end
+      let(:attrs) {FactoryGirl.attributes_for(:level, title: nil)}
 
       it "doesn't save the new Level in the database" do
         post :create, level: attrs

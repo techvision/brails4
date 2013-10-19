@@ -13,6 +13,10 @@ class Question
   validates :options, length: { minimum: 3, maximum: 5}
   validate :only_one_correct_answer
 
+
+  #TODO
+  # mudar answer por criar um attempt
+
   def only_one_correct_answer
     options = self.options.select { |option| option.correct }
     unless options.size == 1

@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe Admin::ContentsController do
-  before(:each) do
-    let(:topic) { FactoryGirl.create(:topic) }
-  end
+  let(:topic) { FactoryGirl.create(:topic) }
 
   it "can upload a mp3 audio file"
   it "can upload a ogg audio file"
@@ -108,9 +106,7 @@ describe Admin::ContentsController do
 
   describe "POST #create" do
     context "with valid attributes" do
-      before do
-        let(:attrs) {FactoryGirl.attributes_for(:content)}
-      end
+      let(:attrs) {FactoryGirl.attributes_for(:content)}
 
       it "saves the new Content in the database" do
         attrs = attributes_for(:content)
@@ -126,9 +122,7 @@ describe Admin::ContentsController do
     end
 
     context "with invalid attributes" do
-      before do
-        let(:attrs) {FactoryGirl.attributes_for(:content, title: nil)}
-      end
+      let(:attrs) {FactoryGirl.attributes_for(:content, title: nil)}
 
       it "doesn't save the new Content in the database" do
         post :create, content: attrs, topic_id: topic.id

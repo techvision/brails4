@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe Admin::FeedbacksController do
-  before(:each) do
-    let(:feedback) {FactoryGirl.create(:feedback)}
-  end
+  let(:feedback) {FactoryGirl.create(:feedback)}
 
   describe "GET #index" do
     it "assigns a list of feedbacks to @feedbacks" do

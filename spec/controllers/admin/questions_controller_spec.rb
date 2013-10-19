@@ -1,14 +1,11 @@
 require 'spec_helper'
 
 describe Admin::QuestionsController do
-  before(:each) do
-    let(:content) { FactoryGirl.create(:content) }
-  end
+  let(:content) { FactoryGirl.create(:content) }
 
   describe "GET #index" do
     it "populates an array of questions" do
-      questions = create(:question)
-      content.questions << questions
+      questions = content.questions
 
       get :index, content_id: content.id
       page_questions = assigns[:questions]
@@ -17,7 +14,6 @@ describe Admin::QuestionsController do
     end
 
     it "renders the :index view" do
-      content.questions << questions
       get :index, content_id: content.id
 
       expect(response).to render_template(:index)
@@ -27,9 +23,7 @@ describe Admin::QuestionsController do
   describe "GET #show" do
     context "when find the question" do
       it "assigns the requested Question to @question" do
-        question = create(:question)
-        content.questions << question
-
+        question = content.questions.first
         get :show, id: question.id, content_id: content.id
         page_question = assigns[:question]
 
@@ -37,9 +31,7 @@ describe Admin::QuestionsController do
       end
 
       it "renders the :show template" do
-        question = create(:question)
-        content.questions << question
-
+        question = content.questions.first
         get :show, id: question.id, content_id: content.id
 
         expect(response).to render_template :show
@@ -48,12 +40,14 @@ describe Admin::QuestionsController do
 
     context "when can not find the question" do
       it "shows an error message" do
+        question = content.questions.first
         get :show, id: "test", content_id: content.id
 
         expect(flash[:error]).to eq "Could not find the specified Question"
       end
 
       it "redirects to index page" do
+        question = content.questions.first
         get :show, id: "test", content_id: content.id
 
         expect(response).to redirect_to :index
@@ -78,9 +72,7 @@ describe Admin::QuestionsController do
 
   describe "GET #edit" do
     it "assigns the requested Question to @question" do
-      question = create(:question)
-      content.questions << question
-
+      question = content.questions.first
       get :edit, id: question.id, content_id: content.id
       page_question = assigns[:question]
 
@@ -88,9 +80,7 @@ describe Admin::QuestionsController do
     end
 
     it "renders the :edit template" do
-      question = create(:question)
-      content.questions << question
-
+      question = content.questions.first
       get :edit, id: question.id, content_id: content.id
 
       expect(response).to render_template :edit
@@ -99,9 +89,7 @@ describe Admin::QuestionsController do
 
   describe "POST #create" do
     context "with valid attributes" do
-      before do
-        let(:attrs) {FactoryGirl.attributes_for(:question)}
-      end
+      let(:attrs) {FactoryGirl.attributes_for(:question)}
 
       it "saves the new Question in the database" do
        expect { post :create, content_id: content.id, question: attrs}.to change(Question,:count).by(1)
@@ -115,9 +103,7 @@ describe Admin::QuestionsController do
     end
 
     context "with invalid attributes" do
-      before do
-        let(:attrs) {FactoryGirl.attributes_for(:question, title: nil)}
-      end
+      let(:attrs) {FactoryGirl.attributes_for(:question, title: nil)}
 
       it "doesn't save the new Question in the database" do
         post :create, question: attrs, content_id: content.id
@@ -136,8 +122,7 @@ describe Admin::QuestionsController do
   describe "PUT #update" do
     context "with valid attributes" do
       it "changes @question attributes" do
-        question = create(:question)
-        content.questions << question
+        question = content.questions.first
         attrs = attributes_for(:question, title: "New title")
 
         put :update, id: question.id, content_id: content.id, question: attrs
@@ -147,8 +132,7 @@ describe Admin::QuestionsController do
       end
 
       it "redirects to the :index view" do
-        question = create(:question)
-        content.questions << question
+        question = content.questions.first
         attrs = attributes_for(:question)
 
         put :update, id: question.id, content_id: content.id, question: attrs
@@ -159,8 +143,7 @@ describe Admin::QuestionsController do
 
     context "with invalid attributes" do
       it "doesn't changes @question attributes" do
-        question = create(:question)
-        content.questions << question
+        question = content.questions.first
         attrs = attributes_for(:question, title: nil)
 
         put :update, id: question.id, content_id: content.id, question: attrs
@@ -170,8 +153,7 @@ describe Admin::QuestionsController do
       end
 
       it "redirects to the :edit view" do
-        question = create(:question)
-        content.questions << question
+        question = content.questions.first
         attrs = attributes_for(:question, title: nil)
 
         put :update, id: question.id, content_id: content.id, question: attrs
@@ -183,18 +165,14 @@ describe Admin::QuestionsController do
 
   describe "DELETE #destroy" do
     it "deletes the question" do
-      question = create(:question)
-      content.questions << question
-
+      question = content.questions.first
       delete :destroy, id: question.id, content_id: content.id
 
       expect(Question.count).to eq 0
     end
 
     it "redirects to the :index view" do
-      question  = create(:question)
-      content.questions << question
-
+      question = content.questions.first
       delete :destroy, id: question.id, content_id: content.id
 
       expect(response).to redirect_to :index
