@@ -3,8 +3,6 @@ require 'spec_helper'
 describe LevelsController do 
   let(:level) { FactoryGirl.create(:level) }
 
-  it_behaves_like "Commentable"
-
   describe "GET #index" do
     it "assigns the level to @levels" do
       get :index

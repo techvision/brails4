@@ -3,19 +3,20 @@ require 'spec_helper'
 describe Admin::AttemptsController do
   let(:user) { FactoryGirl.create(:user)}
   let(:level) { FactoryGirl.create(:level)}
-  let(:attempt) {FactoryGirl.create(:attempt, ) }
+  let(:achievement) { FactoryGirl.create(:achievement, user_id: user.id, topic_id: topic.id)}
+  let(:question) { level.topics.last.contents.last.questions.last }
+  let(:correct_option) { question.options.find_by(correct: true)}
+  let(:incorrect_option){ question.options.find_by(correct: false)}
+  let(:attempt) { FactoryGirl.create(:attempt, )}
 
   describe "GET #index" do
-    get :index, user_id: user.id
-    page_attempts = assigns[:attempts]
 
-    expect(attempt).to eql page_attempts
+
+
   end
 
   describe "GET #show" do
-    get :show, user_id: user.id, attempt_id: attempt.id
-    page_attempt = assigns[:attempt]
 
-    expect(attempt).to eql page_attempt
+
   end
 end
