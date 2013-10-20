@@ -10,7 +10,7 @@ class Content
   
   belongs_to :topic
   embeds_many :comments, as: :commentable
-  embeds_many :questions, as: :questionable
+  has_many :questions, as: :questionable
 
   validates :title, :body, :summary, :questions, presence: true
   validates :title, length: { maximum: 30 }

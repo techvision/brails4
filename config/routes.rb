@@ -24,6 +24,8 @@ Brails::Application.routes.draw do
     resources :users do
       resources :invitations, except: [:new, :create]
       resources :feedbacks, only: [:index, :show]
+      resources :achievements, only: [:index, :show]
+      resources :attempts, only: [:index, :show]
     end
   end
 
@@ -39,15 +41,16 @@ Brails::Application.routes.draw do
 
   resources :contents, only: [:show, :index] do
     resources :comments
-    resources :questions, only: [:answer]
+  end
+
+  resources :questions, only: [:show] do
+    resources :comments
+    post '/attempt/options/:option_id', to: 'attempts#create'
   end
 
   resources :users, except: [:index, :destroy] do
     resources :invitations, only: [:new, :create]
     resources :feedbacks, only: [:new, :create]
-  end
-
-  resources :questions, only: [:show, :answer] do
-    resources :comments
+    resources :achievements, only: [:index, :show]
   end
 end

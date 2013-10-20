@@ -5,6 +5,19 @@ describe LevelsController do
 
   it_behaves_like "Commentable"
 
+  describe "GET #index" do
+    it "assigns the level to @levels" do
+      get :index
+      levels = assigns[:levels]
+      expect(level).to eql levels
+    end
+
+    it "renders the index view" do
+      get :index
+      expect(response).to render_template :index
+    end
+  end
+
   describe "GET #show" do
     it "assigns the requested Level to @level" do
       get :show, id: level.id
