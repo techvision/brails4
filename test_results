@@ -1,0 +1,2533 @@
+
+InvitationsController
+  GET #new
+[31m    assigns a new feedback object (FAILED - 1)[0m
+[31m    renders the :new view (FAILED - 2)[0m
+  POST #create
+[31m    redirects to :show view (FAILED - 3)[0m
+[31m    creates a new database record (FAILED - 4)[0m
+[31m    shows a success message (FAILED - 5)[0m
+
+LevelHelper
+[33m  add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/level_helper_spec.rb (PENDING: No reason given)[0m
+
+QuestionsHelper
+[33m  add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/questions_helper_spec.rb (PENDING: No reason given)[0m
+
+Admin::AttemptsController
+  GET #index
+[31m    assigns an array of attempts (FAILED - 6)[0m
+[31m    renders the :index view (FAILED - 7)[0m
+  GET #show
+[31m    assigns the requested attempt to @attempt (FAILED - 8)[0m
+[31m    renders the :show view (FAILED - 9)[0m
+
+Content
+  Associations
+[32m    has embedded questions[0m
+[32m    has embedded comments[0m
+  Fields
+[32m    has an embbebed mp3 audio file[0m
+[32m    has a field called 'Body'[0m
+[32m    has a field called 'Summary'[0m
+[32m    has and embbebed ogg audio file[0m
+[32m    has a field called 'Title'[0m
+  Behavior
+    #complete?(user.id)
+      when user has completed the content
+[31m        returns true (FAILED - 10)[0m
+      when user has not completed the content
+[31m        returns false (FAILED - 11)[0m
+  Validations
+[32m    is invalid without a question[0m
+[32m    validates the content type of ogg audio file[0m
+[32m    validates the content type of mp3 audio file[0m
+[32m    has a valid ogg audio file[0m
+[32m    has a valid mp3 audio file[0m
+[32m    is invalid without a mp3 audio file[0m
+[32m    has a valid factory[0m
+[32m    validates the lenght of Title[0m
+[32m    is invalid without a valid ogg audio file[0m
+[32m    is invalid without a body[0m
+[32m    is invalid without a summary[0m
+[32m    is invalid without a title[0m
+
+AchievementsController
+  GET #index
+[31m    assigns the achievements to @achievement (FAILED - 12)[0m
+[31m    renders the index view (FAILED - 13)[0m
+  GET #show
+[31m    assigns the requested achievement to @achievement (FAILED - 14)[0m
+[31m    renders the show view (FAILED - 15)[0m
+
+Admin::LevelsController
+  PUT #update
+    with valid attributes
+[31m      changes @level attributes (FAILED - 16)[0m
+[31m      redirects to the :index view (FAILED - 17)[0m
+    with invalid attributes
+[31m      doesn't changes @level attributes (FAILED - 18)[0m
+[31m      redirects to the :edit view (FAILED - 19)[0m
+  GET #edit
+[31m    assigns the requested Level to @level (FAILED - 20)[0m
+[31m    renders the :edit template (FAILED - 21)[0m
+  POST #create
+    with valid attributes
+[31m      saves the new Level in the database (FAILED - 22)[0m
+[31m      redirects to the :show view (FAILED - 23)[0m
+    with invalid attributes
+[31m      doesn't save the new Level in the database (FAILED - 24)[0m
+[31m      redirects to the :new view (FAILED - 25)[0m
+  GET #show
+    when find the level
+[31m      assigns the requested Level to @level (FAILED - 26)[0m
+[31m      renders the :show template (FAILED - 27)[0m
+    when can not find the level
+[31m      shows an error message (FAILED - 28)[0m
+[31m      redirects to index page (FAILED - 29)[0m
+  GET #index
+[31m    populates an array of levels (FAILED - 30)[0m
+[31m    renders the :index view (FAILED - 31)[0m
+  GET #new
+[31m    assigns a new Level to @level (FAILED - 32)[0m
+[31m    renders the :new template (FAILED - 33)[0m
+  DELETE #destroy
+[31m    deletes the level (FAILED - 34)[0m
+[31m    redirects to the :index view (FAILED - 35)[0m
+
+InvitationsHelper
+[33m  add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/invitations_helper_spec.rb (PENDING: No reason given)[0m
+
+Profile
+  Associations
+[32m    has many Attempts[0m
+[32m    belongs to an 'User'[0m
+[32m    embeds many 'invitations'[0m
+  Fields
+[32m    has a field called 'total_points[0m
+[32m    has a field called 'address'[0m
+[32m    has a field called 'country'[0m
+[32m    has a field called 'birthdate'[0m
+[32m    has a field called 'gender'[0m
+[32m    has a field called 'name'[0m
+  Behavior
+    #finished_previous_topics?(level_id, topic_id)
+[31m      returns true when the user finished all the level previous topics (FAILED - 36)[0m
+[31m      returns false when the user has not finished all the level previous topics (FAILED - 37)[0m
+  Validations
+[32m    is invalid without a country[0m
+[32m    is invalid without a gender[0m
+[32m    is invalid without an address[0m
+[32m    is invalid without a name[0m
+[32m    is invalid without a birthdate[0m
+[32m    has a valid factory[0m
+
+FeedbacksHelper
+[33m  add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/feedbacks_helper_spec.rb (PENDING: No reason given)[0m
+
+AttemptsHelper
+[33m  add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/attempts_helper_spec.rb (PENDING: No reason given)[0m
+
+User
+  Validations
+[32m    has a valid factory[0m
+  Associations
+[32m    has one profile[0m
+
+Topic
+  Associations
+[32m    has many embbebed questions[0m
+[32m    has many contents[0m
+  Fields
+[32m    has a field called 'title'[0m
+[32m    has a field called 'seq_number'[0m
+  Behavior
+    #complete?(user_id)
+[31m      returns true if topic is complete (FAILED - 38)[0m
+[31m      returns false if topic is not complete (FAILED - 39)[0m
+  Validations
+[32m    is invalid without a seq_number[0m
+[32m    has a valid seq_number[0m
+[32m    is invalid without a title[0m
+[32m    is invalid without a content[0m
+[32m    has a valid factory[0m
+
+TopicsController
+  GET #show
+    when user finished previous topics
+[31m      assigns the requested Topic to @topic (FAILED - 40)[0m
+[31m      renders the :show template (FAILED - 41)[0m
+    when user did not finished previous topics
+[31m      redirects to :index view (FAILED - 42)[0m
+[31m      shows an alert message (FAILED - 43)[0m
+
+CommentsController
+  behaves like Commentable
+    PUT #update
+      with valid attributes
+[31m        redirects to the :index view (FAILED - 44)[0m
+[31m        changes @comment attributes (FAILED - 45)[0m
+[31m        shows a success message (FAILED - 46)[0m
+      with invalid attributes
+[31m        redirects to the :index view (FAILED - 47)[0m
+[31m        doesn't changes @comment attributes (FAILED - 48)[0m
+[31m        shows an error message (FAILED - 49)[0m
+    GET #index
+[31m      populates an array of comments (FAILED - 50)[0m
+[31m      renders the :index view (FAILED - 51)[0m
+    DELETE #destroy
+      when find the comment
+[31m        deletes the comment (FAILED - 52)[0m
+[31m        redirects to the :index view (FAILED - 53)[0m
+      when can not find the comment
+[31m        shows an error message (FAILED - 54)[0m
+[31m        redirects to index view (FAILED - 55)[0m
+    GET #index
+[31m      populates an array of comments (FAILED - 56)[0m
+[31m      renders the :index view (FAILED - 57)[0m
+    GET #edit
+[31m      assigns the requested Comment to @comment (FAILED - 58)[0m
+[31m      renders the :edit template (FAILED - 59)[0m
+    GET #new
+[31m      assigns a new Comment to @comment (FAILED - 60)[0m
+[31m      renders the :new template (FAILED - 61)[0m
+    GET #index
+[31m      populates an array of comments (FAILED - 62)[0m
+[31m      renders the :index view (FAILED - 63)[0m
+    GET #show
+      when comment is found
+[31m        assigns the requested Comment to @comment (FAILED - 64)[0m
+[31m        renders the :show template (FAILED - 65)[0m
+      when comment is not found
+[31m        shows an error message (FAILED - 66)[0m
+[31m        redirects to index view (FAILED - 67)[0m
+    GET #edit
+[31m      assigns the requested Comment to @comment (FAILED - 68)[0m
+[31m      renders the :edit template (FAILED - 69)[0m
+    DELETE #destroy
+      when find the comment
+[31m        deletes the comment (FAILED - 70)[0m
+[31m        redirects to the :index view (FAILED - 71)[0m
+      when can not find the comment
+[31m        shows an error message (FAILED - 72)[0m
+[31m        redirects to index view (FAILED - 73)[0m
+    GET #show
+      when comment is found
+[31m        assigns the requested Comment to @comment (FAILED - 74)[0m
+[31m        renders the :show template (FAILED - 75)[0m
+      when comment is not found
+[31m        shows an error message (FAILED - 76)[0m
+[31m        redirects to index view (FAILED - 77)[0m
+    POST #create
+      with valid attributes
+[31m        saves the new Comment in the database (FAILED - 78)[0m
+[31m        redirects to the :index view (FAILED - 79)[0m
+      with invalid attributes
+[31m        redirects to the :new view (FAILED - 80)[0m
+[31m        doesn't save the new Comment in the database (FAILED - 81)[0m
+[31m        shows an error message (FAILED - 82)[0m
+    GET #new
+[31m      assigns a new Comment to @comment (FAILED - 83)[0m
+[31m      renders the :new template (FAILED - 84)[0m
+    GET #new
+[31m      assigns a new Comment to @comment (FAILED - 85)[0m
+[31m      renders the :new template (FAILED - 86)[0m
+    GET #new
+[31m      assigns a new Comment to @comment (FAILED - 87)[0m
+[31m      renders the :new template (FAILED - 88)[0m
+    GET #edit
+[31m      assigns the requested Comment to @comment (FAILED - 89)[0m
+[31m      renders the :edit template (FAILED - 90)[0m
+    PUT #update
+      with valid attributes
+[31m        redirects to the :index view (FAILED - 91)[0m
+[31m        changes @comment attributes (FAILED - 92)[0m
+[31m        shows a success message (FAILED - 93)[0m
+      with invalid attributes
+[31m        redirects to the :index view (FAILED - 94)[0m
+[31m        doesn't changes @comment attributes (FAILED - 95)[0m
+[31m        shows an error message (FAILED - 96)[0m
+    GET #edit
+[31m      assigns the requested Comment to @comment (FAILED - 97)[0m
+[31m      renders the :edit template (FAILED - 98)[0m
+    POST #create
+      with valid attributes
+[31m        saves the new Comment in the database (FAILED - 99)[0m
+[31m        redirects to the :index view (FAILED - 100)[0m
+      with invalid attributes
+[31m        redirects to the :new view (FAILED - 101)[0m
+[31m        doesn't save the new Comment in the database (FAILED - 102)[0m
+[31m        shows an error message (FAILED - 103)[0m
+    GET #show
+      when comment is found
+[31m        assigns the requested Comment to @comment (FAILED - 104)[0m
+[31m        renders the :show template (FAILED - 105)[0m
+      when comment is not found
+[31m        shows an error message (FAILED - 106)[0m
+[31m        redirects to index view (FAILED - 107)[0m
+    PUT #update
+      with valid attributes
+[31m        redirects to the :index view (FAILED - 108)[0m
+[31m        changes @comment attributes (FAILED - 109)[0m
+[31m        shows a success message (FAILED - 110)[0m
+      with invalid attributes
+[31m        redirects to the :index view (FAILED - 111)[0m
+[31m        doesn't changes @comment attributes (FAILED - 112)[0m
+[31m        shows an error message (FAILED - 113)[0m
+    GET #index
+[31m      populates an array of comments (FAILED - 114)[0m
+[31m      renders the :index view (FAILED - 115)[0m
+    POST #create
+      with valid attributes
+[31m        saves the new Comment in the database (FAILED - 116)[0m
+[31m        redirects to the :index view (FAILED - 117)[0m
+      with invalid attributes
+[31m        redirects to the :new view (FAILED - 118)[0m
+[31m        doesn't save the new Comment in the database (FAILED - 119)[0m
+[31m        shows an error message (FAILED - 120)[0m
+    POST #create
+      with valid attributes
+[31m        saves the new Comment in the database (FAILED - 121)[0m
+[31m        redirects to the :index view (FAILED - 122)[0m
+      with invalid attributes
+[31m        redirects to the :new view (FAILED - 123)[0m
+[31m        doesn't save the new Comment in the database (FAILED - 124)[0m
+[31m        shows an error message (FAILED - 125)[0m
+    DELETE #destroy
+      when find the comment
+[31m        deletes the comment (FAILED - 126)[0m
+[31m        redirects to the :index view (FAILED - 127)[0m
+      when can not find the comment
+[31m        shows an error message (FAILED - 128)[0m
+[31m        redirects to index view (FAILED - 129)[0m
+    PUT #update
+      with valid attributes
+[31m        redirects to the :index view (FAILED - 130)[0m
+[31m        changes @comment attributes (FAILED - 131)[0m
+[31m        shows a success message (FAILED - 132)[0m
+      with invalid attributes
+[31m        redirects to the :index view (FAILED - 133)[0m
+[31m        doesn't changes @comment attributes (FAILED - 134)[0m
+[31m        shows an error message (FAILED - 135)[0m
+    GET #show
+      when comment is found
+[31m        assigns the requested Comment to @comment (FAILED - 136)[0m
+[31m        renders the :show template (FAILED - 137)[0m
+      when comment is not found
+[31m        shows an error message (FAILED - 138)[0m
+[31m        redirects to index view (FAILED - 139)[0m
+    DELETE #destroy
+      when find the comment
+[31m        deletes the comment (FAILED - 140)[0m
+[31m        redirects to the :index view (FAILED - 141)[0m
+      when can not find the comment
+[31m        shows an error message (FAILED - 142)[0m
+[31m        redirects to index view (FAILED - 143)[0m
+
+AchievementsHelper
+[33m  add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/achievements_helper_spec.rb (PENDING: No reason given)[0m
+
+Achievement
+  Fields
+[32m    has a field called 'topic_id'[0m
+[32m    has a field called 'user_id'[0m
+[32m    has a field called 'score'[0m
+  Validations
+[32m    is invalid without a topic_id[0m
+[32m    has a valid factory[0m
+[32m    is invalid without a score[0m
+[32m    is invalid without an user_id[0m
+
+Admin::AchievementsHelper
+[33m  add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/admin/achievements_helper_spec.rb (PENDING: No reason given)[0m
+
+Admin::QuestionsController
+  PUT #update
+    with valid attributes
+[31m      changes @question attributes (FAILED - 144)[0m
+[31m      redirects to the :index view (FAILED - 145)[0m
+    with invalid attributes
+[31m      doesn't changes @question attributes (FAILED - 146)[0m
+[31m      redirects to the :edit view (FAILED - 147)[0m
+  GET #edit
+[31m    assigns the requested Question to @question (FAILED - 148)[0m
+[31m    renders the :edit template (FAILED - 149)[0m
+  POST #create
+    with valid attributes
+[31m      saves the new Question in the database (FAILED - 150)[0m
+[31m      redirects to the :show view (FAILED - 151)[0m
+    with invalid attributes
+[31m      doesn't save the new Question in the database (FAILED - 152)[0m
+[31m      redirects to the :new view (FAILED - 153)[0m
+  GET #show
+    when find the question
+[31m      assigns the requested Question to @question (FAILED - 154)[0m
+[31m      renders the :show template (FAILED - 155)[0m
+    when can not find the question
+[31m      shows an error message (FAILED - 156)[0m
+[31m      redirects to index page (FAILED - 157)[0m
+  GET #index
+[31m    populates an array of questions (FAILED - 158)[0m
+[31m    renders the :index view (FAILED - 159)[0m
+  GET #new
+[31m    assigns a new Question to @question (FAILED - 160)[0m
+[31m    renders the :new template (FAILED - 161)[0m
+  DELETE #destroy
+[31m    deletes the question (FAILED - 162)[0m
+[31m    redirects to the :index view (FAILED - 163)[0m
+
+Admin::AchievementsController
+  GET #index
+[31m    populates an array of achievements (FAILED - 164)[0m
+[31m    renders the :index view (FAILED - 165)[0m
+  GET #show
+[31m    assigns the requested achievement to @achievement (FAILED - 166)[0m
+[31m    renders the :show view (FAILED - 167)[0m
+
+AttemptsController
+  POST #create
+    when correct option is selected
+[31m      creates a solved attempt in database (FAILED - 168)[0m
+[31m      increments the user points (FAILED - 169)[0m
+      when user finishes the level
+[31m        creates an achievement database record (FAILED - 170)[0m
+    when incorrect option is selected
+[31m      does not increment the user points (FAILED - 171)[0m
+[31m      creates an unsolved attempt in database (FAILED - 172)[0m
+[31m      does not create a achievement database record (FAILED - 173)[0m
+
+CommentsHelper
+[33m  add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/comments_helper_spec.rb (PENDING: No reason given)[0m
+
+Comment
+  Validations
+[32m    has a valid factory[0m
+[32m    is invalid without a text[0m
+  Fields
+[32m    has a field called 'text'[0m
+  Associations
+[32m    is a polymorphic association[0m
+
+Feedback
+  Fields
+[32m    has a field called 'country'[0m
+[32m    has a field called 'name'[0m
+[32m    has a field called 'text'[0m
+[32m    has a field called 'email'[0m
+  Validations
+[32m    is invalid without an email[0m
+[32m    has valid factory[0m
+[32m    validates the format of the email[0m
+[32m    is invalid without a name[0m
+
+Admin::FeedbacksController
+  GET #index
+[31m    assigns a list of feedbacks to @feedbacks (FAILED - 174)[0m
+[31m    renders the :index view (FAILED - 175)[0m
+  GET #show
+[31m    assigns the requested feedback to @feedback (FAILED - 176)[0m
+[31m    renders the :show view (FAILED - 177)[0m
+
+FeedbacksController
+  GET #new
+[31m    assigns a new feedback object (FAILED - 178)[0m
+[31m    renders the :new view (FAILED - 179)[0m
+  POST #create
+[31m    redirects to :show view (FAILED - 180)[0m
+[31m    creates a new database record (FAILED - 181)[0m
+[31m    shows a success message (FAILED - 182)[0m
+
+Admin::AttemptsHelper
+[33m  add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/admin/attempts_helper_spec.rb (PENDING: No reason given)[0m
+
+Admin::ContentsController
+[33m  can upload a mp3 audio file (PENDING: Not yet implemented)[0m
+[33m  can upload a ogg audio file (PENDING: Not yet implemented)[0m
+  PUT #update
+    with valid attributes
+[31m      changes @content attributes (FAILED - 183)[0m
+[31m      redirects to the :index view (FAILED - 184)[0m
+    with invalid attributes
+[31m      doesn't changes @content attributes (FAILED - 185)[0m
+[31m      redirects to the :edit view (FAILED - 186)[0m
+  GET #edit
+[31m    assigns the requested Content to @content (FAILED - 187)[0m
+[31m    renders the :edit template (FAILED - 188)[0m
+  POST #create
+    with valid attributes
+[31m      saves the new Content in the database (FAILED - 189)[0m
+[31m      redirects to the :show view (FAILED - 190)[0m
+    with invalid attributes
+[31m      doesn't save the new Content in the database (FAILED - 191)[0m
+[31m      redirects to the :new view (FAILED - 192)[0m
+  GET #show
+    when find the content
+[31m      assigns the requested Content to @content (FAILED - 193)[0m
+[31m      renders the :show template (FAILED - 194)[0m
+    when can not find the content
+[31m      shows an error message (FAILED - 195)[0m
+[31m      redirects to index page (FAILED - 196)[0m
+  GET #index
+[31m    populates an array of contents (FAILED - 197)[0m
+[31m    renders the :index view (FAILED - 198)[0m
+  GET #new
+[31m    assigns a new Content to @content (FAILED - 199)[0m
+[31m    renders the :new template (FAILED - 200)[0m
+  DELETE #destroy
+[31m    deletes the content (FAILED - 201)[0m
+[31m    redirects to the :index view (FAILED - 202)[0m
+
+Invitation
+  Validations
+[32m    is invalid without a name[0m
+[32m    has a valid factory[0m
+[32m    is invalid withour a email[0m
+  Fields
+[32m    has a field called 'email'[0m
+[32m    has a field called 'phone_number'[0m
+[32m    has a field called 'address'[0m
+[32m    has a field called 'text'[0m
+[32m    has a field called 'name'[0m
+  Associations
+[32m    belongs to an User[0m
+
+Admin::TopicsController
+  PUT #update
+    with valid attributes
+[31m      changes @topic attributes (FAILED - 203)[0m
+[31m      redirects to the :index view (FAILED - 204)[0m
+    with invalid attributes
+[31m      doesn't changes @topic attributes (FAILED - 205)[0m
+[31m      redirects to the :edit view (FAILED - 206)[0m
+  GET #edit
+[31m    assigns the requested Topic to @topic (FAILED - 207)[0m
+[31m    renders the :edit template (FAILED - 208)[0m
+  POST #create
+    with valid attributes
+[31m      saves the new Topic in the database (FAILED - 209)[0m
+[31m      redirects to the :show view (FAILED - 210)[0m
+    with invalid attributes
+[31m      doesn't save the new Topic in the database (FAILED - 211)[0m
+[31m      redirects to the :new view (FAILED - 212)[0m
+  GET #show
+    when find the topic
+[31m      assigns the requested Topic to @topic (FAILED - 213)[0m
+[31m      renders the :show template (FAILED - 214)[0m
+    when can not find the topic
+[31m      shows an error message (FAILED - 215)[0m
+[31m      redirects to index page (FAILED - 216)[0m
+  GET #index
+[31m    populates an array of topics (FAILED - 217)[0m
+[31m    renders the :index view (FAILED - 218)[0m
+  GET #new
+[31m    assigns a new Topic to @topic (FAILED - 219)[0m
+[31m    renders the :new template (FAILED - 220)[0m
+  DELETE #destroy
+[31m    deletes the topic (FAILED - 221)[0m
+[31m    redirects to the :index view (FAILED - 222)[0m
+
+Attempt
+  Validations
+[32m    is invalid without a count value[0m
+  Fields
+[32m    has a field called 'Solved'[0m
+[32m    has a field called 'Count'[0m
+[32m    has a field called 'Points'[0m
+  Associations
+[32m    belongs to an user[0m
+[32m    belongs to a question[0m
+
+Level
+  Associations
+[32m    has many topics[0m
+[32m    has many embbebed bonus questions[0m
+  Fields
+[32m    has field called 'name'[0m
+  Behavior
+    #complete?(user.id)
+[31m      returns true if the user completed level (FAILED - 223)[0m
+[31m      returns false if the user did not completed the level (FAILED - 224)[0m
+  Validations
+[32m    is invalid without a name[0m
+[32m    has a valid factory[0m
+[32m    is invalid without a topic[0m
+
+ContentsController
+[33m  can download a mp3 audio file (PENDING: Not yet implemented)[0m
+[33m  can download an ogg audio file (PENDING: Not yet implemented)[0m
+  GET #show
+[31m    assigns the requested Content to @content (FAILED - 225)[0m
+[31m    renders the :show template (FAILED - 226)[0m
+
+Admin::InvitationsController
+  PUT #update
+[31m    changes @invitation attributes (FAILED - 227)[0m
+[31m    redirects to :show view (FAILED - 228)[0m
+  GET #show
+[31m    assigns the requested Invitation to @invitation (FAILED - 229)[0m
+[31m    renders the :show view (FAILED - 230)[0m
+  DELETE #destroy
+[31m    deletes the assigned record (FAILED - 231)[0m
+[31m    redirects to :index view (FAILED - 232)[0m
+  GET #edit
+[31m    assigns the requested Invitation to @invitation (FAILED - 233)[0m
+[31m    renders the edit view (FAILED - 234)[0m
+
+LevelsController
+  GET #index
+[31m    assigns the level to @levels (FAILED - 235)[0m
+[31m    renders the index view (FAILED - 236)[0m
+  GET #show
+[31m    assigns the requested Level to @level (FAILED - 237)[0m
+[31m    renders the :show template (FAILED - 238)[0m
+
+TopicHelper
+[33m  add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/topic_helper_spec.rb (PENDING: No reason given)[0m
+
+Option
+  Validations
+[32m    is invalid without a correct field value[0m
+[32m    has a valid 'correct' field value[0m
+[32m    is invalid without a text value[0m
+[32m    validates the length of the text field[0m
+[32m    has a valid factory[0m
+  Fields
+[32m    has a field called 'Text'[0m
+[32m    has a field called 'Correct'[0m
+  Associations
+[32m    is embedded in Question[0m
+
+ContentsHelper
+[33m  add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/contents_helper_spec.rb (PENDING: No reason given)[0m
+
+Question
+  Associations
+[32m    has many embedded options[0m
+[32m    has many attempts[0m
+  Fields
+[32m    has a field called 'Title'[0m
+[32m    has a field called 'Difficulty'[0m
+  Behavior
+    #answer(option_id, user_id)
+      when correct option selected
+[31m        increases the ammount of solved questions of the user (FAILED - 239)[0m
+[31m        creates a new solved attempt database record (FAILED - 240)[0m
+[31m        increases the ammount of points of the user by the question value (FAILED - 241)[0m
+      when incorrect option selected
+[31m        does not change the ammount of solved questions of the user (FAILED - 242)[0m
+[31m        creates a new unsolved attempt database record (FAILED - 243)[0m
+[31m        does not change the ammount of points of the user (FAILED - 244)[0m
+    #answered?(user.id)
+      when question is already answered
+[31m        returns true (FAILED - 245)[0m
+      when question is not answered yet
+[31m        returns false (FAILED - 246)[0m
+  Validations
+[32m    has a valid factory[0m
+[32m    is invalid without a title[0m
+    Options
+[32m      has at most 5 options[0m
+[32m      is invalid if all options are incorrect[0m
+[32m      has at least 3 options[0m
+[32m      is valid if has only one correct answer[0m
+[32m      is invalid if more than one correct option is set[0m
+[32m      is invalid without options[0m
+
+Pending:
+[33m  LevelHelper add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/level_helper_spec.rb[0m
+[36m    # No reason given[0m
+[36m    # ./spec/helpers/level_helper_spec.rb:14[0m
+[33m  QuestionsHelper add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/questions_helper_spec.rb[0m
+[36m    # No reason given[0m
+[36m    # ./spec/helpers/questions_helper_spec.rb:14[0m
+[33m  InvitationsHelper add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/invitations_helper_spec.rb[0m
+[36m    # No reason given[0m
+[36m    # ./spec/helpers/invitations_helper_spec.rb:14[0m
+[33m  FeedbacksHelper add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/feedbacks_helper_spec.rb[0m
+[36m    # No reason given[0m
+[36m    # ./spec/helpers/feedbacks_helper_spec.rb:14[0m
+[33m  AttemptsHelper add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/attempts_helper_spec.rb[0m
+[36m    # No reason given[0m
+[36m    # ./spec/helpers/attempts_helper_spec.rb:14[0m
+[33m  AchievementsHelper add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/achievements_helper_spec.rb[0m
+[36m    # No reason given[0m
+[36m    # ./spec/helpers/achievements_helper_spec.rb:14[0m
+[33m  Admin::AchievementsHelper add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/admin/achievements_helper_spec.rb[0m
+[36m    # No reason given[0m
+[36m    # ./spec/helpers/admin/achievements_helper_spec.rb:14[0m
+[33m  CommentsHelper add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/comments_helper_spec.rb[0m
+[36m    # No reason given[0m
+[36m    # ./spec/helpers/comments_helper_spec.rb:14[0m
+[33m  Admin::AttemptsHelper add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/admin/attempts_helper_spec.rb[0m
+[36m    # No reason given[0m
+[36m    # ./spec/helpers/admin/attempts_helper_spec.rb:14[0m
+[33m  Admin::ContentsController can upload a mp3 audio file[0m
+[36m    # Not yet implemented[0m
+[36m    # ./spec/controllers/admin/contents_controller_spec.rb:6[0m
+[33m  Admin::ContentsController can upload a ogg audio file[0m
+[36m    # Not yet implemented[0m
+[36m    # ./spec/controllers/admin/contents_controller_spec.rb:7[0m
+[33m  ContentsController can download a mp3 audio file[0m
+[36m    # Not yet implemented[0m
+[36m    # ./spec/controllers/contents_controller_spec.rb:26[0m
+[33m  ContentsController can download an ogg audio file[0m
+[36m    # Not yet implemented[0m
+[36m    # ./spec/controllers/contents_controller_spec.rb:27[0m
+[33m  TopicHelper add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/topic_helper_spec.rb[0m
+[36m    # No reason given[0m
+[36m    # ./spec/helpers/topic_helper_spec.rb:14[0m
+[33m  ContentsHelper add some examples to (or delete) /home/gerson/Documents/brails/spec/helpers/contents_helper_spec.rb[0m
+[36m    # No reason given[0m
+[36m    # ./spec/helpers/contents_helper_spec.rb:14[0m
+
+Failures:
+
+  1) InvitationsController GET #new assigns a new feedback object
+     [31mFailure/Error:[0m [31mget :new[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:controller=>"invitations", :action=>"new"}[0m
+[36m     # ./spec/controllers/invitations_controller_spec.rb:7:in `block (3 levels) in <top (required)>'[0m
+
+  2) InvitationsController GET #new renders the :new view
+     [31mFailure/Error:[0m [31mget :new[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:controller=>"invitations", :action=>"new"}[0m
+[36m     # ./spec/controllers/invitations_controller_spec.rb:14:in `block (3 levels) in <top (required)>'[0m
+
+  3) InvitationsController POST #create redirects to :show view
+     [31mFailure/Error:[0m [31mput :create, invitation: attrs[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:invitation=>{:name=>"Werner Dickinson", :email=>"nolan_robel@terrybayer.info", :address=>"Harvey Divide", :phone_number=>"492.305.8674", :text=>["consequatur", "itaque"]}, :controller=>"invitations", :action=>"create"}[0m
+[36m     # ./spec/controllers/invitations_controller_spec.rb:28:in `block (3 levels) in <top (required)>'[0m
+
+  4) InvitationsController POST #create creates a new database record
+     [31mFailure/Error:[0m [31mexpect{ put :create, invitation: attrs}.to change(Invitation,:count).by(1)[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:invitation=>{:name=>"Vergie Klocko", :email=>"bobbie@langworthmiller.net", :address=>"Nelda Views", :phone_number=>"(808)804-8444 x5522", :text=>["libero", "earum"]}, :controller=>"invitations", :action=>"create"}[0m
+[36m     # ./spec/controllers/invitations_controller_spec.rb:24:in `block (4 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/invitations_controller_spec.rb:24:in `block (3 levels) in <top (required)>'[0m
+
+  5) InvitationsController POST #create shows a success message
+     [31mFailure/Error:[0m [31mput :create, invitation: attrs[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:invitation=>{:name=>"Grace Boehm DDS", :email=>"august@okuneva.biz", :address=>"Milo Flat", :phone_number=>"281.039.4598", :text=>["non", "repudiandae"]}, :controller=>"invitations", :action=>"create"}[0m
+[36m     # ./spec/controllers/invitations_controller_spec.rb:34:in `block (3 levels) in <top (required)>'[0m
+
+  6) Admin::AttemptsController GET #index assigns an array of attempts
+     [31mFailure/Error:[0m [31mget :index, user_id: user.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for Admin::AttemptsController[0m
+[36m     # ./spec/controllers/admin/attempts_controller_spec.rb:12:in `block (3 levels) in <top (required)>'[0m
+
+  7) Admin::AttemptsController GET #index renders the :index view
+     [31mFailure/Error:[0m [31mget :index, user_id: user.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for Admin::AttemptsController[0m
+[36m     # ./spec/controllers/admin/attempts_controller_spec.rb:23:in `block (3 levels) in <top (required)>'[0m
+
+  8) Admin::AttemptsController GET #show assigns the requested attempt to @attempt
+     [31mFailure/Error:[0m [31mget :show, user_id: user.id, id: attempt.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::AttemptsController[0m
+[36m     # ./spec/controllers/admin/attempts_controller_spec.rb:34:in `block (3 levels) in <top (required)>'[0m
+
+  9) Admin::AttemptsController GET #show renders the :show view
+     [31mFailure/Error:[0m [31mget :show, user_id: user.id, id: attempt.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::AttemptsController[0m
+[36m     # ./spec/controllers/admin/attempts_controller_spec.rb:45:in `block (3 levels) in <top (required)>'[0m
+
+  10) Content Behavior #complete?(user.id) when user has completed the content returns true
+     [31mFailure/Error:[0m [31mquestion.answer(correct_option.id, user.id)[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xd8fb92c>[0m
+[36m     # ./spec/models/content_spec.rb:97:in `block (5 levels) in <top (required)>'[0m
+
+  11) Content Behavior #complete?(user.id) when user has not completed the content returns false
+     [31mFailure/Error:[0m [31mquestion.answer(correct_option.id, user.id)[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xd9314b4>[0m
+[36m     # ./spec/models/content_spec.rb:107:in `block (5 levels) in <top (required)>'[0m
+
+  12) AchievementsController GET #index assigns the achievements to @achievement
+     [31mFailure/Error:[0m [31mget :index, user_id: user.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for AchievementsController[0m
+[36m     # ./spec/controllers/achievements_controller_spec.rb:13:in `block (3 levels) in <top (required)>'[0m
+
+  13) AchievementsController GET #index renders the index view
+     [31mFailure/Error:[0m [31mget :index, user_id: user.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for AchievementsController[0m
+[36m     # ./spec/controllers/achievements_controller_spec.rb:23:in `block (3 levels) in <top (required)>'[0m
+
+  14) AchievementsController GET #show assigns the requested achievement to @achievement
+     [31mFailure/Error:[0m [31mget :show, user_id: user.id, id: achievement.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for AchievementsController[0m
+[36m     # ./spec/controllers/achievements_controller_spec.rb:33:in `block (3 levels) in <top (required)>'[0m
+
+  15) AchievementsController GET #show renders the show view
+     [31mFailure/Error:[0m [31mget :show, user_id: user.id, id: achievement.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for AchievementsController[0m
+[36m     # ./spec/controllers/achievements_controller_spec.rb:43:in `block (3 levels) in <top (required)>'[0m
+
+  16) Admin::LevelsController PUT #update with valid attributes changes @level attributes
+     [31mFailure/Error:[0m [31mput :update, id: level.id, level: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:129:in `block (4 levels) in <top (required)>'[0m
+
+  17) Admin::LevelsController PUT #update with valid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mput :update, id: level.id, level: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:139:in `block (4 levels) in <top (required)>'[0m
+
+  18) Admin::LevelsController PUT #update with invalid attributes doesn't changes @level attributes
+     [31mFailure/Error:[0m [31mput :update, id: level.id, level: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:150:in `block (4 levels) in <top (required)>'[0m
+
+  19) Admin::LevelsController PUT #update with invalid attributes redirects to the :edit view
+     [31mFailure/Error:[0m [31mput :update, id: level.id, level: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:160:in `block (4 levels) in <top (required)>'[0m
+
+  20) Admin::LevelsController GET #edit assigns the requested Level to @level
+     [31mFailure/Error:[0m [31mget :edit, id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:76:in `block (3 levels) in <top (required)>'[0m
+
+  21) Admin::LevelsController GET #edit renders the :edit template
+     [31mFailure/Error:[0m [31mget :edit, id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:85:in `block (3 levels) in <top (required)>'[0m
+
+  22) Admin::LevelsController POST #create with valid attributes saves the new Level in the database
+     [31mFailure/Error:[0m [31mexpect { post :create, level: attrs}.to change(Level,:count).by(1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:96:in `block (5 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:96:in `block (4 levels) in <top (required)>'[0m
+
+  23) Admin::LevelsController POST #create with valid attributes redirects to the :show view
+     [31mFailure/Error:[0m [31mpost :create, level: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:100:in `block (4 levels) in <top (required)>'[0m
+
+  24) Admin::LevelsController POST #create with invalid attributes doesn't save the new Level in the database
+     [31mFailure/Error:[0m [31mpost :create, level: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:110:in `block (4 levels) in <top (required)>'[0m
+
+  25) Admin::LevelsController POST #create with invalid attributes redirects to the :new view
+     [31mFailure/Error:[0m [31mpost :create, level: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:116:in `block (4 levels) in <top (required)>'[0m
+
+  26) Admin::LevelsController GET #show when find the level assigns the requested Level to @level
+     [31mFailure/Error:[0m [31mget :show, id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:27:in `block (4 levels) in <top (required)>'[0m
+
+  27) Admin::LevelsController GET #show when find the level renders the :show template
+     [31mFailure/Error:[0m [31mget :show, id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:36:in `block (4 levels) in <top (required)>'[0m
+
+  28) Admin::LevelsController GET #show when can not find the level shows an error message
+     [31mFailure/Error:[0m [31mget :show, id: "test"[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:44:in `block (4 levels) in <top (required)>'[0m
+
+  29) Admin::LevelsController GET #show when can not find the level redirects to index page
+     [31mFailure/Error:[0m [31mget :show, id: "test"[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:50:in `block (4 levels) in <top (required)>'[0m
+
+  30) Admin::LevelsController GET #index populates an array of levels
+     [31mFailure/Error:[0m [31mget :index[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:9:in `block (3 levels) in <top (required)>'[0m
+
+  31) Admin::LevelsController GET #index renders the :index view
+     [31mFailure/Error:[0m [31mget :index[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:16:in `block (3 levels) in <top (required)>'[0m
+
+  32) Admin::LevelsController GET #new assigns a new Level to @level
+     [31mFailure/Error:[0m [31mget :new[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:59:in `block (3 levels) in <top (required)>'[0m
+
+  33) Admin::LevelsController GET #new renders the :new template
+     [31mFailure/Error:[0m [31mget :new[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:66:in `block (3 levels) in <top (required)>'[0m
+
+  34) Admin::LevelsController DELETE #destroy deletes the level
+     [31mFailure/Error:[0m [31mexpect { delete :destroy, id: level.id}.to change(Level.count).by(-1)[0m
+     [31mTypeError[0m:
+       [31mnil is not a symbol[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:171:in `block (3 levels) in <top (required)>'[0m
+
+  35) Admin::LevelsController DELETE #destroy redirects to the :index view
+     [31mFailure/Error:[0m [31mdelete :destroy, id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for Admin::LevelsController[0m
+[36m     # ./spec/controllers/admin/levels_controller_spec.rb:177:in `block (3 levels) in <top (required)>'[0m
+
+  36) Profile Behavior #finished_previous_topics?(level_id, topic_id) returns true when the user finished all the level previous topics
+     [31mFailure/Error:[0m [31mexpect(user.profile.finished_previous_topics(topic2.id,level.id)).to be_true[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `finished_previous_topics' for #<Profile:0xd9a074c>[0m
+[36m     # ./spec/models/profile_spec.rb:87:in `block (4 levels) in <top (required)>'[0m
+
+  37) Profile Behavior #finished_previous_topics?(level_id, topic_id) returns false when the user has not finished all the level previous topics
+     [31mFailure/Error:[0m [31mexpect(user.profile.finished_previous_topics(topic2.id,level.id)).to be_false[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `finished_previous_topics' for #<Profile:0xd2b6260>[0m
+[36m     # ./spec/models/profile_spec.rb:96:in `block (4 levels) in <top (required)>'[0m
+
+  38) Topic Behavior #complete?(user_id) returns true if topic is complete
+     [31mFailure/Error:[0m [31mquestion.answer(correct_option.id,user.id)[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xd997b60>[0m
+[36m     # ./spec/models/topic_spec.rb:61:in `block (4 levels) in <top (required)>'[0m
+
+  39) Topic Behavior #complete?(user_id) returns false if topic is not complete
+     [31mFailure/Error:[0m [31mquestion.answer(incorrect_option.id,user.id)[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xda7cff8>[0m
+[36m     # ./spec/models/topic_spec.rb:74:in `block (4 levels) in <top (required)>'[0m
+
+  40) TopicsController GET #show when user finished previous topics assigns the requested Topic to @topic
+     [31mFailure/Error:[0m [31mget :show, id: topic2.id, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for TopicsController[0m
+[36m     # ./spec/controllers/topics_controller_spec.rb:19:in `block (4 levels) in <top (required)>'[0m
+
+  41) TopicsController GET #show when user finished previous topics renders the :show template
+     [31mFailure/Error:[0m [31mget :show, id: topic2.id, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for TopicsController[0m
+[36m     # ./spec/controllers/topics_controller_spec.rb:33:in `block (4 levels) in <top (required)>'[0m
+
+  42) TopicsController GET #show when user did not finished previous topics redirects to :index view
+     [31mFailure/Error:[0m [31mget :show, id: topic2.id, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for TopicsController[0m
+[36m     # ./spec/controllers/topics_controller_spec.rb:43:in `block (4 levels) in <top (required)>'[0m
+
+  43) TopicsController GET #show when user did not finished previous topics shows an alert message
+     [31mFailure/Error:[0m [31mget :show, id: topic2.id, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for TopicsController[0m
+[36m     # ./spec/controllers/topics_controller_spec.rb:51:in `block (4 levels) in <top (required)>'[0m
+
+  44) CommentsController behaves like Commentable PUT #update with valid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:157:in `block (5 levels) in <top (required)>'[0m
+
+  45) CommentsController behaves like Commentable PUT #update with valid attributes changes @comment attributes
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:147:in `block (5 levels) in <top (required)>'[0m
+
+  46) CommentsController behaves like Commentable PUT #update with valid attributes shows a success message
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:167:in `block (5 levels) in <top (required)>'[0m
+
+  47) CommentsController behaves like Commentable PUT #update with invalid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:187:in `block (5 levels) in <top (required)>'[0m
+
+  48) CommentsController behaves like Commentable PUT #update with invalid attributes doesn't changes @comment attributes
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:177:in `block (5 levels) in <top (required)>'[0m
+
+  49) CommentsController behaves like Commentable PUT #update with invalid attributes shows an error message
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:195:in `block (5 levels) in <top (required)>'[0m
+
+  50) CommentsController behaves like Commentable GET #index populates an array of comments
+     [31mFailure/Error:[0m [31mget :index, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:16:in `block (4 levels) in <top (required)>'[0m
+
+  51) CommentsController behaves like Commentable GET #index renders the :index view
+     [31mFailure/Error:[0m [31mget :index, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:25:in `block (4 levels) in <top (required)>'[0m
+
+  52) CommentsController behaves like Commentable DELETE #destroy when find the comment deletes the comment
+     [31mFailure/Error:[0m [31mdelete :destroy, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:207:in `block (5 levels) in <top (required)>'[0m
+
+  53) CommentsController behaves like Commentable DELETE #destroy when find the comment redirects to the :index view
+     [31mFailure/Error:[0m [31mdelete :destroy, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:213:in `block (5 levels) in <top (required)>'[0m
+
+  54) CommentsController behaves like Commentable DELETE #destroy when can not find the comment shows an error message
+     [31mFailure/Error:[0m [31mdelete :destroy, hash_key => commentable.id, id: "test"[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:221:in `block (5 levels) in <top (required)>'[0m
+
+  55) CommentsController behaves like Commentable DELETE #destroy when can not find the comment redirects to index view
+     [31mFailure/Error:[0m [31mdelete :destroy, hash_key => commentable.id, id: "test"[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:227:in `block (5 levels) in <top (required)>'[0m
+
+  56) CommentsController behaves like Commentable GET #index populates an array of comments
+     [31mFailure/Error:[0m [31mget :index, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:16:in `block (4 levels) in <top (required)>'[0m
+
+  57) CommentsController behaves like Commentable GET #index renders the :index view
+     [31mFailure/Error:[0m [31mget :index, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:25:in `block (4 levels) in <top (required)>'[0m
+
+  58) CommentsController behaves like Commentable GET #edit assigns the requested Comment to @comment
+     [31mFailure/Error:[0m [31mget :edit, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:88:in `block (4 levels) in <top (required)>'[0m
+
+  59) CommentsController behaves like Commentable GET #edit renders the :edit template
+     [31mFailure/Error:[0m [31mget :edit, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:95:in `block (4 levels) in <top (required)>'[0m
+
+  60) CommentsController behaves like Commentable GET #new assigns a new Comment to @comment
+     [31mFailure/Error:[0m [31mget :new, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:73:in `block (4 levels) in <top (required)>'[0m
+
+  61) CommentsController behaves like Commentable GET #new renders the :new template
+     [31mFailure/Error:[0m [31mget :new, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:80:in `block (4 levels) in <top (required)>'[0m
+
+  62) CommentsController behaves like Commentable GET #index populates an array of comments
+     [31mFailure/Error:[0m [31mget :index, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:16:in `block (4 levels) in <top (required)>'[0m
+
+  63) CommentsController behaves like Commentable GET #index renders the :index view
+     [31mFailure/Error:[0m [31mget :index, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:25:in `block (4 levels) in <top (required)>'[0m
+
+  64) CommentsController behaves like Commentable GET #show when comment is found assigns the requested Comment to @comment
+     [31mFailure/Error:[0m [31mget :show, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:37:in `block (5 levels) in <top (required)>'[0m
+
+  65) CommentsController behaves like Commentable GET #show when comment is found renders the :show template
+     [31mFailure/Error:[0m [31mget :show, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:46:in `block (5 levels) in <top (required)>'[0m
+
+  66) CommentsController behaves like Commentable GET #show when comment is not found shows an error message
+     [31mFailure/Error:[0m [31mget :show, id: "test_id", hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:56:in `block (5 levels) in <top (required)>'[0m
+
+  67) CommentsController behaves like Commentable GET #show when comment is not found redirects to index view
+     [31mFailure/Error:[0m [31mget :show, id: "test_id", hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:64:in `block (5 levels) in <top (required)>'[0m
+
+  68) CommentsController behaves like Commentable GET #edit assigns the requested Comment to @comment
+     [31mFailure/Error:[0m [31mget :edit, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:88:in `block (4 levels) in <top (required)>'[0m
+
+  69) CommentsController behaves like Commentable GET #edit renders the :edit template
+     [31mFailure/Error:[0m [31mget :edit, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:95:in `block (4 levels) in <top (required)>'[0m
+
+  70) CommentsController behaves like Commentable DELETE #destroy when find the comment deletes the comment
+     [31mFailure/Error:[0m [31mdelete :destroy, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:207:in `block (5 levels) in <top (required)>'[0m
+
+  71) CommentsController behaves like Commentable DELETE #destroy when find the comment redirects to the :index view
+     [31mFailure/Error:[0m [31mdelete :destroy, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:213:in `block (5 levels) in <top (required)>'[0m
+
+  72) CommentsController behaves like Commentable DELETE #destroy when can not find the comment shows an error message
+     [31mFailure/Error:[0m [31mdelete :destroy, hash_key => commentable.id, id: "test"[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:221:in `block (5 levels) in <top (required)>'[0m
+
+  73) CommentsController behaves like Commentable DELETE #destroy when can not find the comment redirects to index view
+     [31mFailure/Error:[0m [31mdelete :destroy, hash_key => commentable.id, id: "test"[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:227:in `block (5 levels) in <top (required)>'[0m
+
+  74) CommentsController behaves like Commentable GET #show when comment is found assigns the requested Comment to @comment
+     [31mFailure/Error:[0m [31mget :show, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:37:in `block (5 levels) in <top (required)>'[0m
+
+  75) CommentsController behaves like Commentable GET #show when comment is found renders the :show template
+     [31mFailure/Error:[0m [31mget :show, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:46:in `block (5 levels) in <top (required)>'[0m
+
+  76) CommentsController behaves like Commentable GET #show when comment is not found shows an error message
+     [31mFailure/Error:[0m [31mget :show, id: "test_id", hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:56:in `block (5 levels) in <top (required)>'[0m
+
+  77) CommentsController behaves like Commentable GET #show when comment is not found redirects to index view
+     [31mFailure/Error:[0m [31mget :show, id: "test_id", hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:64:in `block (5 levels) in <top (required)>'[0m
+
+  78) CommentsController behaves like Commentable POST #create with valid attributes saves the new Comment in the database
+     [31mFailure/Error:[0m [31mexpect { post :create, hash_key => commentable.id, comment: attrs}.to change(Comment,:count).by(1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:106:in `block (6 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/commentable_spec.rb:106:in `block (5 levels) in <top (required)>'[0m
+
+  79) CommentsController behaves like Commentable POST #create with valid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mpost :create, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:112:in `block (5 levels) in <top (required)>'[0m
+
+  80) CommentsController behaves like Commentable POST #create with invalid attributes redirects to the :new view
+     [31mFailure/Error:[0m [31mpost :create, comment: invalid_attrs, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:128:in `block (5 levels) in <top (required)>'[0m
+
+  81) CommentsController behaves like Commentable POST #create with invalid attributes doesn't save the new Comment in the database
+     [31mFailure/Error:[0m [31mpost :create, comment: invalid_attrs, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:121:in `block (5 levels) in <top (required)>'[0m
+
+  82) CommentsController behaves like Commentable POST #create with invalid attributes shows an error message
+     [31mFailure/Error:[0m [31mpost :create, comment: invalid_attrs, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:135:in `block (5 levels) in <top (required)>'[0m
+
+  83) CommentsController behaves like Commentable GET #new assigns a new Comment to @comment
+     [31mFailure/Error:[0m [31mget :new, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:73:in `block (4 levels) in <top (required)>'[0m
+
+  84) CommentsController behaves like Commentable GET #new renders the :new template
+     [31mFailure/Error:[0m [31mget :new, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:80:in `block (4 levels) in <top (required)>'[0m
+
+  85) CommentsController behaves like Commentable GET #new assigns a new Comment to @comment
+     [31mFailure/Error:[0m [31mget :new, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:73:in `block (4 levels) in <top (required)>'[0m
+
+  86) CommentsController behaves like Commentable GET #new renders the :new template
+     [31mFailure/Error:[0m [31mget :new, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:80:in `block (4 levels) in <top (required)>'[0m
+
+  87) CommentsController behaves like Commentable GET #new assigns a new Comment to @comment
+     [31mFailure/Error:[0m [31mget :new, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:73:in `block (4 levels) in <top (required)>'[0m
+
+  88) CommentsController behaves like Commentable GET #new renders the :new template
+     [31mFailure/Error:[0m [31mget :new, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:80:in `block (4 levels) in <top (required)>'[0m
+
+  89) CommentsController behaves like Commentable GET #edit assigns the requested Comment to @comment
+     [31mFailure/Error:[0m [31mget :edit, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:88:in `block (4 levels) in <top (required)>'[0m
+
+  90) CommentsController behaves like Commentable GET #edit renders the :edit template
+     [31mFailure/Error:[0m [31mget :edit, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:95:in `block (4 levels) in <top (required)>'[0m
+
+  91) CommentsController behaves like Commentable PUT #update with valid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:157:in `block (5 levels) in <top (required)>'[0m
+
+  92) CommentsController behaves like Commentable PUT #update with valid attributes changes @comment attributes
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:147:in `block (5 levels) in <top (required)>'[0m
+
+  93) CommentsController behaves like Commentable PUT #update with valid attributes shows a success message
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:167:in `block (5 levels) in <top (required)>'[0m
+
+  94) CommentsController behaves like Commentable PUT #update with invalid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:187:in `block (5 levels) in <top (required)>'[0m
+
+  95) CommentsController behaves like Commentable PUT #update with invalid attributes doesn't changes @comment attributes
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:177:in `block (5 levels) in <top (required)>'[0m
+
+  96) CommentsController behaves like Commentable PUT #update with invalid attributes shows an error message
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:195:in `block (5 levels) in <top (required)>'[0m
+
+  97) CommentsController behaves like Commentable GET #edit assigns the requested Comment to @comment
+     [31mFailure/Error:[0m [31mget :edit, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:88:in `block (4 levels) in <top (required)>'[0m
+
+  98) CommentsController behaves like Commentable GET #edit renders the :edit template
+     [31mFailure/Error:[0m [31mget :edit, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:95:in `block (4 levels) in <top (required)>'[0m
+
+  99) CommentsController behaves like Commentable POST #create with valid attributes saves the new Comment in the database
+     [31mFailure/Error:[0m [31mexpect { post :create, hash_key => commentable.id, comment: attrs}.to change(Comment,:count).by(1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:106:in `block (6 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/commentable_spec.rb:106:in `block (5 levels) in <top (required)>'[0m
+
+  100) CommentsController behaves like Commentable POST #create with valid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mpost :create, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:112:in `block (5 levels) in <top (required)>'[0m
+
+  101) CommentsController behaves like Commentable POST #create with invalid attributes redirects to the :new view
+     [31mFailure/Error:[0m [31mpost :create, comment: invalid_attrs, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:128:in `block (5 levels) in <top (required)>'[0m
+
+  102) CommentsController behaves like Commentable POST #create with invalid attributes doesn't save the new Comment in the database
+     [31mFailure/Error:[0m [31mpost :create, comment: invalid_attrs, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:121:in `block (5 levels) in <top (required)>'[0m
+
+  103) CommentsController behaves like Commentable POST #create with invalid attributes shows an error message
+     [31mFailure/Error:[0m [31mpost :create, comment: invalid_attrs, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:135:in `block (5 levels) in <top (required)>'[0m
+
+  104) CommentsController behaves like Commentable GET #show when comment is found assigns the requested Comment to @comment
+     [31mFailure/Error:[0m [31mget :show, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:37:in `block (5 levels) in <top (required)>'[0m
+
+  105) CommentsController behaves like Commentable GET #show when comment is found renders the :show template
+     [31mFailure/Error:[0m [31mget :show, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:46:in `block (5 levels) in <top (required)>'[0m
+
+  106) CommentsController behaves like Commentable GET #show when comment is not found shows an error message
+     [31mFailure/Error:[0m [31mget :show, id: "test_id", hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:56:in `block (5 levels) in <top (required)>'[0m
+
+  107) CommentsController behaves like Commentable GET #show when comment is not found redirects to index view
+     [31mFailure/Error:[0m [31mget :show, id: "test_id", hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:64:in `block (5 levels) in <top (required)>'[0m
+
+  108) CommentsController behaves like Commentable PUT #update with valid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:157:in `block (5 levels) in <top (required)>'[0m
+
+  109) CommentsController behaves like Commentable PUT #update with valid attributes changes @comment attributes
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:147:in `block (5 levels) in <top (required)>'[0m
+
+  110) CommentsController behaves like Commentable PUT #update with valid attributes shows a success message
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:167:in `block (5 levels) in <top (required)>'[0m
+
+  111) CommentsController behaves like Commentable PUT #update with invalid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:187:in `block (5 levels) in <top (required)>'[0m
+
+  112) CommentsController behaves like Commentable PUT #update with invalid attributes doesn't changes @comment attributes
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:177:in `block (5 levels) in <top (required)>'[0m
+
+  113) CommentsController behaves like Commentable PUT #update with invalid attributes shows an error message
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:195:in `block (5 levels) in <top (required)>'[0m
+
+  114) CommentsController behaves like Commentable GET #index populates an array of comments
+     [31mFailure/Error:[0m [31mget :index, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:16:in `block (4 levels) in <top (required)>'[0m
+
+  115) CommentsController behaves like Commentable GET #index renders the :index view
+     [31mFailure/Error:[0m [31mget :index, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:25:in `block (4 levels) in <top (required)>'[0m
+
+  116) CommentsController behaves like Commentable POST #create with valid attributes saves the new Comment in the database
+     [31mFailure/Error:[0m [31mexpect { post :create, hash_key => commentable.id, comment: attrs}.to change(Comment,:count).by(1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:106:in `block (6 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/commentable_spec.rb:106:in `block (5 levels) in <top (required)>'[0m
+
+  117) CommentsController behaves like Commentable POST #create with valid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mpost :create, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:112:in `block (5 levels) in <top (required)>'[0m
+
+  118) CommentsController behaves like Commentable POST #create with invalid attributes redirects to the :new view
+     [31mFailure/Error:[0m [31mpost :create, comment: invalid_attrs, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:128:in `block (5 levels) in <top (required)>'[0m
+
+  119) CommentsController behaves like Commentable POST #create with invalid attributes doesn't save the new Comment in the database
+     [31mFailure/Error:[0m [31mpost :create, comment: invalid_attrs, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:121:in `block (5 levels) in <top (required)>'[0m
+
+  120) CommentsController behaves like Commentable POST #create with invalid attributes shows an error message
+     [31mFailure/Error:[0m [31mpost :create, comment: invalid_attrs, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:135:in `block (5 levels) in <top (required)>'[0m
+
+  121) CommentsController behaves like Commentable POST #create with valid attributes saves the new Comment in the database
+     [31mFailure/Error:[0m [31mexpect { post :create, hash_key => commentable.id, comment: attrs}.to change(Comment,:count).by(1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:106:in `block (6 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/commentable_spec.rb:106:in `block (5 levels) in <top (required)>'[0m
+
+  122) CommentsController behaves like Commentable POST #create with valid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mpost :create, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:112:in `block (5 levels) in <top (required)>'[0m
+
+  123) CommentsController behaves like Commentable POST #create with invalid attributes redirects to the :new view
+     [31mFailure/Error:[0m [31mpost :create, comment: invalid_attrs, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:128:in `block (5 levels) in <top (required)>'[0m
+
+  124) CommentsController behaves like Commentable POST #create with invalid attributes doesn't save the new Comment in the database
+     [31mFailure/Error:[0m [31mpost :create, comment: invalid_attrs, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:121:in `block (5 levels) in <top (required)>'[0m
+
+  125) CommentsController behaves like Commentable POST #create with invalid attributes shows an error message
+     [31mFailure/Error:[0m [31mpost :create, comment: invalid_attrs, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:135:in `block (5 levels) in <top (required)>'[0m
+
+  126) CommentsController behaves like Commentable DELETE #destroy when find the comment deletes the comment
+     [31mFailure/Error:[0m [31mdelete :destroy, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:207:in `block (5 levels) in <top (required)>'[0m
+
+  127) CommentsController behaves like Commentable DELETE #destroy when find the comment redirects to the :index view
+     [31mFailure/Error:[0m [31mdelete :destroy, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:213:in `block (5 levels) in <top (required)>'[0m
+
+  128) CommentsController behaves like Commentable DELETE #destroy when can not find the comment shows an error message
+     [31mFailure/Error:[0m [31mdelete :destroy, hash_key => commentable.id, id: "test"[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:221:in `block (5 levels) in <top (required)>'[0m
+
+  129) CommentsController behaves like Commentable DELETE #destroy when can not find the comment redirects to index view
+     [31mFailure/Error:[0m [31mdelete :destroy, hash_key => commentable.id, id: "test"[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:227:in `block (5 levels) in <top (required)>'[0m
+
+  130) CommentsController behaves like Commentable PUT #update with valid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:157:in `block (5 levels) in <top (required)>'[0m
+
+  131) CommentsController behaves like Commentable PUT #update with valid attributes changes @comment attributes
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:147:in `block (5 levels) in <top (required)>'[0m
+
+  132) CommentsController behaves like Commentable PUT #update with valid attributes shows a success message
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:167:in `block (5 levels) in <top (required)>'[0m
+
+  133) CommentsController behaves like Commentable PUT #update with invalid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:187:in `block (5 levels) in <top (required)>'[0m
+
+  134) CommentsController behaves like Commentable PUT #update with invalid attributes doesn't changes @comment attributes
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:177:in `block (5 levels) in <top (required)>'[0m
+
+  135) CommentsController behaves like Commentable PUT #update with invalid attributes shows an error message
+     [31mFailure/Error:[0m [31mput :update, id: comment.id, hash_key => commentable.id, comment: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:195:in `block (5 levels) in <top (required)>'[0m
+
+  136) CommentsController behaves like Commentable GET #show when comment is found assigns the requested Comment to @comment
+     [31mFailure/Error:[0m [31mget :show, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:37:in `block (5 levels) in <top (required)>'[0m
+
+  137) CommentsController behaves like Commentable GET #show when comment is found renders the :show template
+     [31mFailure/Error:[0m [31mget :show, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:46:in `block (5 levels) in <top (required)>'[0m
+
+  138) CommentsController behaves like Commentable GET #show when comment is not found shows an error message
+     [31mFailure/Error:[0m [31mget :show, id: "test_id", hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:56:in `block (5 levels) in <top (required)>'[0m
+
+  139) CommentsController behaves like Commentable GET #show when comment is not found redirects to index view
+     [31mFailure/Error:[0m [31mget :show, id: "test_id", hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:64:in `block (5 levels) in <top (required)>'[0m
+
+  140) CommentsController behaves like Commentable DELETE #destroy when find the comment deletes the comment
+     [31mFailure/Error:[0m [31mdelete :destroy, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:207:in `block (5 levels) in <top (required)>'[0m
+
+  141) CommentsController behaves like Commentable DELETE #destroy when find the comment redirects to the :index view
+     [31mFailure/Error:[0m [31mdelete :destroy, id: comment.id, hash_key => commentable.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:213:in `block (5 levels) in <top (required)>'[0m
+
+  142) CommentsController behaves like Commentable DELETE #destroy when can not find the comment shows an error message
+     [31mFailure/Error:[0m [31mdelete :destroy, hash_key => commentable.id, id: "test"[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:221:in `block (5 levels) in <top (required)>'[0m
+
+  143) CommentsController behaves like Commentable DELETE #destroy when can not find the comment redirects to index view
+     [31mFailure/Error:[0m [31mdelete :destroy, hash_key => commentable.id, id: "test"[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for CommentsController[0m
+     Shared Example Group: "Commentable" called from ./spec/controllers/commentable_spec.rb:242
+[36m     # ./spec/controllers/commentable_spec.rb:227:in `block (5 levels) in <top (required)>'[0m
+
+  144) Admin::QuestionsController PUT #update with valid attributes changes @question attributes
+     [31mFailure/Error:[0m [31mput :update, id: question.id, content_id: content.id, question: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:128:in `block (4 levels) in <top (required)>'[0m
+
+  145) Admin::QuestionsController PUT #update with valid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mput :update, id: question.id, content_id: content.id, question: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:138:in `block (4 levels) in <top (required)>'[0m
+
+  146) Admin::QuestionsController PUT #update with invalid attributes doesn't changes @question attributes
+     [31mFailure/Error:[0m [31mput :update, id: question.id, content_id: content.id, question: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:149:in `block (4 levels) in <top (required)>'[0m
+
+  147) Admin::QuestionsController PUT #update with invalid attributes redirects to the :edit view
+     [31mFailure/Error:[0m [31mput :update, id: question.id, content_id: content.id, question: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:159:in `block (4 levels) in <top (required)>'[0m
+
+  148) Admin::QuestionsController GET #edit assigns the requested Question to @question
+     [31mFailure/Error:[0m [31mget :edit, id: question.id, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:76:in `block (3 levels) in <top (required)>'[0m
+
+  149) Admin::QuestionsController GET #edit renders the :edit template
+     [31mFailure/Error:[0m [31mget :edit, id: question.id, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:84:in `block (3 levels) in <top (required)>'[0m
+
+  150) Admin::QuestionsController POST #create with valid attributes saves the new Question in the database
+     [31mFailure/Error:[0m [31mexpect { post :create, content_id: content.id, question: attrs}.to change(Question,:count).by(1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:95:in `block (5 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:95:in `block (4 levels) in <top (required)>'[0m
+
+  151) Admin::QuestionsController POST #create with valid attributes redirects to the :show view
+     [31mFailure/Error:[0m [31mpost :create, question: attrs, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:99:in `block (4 levels) in <top (required)>'[0m
+
+  152) Admin::QuestionsController POST #create with invalid attributes doesn't save the new Question in the database
+     [31mFailure/Error:[0m [31mpost :create, question: attrs, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:109:in `block (4 levels) in <top (required)>'[0m
+
+  153) Admin::QuestionsController POST #create with invalid attributes redirects to the :new view
+     [31mFailure/Error:[0m [31mpost :create, question: attrs, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:115:in `block (4 levels) in <top (required)>'[0m
+
+  154) Admin::QuestionsController GET #show when find the question assigns the requested Question to @question
+     [31mFailure/Error:[0m [31mget :show, id: question.id, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:27:in `block (4 levels) in <top (required)>'[0m
+
+  155) Admin::QuestionsController GET #show when find the question renders the :show template
+     [31mFailure/Error:[0m [31mget :show, id: question.id, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:35:in `block (4 levels) in <top (required)>'[0m
+
+  156) Admin::QuestionsController GET #show when can not find the question shows an error message
+     [31mFailure/Error:[0m [31mget :show, id: "test", content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:44:in `block (4 levels) in <top (required)>'[0m
+
+  157) Admin::QuestionsController GET #show when can not find the question redirects to index page
+     [31mFailure/Error:[0m [31mget :show, id: "test", content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:51:in `block (4 levels) in <top (required)>'[0m
+
+  158) Admin::QuestionsController GET #index populates an array of questions
+     [31mFailure/Error:[0m [31mget :index, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:10:in `block (3 levels) in <top (required)>'[0m
+
+  159) Admin::QuestionsController GET #index renders the :index view
+     [31mFailure/Error:[0m [31mget :index, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:17:in `block (3 levels) in <top (required)>'[0m
+
+  160) Admin::QuestionsController GET #new assigns a new Question to @question
+     [31mFailure/Error:[0m [31mget :new, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:60:in `block (3 levels) in <top (required)>'[0m
+
+  161) Admin::QuestionsController GET #new renders the :new template
+     [31mFailure/Error:[0m [31mget :new, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:67:in `block (3 levels) in <top (required)>'[0m
+
+  162) Admin::QuestionsController DELETE #destroy deletes the question
+     [31mFailure/Error:[0m [31mdelete :destroy, id: question.id, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:169:in `block (3 levels) in <top (required)>'[0m
+
+  163) Admin::QuestionsController DELETE #destroy redirects to the :index view
+     [31mFailure/Error:[0m [31mdelete :destroy, id: question.id, content_id: content.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for Admin::QuestionsController[0m
+[36m     # ./spec/controllers/admin/questions_controller_spec.rb:176:in `block (3 levels) in <top (required)>'[0m
+
+  164) Admin::AchievementsController GET #index populates an array of achievements
+     [31mFailure/Error:[0m [31mget :index, user_id: user.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for Admin::AchievementsController[0m
+[36m     # ./spec/controllers/admin/achievements_controller_spec.rb:12:in `block (3 levels) in <top (required)>'[0m
+
+  165) Admin::AchievementsController GET #index renders the :index view
+     [31mFailure/Error:[0m [31mget :index, user_id: user.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for Admin::AchievementsController[0m
+[36m     # ./spec/controllers/admin/achievements_controller_spec.rb:21:in `block (3 levels) in <top (required)>'[0m
+
+  166) Admin::AchievementsController GET #show assigns the requested achievement to @achievement
+     [31mFailure/Error:[0m [31mget :show, user_id: user.id, id: achievement.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::AchievementsController[0m
+[36m     # ./spec/controllers/admin/achievements_controller_spec.rb:32:in `block (3 levels) in <top (required)>'[0m
+
+  167) Admin::AchievementsController GET #show renders the :show view
+     [31mFailure/Error:[0m [31mget :show, user_id: user.id, id: achievement.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::AchievementsController[0m
+[36m     # ./spec/controllers/admin/achievements_controller_spec.rb:42:in `block (3 levels) in <top (required)>'[0m
+
+  168) AttemptsController POST #create when correct option is selected creates a solved attempt in database
+     [31mFailure/Error:[0m [31mexpect{post :create, question_id: question.id, option_id: correct_option.id }.to change{user.profile.attempts.solved.count}.by(1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for AttemptsController[0m
+[36m     # ./spec/controllers/attempts_controller_spec.rb:14:in `block (5 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/attempts_controller_spec.rb:14:in `block (4 levels) in <top (required)>'[0m
+
+  169) AttemptsController POST #create when correct option is selected increments the user points
+     [31mFailure/Error:[0m [31mexpect{post :create, question_id: question.id, option_id: correct_option.id }.to change{user.profile.total_points}.by(1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for AttemptsController[0m
+[36m     # ./spec/controllers/attempts_controller_spec.rb:18:in `block (5 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/attempts_controller_spec.rb:18:in `block (4 levels) in <top (required)>'[0m
+
+  170) AttemptsController POST #create when correct option is selected when user finishes the level creates an achievement database record
+     [31mFailure/Error:[0m [31mexpect{post :create,question_id: question.id, option_id: correct_option.id }.to change{user.profile.achievements.count}.by(1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for AttemptsController[0m
+[36m     # ./spec/controllers/attempts_controller_spec.rb:23:in `block (6 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/attempts_controller_spec.rb:23:in `block (5 levels) in <top (required)>'[0m
+
+  171) AttemptsController POST #create when incorrect option is selected does not increment the user points
+     [31mFailure/Error:[0m [31mexpect{ post :create, question_id: question.id, option_id: correct_option.id }.to_not change{user.profile.total_points}[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for AttemptsController[0m
+[36m     # ./spec/controllers/attempts_controller_spec.rb:34:in `block (5 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/attempts_controller_spec.rb:34:in `block (4 levels) in <top (required)>'[0m
+
+  172) AttemptsController POST #create when incorrect option is selected creates an unsolved attempt in database
+     [31mFailure/Error:[0m [31mexpect{ post :create,question_id: question.id, option_id: incorrect_option.id }.to change{user.profile.attempts.unsolved.count}.by(1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for AttemptsController[0m
+[36m     # ./spec/controllers/attempts_controller_spec.rb:30:in `block (5 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/attempts_controller_spec.rb:30:in `block (4 levels) in <top (required)>'[0m
+
+  173) AttemptsController POST #create when incorrect option is selected does not create a achievement database record 
+     [31mFailure/Error:[0m [31mexpect{ post :create,question_id: question.id, option_id: correct_option.id }.to_not change{user.profile.achievements.count}[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for AttemptsController[0m
+[36m     # ./spec/controllers/attempts_controller_spec.rb:38:in `block (5 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/attempts_controller_spec.rb:38:in `block (4 levels) in <top (required)>'[0m
+
+  174) Admin::FeedbacksController GET #index assigns a list of feedbacks to @feedbacks
+     [31mFailure/Error:[0m [31mget :index[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:action=>"index", :controller=>"admin/feedbacks"}[0m
+[36m     # ./spec/controllers/admin/feedbacks_controller_spec.rb:8:in `block (3 levels) in <top (required)>'[0m
+
+  175) Admin::FeedbacksController GET #index renders the :index view
+     [31mFailure/Error:[0m [31mget :index[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:action=>"index", :controller=>"admin/feedbacks"}[0m
+[36m     # ./spec/controllers/admin/feedbacks_controller_spec.rb:15:in `block (3 levels) in <top (required)>'[0m
+
+  176) Admin::FeedbacksController GET #show assigns the requested feedback to @feedback
+     [31mFailure/Error:[0m [31mget :show, id: feedback.id[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:id=>"5266889d7562751a67620400", :controller=>"admin/feedbacks", :action=>"show"}[0m
+[36m     # ./spec/controllers/admin/feedbacks_controller_spec.rb:22:in `block (3 levels) in <top (required)>'[0m
+
+  177) Admin::FeedbacksController GET #show renders the :show view
+     [31mFailure/Error:[0m [31mget :show, id: feedback.id[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:id=>"5266889d7562751a67630400", :controller=>"admin/feedbacks", :action=>"show"}[0m
+[36m     # ./spec/controllers/admin/feedbacks_controller_spec.rb:29:in `block (3 levels) in <top (required)>'[0m
+
+  178) FeedbacksController GET #new assigns a new feedback object
+     [31mFailure/Error:[0m [31mget :new[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:controller=>"feedbacks", :action=>"new"}[0m
+[36m     # ./spec/controllers/feedbacks_controller_spec.rb:7:in `block (3 levels) in <top (required)>'[0m
+
+  179) FeedbacksController GET #new renders the :new view
+     [31mFailure/Error:[0m [31mget :new[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:controller=>"feedbacks", :action=>"new"}[0m
+[36m     # ./spec/controllers/feedbacks_controller_spec.rb:14:in `block (3 levels) in <top (required)>'[0m
+
+  180) FeedbacksController POST #create redirects to :show view
+     [31mFailure/Error:[0m [31mput :create, feedback: attrs[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:feedback=>{:name=>"Kiarra Nader Sr.", :email=>"harry@mcglynn.name", :country=>"India", :text=>"Ad sunt aut omnis sint itaque quod."}, :controller=>"feedbacks", :action=>"create"}[0m
+[36m     # ./spec/controllers/feedbacks_controller_spec.rb:28:in `block (3 levels) in <top (required)>'[0m
+
+  181) FeedbacksController POST #create creates a new database record
+     [31mFailure/Error:[0m [31mexpect{ put :create, feedback: attrs}.to change(Feedback,:count).by(1)[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:feedback=>{:name=>"Domenica Daugherty", :email=>"benjamin@walter.net", :country=>"India", :text=>"Vel cum minima."}, :controller=>"feedbacks", :action=>"create"}[0m
+[36m     # ./spec/controllers/feedbacks_controller_spec.rb:24:in `block (4 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/feedbacks_controller_spec.rb:24:in `block (3 levels) in <top (required)>'[0m
+
+  182) FeedbacksController POST #create shows a success message
+     [31mFailure/Error:[0m [31mput :create, feedback: attrs[0m
+     [31mActionController::UrlGenerationError[0m:
+       [31mNo route matches {:feedback=>{:name=>"Ronny Shanahan Sr.", :email=>"emmanuelle.borer@rolfson.name", :country=>"India", :text=>"Neque repellat."}, :controller=>"feedbacks", :action=>"create"}[0m
+[36m     # ./spec/controllers/feedbacks_controller_spec.rb:34:in `block (3 levels) in <top (required)>'[0m
+
+  183) Admin::ContentsController PUT #update with valid attributes changes @content attributes
+     [31mFailure/Error:[0m [31mput :update, id: content.id, topic_id: topic.id, content: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:148:in `block (4 levels) in <top (required)>'[0m
+
+  184) Admin::ContentsController PUT #update with valid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mput :update, id: content.id,topic_id: topic.id, content: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:159:in `block (4 levels) in <top (required)>'[0m
+
+  185) Admin::ContentsController PUT #update with invalid attributes doesn't changes @content attributes
+     [31mFailure/Error:[0m [31mput :update, id: content.id, topic_id: topic.id, content: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:171:in `block (4 levels) in <top (required)>'[0m
+
+  186) Admin::ContentsController PUT #update with invalid attributes redirects to the :edit view
+     [31mFailure/Error:[0m [31mput :update, id: content.id, topic_id: topic.id, content: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:182:in `block (4 levels) in <top (required)>'[0m
+
+  187) Admin::ContentsController GET #edit assigns the requested Content to @content
+     [31mFailure/Error:[0m [31mget :edit, id: content.id, topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:91:in `block (3 levels) in <top (required)>'[0m
+
+  188) Admin::ContentsController GET #edit renders the :edit template
+     [31mFailure/Error:[0m [31mget :edit, id: content.id, topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:101:in `block (3 levels) in <top (required)>'[0m
+
+  189) Admin::ContentsController POST #create with valid attributes saves the new Content in the database
+     [31mFailure/Error:[0m [31mexpect { post :create, topic_id: topic.id, content: attrs}.to change(Content,:count).by(1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:114:in `block (5 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:114:in `block (4 levels) in <top (required)>'[0m
+
+  190) Admin::ContentsController POST #create with valid attributes redirects to the :show view
+     [31mFailure/Error:[0m [31mpost :create, topic_id: topic.id, content: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:118:in `block (4 levels) in <top (required)>'[0m
+
+  191) Admin::ContentsController POST #create with invalid attributes doesn't save the new Content in the database
+     [31mFailure/Error:[0m [31mpost :create, content: attrs, topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:128:in `block (4 levels) in <top (required)>'[0m
+
+  192) Admin::ContentsController POST #create with invalid attributes redirects to the :new view
+     [31mFailure/Error:[0m [31mpost :create, content: attrs, topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:134:in `block (4 levels) in <top (required)>'[0m
+
+  193) Admin::ContentsController GET #show when find the content assigns the requested Content to @content
+     [31mFailure/Error:[0m [31mget :show, id: content.id, topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:39:in `block (4 levels) in <top (required)>'[0m
+
+  194) Admin::ContentsController GET #show when find the content renders the :show template
+     [31mFailure/Error:[0m [31mget :show, id: content.id, topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:50:in `block (4 levels) in <top (required)>'[0m
+
+  195) Admin::ContentsController GET #show when can not find the content shows an error message
+     [31mFailure/Error:[0m [31mget :show, id: "test", topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:58:in `block (4 levels) in <top (required)>'[0m
+
+  196) Admin::ContentsController GET #show when can not find the content redirects to index page
+     [31mFailure/Error:[0m [31mget :show, id: "test", topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:64:in `block (4 levels) in <top (required)>'[0m
+
+  197) Admin::ContentsController GET #index populates an array of contents
+     [31mFailure/Error:[0m [31mtopic.contents << content[0m
+     [31mNameError[0m:
+       [31mundefined local variable or method `content' for #<RSpec::Core::ExampleGroup::Nested_4::Nested_1:0xcf49c58>[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:13:in `block (3 levels) in <top (required)>'[0m
+
+  198) Admin::ContentsController GET #index renders the :index view
+     [31mFailure/Error:[0m [31mtopic.contents << content[0m
+     [31mNameError[0m:
+       [31mundefined local variable or method `content' for #<RSpec::Core::ExampleGroup::Nested_4::Nested_1:0xd4ffef4>[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:24:in `block (3 levels) in <top (required)>'[0m
+
+  199) Admin::ContentsController GET #new assigns a new Content to @content
+     [31mFailure/Error:[0m [31mget :new, topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:73:in `block (3 levels) in <top (required)>'[0m
+
+  200) Admin::ContentsController GET #new renders the :new template
+     [31mFailure/Error:[0m [31mget :new, topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:80:in `block (3 levels) in <top (required)>'[0m
+
+  201) Admin::ContentsController DELETE #destroy deletes the content
+     [31mFailure/Error:[0m [31mdelete :destroy, id: content.id, topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:194:in `block (3 levels) in <top (required)>'[0m
+
+  202) Admin::ContentsController DELETE #destroy redirects to the :index view
+     [31mFailure/Error:[0m [31mdelete :destroy, id: content.id, topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for Admin::ContentsController[0m
+[36m     # ./spec/controllers/admin/contents_controller_spec.rb:203:in `block (3 levels) in <top (required)>'[0m
+
+  203) Admin::TopicsController PUT #update with valid attributes changes @topic attributes
+     [31mFailure/Error:[0m [31mput :update, id: topic.id, level_id: level.id, topic: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:130:in `block (4 levels) in <top (required)>'[0m
+
+  204) Admin::TopicsController PUT #update with valid attributes redirects to the :index view
+     [31mFailure/Error:[0m [31mput :update, id: topic.id, level_id: level.id, topic: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:140:in `block (4 levels) in <top (required)>'[0m
+
+  205) Admin::TopicsController PUT #update with invalid attributes doesn't changes @topic attributes
+     [31mFailure/Error:[0m [31mput :update, id: topic.id, level_id: level.id,topic: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:151:in `block (4 levels) in <top (required)>'[0m
+
+  206) Admin::TopicsController PUT #update with invalid attributes redirects to the :edit view
+     [31mFailure/Error:[0m [31mput :update, id: topic.id, level_id: level.id, topic: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:161:in `block (4 levels) in <top (required)>'[0m
+
+  207) Admin::TopicsController GET #edit assigns the requested Topic to @topic
+     [31mFailure/Error:[0m [31mget :edit, id: topic.id, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:79:in `block (3 levels) in <top (required)>'[0m
+
+  208) Admin::TopicsController GET #edit renders the :edit template
+     [31mFailure/Error:[0m [31mget :edit, id: topic.id, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:88:in `block (3 levels) in <top (required)>'[0m
+
+  209) Admin::TopicsController POST #create with valid attributes saves the new Topic in the database
+     [31mFailure/Error:[0m [31mexpect { post :create, level_id: level.id, topic: attrs}.to change(Topic,:count).by(1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:99:in `block (5 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:99:in `block (4 levels) in <top (required)>'[0m
+
+  210) Admin::TopicsController POST #create with valid attributes redirects to the :show view
+     [31mFailure/Error:[0m [31mpost :create, topic: attrs, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:103:in `block (4 levels) in <top (required)>'[0m
+
+  211) Admin::TopicsController POST #create with invalid attributes doesn't save the new Topic in the database
+     [31mFailure/Error:[0m [31mexpect {post :create, topic: attrs, level_id: level.id}.to_not change(Topic,:count)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:113:in `block (5 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:113:in `block (4 levels) in <top (required)>'[0m
+
+  212) Admin::TopicsController POST #create with invalid attributes redirects to the :new view
+     [31mFailure/Error:[0m [31mpost :create, topic: attrs, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'create' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:117:in `block (4 levels) in <top (required)>'[0m
+
+  213) Admin::TopicsController GET #show when find the topic assigns the requested Topic to @topic
+     [31mFailure/Error:[0m [31mget :show, id: topic.id, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:28:in `block (4 levels) in <top (required)>'[0m
+
+  214) Admin::TopicsController GET #show when find the topic renders the :show template
+     [31mFailure/Error:[0m [31mget :show, id: topic.id, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:37:in `block (4 levels) in <top (required)>'[0m
+
+  215) Admin::TopicsController GET #show when can not find the topic shows an error message
+     [31mFailure/Error:[0m [31mget :show, id: "test", level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:46:in `block (4 levels) in <top (required)>'[0m
+
+  216) Admin::TopicsController GET #show when can not find the topic redirects to index page
+     [31mFailure/Error:[0m [31mget :show, id: "test", level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:53:in `block (4 levels) in <top (required)>'[0m
+
+  217) Admin::TopicsController GET #index populates an array of topics
+     [31mFailure/Error:[0m [31mget :index, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:9:in `block (3 levels) in <top (required)>'[0m
+
+  218) Admin::TopicsController GET #index renders the :index view
+     [31mFailure/Error:[0m [31mget :index, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:17:in `block (3 levels) in <top (required)>'[0m
+
+  219) Admin::TopicsController GET #new assigns a new Topic to @topic
+     [31mFailure/Error:[0m [31mget :new, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:62:in `block (3 levels) in <top (required)>'[0m
+
+  220) Admin::TopicsController GET #new renders the :new template
+     [31mFailure/Error:[0m [31mget :new, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'new' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:69:in `block (3 levels) in <top (required)>'[0m
+
+  221) Admin::TopicsController DELETE #destroy deletes the topic
+     [31mFailure/Error:[0m [31mexpect {delete :destroy, id: topic.id, level_id: level.id}.to change(Topic,:count).by(-1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:172:in `block (4 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:172:in `block (3 levels) in <top (required)>'[0m
+
+  222) Admin::TopicsController DELETE #destroy redirects to the :index view
+     [31mFailure/Error:[0m [31mdelete :destroy, id: topic.id, level_id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for Admin::TopicsController[0m
+[36m     # ./spec/controllers/admin/topics_controller_spec.rb:178:in `block (3 levels) in <top (required)>'[0m
+
+  223) Level Behavior #complete?(user.id) returns true if the user completed level
+     [31mFailure/Error:[0m [31mquestion.answer(correct_option.id, user.id)[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xd922450>[0m
+[36m     # ./spec/models/level_spec.rb:43:in `block (4 levels) in <top (required)>'[0m
+
+  224) Level Behavior #complete?(user.id) returns false if the user did not completed the level
+     [31mFailure/Error:[0m [31mquestion.answer(false_option.id, user.id)[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xd9ca998>[0m
+[36m     # ./spec/models/level_spec.rb:52:in `block (4 levels) in <top (required)>'[0m
+
+  225) ContentsController GET #show assigns the requested Content to @content
+     [31mFailure/Error:[0m [31mget :show, id: content.id, topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for ContentsController[0m
+[36m     # ./spec/controllers/contents_controller_spec.rb:11:in `block (3 levels) in <top (required)>'[0m
+
+  226) ContentsController GET #show renders the :show template
+     [31mFailure/Error:[0m [31mget :show, id: content.id, topic_id: topic.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for ContentsController[0m
+[36m     # ./spec/controllers/contents_controller_spec.rb:20:in `block (3 levels) in <top (required)>'[0m
+
+  227) Admin::InvitationsController PUT #update changes @invitation attributes
+     [31mFailure/Error:[0m [31mput :update, id: invitation.id,user_id: user.id, invitation: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::InvitationsController[0m
+[36m     # ./spec/controllers/admin/invitations_controller_spec.rb:45:in `block (3 levels) in <top (required)>'[0m
+
+  228) Admin::InvitationsController PUT #update redirects to :show view
+     [31mFailure/Error:[0m [31mput :update, id: invitation.id,user_id: user.id, invitation: attrs[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'update' could not be found for Admin::InvitationsController[0m
+[36m     # ./spec/controllers/admin/invitations_controller_spec.rb:55:in `block (3 levels) in <top (required)>'[0m
+
+  229) Admin::InvitationsController GET #show assigns the requested Invitation to @invitation
+     [31mFailure/Error:[0m [31mget :show, id: invitation.id, user_id: user.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::InvitationsController[0m
+[36m     # ./spec/controllers/admin/invitations_controller_spec.rb:13:in `block (3 levels) in <top (required)>'[0m
+
+  230) Admin::InvitationsController GET #show renders the :show view
+     [31mFailure/Error:[0m [31mget :show, id: invitation.id, user_id: user.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::InvitationsController[0m
+[36m     # ./spec/controllers/admin/invitations_controller_spec.rb:20:in `block (3 levels) in <top (required)>'[0m
+
+  231) Admin::InvitationsController DELETE #destroy deletes the assigned record
+     [31mFailure/Error:[0m [31mexpect{delete :destroy, id: invitation.id,user_id: user.id}.to change(Invitation,:count).by(-1)[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for Admin::InvitationsController[0m
+[36m     # ./spec/controllers/admin/invitations_controller_spec.rb:63:in `block (4 levels) in <top (required)>'[0m
+[36m     # ./spec/controllers/admin/invitations_controller_spec.rb:63:in `block (3 levels) in <top (required)>'[0m
+
+  232) Admin::InvitationsController DELETE #destroy redirects to :index view
+     [31mFailure/Error:[0m [31mdelete :destroy, id: invitation.id, user_id: user.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'destroy' could not be found for Admin::InvitationsController[0m
+[36m     # ./spec/controllers/admin/invitations_controller_spec.rb:67:in `block (3 levels) in <top (required)>'[0m
+
+  233) Admin::InvitationsController GET #edit assigns the requested Invitation to @invitation
+     [31mFailure/Error:[0m [31mget :edit, id: invitation.id, user_id: user.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'edit' could not be found for Admin::InvitationsController[0m
+[36m     # ./spec/controllers/admin/invitations_controller_spec.rb:28:in `block (3 levels) in <top (required)>'[0m
+
+  234) Admin::InvitationsController GET #edit renders the edit view
+     [31mFailure/Error:[0m [31mget :show, id: invitation.id, user_id: user.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for Admin::InvitationsController[0m
+[36m     # ./spec/controllers/admin/invitations_controller_spec.rb:35:in `block (3 levels) in <top (required)>'[0m
+
+  235) LevelsController GET #index assigns the level to @levels
+     [31mFailure/Error:[0m [31mget :index[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for LevelsController[0m
+[36m     # ./spec/controllers/levels_controller_spec.rb:8:in `block (3 levels) in <top (required)>'[0m
+
+  236) LevelsController GET #index renders the index view
+     [31mFailure/Error:[0m [31mget :index[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'index' could not be found for LevelsController[0m
+[36m     # ./spec/controllers/levels_controller_spec.rb:14:in `block (3 levels) in <top (required)>'[0m
+
+  237) LevelsController GET #show assigns the requested Level to @level
+     [31mFailure/Error:[0m [31mget :show, id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for LevelsController[0m
+[36m     # ./spec/controllers/levels_controller_spec.rb:21:in `block (3 levels) in <top (required)>'[0m
+
+  238) LevelsController GET #show renders the :show template
+     [31mFailure/Error:[0m [31mget :show, id: level.id[0m
+     [31mAbstractController::ActionNotFound[0m:
+       [31mThe action 'show' could not be found for LevelsController[0m
+[36m     # ./spec/controllers/levels_controller_spec.rb:28:in `block (3 levels) in <top (required)>'[0m
+
+  239) Question Behavior #answer(option_id, user_id) when correct option selected increases the ammount of solved questions of the user
+     [31mFailure/Error:[0m [31mexpect(question.answer(option.id, user.id)).to change{user.profile.attempts.find_by(solved: true).count}.by(1)[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xda3a70c>[0m
+[36m     # ./spec/models/question_spec.rb:81:in `block (5 levels) in <top (required)>'[0m
+
+  240) Question Behavior #answer(option_id, user_id) when correct option selected creates a new solved attempt database record
+     [31mFailure/Error:[0m [31mquestion.answer(option.id, user.id)[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xda5c988>[0m
+[36m     # ./spec/models/question_spec.rb:70:in `block (5 levels) in <top (required)>'[0m
+
+  241) Question Behavior #answer(option_id, user_id) when correct option selected increases the ammount of points of the user by the question value
+     [31mFailure/Error:[0m [31mexpect(question.answer(option.id, user.id)).to change{user.profile.total_points}.by(question.difficulty)[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xda8f504>[0m
+[36m     # ./spec/models/question_spec.rb:90:in `block (5 levels) in <top (required)>'[0m
+
+  242) Question Behavior #answer(option_id, user_id) when incorrect option selected does not change the ammount of solved questions of the user
+     [31mFailure/Error:[0m [31mexpect(question.answer(option.id, user.id)).not_to change{user.profile.attempts.find_by(solved: true).count}[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xdab67bc>[0m
+[36m     # ./spec/models/question_spec.rb:110:in `block (5 levels) in <top (required)>'[0m
+
+  243) Question Behavior #answer(option_id, user_id) when incorrect option selected creates a new unsolved attempt database record
+     [31mFailure/Error:[0m [31mquestion.answer(option.id, user.id)[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xdad5fe0>[0m
+[36m     # ./spec/models/question_spec.rb:99:in `block (5 levels) in <top (required)>'[0m
+
+  244) Question Behavior #answer(option_id, user_id) when incorrect option selected does not change the ammount of points of the user
+     [31mFailure/Error:[0m [31mexpect(question.answer(option.id, user.id)).not_to change{user.profile.total_points}[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xdafe170>[0m
+[36m     # ./spec/models/question_spec.rb:119:in `block (5 levels) in <top (required)>'[0m
+
+  245) Question Behavior #answered?(user.id) when question is already answered returns true
+     [31mFailure/Error:[0m [31mquestion.answer(option.id, user.id)[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xdb273e0>[0m
+[36m     # ./spec/models/question_spec.rb:129:in `block (5 levels) in <top (required)>'[0m
+
+  246) Question Behavior #answered?(user.id) when question is not answered yet returns false
+     [31mFailure/Error:[0m [31mquestion.answer(option.id, user.id)[0m
+     [31mNoMethodError[0m:
+       [31mundefined method `answer' for #<Question:0xdb40d68>[0m
+[36m     # ./spec/models/question_spec.rb:139:in `block (5 levels) in <top (required)>'[0m
+
+Finished in 9.74 seconds
+[31m366 examples, 246 failures, 15 pending[0m
+
+Failed examples:
+
+[31mrspec ./spec/controllers/invitations_controller_spec.rb:6[0m [36m# InvitationsController GET #new assigns a new feedback object[0m
+[31mrspec ./spec/controllers/invitations_controller_spec.rb:13[0m [36m# InvitationsController GET #new renders the :new view[0m
+[31mrspec ./spec/controllers/invitations_controller_spec.rb:27[0m [36m# InvitationsController POST #create redirects to :show view[0m
+[31mrspec ./spec/controllers/invitations_controller_spec.rb:23[0m [36m# InvitationsController POST #create creates a new database record[0m
+[31mrspec ./spec/controllers/invitations_controller_spec.rb:33[0m [36m# InvitationsController POST #create shows a success message[0m
+[31mrspec ./spec/controllers/admin/attempts_controller_spec.rb:8[0m [36m# Admin::AttemptsController GET #index assigns an array of attempts[0m
+[31mrspec ./spec/controllers/admin/attempts_controller_spec.rb:19[0m [36m# Admin::AttemptsController GET #index renders the :index view[0m
+[31mrspec ./spec/controllers/admin/attempts_controller_spec.rb:30[0m [36m# Admin::AttemptsController GET #show assigns the requested attempt to @attempt[0m
+[31mrspec ./spec/controllers/admin/attempts_controller_spec.rb:41[0m [36m# Admin::AttemptsController GET #show renders the :show view[0m
+[31mrspec ./spec/models/content_spec.rb:94[0m [36m# Content Behavior #complete?(user.id) when user has completed the content returns true[0m
+[31mrspec ./spec/models/content_spec.rb:104[0m [36m# Content Behavior #complete?(user.id) when user has not completed the content returns false[0m
+[31mrspec ./spec/controllers/achievements_controller_spec.rb:10[0m [36m# AchievementsController GET #index assigns the achievements to @achievement[0m
+[31mrspec ./spec/controllers/achievements_controller_spec.rb:20[0m [36m# AchievementsController GET #index renders the index view[0m
+[31mrspec ./spec/controllers/achievements_controller_spec.rb:30[0m [36m# AchievementsController GET #show assigns the requested achievement to @achievement[0m
+[31mrspec ./spec/controllers/achievements_controller_spec.rb:40[0m [36m# AchievementsController GET #show renders the show view[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:125[0m [36m# Admin::LevelsController PUT #update with valid attributes changes @level attributes[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:135[0m [36m# Admin::LevelsController PUT #update with valid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:146[0m [36m# Admin::LevelsController PUT #update with invalid attributes doesn't changes @level attributes[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:156[0m [36m# Admin::LevelsController PUT #update with invalid attributes redirects to the :edit view[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:73[0m [36m# Admin::LevelsController GET #edit assigns the requested Level to @level[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:82[0m [36m# Admin::LevelsController GET #edit renders the :edit template[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:95[0m [36m# Admin::LevelsController POST #create with valid attributes saves the new Level in the database[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:99[0m [36m# Admin::LevelsController POST #create with valid attributes redirects to the :show view[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:109[0m [36m# Admin::LevelsController POST #create with invalid attributes doesn't save the new Level in the database[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:115[0m [36m# Admin::LevelsController POST #create with invalid attributes redirects to the :new view[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:24[0m [36m# Admin::LevelsController GET #show when find the level assigns the requested Level to @level[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:33[0m [36m# Admin::LevelsController GET #show when find the level renders the :show template[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:43[0m [36m# Admin::LevelsController GET #show when can not find the level shows an error message[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:49[0m [36m# Admin::LevelsController GET #show when can not find the level redirects to index page[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:6[0m [36m# Admin::LevelsController GET #index populates an array of levels[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:15[0m [36m# Admin::LevelsController GET #index renders the :index view[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:58[0m [36m# Admin::LevelsController GET #new assigns a new Level to @level[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:65[0m [36m# Admin::LevelsController GET #new renders the :new template[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:168[0m [36m# Admin::LevelsController DELETE #destroy deletes the level[0m
+[31mrspec ./spec/controllers/admin/levels_controller_spec.rb:174[0m [36m# Admin::LevelsController DELETE #destroy redirects to the :index view[0m
+[31mrspec ./spec/models/profile_spec.rb:80[0m [36m# Profile Behavior #finished_previous_topics?(level_id, topic_id) returns true when the user finished all the level previous topics[0m
+[31mrspec ./spec/models/profile_spec.rb:90[0m [36m# Profile Behavior #finished_previous_topics?(level_id, topic_id) returns false when the user has not finished all the level previous topics[0m
+[31mrspec ./spec/models/topic_spec.rb:53[0m [36m# Topic Behavior #complete?(user_id) returns true if topic is complete[0m
+[31mrspec ./spec/models/topic_spec.rb:66[0m [36m# Topic Behavior #complete?(user_id) returns false if topic is not complete[0m
+[31mrspec ./spec/controllers/topics_controller_spec.rb:11[0m [36m# TopicsController GET #show when user finished previous topics assigns the requested Topic to @topic[0m
+[31mrspec ./spec/controllers/topics_controller_spec.rb:25[0m [36m# TopicsController GET #show when user finished previous topics renders the :show template[0m
+[31mrspec ./spec/controllers/topics_controller_spec.rb:40[0m [36m# TopicsController GET #show when user did not finished previous topics redirects to :index view[0m
+[31mrspec ./spec/controllers/topics_controller_spec.rb:48[0m [36m# TopicsController GET #show when user did not finished previous topics shows an alert message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:154[0m [36m# CommentsController behaves like Commentable PUT #update with valid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:144[0m [36m# CommentsController behaves like Commentable PUT #update with valid attributes changes @comment attributes[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:164[0m [36m# CommentsController behaves like Commentable PUT #update with valid attributes shows a success message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:184[0m [36m# CommentsController behaves like Commentable PUT #update with invalid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:174[0m [36m# CommentsController behaves like Commentable PUT #update with invalid attributes doesn't changes @comment attributes[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:192[0m [36m# CommentsController behaves like Commentable PUT #update with invalid attributes shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:13[0m [36m# CommentsController behaves like Commentable GET #index populates an array of comments[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:22[0m [36m# CommentsController behaves like Commentable GET #index renders the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:204[0m [36m# CommentsController behaves like Commentable DELETE #destroy when find the comment deletes the comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:212[0m [36m# CommentsController behaves like Commentable DELETE #destroy when find the comment redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:220[0m [36m# CommentsController behaves like Commentable DELETE #destroy when can not find the comment shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:226[0m [36m# CommentsController behaves like Commentable DELETE #destroy when can not find the comment redirects to index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:13[0m [36m# CommentsController behaves like Commentable GET #index populates an array of comments[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:22[0m [36m# CommentsController behaves like Commentable GET #index renders the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:87[0m [36m# CommentsController behaves like Commentable GET #edit assigns the requested Comment to @comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:94[0m [36m# CommentsController behaves like Commentable GET #edit renders the :edit template[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:72[0m [36m# CommentsController behaves like Commentable GET #new assigns a new Comment to @comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:79[0m [36m# CommentsController behaves like Commentable GET #new renders the :new template[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:13[0m [36m# CommentsController behaves like Commentable GET #index populates an array of comments[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:22[0m [36m# CommentsController behaves like Commentable GET #index renders the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:34[0m [36m# CommentsController behaves like Commentable GET #show when comment is found assigns the requested Comment to @comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:43[0m [36m# CommentsController behaves like Commentable GET #show when comment is found renders the :show template[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:53[0m [36m# CommentsController behaves like Commentable GET #show when comment is not found shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:61[0m [36m# CommentsController behaves like Commentable GET #show when comment is not found redirects to index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:87[0m [36m# CommentsController behaves like Commentable GET #edit assigns the requested Comment to @comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:94[0m [36m# CommentsController behaves like Commentable GET #edit renders the :edit template[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:204[0m [36m# CommentsController behaves like Commentable DELETE #destroy when find the comment deletes the comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:212[0m [36m# CommentsController behaves like Commentable DELETE #destroy when find the comment redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:220[0m [36m# CommentsController behaves like Commentable DELETE #destroy when can not find the comment shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:226[0m [36m# CommentsController behaves like Commentable DELETE #destroy when can not find the comment redirects to index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:34[0m [36m# CommentsController behaves like Commentable GET #show when comment is found assigns the requested Comment to @comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:43[0m [36m# CommentsController behaves like Commentable GET #show when comment is found renders the :show template[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:53[0m [36m# CommentsController behaves like Commentable GET #show when comment is not found shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:61[0m [36m# CommentsController behaves like Commentable GET #show when comment is not found redirects to index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:103[0m [36m# CommentsController behaves like Commentable POST #create with valid attributes saves the new Comment in the database[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:109[0m [36m# CommentsController behaves like Commentable POST #create with valid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:126[0m [36m# CommentsController behaves like Commentable POST #create with invalid attributes redirects to the :new view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:119[0m [36m# CommentsController behaves like Commentable POST #create with invalid attributes doesn't save the new Comment in the database[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:133[0m [36m# CommentsController behaves like Commentable POST #create with invalid attributes shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:72[0m [36m# CommentsController behaves like Commentable GET #new assigns a new Comment to @comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:79[0m [36m# CommentsController behaves like Commentable GET #new renders the :new template[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:72[0m [36m# CommentsController behaves like Commentable GET #new assigns a new Comment to @comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:79[0m [36m# CommentsController behaves like Commentable GET #new renders the :new template[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:72[0m [36m# CommentsController behaves like Commentable GET #new assigns a new Comment to @comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:79[0m [36m# CommentsController behaves like Commentable GET #new renders the :new template[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:87[0m [36m# CommentsController behaves like Commentable GET #edit assigns the requested Comment to @comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:94[0m [36m# CommentsController behaves like Commentable GET #edit renders the :edit template[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:154[0m [36m# CommentsController behaves like Commentable PUT #update with valid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:144[0m [36m# CommentsController behaves like Commentable PUT #update with valid attributes changes @comment attributes[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:164[0m [36m# CommentsController behaves like Commentable PUT #update with valid attributes shows a success message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:184[0m [36m# CommentsController behaves like Commentable PUT #update with invalid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:174[0m [36m# CommentsController behaves like Commentable PUT #update with invalid attributes doesn't changes @comment attributes[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:192[0m [36m# CommentsController behaves like Commentable PUT #update with invalid attributes shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:87[0m [36m# CommentsController behaves like Commentable GET #edit assigns the requested Comment to @comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:94[0m [36m# CommentsController behaves like Commentable GET #edit renders the :edit template[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:103[0m [36m# CommentsController behaves like Commentable POST #create with valid attributes saves the new Comment in the database[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:109[0m [36m# CommentsController behaves like Commentable POST #create with valid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:126[0m [36m# CommentsController behaves like Commentable POST #create with invalid attributes redirects to the :new view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:119[0m [36m# CommentsController behaves like Commentable POST #create with invalid attributes doesn't save the new Comment in the database[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:133[0m [36m# CommentsController behaves like Commentable POST #create with invalid attributes shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:34[0m [36m# CommentsController behaves like Commentable GET #show when comment is found assigns the requested Comment to @comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:43[0m [36m# CommentsController behaves like Commentable GET #show when comment is found renders the :show template[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:53[0m [36m# CommentsController behaves like Commentable GET #show when comment is not found shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:61[0m [36m# CommentsController behaves like Commentable GET #show when comment is not found redirects to index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:154[0m [36m# CommentsController behaves like Commentable PUT #update with valid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:144[0m [36m# CommentsController behaves like Commentable PUT #update with valid attributes changes @comment attributes[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:164[0m [36m# CommentsController behaves like Commentable PUT #update with valid attributes shows a success message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:184[0m [36m# CommentsController behaves like Commentable PUT #update with invalid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:174[0m [36m# CommentsController behaves like Commentable PUT #update with invalid attributes doesn't changes @comment attributes[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:192[0m [36m# CommentsController behaves like Commentable PUT #update with invalid attributes shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:13[0m [36m# CommentsController behaves like Commentable GET #index populates an array of comments[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:22[0m [36m# CommentsController behaves like Commentable GET #index renders the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:103[0m [36m# CommentsController behaves like Commentable POST #create with valid attributes saves the new Comment in the database[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:109[0m [36m# CommentsController behaves like Commentable POST #create with valid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:126[0m [36m# CommentsController behaves like Commentable POST #create with invalid attributes redirects to the :new view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:119[0m [36m# CommentsController behaves like Commentable POST #create with invalid attributes doesn't save the new Comment in the database[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:133[0m [36m# CommentsController behaves like Commentable POST #create with invalid attributes shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:103[0m [36m# CommentsController behaves like Commentable POST #create with valid attributes saves the new Comment in the database[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:109[0m [36m# CommentsController behaves like Commentable POST #create with valid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:126[0m [36m# CommentsController behaves like Commentable POST #create with invalid attributes redirects to the :new view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:119[0m [36m# CommentsController behaves like Commentable POST #create with invalid attributes doesn't save the new Comment in the database[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:133[0m [36m# CommentsController behaves like Commentable POST #create with invalid attributes shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:204[0m [36m# CommentsController behaves like Commentable DELETE #destroy when find the comment deletes the comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:212[0m [36m# CommentsController behaves like Commentable DELETE #destroy when find the comment redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:220[0m [36m# CommentsController behaves like Commentable DELETE #destroy when can not find the comment shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:226[0m [36m# CommentsController behaves like Commentable DELETE #destroy when can not find the comment redirects to index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:154[0m [36m# CommentsController behaves like Commentable PUT #update with valid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:144[0m [36m# CommentsController behaves like Commentable PUT #update with valid attributes changes @comment attributes[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:164[0m [36m# CommentsController behaves like Commentable PUT #update with valid attributes shows a success message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:184[0m [36m# CommentsController behaves like Commentable PUT #update with invalid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:174[0m [36m# CommentsController behaves like Commentable PUT #update with invalid attributes doesn't changes @comment attributes[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:192[0m [36m# CommentsController behaves like Commentable PUT #update with invalid attributes shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:34[0m [36m# CommentsController behaves like Commentable GET #show when comment is found assigns the requested Comment to @comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:43[0m [36m# CommentsController behaves like Commentable GET #show when comment is found renders the :show template[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:53[0m [36m# CommentsController behaves like Commentable GET #show when comment is not found shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:61[0m [36m# CommentsController behaves like Commentable GET #show when comment is not found redirects to index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:204[0m [36m# CommentsController behaves like Commentable DELETE #destroy when find the comment deletes the comment[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:212[0m [36m# CommentsController behaves like Commentable DELETE #destroy when find the comment redirects to the :index view[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:220[0m [36m# CommentsController behaves like Commentable DELETE #destroy when can not find the comment shows an error message[0m
+[31mrspec ./spec/controllers/commentable_spec.rb:226[0m [36m# CommentsController behaves like Commentable DELETE #destroy when can not find the comment redirects to index view[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:124[0m [36m# Admin::QuestionsController PUT #update with valid attributes changes @question attributes[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:134[0m [36m# Admin::QuestionsController PUT #update with valid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:145[0m [36m# Admin::QuestionsController PUT #update with invalid attributes doesn't changes @question attributes[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:155[0m [36m# Admin::QuestionsController PUT #update with invalid attributes redirects to the :edit view[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:74[0m [36m# Admin::QuestionsController GET #edit assigns the requested Question to @question[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:82[0m [36m# Admin::QuestionsController GET #edit renders the :edit template[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:94[0m [36m# Admin::QuestionsController POST #create with valid attributes saves the new Question in the database[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:98[0m [36m# Admin::QuestionsController POST #create with valid attributes redirects to the :show view[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:108[0m [36m# Admin::QuestionsController POST #create with invalid attributes doesn't save the new Question in the database[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:114[0m [36m# Admin::QuestionsController POST #create with invalid attributes redirects to the :new view[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:25[0m [36m# Admin::QuestionsController GET #show when find the question assigns the requested Question to @question[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:33[0m [36m# Admin::QuestionsController GET #show when find the question renders the :show template[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:42[0m [36m# Admin::QuestionsController GET #show when can not find the question shows an error message[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:49[0m [36m# Admin::QuestionsController GET #show when can not find the question redirects to index page[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:7[0m [36m# Admin::QuestionsController GET #index populates an array of questions[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:16[0m [36m# Admin::QuestionsController GET #index renders the :index view[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:59[0m [36m# Admin::QuestionsController GET #new assigns a new Question to @question[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:66[0m [36m# Admin::QuestionsController GET #new renders the :new template[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:167[0m [36m# Admin::QuestionsController DELETE #destroy deletes the question[0m
+[31mrspec ./spec/controllers/admin/questions_controller_spec.rb:174[0m [36m# Admin::QuestionsController DELETE #destroy redirects to the :index view[0m
+[31mrspec ./spec/controllers/admin/achievements_controller_spec.rb:8[0m [36m# Admin::AchievementsController GET #index populates an array of achievements[0m
+[31mrspec ./spec/controllers/admin/achievements_controller_spec.rb:19[0m [36m# Admin::AchievementsController GET #index renders the :index view[0m
+[31mrspec ./spec/controllers/admin/achievements_controller_spec.rb:28[0m [36m# Admin::AchievementsController GET #show assigns the requested achievement to @achievement[0m
+[31mrspec ./spec/controllers/admin/achievements_controller_spec.rb:38[0m [36m# Admin::AchievementsController GET #show renders the :show view[0m
+[31mrspec ./spec/controllers/attempts_controller_spec.rb:13[0m [36m# AttemptsController POST #create when correct option is selected creates a solved attempt in database[0m
+[31mrspec ./spec/controllers/attempts_controller_spec.rb:17[0m [36m# AttemptsController POST #create when correct option is selected increments the user points[0m
+[31mrspec ./spec/controllers/attempts_controller_spec.rb:22[0m [36m# AttemptsController POST #create when correct option is selected when user finishes the level creates an achievement database record[0m
+[31mrspec ./spec/controllers/attempts_controller_spec.rb:33[0m [36m# AttemptsController POST #create when incorrect option is selected does not increment the user points[0m
+[31mrspec ./spec/controllers/attempts_controller_spec.rb:29[0m [36m# AttemptsController POST #create when incorrect option is selected creates an unsolved attempt in database[0m
+[31mrspec ./spec/controllers/attempts_controller_spec.rb:37[0m [36m# AttemptsController POST #create when incorrect option is selected does not create a achievement database record [0m
+[31mrspec ./spec/controllers/admin/feedbacks_controller_spec.rb:7[0m [36m# Admin::FeedbacksController GET #index assigns a list of feedbacks to @feedbacks[0m
+[31mrspec ./spec/controllers/admin/feedbacks_controller_spec.rb:14[0m [36m# Admin::FeedbacksController GET #index renders the :index view[0m
+[31mrspec ./spec/controllers/admin/feedbacks_controller_spec.rb:21[0m [36m# Admin::FeedbacksController GET #show assigns the requested feedback to @feedback[0m
+[31mrspec ./spec/controllers/admin/feedbacks_controller_spec.rb:28[0m [36m# Admin::FeedbacksController GET #show renders the :show view[0m
+[31mrspec ./spec/controllers/feedbacks_controller_spec.rb:6[0m [36m# FeedbacksController GET #new assigns a new feedback object[0m
+[31mrspec ./spec/controllers/feedbacks_controller_spec.rb:13[0m [36m# FeedbacksController GET #new renders the :new view[0m
+[31mrspec ./spec/controllers/feedbacks_controller_spec.rb:27[0m [36m# FeedbacksController POST #create redirects to :show view[0m
+[31mrspec ./spec/controllers/feedbacks_controller_spec.rb:23[0m [36m# FeedbacksController POST #create creates a new database record[0m
+[31mrspec ./spec/controllers/feedbacks_controller_spec.rb:33[0m [36m# FeedbacksController POST #create shows a success message[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:143[0m [36m# Admin::ContentsController PUT #update with valid attributes changes @content attributes[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:154[0m [36m# Admin::ContentsController PUT #update with valid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:166[0m [36m# Admin::ContentsController PUT #update with invalid attributes doesn't changes @content attributes[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:177[0m [36m# Admin::ContentsController PUT #update with invalid attributes redirects to the :edit view[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:87[0m [36m# Admin::ContentsController GET #edit assigns the requested Content to @content[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:97[0m [36m# Admin::ContentsController GET #edit renders the :edit template[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:111[0m [36m# Admin::ContentsController POST #create with valid attributes saves the new Content in the database[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:117[0m [36m# Admin::ContentsController POST #create with valid attributes redirects to the :show view[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:127[0m [36m# Admin::ContentsController POST #create with invalid attributes doesn't save the new Content in the database[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:133[0m [36m# Admin::ContentsController POST #create with invalid attributes redirects to the :new view[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:34[0m [36m# Admin::ContentsController GET #show when find the content assigns the requested Content to @content[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:45[0m [36m# Admin::ContentsController GET #show when find the content renders the :show template[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:57[0m [36m# Admin::ContentsController GET #show when can not find the content shows an error message[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:63[0m [36m# Admin::ContentsController GET #show when can not find the content redirects to index page[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:10[0m [36m# Admin::ContentsController GET #index populates an array of contents[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:21[0m [36m# Admin::ContentsController GET #index renders the :index view[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:72[0m [36m# Admin::ContentsController GET #new assigns a new Content to @content[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:79[0m [36m# Admin::ContentsController GET #new renders the :new template[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:190[0m [36m# Admin::ContentsController DELETE #destroy deletes the content[0m
+[31mrspec ./spec/controllers/admin/contents_controller_spec.rb:199[0m [36m# Admin::ContentsController DELETE #destroy redirects to the :index view[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:126[0m [36m# Admin::TopicsController PUT #update with valid attributes changes @topic attributes[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:136[0m [36m# Admin::TopicsController PUT #update with valid attributes redirects to the :index view[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:147[0m [36m# Admin::TopicsController PUT #update with invalid attributes doesn't changes @topic attributes[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:157[0m [36m# Admin::TopicsController PUT #update with invalid attributes redirects to the :edit view[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:76[0m [36m# Admin::TopicsController GET #edit assigns the requested Topic to @topic[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:85[0m [36m# Admin::TopicsController GET #edit renders the :edit template[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:98[0m [36m# Admin::TopicsController POST #create with valid attributes saves the new Topic in the database[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:102[0m [36m# Admin::TopicsController POST #create with valid attributes redirects to the :show view[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:112[0m [36m# Admin::TopicsController POST #create with invalid attributes doesn't save the new Topic in the database[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:116[0m [36m# Admin::TopicsController POST #create with invalid attributes redirects to the :new view[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:25[0m [36m# Admin::TopicsController GET #show when find the topic assigns the requested Topic to @topic[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:34[0m [36m# Admin::TopicsController GET #show when find the topic renders the :show template[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:44[0m [36m# Admin::TopicsController GET #show when can not find the topic shows an error message[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:51[0m [36m# Admin::TopicsController GET #show when can not find the topic redirects to index page[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:7[0m [36m# Admin::TopicsController GET #index populates an array of topics[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:16[0m [36m# Admin::TopicsController GET #index renders the :index view[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:61[0m [36m# Admin::TopicsController GET #new assigns a new Topic to @topic[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:68[0m [36m# Admin::TopicsController GET #new renders the :new template[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:169[0m [36m# Admin::TopicsController DELETE #destroy deletes the topic[0m
+[31mrspec ./spec/controllers/admin/topics_controller_spec.rb:175[0m [36m# Admin::TopicsController DELETE #destroy redirects to the :index view[0m
+[31mrspec ./spec/models/level_spec.rb:39[0m [36m# Level Behavior #complete?(user.id) returns true if the user completed level[0m
+[31mrspec ./spec/models/level_spec.rb:48[0m [36m# Level Behavior #complete?(user.id) returns false if the user did not completed the level[0m
+[31mrspec ./spec/controllers/contents_controller_spec.rb:8[0m [36m# ContentsController GET #show assigns the requested Content to @content[0m
+[31mrspec ./spec/controllers/contents_controller_spec.rb:17[0m [36m# ContentsController GET #show renders the :show template[0m
+[31mrspec ./spec/controllers/admin/invitations_controller_spec.rb:42[0m [36m# Admin::InvitationsController PUT #update changes @invitation attributes[0m
+[31mrspec ./spec/controllers/admin/invitations_controller_spec.rb:52[0m [36m# Admin::InvitationsController PUT #update redirects to :show view[0m
+[31mrspec ./spec/controllers/admin/invitations_controller_spec.rb:12[0m [36m# Admin::InvitationsController GET #show assigns the requested Invitation to @invitation[0m
+[31mrspec ./spec/controllers/admin/invitations_controller_spec.rb:19[0m [36m# Admin::InvitationsController GET #show renders the :show view[0m
+[31mrspec ./spec/controllers/admin/invitations_controller_spec.rb:62[0m [36m# Admin::InvitationsController DELETE #destroy deletes the assigned record[0m
+[31mrspec ./spec/controllers/admin/invitations_controller_spec.rb:66[0m [36m# Admin::InvitationsController DELETE #destroy redirects to :index view[0m
+[31mrspec ./spec/controllers/admin/invitations_controller_spec.rb:27[0m [36m# Admin::InvitationsController GET #edit assigns the requested Invitation to @invitation[0m
+[31mrspec ./spec/controllers/admin/invitations_controller_spec.rb:34[0m [36m# Admin::InvitationsController GET #edit renders the edit view[0m
+[31mrspec ./spec/controllers/levels_controller_spec.rb:7[0m [36m# LevelsController GET #index assigns the level to @levels[0m
+[31mrspec ./spec/controllers/levels_controller_spec.rb:13[0m [36m# LevelsController GET #index renders the index view[0m
+[31mrspec ./spec/controllers/levels_controller_spec.rb:20[0m [36m# LevelsController GET #show assigns the requested Level to @level[0m
+[31mrspec ./spec/controllers/levels_controller_spec.rb:27[0m [36m# LevelsController GET #show renders the :show template[0m
+[31mrspec ./spec/models/question_spec.rb:75[0m [36m# Question Behavior #answer(option_id, user_id) when correct option selected increases the ammount of solved questions of the user[0m
+[31mrspec ./spec/models/question_spec.rb:66[0m [36m# Question Behavior #answer(option_id, user_id) when correct option selected creates a new solved attempt database record[0m
+[31mrspec ./spec/models/question_spec.rb:84[0m [36m# Question Behavior #answer(option_id, user_id) when correct option selected increases the ammount of points of the user by the question value[0m
+[31mrspec ./spec/models/question_spec.rb:104[0m [36m# Question Behavior #answer(option_id, user_id) when incorrect option selected does not change the ammount of solved questions of the user[0m
+[31mrspec ./spec/models/question_spec.rb:95[0m [36m# Question Behavior #answer(option_id, user_id) when incorrect option selected creates a new unsolved attempt database record[0m
+[31mrspec ./spec/models/question_spec.rb:113[0m [36m# Question Behavior #answer(option_id, user_id) when incorrect option selected does not change the ammount of points of the user[0m
+[31mrspec ./spec/models/question_spec.rb:126[0m [36m# Question Behavior #answered?(user.id) when question is already answered returns true[0m
+[31mrspec ./spec/models/question_spec.rb:136[0m [36m# Question Behavior #answered?(user.id) when question is not answered yet returns false[0m
+
+Randomized with seed 65161
+
