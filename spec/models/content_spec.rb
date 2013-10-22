@@ -77,7 +77,7 @@ describe Content do
 
   describe "Associations" do
     it 'has embedded questions' do
-      expect(content).to embed_many(:questions)
+      expect(content).to have_many(:questions)
     end
     
     it 'has embedded comments' do

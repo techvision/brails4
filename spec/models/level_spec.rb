@@ -29,7 +29,7 @@ describe Level do
     end
 
     it 'has many embbebed bonus questions' do 
-      expect(level).to embed_many(:bonus_questions)
+      expect(level).to have_many(:bonus_questions)
     end
   end
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ContentsController do
-  let(:content) { FactoryGirl.create(:content) }
+  let(:content) { FactoryGirl.build(:content) }
   let(:topic) {FactoryGirl.create(:topic)}
 
   describe "GET #show" do

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :achievement do
-    user_id   { FactoryGirl.build(:topic).id }
+    user_id   { FactoryGirl.build(:user).id }
     topic_id  { FactoryGirl.build(:topic).id }
   end
 end

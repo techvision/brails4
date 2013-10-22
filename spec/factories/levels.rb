@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :level do |l|
     l.name { Faker::Lorem.characters(10) }
     l.topics { [ FactoryGirl.build(:topic)] }
+    l.bonus_questions{[ FactoryGirl.build(:question)]}
   end
 end

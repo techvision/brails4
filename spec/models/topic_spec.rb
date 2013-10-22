@@ -37,7 +37,7 @@ describe Topic do
 
   describe 'Associations' do
     it 'has many embbebed questions' do
-      expect(topic).to embed_many(:questions)
+      expect(topic).to have_many(:questions)
     end
 
     it 'has many contents' do

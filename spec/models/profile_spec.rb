@@ -78,7 +78,7 @@ describe Profile do
     ##Checks profile assignments and level topics to see if user finished the previous topics
     describe "#finished_previous_topics?(level_id, topic_id)" do
       it "returns true when the user finished all the level previous topics" do
-        achievement = create(:achievement, topic_id: topic1.id, user_id: user.id)
+        achievement = build(:achievement, topic_id: topic1.id, user_id: user.id)
 
         level.topics << topic1
         level.topics << topic2
@@ -88,7 +88,7 @@ describe Profile do
       end
 
       it "returns false when the user has not finished all the level previous topics" do
-        achievement = create(:achievement, topic_id: topic1.id, user_id: user.id)
+        achievement = build(:achievement, topic_id: topic1.id, user_id: user.id)
         level.topics << topic1
         level.topics << topic2
         user.profile.achievements << achievement

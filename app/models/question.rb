@@ -7,7 +7,7 @@ class Question
   embeds_many :options
   has_many :attempts
   embeds_many :comments, as: :commentable
-  embedded_in :questionable, polymorphic: true
+  belongs_to :questionable, polymorphic: true
 
   validates :title,:options,:difficulty, presence: true
   validates :options, length: { minimum: 3, maximum: 5}

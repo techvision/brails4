@@ -9,7 +9,8 @@ describe TopicsController do
   describe "GET #show" do
     context "when user finished previous topics" do
       it "assigns the requested Topic to @topic" do
-        achievement = create(:achievement, user_id: user.id, topic_id: topic1.id)
+        achievement = build(:achievement, user_id: user.id, topic_id: topic1.id)
+        user.profile.achievements << achievement
 
         level.topics << topic1
         level.topics << topic2
@@ -22,7 +23,9 @@ describe TopicsController do
       end
 
       it "renders the :show template" do
-        achievement = create(:achievement, user_id: user.id, topic_id: topic1.id)
+        achievement = build(:achievement, user_id: user.id, topic_id: topic1.id)
+        user.profile.achievements << achievement
+        
         level.topics << topic1
         level.topics << topic2
         user.profile.achievements << achievement

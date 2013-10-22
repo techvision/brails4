@@ -4,21 +4,45 @@ describe AchievementsController do
   let(:user) { FactoryGirl.create(:user)}
   let(:level) { FactoryGirl.create(:level)}
   let(:topic) { level.topics.last}
-  let(:achievement) { FactoryGirl.create(:achievement, user_id: user.id, topic_id: topic.id)}
+  let(:achievement) { FactoryGirl.build(:achievement, user_id: user.id, topic_id: topic.id)}
 
   describe "GET #index" do
-    get :index, user_id: user.id
+    it "assigns the achievements to @achievement" do
+      user.profile.achievements << achievement
 
-    page_achievements = assigns[:achievements]
+      get :index, user_id: user.id
 
-    expect(achievement).to eql page_achievements
+      page_achievements = assigns[:achievements]
+
+      expect(achievement).to eql page_achievements
+    end
+
+    it "renders the index view" do
+      user.profile.achievements << achievement
+
+      get :index, user_id: user.id
+
+      expect(reponse).to render_template :index
+    end
   end
 
   describe "GET #show" do
-    get :show, user_id: user.id, achievement_id: achievement.id
+    it "assigns the requested achievement to @achievement" do
+      user.profile.achievements << achievement
 
-    page_achievement = assigns[:achievement]
+      get :show, user_id: user.id, id: achievement.id
 
-    expect(achievements).to eql page_achievement
+      page_achievement = assigns[:achievement]
+
+      expect(achievements).to eql page_achievement
+    end
+
+    it "renders the show view" do
+      user.profile.achievements << achievement
+
+      get :show, user_id: user.id, id: achievement.id
+
+      expect(response).to render_template :show
+    end
   end
 end
