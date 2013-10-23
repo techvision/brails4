@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Admin::QuestionsController do
+  login(:admin)
   let(:content) { FactoryGirl.create(:content) }
 
   describe "GET #index" do

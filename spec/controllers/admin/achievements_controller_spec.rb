@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Admin::AchievementsController do
+  login(:admin)
   let (:user) { create(:user)}
   let (:topic) { create(:topic)}
 

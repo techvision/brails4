@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Admin::FeedbacksController do
+  login(:admin)
   let(:feedback) {FactoryGirl.create(:feedback)}
   let(:user) { FactoryGirl.create(:user)}
 

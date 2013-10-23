@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe TopicsController do
+  login
   let(:level) { FactoryGirl.create(:level)}
   let(:user) { FactoryGirl.create(:user)}
   let(:topic1) { FactoryGirl.create(:topic,seq_number: 1)}

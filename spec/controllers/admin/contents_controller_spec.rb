@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Admin::ContentsController do
+  login(:admin)
   let(:topic) { FactoryGirl.create(:topic) }
 
   it "can upload a mp3 audio file"

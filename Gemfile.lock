@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/gerson-scanapieco/mongoid-simple-roles
+  revision: a0c1459274bf03567fe19ef10cc08b7c6e5bd43a
+  specs:
+    mongoid-simple-roles (0.0.1)
+      bson_ext
+      mongoid (~> 4.0.0)
+
+GIT
   remote: git://github.com/mongoid/mongoid.git
   revision: 867a194afdc8f1c2cfcde8336732d908b3723076
   specs:
@@ -39,6 +47,7 @@ GEM
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
     bson (2.0.0.rc3)
+    bson_ext (1.5.1)
     builder (3.1.4)
     cancan (1.6.10)
     climate_control (0.0.3)
@@ -213,6 +222,7 @@ DEPENDENCIES
   mongoid!
   mongoid-paperclip
   mongoid-rspec
+  mongoid-simple-roles!
   rails (= 4.0.0)
   rspec-rails (>= 2.0.1)
   sass-rails (~> 4.0.0)

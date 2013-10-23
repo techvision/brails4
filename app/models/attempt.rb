@@ -1,7 +1,7 @@
 class Attempt
   include Mongoid::Document
 
-  field :count, type: Integer, default: 0
+  field :count, type: Integer, default: 1
   field :solved, type: Boolean, default: false
   field :points, type: Integer, default: 0
 

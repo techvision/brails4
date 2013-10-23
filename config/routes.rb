@@ -48,7 +48,7 @@ Brails::Application.routes.draw do
     post '/attempt/options/:option_id', to: 'attempts#create'
   end
 
-  resources :users, except: [:index, :destroy] do
+  resources :users, only: [:show,:edit,:update] do
     resources :invitations, only: [:new, :create]
     resources :feedbacks, only: [:new, :create]
     resources :achievements, only: [:index, :show]

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe AchievementsController do
+  login
   let(:user) { FactoryGirl.create(:user)}
   let(:level) { FactoryGirl.create(:level)}
   let(:topic) { level.topics.last}

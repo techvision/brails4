@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Admin::LevelsController do
-
+  login(:admin)
+  
   describe "GET #index" do
     it "populates an array of levels" do
       levels = 2.times {create(:level)}

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe ContentsController do
+  login
   let(:content) { FactoryGirl.build(:content) }
   let(:topic) {FactoryGirl.create(:topic)}
 

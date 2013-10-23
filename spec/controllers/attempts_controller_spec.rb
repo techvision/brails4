@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe AttemptsController do
+  login
   let(:user) { FactoryGirl.create(:user)}
   let(:level) { FactoryGirl.create(:level)}
   let(:achievement) { FactoryGirl.create(:achievement, user_id: user.id, topic_id: topic.id)}

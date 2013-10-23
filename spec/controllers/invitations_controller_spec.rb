@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe InvitationsController do
+  login
   let(:user) { FactoryGirl.create(:user)}
   
   describe "GET #new" do

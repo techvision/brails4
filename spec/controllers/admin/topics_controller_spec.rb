@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Admin::TopicsController do
+  login(:admin)
   let (:level) { FactoryGirl.create(:level) }
 
   describe "GET #index" do

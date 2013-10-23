@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::Document::Roleable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -38,4 +39,9 @@ class User
   # field :authentication_token, :type => String
 
   has_one :profile
+
+
+  def admin? 
+    self.roles.include?('admin')
+  end
 end

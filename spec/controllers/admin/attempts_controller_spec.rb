@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Admin::AttemptsController do
+  login(:admin)
   let(:user){ FactoryGirl.create(:user)}
   let(:level){ FactoryGirl.create(:level)}
 

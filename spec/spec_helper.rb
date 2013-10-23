@@ -9,7 +9,7 @@ require 'coveralls'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -20,6 +20,7 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.include Mongoid::Matchers, type: :model
   config.include Paperclip::Shoulda::Matchers
+  config.extend ControllerMacros, :type => :controller
   SimpleCov.start 'rails'
   Coveralls.wear!
 

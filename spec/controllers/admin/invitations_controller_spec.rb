@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Admin::InvitationsController do
+  login(:admin)
   let(:user) {FactoryGirl.create(:user)}
   let(:invitation) { FactoryGirl.build(:invitation) }
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 shared_examples_for "Commentable" do |commentables|
-
+  login
   commentables.each do |commentable|
 
     let(:comment) { FactoryGirl.build(:comment)}
