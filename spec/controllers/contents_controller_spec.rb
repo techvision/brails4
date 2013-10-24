@@ -4,6 +4,7 @@ describe ContentsController do
   login
   let(:content) { FactoryGirl.build(:content) }
   let(:topic) {FactoryGirl.create(:topic)}
+  let(:user) { FactoryGirl.create(:user)}
 
   describe "GET #show" do
     it "assigns the requested Content to @content" do
@@ -24,6 +25,15 @@ describe ContentsController do
     end
   end
 
-  it 'can download a mp3 audio file'
-  it 'can download an ogg audio file'
+  it 'can download a mp3 audio file' do
+    get :download_mp3, id: content.id
+
+    expect(response).to be_success
+  end
+
+  it 'can download an ogg audio file' do
+    get :download_ogg, id: content.id
+
+    expect(response).to be_success
+  end
 end

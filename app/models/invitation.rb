@@ -10,4 +10,5 @@ class Invitation
   embedded_in :user
 
   validates :name, :email, presence: true
+  validates :email, with: Devise.email_regexp
 end

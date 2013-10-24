@@ -7,5 +7,5 @@ class Feedback
   field :text, type: String
 
   validates :name, :email, :text, presence: true
-  validates :email, format: { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/, message: "Invalid email format" }
+  validates :email, with: Devise.email_regexp, message: "Invalid email format" 
 end
