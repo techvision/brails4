@@ -5,7 +5,7 @@ class Attempt
   field :solved, type: Boolean, default: false
   field :points, type: Integer, default: 0
 
-  belongs_to :user
+  belongs_to :profile
   belongs_to :question
 
   validates :count, numericality: { only_integer: true }

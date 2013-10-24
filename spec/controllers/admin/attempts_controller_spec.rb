@@ -4,12 +4,11 @@ describe Admin::AttemptsController do
   login(:admin)
   let(:user){ FactoryGirl.create(:user)}
   let(:level){ FactoryGirl.create(:level)}
+  let(:question) { level.topics.first.contents.first.questions.first}
+  let(:attempt) { FactoryGirl.create(:attempt,user_id: user.id, question_id: question.id )}
 
   describe "GET #index" do
     it "assigns an array of attempts" do
-      question = level.topics.last.contents.last.questions.last
-      attempt = create(:attempt,user_id: user.id, question_id: question.id )
-
       get :index, user_id: user.id
 
       page_attempts = assigns[:attempts]
@@ -18,9 +17,6 @@ describe Admin::AttemptsController do
     end
 
     it "renders the :index view" do
-      question = level.topics.last.contents.last.questions.last
-      attempt = create(:attempt,user_id: user.id, question_id: question.id )
-
       get :index, user_id: user.id
 
       expect(response).to render_template :index
@@ -29,9 +25,6 @@ describe Admin::AttemptsController do
 
   describe "GET #show" do
     it "assigns the requested attempt to @attempt" do
-      question = level.topics.last.contents.last.questions.last
-      attempt = create(:attempt,user_id: user.id, question_id: question.id )
-
       get :show, user_id: user.id, id: attempt.id
 
       page_attempt = assigns[:attempt]
@@ -40,9 +33,6 @@ describe Admin::AttemptsController do
     end
 
     it "renders the :show view" do
-      question = level.topics.last.contents.last.questions.last
-      attempt = create(:attempt,user_id: user.id, question_id: question.id )
-
       get :show, user_id: user.id, id: attempt.id
 
       expect(response).to render_template :show

@@ -40,7 +40,6 @@ class User
 
   has_one :profile
 
-
   def admin? 
     self.roles.include?('admin')
   end

@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe Level do
-  let(:level) { FactoryGirl.build(:level)}
+  let(:level) { FactoryGirl.create(:level)}
+  let(:user) { FactoryGirl.create(:user)}
 
+  it_behaves_like "Commentable"
+  
   describe "Fields" do
     it "has field called 'name'" do
       expect(level).to have_field(:name).of_type(String)
@@ -37,19 +40,17 @@ describe Level do
     # Returns true if user has achievements for all level topics
     describe "#complete?(user.id)" do
       it "returns true if the user completed level" do
-        user = build(:user)
         question = level.topics.first.contents.first.questions.first
-        correct_option = question.options.find_by(correct: true)
-        question.answer(correct_option.id, user.id)
 
+        attempt = create(:attempt, profile_id: user.profile.id, question_id: question.id, solved: true)
+        
         expect(level.complete?(user.id)).to be_true 
       end
 
       it "returns false if the user did not completed the level" do
-        user = build(:user)
         question = level.topics.first.contents.first.questions.first
-        false_option = question.options.find_by(correct: false)
-        question.answer(false_option.id, user.id)
+
+        attempt = create(:attempt, profile_id: user.profile.id, question_id: question.id, solved: true)
 
         expect(level.complete?(user.id)).to be_false
       end

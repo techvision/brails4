@@ -25,11 +25,11 @@ describe Attempt do
 
   describe "Associations" do
     it 'belongs to an user' do
-      expect(attempt).to belong_to(:user)
+      expect(attempt).to belong_to(:profile)
     end
 
     it 'belongs to a question' do
-      expect(attempt).to belong_to(:user)
+      expect(attempt).to belong_to(:question)
     end
   end
 end

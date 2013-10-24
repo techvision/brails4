@@ -17,5 +17,4 @@ class Content
   validates_attachment :audio_mp3, :audio_ogg, presence: true
   validates_attachment :audio_mp3, content_type: {:content_type => ['audio/mpeg', 'audio/mp3']}
   validates_attachment :audio_ogg, content_type: {:content_type => ['audio/ogg', 'audio/ogg']}
-
 end

@@ -4,10 +4,10 @@ describe Admin::AchievementsController do
   login(:admin)
   let (:user) { create(:user)}
   let (:topic) { create(:topic)}
+  let(:achievement) { build(:achievement, topic_id: topic.id, user_id: user.id)}
 
   describe "GET #index" do
     it "populates an array of achievements" do
-      achievements = build(:achievement, topic_id: topic.id, user_id: user.id)
       user.profile.achievements << achievements
 
       get :index, user_id: user.id
@@ -18,7 +18,8 @@ describe Admin::AchievementsController do
     end
 
     it "renders the :index view" do
-      achievements = build(:achievement, topic_id: topic.id, user_id: user.id)
+      user.profile.achievements << achievements
+      
       get :index, user_id: user.id
 
       expect(response).to render_template :index
@@ -27,7 +28,6 @@ describe Admin::AchievementsController do
 
   describe "GET #show" do
     it "assigns the requested achievement to @achievement" do
-      achievement = build(:achievement, topic_id: topic.id, user_id: user.id)
       user.profile.achievements << achievement
 
       get :show, user_id: user.id, id: achievement.id
@@ -37,7 +37,6 @@ describe Admin::AchievementsController do
     end
 
     it "renders the :show view" do
-      achievement = build(:achievement, topic_id: topic.id, user_id: user.id)
       user.profile.achievements << achievement
 
       get :show, user_id: user.id, id: achievement.id

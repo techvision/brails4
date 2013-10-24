@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe Profile do
   let(:profile) { FactoryGirl.build(:profile)}
+  let(:level) { FactoryGirl.create(:level)}
+  let(:topic1) { FactoryGirl.create(:topic, seq_number: 1)}
+  let(:topic2) { FactoryGirl.create(:topic, seq_number: 2)}
+  let(:user) { FactoryGirl.create(:user)}
 
   describe "Fields" do
     it "has a field called 'name'" do
@@ -70,12 +74,7 @@ describe Profile do
   end
 
   describe "Behavior" do
-    let(:level) { FactoryGirl.create(:level)}
-    let(:topic1) { FactoryGirl.create(:topic, seq_number: 1)}
-    let(:topic2) { FactoryGirl.create(:topic, seq_number: 2)}
-    let(:user) { FactoryGirl.create(:user)}
-
-    ##Checks profile assignments and level topics to see if user finished the previous topics
+    #Checks profile assignments and level topics to see if user finished the previous topics
     describe "#finished_previous_topics?(level_id, topic_id)" do
       it "returns true when the user finished all the level previous topics" do
         achievement = build(:achievement, topic_id: topic1.id, user_id: user.id)
@@ -89,6 +88,7 @@ describe Profile do
 
       it "returns false when the user has not finished all the level previous topics" do
         achievement = build(:achievement, topic_id: topic1.id, user_id: user.id)
+
         level.topics << topic1
         level.topics << topic2
         user.profile.achievements << achievement

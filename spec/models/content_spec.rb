@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe Content do
   let(:content) { FactoryGirl.build(:content)}
+  let(:user){ FactoryGirl.build(:user) }
+  let(:question) { content.questions.first}
+
+  it_behaves_like "Commentable"
 
   describe "Fields" do
     it "has a field called 'Title' " do
@@ -76,7 +80,7 @@ describe Content do
   end
 
   describe "Associations" do
-    it 'has embedded questions' do
+    it 'has many questions' do
       expect(content).to have_many(:questions)
     end
     
@@ -87,14 +91,10 @@ describe Content do
 
   describe "Behavior" do
     #returns true when the user has solved atempts for all the content questions
-    let(:user){ FactoryGirl.build(:user) }
-
     describe "#complete?(user.id)" do
       context "when user has completed the content" do
         it "returns true" do
-          question = content.questions.first
-          correct_option = question.options.find_by(correct: true)
-          question.answer(correct_option.id, user.id)
+          create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: true)
 
           expect(content.complete?(user.id)).to be_true
         end
@@ -102,9 +102,7 @@ describe Content do
 
       context "when user has not completed the content" do
         it "returns false" do
-          question = content.questions.first
-          correct_option = question.options.find_by(correct: false)
-          question.answer(correct_option.id, user.id)
+          create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: false)
 
           expect(content.complete?(user.id)).to be_false
         end

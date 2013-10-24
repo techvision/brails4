@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :topic do |t|
     t.title {Faker::Lorem.characters(10)}
-    t.seq_number "1"
+    t.seq_number 1
     t.contents { [ FactoryGirl.build(:content)]}
     t.questions { [ FactoryGirl.build(:question)] }
   end

@@ -5,5 +5,6 @@ FactoryGirl.define do
     l.name { Faker::Lorem.characters(10) }
     l.topics { [ FactoryGirl.build(:topic)] }
     l.bonus_questions{[ FactoryGirl.build(:question)]}
+    l.seq_number 1
   end
 end

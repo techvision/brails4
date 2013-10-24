@@ -12,10 +12,9 @@ class Question
   validates :title,:options,:difficulty, presence: true
   validates :options, length: { minimum: 3, maximum: 5}
   validate :only_one_correct_answer
-
+  
   def only_one_correct_answer
-    options = self.options.select { |option| option.correct }
-    unless options.size == 1
+    unless self.options.where(correct: true).count == 1 
       errors.add(:options, "question can only have one correct answer")
     end
   end

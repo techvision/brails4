@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe Admin::LevelsController do
   login(:admin)
+
+  let(:level) { FactoryGirl.create(:level)}
+  let(:attrs) { FactoryGirl.attributes_for(:level)}
+  let(:invalid_attrs) {FactoryGirl.attributes_for(:level, title: nil)}
   
   describe "GET #index" do
     it "populates an array of levels" do
@@ -23,8 +27,6 @@ describe Admin::LevelsController do
   describe "GET #show" do
     context "when find the level" do
       it "assigns the requested Level to @level" do
-        level = create(:level)
-
         get :show, id: level.id
         page_level = assigns[:level]
 
@@ -32,8 +34,6 @@ describe Admin::LevelsController do
       end
 
       it "renders the :show template" do
-        level = create(:level)
-
         get :show, id: level.id
 
         expect(response).to render_template :show
@@ -58,9 +58,9 @@ describe Admin::LevelsController do
   describe "GET #new" do
     it "assigns a new Level to @level" do
       get :new
-      level = assigns[:level]
+      page_level = assigns[:level]
 
-      expect(level).to_not be_nil
+      expect(page_level).to_not be_nil
     end
 
     it "renders the :new template" do
@@ -72,8 +72,6 @@ describe Admin::LevelsController do
 
   describe "GET #edit" do
     it "assigns the requested Level to @level" do
-      level = create(:level)
-
       get :edit, id: level.id
       page_level = assigns[:level]
 
@@ -81,8 +79,6 @@ describe Admin::LevelsController do
     end
 
     it "renders the :edit template" do
-      level = create(:level)
-
       get :edit, id: level.id
 
       expect(response).to render_template :edit
@@ -91,8 +87,6 @@ describe Admin::LevelsController do
 
   describe "POST #create" do
     context "with valid attributes" do
-      let(:attrs) {FactoryGirl.attributes_for(:level)}
-
       it "saves the new Level in the database" do
         expect { post :create, level: attrs}.to change(Level,:count).by(1)
       end
@@ -105,16 +99,14 @@ describe Admin::LevelsController do
     end
 
     context "with invalid attributes" do
-      let(:attrs) {FactoryGirl.attributes_for(:level, title: nil)}
-
       it "doesn't save the new Level in the database" do
-        post :create, level: attrs
+        post :create, level: invalid_attrs
 
         expect(Level.count).to_not change
       end
 
       it "redirects to the :new view" do
-        post :create, level: attrs
+        post :create, level: invalid_attrs
 
         expect(response).to redirect_to :new
       end
@@ -124,7 +116,6 @@ describe Admin::LevelsController do
   describe "PUT #update" do
     context "with valid attributes" do
       it "changes @level attributes" do
-        level = create(:level)
         attrs = attributes_for(:level, title: "New title")
 
         put :update, id: level.id, level: attrs
@@ -134,7 +125,6 @@ describe Admin::LevelsController do
       end
 
       it "redirects to the :index view" do
-        level = create(:level)
         attrs = attributes_for(:level, title: "New title")
 
         put :update, id: level.id, level: attrs
@@ -145,8 +135,7 @@ describe Admin::LevelsController do
 
     context "with invalid attributes" do
       it "doesn't changes @level attributes" do
-        level = create(:level)
-        attrs = attributes_for(:level, title: nil)
+        attributes = attributes_for(:level, title: nil)
 
         put :update, id: level.id, level: attrs
         updated_level = level.reload
@@ -155,8 +144,7 @@ describe Admin::LevelsController do
       end
 
       it "redirects to the :edit view" do
-        level = create(:level)
-        attrs = attributes_for(:level, title: nil)
+        attributes = attributes_for(:level, title: nil)
 
         put :update, id: level.id, level: attrs
 
@@ -167,14 +155,10 @@ describe Admin::LevelsController do
 
   describe "DELETE #destroy" do
     it "deletes the level" do
-      level = create(:level)
-
       expect { delete :destroy, id: level.id}.to change(Level.count).by(-1)
     end
 
     it "redirects to the :index view" do
-      level  = create(:level)
-
       delete :destroy, id: level.id
 
       expect(response).to redirect_to :index

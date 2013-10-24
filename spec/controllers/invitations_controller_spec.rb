@@ -3,6 +3,7 @@ require 'spec_helper'
 describe InvitationsController do
   login
   let(:user) { FactoryGirl.create(:user)}
+  let(:attrs) {FactoryGirl.attributes_for(:invitation)}
   
   describe "GET #new" do
     it "assigns a new feedback object" do
@@ -20,8 +21,6 @@ describe InvitationsController do
   end
 
   describe "POST #create" do
-    let(:attrs) {FactoryGirl.attributes_for(:invitation)}
-
     it "creates a new database record" do
       expect{ put :create,user_id: user.id, invitation: attrs}.to change(Invitation,:count).by(1)
     end

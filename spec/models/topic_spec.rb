@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe Topic do
   let(:topic) { FactoryGirl.build(:topic) }
+  let(:user) { FactoryGirl.create(:user)}
+  let(:level) { FactoryGirl.create(:level)}
+
+  it_behaves_like "Commentable"
 
   describe 'Fields' do
     it "has a field called 'title'" do
@@ -51,28 +55,20 @@ describe Topic do
     describe "#complete?(user_id)" do
 
       it "returns true if topic is complete" do
-        user = build(:user)
-        level = build(:level)
-        level.topics << topic
+        question = level.topics.first.questions.first
 
-        question = topic.questions.first
-        correct_option = topic.contents.first.questions.first.options.find_by(correct: true)
-
-        question.answer(correct_option.id,user.id)
+        attempt = create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: true)
 
         expect(topic.complete?(user.id)).to be_true
       end
 
       it "returns false if topic is not complete" do
-        user = build(:user)
-        level = build(:level)
         level.topics << topic
 
-        question = topic.questions.first
-        incorrect_option = topic.contents.first.questions.first.options.find_by(correct: false)
+        question = level.topics.first.questions.first
 
-        question.answer(incorrect_option.id,user.id)
-
+        attempt = create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: false)
+        
         expect(topic.complete?(user.id)).to be_false
       end
     end

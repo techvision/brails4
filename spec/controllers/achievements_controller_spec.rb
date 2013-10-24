@@ -7,10 +7,12 @@ describe AchievementsController do
   let(:topic) { level.topics.last}
   let(:achievement) { FactoryGirl.build(:achievement, user_id: user.id, topic_id: topic.id)}
 
+  before(:each) do
+    user.profile.achievements << achievement
+  end
+
   describe "GET #index" do
     it "assigns the achievements to @achievement" do
-      user.profile.achievements << achievement
-
       get :index, user_id: user.id
 
       page_achievements = assigns[:achievements]
@@ -19,18 +21,16 @@ describe AchievementsController do
     end
 
     it "renders the index view" do
-      user.profile.achievements << achievement
-
       get :index, user_id: user.id
 
       expect(reponse).to render_template :index
     end
+
+    it "can see only current user achievements"
   end
 
   describe "GET #show" do
     it "assigns the requested achievement to @achievement" do
-      user.profile.achievements << achievement
-
       get :show, user_id: user.id, id: achievement.id
 
       page_achievement = assigns[:achievement]
@@ -39,8 +39,6 @@ describe AchievementsController do
     end
 
     it "renders the show view" do
-      user.profile.achievements << achievement
-
       get :show, user_id: user.id, id: achievement.id
 
       expect(response).to render_template :show

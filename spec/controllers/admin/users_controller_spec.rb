@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe Admin::UsersController do
   login(:admin)
-  
+  let(:user) { FactoryGirl.create(:user)}
+  let(:attrs) {FactoryGirl.attributes_for(:user)}
+  let(:invalid_attrs) {FactoryGirl.attributes_for(:user, title: nil)}
+
   describe "GET #index" do
     it "populates an array of users" do
       users = 2.times {create(:user)}
@@ -23,8 +26,6 @@ describe Admin::UsersController do
   describe "GET #show" do
     context "when find the user" do
       it "assigns the requested Level to @user" do
-        user = create(:user)
-
         get :show, id: user.id
         page_user = assigns[:user]
 
@@ -32,8 +33,6 @@ describe Admin::UsersController do
       end
 
       it "renders the :show template" do
-        user = create(:user)
-
         get :show, id: user.id
 
         expect(response).to render_template :show
@@ -72,8 +71,6 @@ describe Admin::UsersController do
 
   describe "GET #edit" do
     it "assigns the requested Level to @user" do
-      user = create(:user)
-
       get :edit, id: user.id
       page_user = assigns[:user]
 
@@ -81,8 +78,6 @@ describe Admin::UsersController do
     end
 
     it "renders the :edit template" do
-      user = create(:user)
-
       get :edit, id: user.id
 
       expect(response).to render_template :edit
@@ -91,8 +86,6 @@ describe Admin::UsersController do
 
   describe "POST #create" do
     context "with valid attributes" do
-      let(:attrs) {FactoryGirl.attributes_for(:user)}
-
       it "saves the new Level in the database" do
         expect { post :create, user: attrs}.to change(Level,:count).by(1)
       end
@@ -105,16 +98,14 @@ describe Admin::UsersController do
     end
 
     context "with invalid attributes" do
-      let(:attrs) {FactoryGirl.attributes_for(:user, title: nil)}
-
       it "doesn't save the new Level in the database" do
-        post :create, user: attrs
+        post :create, user: invalid_attrs
 
         expect(Level.count).to_not change
       end
 
       it "redirects to the :new view" do
-        post :create, user: attrs
+        post :create, user: invalid_attrs
 
         expect(response).to redirect_to :new
       end
@@ -124,20 +115,18 @@ describe Admin::UsersController do
   describe "PUT #update" do
     context "with valid attributes" do
       it "changes @user attributes" do
-        user = create(:user)
-        attrs = attributes_for(:user, title: "New title")
+        attributes = attributes_for(:user, title: "New title")
 
-        put :update, id: user.id, user: attrs
+        put :update, id: user.id, user: attributes
         user.reload
 
         expect(user.title).to eq "New title"
       end
 
       it "redirects to the :index view" do
-        user = create(:user)
-        attrs = attributes_for(:user, title: "New title")
+        attributes = attributes_for(:user, title: "New title")
 
-        put :update, id: user.id, user: attrs
+        put :update, id: user.id, user: attributes
 
         expect(response).to redirect_to :index
       end
@@ -145,20 +134,14 @@ describe Admin::UsersController do
 
     context "with invalid attributes" do
       it "doesn't changes @user attributes" do
-        user = create(:user)
-        attrs = attributes_for(:user, title: nil)
-
-        put :update, id: user.id, user: attrs
+        put :update, id: user.id, user: invalid_attrs
         updated_user = user.reload
 
         expect(user).to eq updated_user
       end
 
       it "redirects to the :edit view" do
-        user = create(:user)
-        attrs = attributes_for(:user, title: nil)
-
-        put :update, id: user.id, user: attrs
+        put :update, id: user.id, user: invalid_attrs
 
         expect(response).to redirect_to :edit
       end
