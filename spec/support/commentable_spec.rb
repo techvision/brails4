@@ -9,7 +9,6 @@ shared_examples_for "Commentable" do
   describe "GET #index" do
     it "populates an array of comments" do
       commentable.comments << comment
-      debugger
       get :index, hash_key => commentable.id
 
       expect(comments).to eq(page_comments)

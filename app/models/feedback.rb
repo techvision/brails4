@@ -7,5 +7,5 @@ class Feedback
   field :text, type: String
 
   validates :name, :email, :text, presence: true
-  validates :email, with: Devise.email_regexp, message: "Invalid email format" 
+  validates_format_of :email, with: Devise.email_regexp, message: "Invalid email format" 
 end

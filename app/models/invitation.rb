@@ -10,5 +10,5 @@ class Invitation
   embedded_in :user
 
   validates :name, :email, presence: true
-  validates :email, with: Devise.email_regexp
+  validates_format_of :email, with: Devise.email_regexp, message: "Invalid email format" 
 end

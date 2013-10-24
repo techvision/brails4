@@ -3,7 +3,7 @@ require 'spec_helper'
 describe InvitationsController do
   login
   let(:user) { FactoryGirl.create(:user)}
-  let(:attrs) {FactoryGirl.attributes_for(:invitation)}
+  let(:attrs) { FactoryGirl.attributes_for(:invitation)}
   
   describe "GET #new" do
     it "assigns a new feedback object" do
