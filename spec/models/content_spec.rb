@@ -5,8 +5,6 @@ describe Content do
   let(:user){ FactoryGirl.build(:user) }
   let(:question) { content.questions.first}
 
-  it_behaves_like "Commentable"
-
   describe "Fields" do
     it "has a field called 'Title' " do
       expect(content).to have_field(:title).of_type(String)

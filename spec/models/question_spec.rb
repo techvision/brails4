@@ -5,8 +5,6 @@ describe Question do
   let(:question){ level.topics.first.contents.first.questions.first}
   let(:user) { FactoryGirl.create(:user)}
 
-  it_behaves_like "Commentable"
-
   describe "Fields" do
     it "has a field called 'Title'" do
       expect(question).to have_field(:title).of_type(String)

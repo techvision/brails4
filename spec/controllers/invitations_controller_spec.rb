@@ -22,7 +22,7 @@ describe InvitationsController do
 
   describe "POST #create" do
     it "creates a new database record" do
-      expect{ put :create,user_id: user.id, invitation: attrs}.to change(Invitation,:count).by(1)
+      expect{ put :create,user_id: user.id, invitation: attrs}.to change{Invitation.count}.by(1)
     end
 
     it "redirects to :show view" do

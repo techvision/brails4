@@ -5,8 +5,6 @@ describe Topic do
   let(:user) { FactoryGirl.create(:user)}
   let(:level) { FactoryGirl.create(:level)}
 
-  it_behaves_like "Commentable"
-
   describe 'Fields' do
     it "has a field called 'title'" do
       expect(topic).to have_field(:title).of_type(String)
@@ -53,7 +51,6 @@ describe Topic do
     #Return true if user has completed all contents and solved topic questions
 
     describe "#complete?(user_id)" do
-
       it "returns true if topic is complete" do
         question = level.topics.first.questions.first
 
@@ -68,7 +65,7 @@ describe Topic do
 
         unsolved_attempt = create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: false)
         user.profile.attempts << unsolved_attempt
-        
+
         expect(topic.complete?(user.id)).to be_false
       end
     end

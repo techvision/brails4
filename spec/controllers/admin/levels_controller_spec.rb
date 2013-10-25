@@ -6,6 +6,9 @@ describe Admin::LevelsController do
   let(:level) { FactoryGirl.create(:level)}
   let(:attrs) { FactoryGirl.attributes_for(:level)}
   let(:invalid_attrs) {FactoryGirl.attributes_for(:level, title: nil)}
+
+  it_behaves_like "Commentable"
+  it_behaves_like "Questionable"
   
   describe "GET #index" do
     it "populates an array of levels" do
@@ -155,7 +158,7 @@ describe Admin::LevelsController do
 
   describe "DELETE #destroy" do
     it "deletes the level" do
-      expect { delete :destroy, id: level.id}.to change(Level.count).by(-1)
+      expect { delete :destroy, id: level.id}.to change{Level.count}.by(-1)
     end
 
     it "redirects to the :index view" do

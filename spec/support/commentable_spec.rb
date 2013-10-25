@@ -3,8 +3,8 @@ require 'spec_helper'
 shared_examples_for "Commentable" do
   #login
   let(:comment) { FactoryGirl.build(:comment)}
-  let(:commentable) { FactoryGirl.create("#{described_class.to_s.partition("Controller")[0].downcase.singularize}".to_sym)}
-  let(:hash_key) {"#{described_class.to_s.partition('Controller')[0].downcase + '_id'}".to_sym }
+  let(:commentable) { FactoryGirl.create("#{described_class.to_s.partition('Controller')[0].partition("::")[-1].downcase.singularize}".to_sym)}
+  let(:hash_key) {"#{described_class.to_s.partition('Controller')[0].partition("::")[-1].downcase + '_id'}".to_sym }
   let(:invalid_attrs) { FactoryGirl.attributes_for(:comment, text: nil)}
   let(:attrs) { FactoryGirl.attributes_for(:comment)}
 

@@ -4,8 +4,6 @@ describe Level do
   let(:level) { FactoryGirl.create(:level)}
   let(:user) { FactoryGirl.create(:user)}
 
-  it_behaves_like "Commentable"
-  
   describe "Fields" do
     it "has field called 'name'" do
       expect(level).to have_field(:name).of_type(String)
