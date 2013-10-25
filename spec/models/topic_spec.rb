@@ -58,16 +58,16 @@ describe Topic do
         question = level.topics.first.questions.first
 
         attempt = create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: true)
+        user.profile.attempts << attempt
 
         expect(topic.complete?(user.id)).to be_true
       end
 
       it "returns false if topic is not complete" do
-        level.topics << topic
-
         question = level.topics.first.questions.first
 
-        attempt = create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: false)
+        unsolved_attempt = create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: false)
+        user.profile.attempts << unsolved_attempt
         
         expect(topic.complete?(user.id)).to be_false
       end

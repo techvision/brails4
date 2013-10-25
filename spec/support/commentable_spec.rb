@@ -1,22 +1,25 @@
 require 'spec_helper'
 
 shared_examples_for "Commentable" do
-
+  #login
   let(:comment) { FactoryGirl.build(:comment)}
   let(:commentable) { FactoryGirl.create("#{described_class.to_s.partition("Controller")[0].downcase.singularize}".to_sym)}
-  let(:hash_key) { "#{described_class.to_s.partition('Controller')[0].downcase + '_id'}".to_sym }
+  let(:hash_key) {"#{described_class.to_s.partition('Controller')[0].downcase + '_id'}".to_sym }
+  let(:invalid_attrs) { FactoryGirl.attributes_for(:comment, text: nil)}
+  let(:attrs) { FactoryGirl.attributes_for(:comment)}
+
+  before(:each) do
+    commentable.comments << comment
+  end
 
   describe "GET #index" do
     it "populates an array of comments" do
-      commentable.comments << comment
       get :index, hash_key => commentable.id
 
       expect(comments).to eq(page_comments)
     end
 
     it "renders the :index view" do
-      commentable.comments << comment
-
       get :index, hash_key => commentable.id
 
       expect(response).to render_template :index
@@ -24,11 +27,8 @@ shared_examples_for "Commentable" do
   end
 
   describe "GET #show" do
-
     context "when comment is found" do
       it "assigns the requested Comment to @comment" do
-        commentable.comments << comment
-
         get :show, id: comment.id, hash_key => commentable.id
         comment1 = assigns[:comment]
 
@@ -36,8 +36,6 @@ shared_examples_for "Commentable" do
       end
 
       it "renders the :show template" do
-        commentable.comments << comment
-
         get :show, id: comment.id, hash_key => commentable.id
         
         expect(response).to render_template :show
@@ -46,16 +44,12 @@ shared_examples_for "Commentable" do
 
     context "when comment is not found" do
       it "shows an error message" do
-       commentable.comments << comment
-
         get :show, id: "test_id", hash_key => commentable.id
 
         expect(flash[:error]).to eq "Comment could not be found"
       end
 
       it "redirects to index view" do 
-        commentable.comments << comment
-
         get :show, id: "test_id", hash_key => commentable.id
 
         expect(reponse).to redirect_to :index
@@ -67,8 +61,8 @@ shared_examples_for "Commentable" do
     it "assigns a new Comment to @comment" do
       get :new, hash_key => commentable.id
 
-      comment1 = assigns[:comment]
-      expect(comment1).to eq comment
+      page_comment = assigns[:comment]
+      expect(page_comment).to_not be_nil
     end
 
     it "renders the :new template" do
@@ -81,9 +75,9 @@ shared_examples_for "Commentable" do
   describe "GET #edit" do
     it "assigns the requested Comment to @comment" do
       get :edit, id: comment.id, hash_key => commentable.id
-      comment1 = assigns[:comment]
+      page_comment = assigns[:comment]
 
-      expect(comment).to eq comment1
+      expect(comment).to eq page_comment
     end
 
     it "renders the :edit template" do
@@ -96,14 +90,10 @@ shared_examples_for "Commentable" do
   describe "POST #create" do
     context "with valid attributes" do
       it "saves the new Comment in the database" do
-        attrs = attributes_for(:comment)
-
-        expect { post :create, hash_key => commentable.id, comment: attrs}.to change(Comment,:count).by(1)
+        expect { post :create, hash_key => commentable.id, comment: attrs}.to change{commentable.comments.count}.by(1)
       end
 
       it "redirects to the :index view" do
-        attrs = attributes_for(:comment)
-
         post :create, hash_key => commentable.id, comment: attrs
 
         expect(reponse).to redirect_to :show
@@ -112,21 +102,16 @@ shared_examples_for "Commentable" do
 
     context "with invalid attributes" do
       it "doesn't save the new Comment in the database" do
-        invalid_attrs = attributes_for(:comment, text: nil)
-        post :create, comment: invalid_attrs, hash_key => commentable.id
-
-        expect(Comment.count).to_not change
+        expect{post :create, comment: invalid_attrs, hash_key => commentable.id}.to_not change{commentable.comments.count}
       end
 
       it "redirects to the :new view" do
-        invalid_attrs = attributes_for(:comment, text: nil)
         post :create, comment: invalid_attrs, hash_key => commentable.id
 
         expect(response).to redirect_to :new
       end
 
       it "shows an error message" do
-        invalid_attrs = attributes_for(:comment, text: nil)
         post :create, comment: invalid_attrs, hash_key => commentable.id
 
         expect(flash[:error]).to eq "Comment could not be created"
@@ -167,9 +152,7 @@ shared_examples_for "Commentable" do
 
     context "with invalid attributes" do
       it "doesn't changes @comment attributes" do
-        attrs = attributes_for(:comment, text: nil)
-
-        put :update, id: comment.id, hash_key => commentable.id, comment: attrs
+        put :update, id: comment.id, hash_key => commentable.id, comment: invalid_attrs
 
         updated_comment = assigns[:comment]
 
@@ -177,17 +160,13 @@ shared_examples_for "Commentable" do
       end
 
       it "redirects to the :index view" do
-        attrs = attributes_for(:comment, text: nil)
-
-        put :update, id: comment.id, hash_key => commentable.id, comment: attrs
+        put :update, id: comment.id, hash_key => commentable.id, comment: invalid_attrs
 
         expect(reponse).to redirect_to :index
       end
 
       it "shows an error message" do
-        attrs = attributes_for(:comment, text: nil)
-
-        put :update, id: comment.id, hash_key => commentable.id, comment: attrs
+        put :update, id: comment.id, hash_key => commentable.id, comment: invalid_attrs
 
         expect(flash[:error]). to eq "Comment could not be updated"
       end
@@ -197,8 +176,6 @@ shared_examples_for "Commentable" do
   describe "DELETE #destroy" do
     context "when find the comment" do
       it "deletes the comment" do
-        commentable.comments << comment
-
         delete :destroy, id: comment.id, hash_key => commentable.id
 
         expect(Comment.count).to eq 0

@@ -38,6 +38,10 @@ describe AttemptsController do
       it "does not create a achievement database record " do
         expect{ post :create,question_id: question.id, option_id: correct_option.id }.to_not change{user.profile.achievements.count}
       end
+
+      ##TODO
+      ## I'm not sure about this...
+      it "decrements the user points"
     end
   end
 end

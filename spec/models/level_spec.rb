@@ -43,6 +43,7 @@ describe Level do
         question = level.topics.first.contents.first.questions.first
 
         attempt = create(:attempt, profile_id: user.profile.id, question_id: question.id, solved: true)
+        user.profile.attempts << attempt
         
         expect(level.complete?(user.id)).to be_true 
       end
@@ -50,8 +51,9 @@ describe Level do
       it "returns false if the user did not completed the level" do
         question = level.topics.first.contents.first.questions.first
 
-        attempt = create(:attempt, profile_id: user.profile.id, question_id: question.id, solved: true)
-
+        unsolved_attempt = create(:attempt, profile_id: user.profile.id, question_id: question.id, solved: false)
+        user.profile.attemps << unsolved_attempt
+        
         expect(level.complete?(user.id)).to be_false
       end
     end

@@ -49,7 +49,7 @@ describe Attempt do
 
         context "when user finishes the current level" do
           it "creates an achievement database record" do
-            expect{create(:attempt, user_id: user.id, question_id: question.id, solved: true) }.to change{user.profile.achievements.count}.by(1)
+            expect{create(:attempt, user_id: user.id, question_id: question.id, solved: true)}.to change{user.profile.achievements.count}.by(1)
           end
         end
       end
@@ -61,6 +61,10 @@ describe Attempt do
 
         it "do not increment the user total points" do
           expect{ create(:attempt, user_id: user.id, question_id: question.id, solved: true)}.to_not change {user.profile.total_points}
+        end
+
+        it "does not create a achievement database record" do
+          expect{ create(:attempt, question_id: question.id, option_id: correct_option.id)}.to_not change{user.profile.achievements.count}
         end
       end
     end

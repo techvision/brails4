@@ -94,7 +94,8 @@ describe Content do
     describe "#complete?(user.id)" do
       context "when user has completed the content" do
         it "returns true" do
-          create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: true)
+          attempt = create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: true)
+          user.profile.attempts << attempt
 
           expect(content.complete?(user.id)).to be_true
         end
@@ -102,7 +103,8 @@ describe Content do
 
       context "when user has not completed the content" do
         it "returns false" do
-          create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: false)
+          unsolved_attempt = create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: false)
+          user.profile.attempts << unsolved_attempt
 
           expect(content.complete?(user.id)).to be_false
         end

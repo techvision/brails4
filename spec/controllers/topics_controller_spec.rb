@@ -35,6 +35,9 @@ describe TopicsController do
 
         expect(response).to render_template :show
       end
+
+      it "increments the current user points by 1"
+      
     end
 
     context "when user did not finished previous topics" do
