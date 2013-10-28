@@ -8,9 +8,6 @@ describe Admin::TopicsController do
   let(:attrs) {FactoryGirl.attributes_for(:topic)}
   let(:invalid_attrs) {FactoryGirl.attributes_for(:topic, title: nil)}
 
-  it_behaves_like "Commentable"
-  it_behaves_like "Questionable"
-
   describe "GET #index" do
     it "populates an array of topics" do
       get :index, level_id: level.id
@@ -23,7 +20,7 @@ describe Admin::TopicsController do
     it "renders the :index view" do
       get :index, level_id: level.id
 
-      expect(response).to render_template(:index)
+      expect(response).to render_template :index 
     end
   end
 
@@ -40,20 +37,6 @@ describe Admin::TopicsController do
         get :show, id: topic.id, level_id: level.id
 
         expect(response).to render_template :show
-      end
-    end
-
-    context "when can not find the topic" do
-      it "shows an error message" do
-        get :show, id: "test", level_id: level.id
-
-        expect(flash[:error]).to eq "Could not find the specified Topic"
-      end
-
-      it "redirects to index page" do
-        get :show, id: "test", level_id: level.id
-
-        expect(response).to redirect_to :index
       end
     end
   end
@@ -97,7 +80,7 @@ describe Admin::TopicsController do
       it "redirects to the :show view" do
         post :create, topic: attrs, level_id: level.id
 
-        expect(response).to redirect_to :show
+        expect(response).to redirect_to admin_topic_path
       end
     end
 
@@ -109,7 +92,7 @@ describe Admin::TopicsController do
       it "redirects to the :new view" do
         post :create, topic: invalid_attrs, level_id: level.id
 
-        expect(response).to redirect_to :new
+        expect(response).to redirect_to new_admin_level_topic_path
       end
     end
   end
@@ -119,22 +102,24 @@ describe Admin::TopicsController do
       it "changes @topic attributes" do
         attributes = attributes_for(:topic, title: "New title")
 
-        put :update, id: topic.id, level_id: level.id, topic: attrs
+        put :update, id: topic.id, level_id: level.id, topic: attributes
         topic.reload
 
         expect(topic.title).to eq "New title"
       end
 
-      it "redirects to the :index view" do
-        put :update, id: topic.id, level_id: level.id, topic: attrs
+      it "redirects to the :show view" do
+        attributes = attributes_for(:topic, title: "New title")
 
-        expect(response).to redirect_to :index
+        put :update, id: topic.id, level_id: level.id, topic: attributes
+
+        expect(response).to redirect_to admin_topic_path(topic)
       end
     end
 
     context "with invalid attributes" do
       it "doesn't changes @topic attributes" do
-        put :update, id: topic.id, level_id: level.id,topic: invalid_attrs
+        put :update, id: topic.id, level_id: level.id, topic: invalid_attrs
         updated_topic = assigns[:topic]
 
         expect(topic).to eq updated_topic
@@ -143,7 +128,7 @@ describe Admin::TopicsController do
       it "redirects to the :edit view" do
         put :update, id: topic.id, level_id: level.id, topic: invalid_attrs
 
-        expect(response).to redirect_to :edit
+        expect(response).to redirect_to edit_admin_topic_path
       end
     end
   end
@@ -156,7 +141,7 @@ describe Admin::TopicsController do
     it "redirects to the :index view" do
       delete :destroy, id: topic.id, level_id: level.id
 
-      expect(response).to redirect_to :index
+      expect(response).to redirect_to admin_level_topics_path(level)
     end
   end
 end

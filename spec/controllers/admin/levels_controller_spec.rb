@@ -5,7 +5,7 @@ describe Admin::LevelsController do
 
   let(:level) { FactoryGirl.create(:level)}
   let(:attrs) { FactoryGirl.attributes_for(:level)}
-  let(:invalid_attrs) {FactoryGirl.attributes_for(:level, title: nil)}
+  let(:invalid_attrs) { FactoryGirl.attributes_for(:level, title: nil)}
 
   describe "GET #index" do
     it "populates an array of levels" do
@@ -37,20 +37,6 @@ describe Admin::LevelsController do
         get :show, id: level.id
 
         expect(response).to render_template :show
-      end
-    end
-
-    context "when can not find the level" do
-      it "shows an error message" do
-        get :show, id: "test"
-
-        expect(flash[:error]).to eq "Could not find the specified Level"
-      end
-
-      it "redirects to index page" do
-        get :show, id: "test"
-
-        expect(response).to redirect_to :index
       end
     end
   end
@@ -94,7 +80,7 @@ describe Admin::LevelsController do
       it "redirects to the :show view" do
         post :create, level: attrs
 
-        expect(response).to redirect_to :show
+        expect(response).to redirect_to admin_level_path
       end
     end
 
@@ -105,10 +91,10 @@ describe Admin::LevelsController do
         expect(Level.count).to_not change
       end
 
-      it "redirects to the :new view" do
+      it "render the :new view" do
         post :create, level: invalid_attrs
 
-        expect(response).to redirect_to :new
+        expect(response).to render_template :new
       end
     end
   end
@@ -116,26 +102,26 @@ describe Admin::LevelsController do
   describe "PUT #update" do
     context "with valid attributes" do
       it "changes @level attributes" do
-        attrs = attributes_for(:level, title: "New title")
+        attributes = attributes_for(:level, name: "New title")
 
-        put :update, id: level.id, level: attrs
+        put :update, id: level.id, level: attributes
         level.reload
 
-        expect(level.title).to eq "New title"
+        expect(level.name).to eq "New title"
       end
 
-      it "redirects to the :index view" do
-        attrs = attributes_for(:level, title: "New title")
+      it "redirects to the :show view" do
+        attributes = attributes_for(:level, name: "New title")
 
-        put :update, id: level.id, level: attrs
+        put :update, id: level.id, level: attributes
 
-        expect(response).to redirect_to :index
+        expect(response).to redirect_to admin_level_path
       end
     end
 
     context "with invalid attributes" do
       it "doesn't changes @level attributes" do
-        attributes = attributes_for(:level, title: nil)
+        attributes = attributes_for(:level, name: nil)
 
         put :update, id: level.id, level: attrs
         updated_level = level.reload
@@ -143,25 +129,25 @@ describe Admin::LevelsController do
         expect(level).to eq updated_level
       end
 
-      it "redirects to the :edit view" do
-        attributes = attributes_for(:level, title: nil)
+      it "renders the :edit view" do
+        attributes = attributes_for(:level, name: nil)
 
         put :update, id: level.id, level: attrs
 
-        expect(response).to redirect_to :edit
+        expect(response).to render_template :edit
       end
     end
   end
 
   describe "DELETE #destroy" do
     it "deletes the level" do
-      expect { delete :destroy, id: level.id}.to change{Level.count}.by(-1)
+      expect { delete :destroy, id: level.id}.to change(Level,:count).by(-1)
     end
 
     it "redirects to the :index view" do
       delete :destroy, id: level.id
 
-      expect(response).to redirect_to :index
+      expect(response).to redirect_to admin_levels_path
     end
   end
 end

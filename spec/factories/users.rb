@@ -5,5 +5,6 @@ FactoryGirl.define do
     u.email { Faker::Internet.email }
     u.password { Faker::Lorem.characters(10) }
     u.profile { FactoryGirl.build(:profile) }
+    u.roles { ['student']}
   end
 end
