@@ -7,9 +7,6 @@ describe Admin::LevelsController do
   let(:attrs) { FactoryGirl.attributes_for(:level)}
   let(:invalid_attrs) {FactoryGirl.attributes_for(:level, title: nil)}
 
-  it_behaves_like "Commentable"
-  it_behaves_like "Questionable"
-  
   describe "GET #index" do
     it "populates an array of levels" do
       levels = 2.times {create(:level)}

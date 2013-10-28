@@ -8,6 +8,9 @@ describe Admin::TopicsController do
   let(:attrs) {FactoryGirl.attributes_for(:topic)}
   let(:invalid_attrs) {FactoryGirl.attributes_for(:topic, title: nil)}
 
+  it_behaves_like "Commentable"
+  it_behaves_like "Questionable"
+
   describe "GET #index" do
     it "populates an array of topics" do
       get :index, level_id: level.id

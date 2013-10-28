@@ -7,6 +7,9 @@ describe Admin::ContentsController do
   let(:attrs) {FactoryGirl.attributes_for(:content)}
   let(:invalid_attrs) {FactoryGirl.attributes_for(:content, title: nil)}
 
+  it_behaves_like "Commentable"
+  it_behaves_like "Questionable"
+
   it "can upload a mp3 audio file"
   it "can upload a ogg audio file"
 
