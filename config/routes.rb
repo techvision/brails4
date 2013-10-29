@@ -23,10 +23,11 @@ Brails::Application.routes.draw do
 
     resources :users do
       resources :invitations, except: [:new, :create]
-      resources :feedbacks, only: [:index, :show]
       resources :achievements, only: [:index, :show]
       resources :attempts, only: [:index, :show]
     end
+
+    resources :feedbacks, only: [:index, :show]
   end
 
   resources :levels, only: [:show, :index] do
@@ -50,7 +51,7 @@ Brails::Application.routes.draw do
 
   resources :users, only: [:show,:edit,:update] do
     resources :invitations, only: [:new, :create]
-    resources :feedbacks, only: [:new, :create]
     resources :achievements, only: [:index, :show]
   end
+  resources :feedbacks, only: [:new, :create]
 end
