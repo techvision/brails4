@@ -23,7 +23,8 @@ class Attempt
         attempt.count++
         if question.answer(option_id)
           attempt.solved = true
-          attemp.points = question.difficulty / attempt.count
+          attempt.points = question.difficulty / attempt.count
+          user.profile.points += attempt.points
         end
         attempt.save
         return true     

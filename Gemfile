@@ -30,7 +30,7 @@ gem 'devise_invitable'
 
 #TODO
 #REPLACE CANCAN FOR Authorize gem
-gem 'cancan'
+gem 'authority'
 gem 'coveralls', require: false
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "mongoid-simple-roles", git: 'git://github.com/gerson-scanapieco/mongoid-simple-roles'

@@ -1,0 +1,57 @@
+- model_class = Content
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
+
+%p
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
+  = @content.title
+%p
+  %strong= model_class.human_attribute_name(:body) + ':'
+  %br
+  = @content.body
+%p
+  %strong= model_class.human_attribute_name(:summary) + ':'
+  %br
+  = @content.summary
+%p
+  %strong= model_class.human_attribute_name(:audio_mp3_file_name) + ':'
+  %br
+  = @content.audio_mp3_file_name
+%p
+  %strong= model_class.human_attribute_name(:audio_mp3_content_type) + ':'
+  %br
+  = @content.audio_mp3_content_type
+%p
+  %strong= model_class.human_attribute_name(:audio_mp3_file_size) + ':'
+  %br
+  = @content.audio_mp3_file_size
+%p
+  %strong= model_class.human_attribute_name(:audio_mp3_updated_at) + ':'
+  %br
+  = @content.audio_mp3_updated_at
+%p
+  %strong= model_class.human_attribute_name(:audio_ogg_file_name) + ':'
+  %br
+  = @content.audio_ogg_file_name
+%p
+  %strong= model_class.human_attribute_name(:audio_ogg_content_type) + ':'
+  %br
+  = @content.audio_ogg_content_type
+%p
+  %strong= model_class.human_attribute_name(:audio_ogg_file_size) + ':'
+  %br
+  = @content.audio_ogg_file_size
+%p
+  %strong= model_class.human_attribute_name(:audio_ogg_updated_at) + ':'
+  %br
+  = @content.audio_ogg_updated_at
+%p
+  %strong= model_class.human_attribute_name(:topic_id) + ':'
+  %br
+  = @content.topic_id
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), content_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_content_path(@content), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), content_path(@content), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
