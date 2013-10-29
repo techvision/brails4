@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Question do
   let(:level) { FactoryGirl.create(:level)}
   let(:question){ level.topics.first.contents.first.questions.first}
-  let(:user) { FactoryGirl.create(:user)}
+  let(:profile) { FactoryGirl.create(:profile)}
+  let(:user) { profile.user}
 
   describe "Fields" do
     it "has a field called 'Title'" do
@@ -65,7 +66,7 @@ describe Question do
     describe "#answered?(user.id)" do
       context "when question is already answered" do
         it "returns true" do
-          solved_attempt = create(:attempt, profile_id: user.profile.id, question_id: question.id, solved: true)
+          solved_attempt = build(:attempt, profile_id: profile.id, question_id: question.id, solved: true)
           user.profile.attempts << solved_attempt
 
           expect(question.answered?(user.id)).to be_true
@@ -74,7 +75,7 @@ describe Question do
 
       context "when question is not answered yet" do
         it "returns false" do
-          unsolved_attempt = create(:attempt, profile_id: user.profile.id, question_id: question.id, solved: false)
+          unsolved_attempt = build(:attempt, profile_id: profile.id, question_id: question.id, solved: false)
           user.profile.attempts << unsolved_attempt
           
           expect(question.answered?(user.id)).to be_false

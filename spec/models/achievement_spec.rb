@@ -14,10 +14,6 @@ describe Achievement do
       expect(achievement).to be_valid
     end
 
-    it "is invalid without an user_id" do
-      expect(achievement).to validate_presence_of(:user_id)
-    end
-
     it "is invalid without a topic_id" do
       expect(achievement).to validate_presence_of(:topic_id)
     end
@@ -28,8 +24,8 @@ describe Achievement do
   end
 
   describe "Associations" do
-    it "belongs to an user" do
-      expect(achievement).to belong_to :user
+    it "is embedded in an user profile" do
+      expect(achievement).to be_embedded_in :profile
     end
 
     it "belongs to a topic" do

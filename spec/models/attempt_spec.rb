@@ -1,10 +1,13 @@
 require 'spec_helper'
 
 describe Attempt do
-  let(:user) { FactoryGirl.create(:user)}
+  let(:profile) { FactoryGirl.create(:profile)}
   let(:level) { FactoryGirl.create(:level)}
   let(:attempt) { FactoryGirl.build(:attempt)}
   let(:question) { level.topics.first.contents.first.questions.first}
+  let(:user) { profile.user }
+  let(:correct_option) { question.options.find_by(correct: true)}
+  let(:incorrect_option) { question.options.find_by(correct: false)}
 
   describe "Fields" do
     it "has a field called 'Count'" do
@@ -36,35 +39,37 @@ describe Attempt do
     end
   end
 
+  #TODO
+  #IMPLEMENT CREATE_ATTEMPT MODEL METHOD
   describe "Behavior" do
     describe "#create_attempt(option_id, question_id, user_id)" do
       context "when correct option is selected" do
         it "creates a solved attempt database record" do
-          expect{ create(:attempt, user_id: user.id, question_id: question.id, solved: true)}.to change {user.profile.attempts.solved}.by(1)
+          expect{ create_attempt(question_id: question.id, option_id: correct_option.id, user_id: user.id)}.to change {profile.attempts.solved}.by(1)
         end
 
         it "increments the user total points" do
-          expect{ create(:attempt, user_id: user.id, question_id: question.id, solved: true)}.to change {user.profile.total_points}.by(1)
+          expect{ create_attempt(question_id: question.id, option_id: correct_option.id, user_id: user.id)}.to change {profile.total_points}.by(1)
         end
 
         context "when user finishes the current level" do
           it "creates an achievement database record" do
-            expect{create(:attempt, user_id: user.id, question_id: question.id, solved: true)}.to change{user.profile.achievements.count}.by(1)
+            expect{ create_attempt(question_id: question.id, option_id: correct_option.id, user_id: user.id)}.to change{profile.achievements.count}.by(1)
           end
         end
       end
 
       context "when incorrect options is selected" do
         it "creates an unsolved attempt database record" do
-          expect{ create(:attempt, user_id: user.id, question_id: question.id, solved: false)}.to change {user.profile.attempts.unsolved}.by(1)
+          expect{ create_attempt(question_id: question.id, option_id: incorrect_option.id, user_id: user.id)}.to change {user.profile.attempts.unsolved}.by(1)
         end
 
         it "do not increment the user total points" do
-          expect{ create(:attempt, user_id: user.id, question_id: question.id, solved: true)}.to_not change {user.profile.total_points}
+          expect{ create_attempt(question_id: question.id, option_id: incorrect_option.id, user_id: user.id)}.to_not change {user.profile.total_points}
         end
 
         it "does not create a achievement database record" do
-          expect{ create(:attempt, question_id: question.id, option_id: correct_option.id)}.to_not change{user.profile.achievements.count}
+          expect{ create_attempt(question_id: question.id, option_id: incorrect_option.id, user_id: user.id)}.to_not change{user.profile.achievements.count}
         end
       end
     end

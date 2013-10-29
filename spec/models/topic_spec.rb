@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe Topic do
-  let(:topic) { FactoryGirl.build(:topic) }
-  let(:user) { FactoryGirl.create(:user)}
+  let(:profile) { FactoryGirl.create(:profile)}
   let(:level) { FactoryGirl.create(:level)}
+  let(:topic) { level.topics.first }
+  let(:user)  { profile.user}
+  let(:topic_question) { topic.questions.first}
+  let(:content_question) { topic.contents.first.questions.first}
 
   describe 'Fields' do
     it "has a field called 'title'" do
@@ -48,23 +51,22 @@ describe Topic do
   end
 
   describe 'Behavior' do
-    #Return true if user has completed all contents and solved topic questions
-
     describe "#complete?(user_id)" do
       it "returns true if topic is complete" do
-        question = level.topics.first.questions.first
+        
+        attempt = build(:attempt, question_id: topic_question.id, profile_id: profile.id, solved: true)
+        content_question_attempt = build(:attempt, question_id: content_question.id, profile_id: profile.id, solved: true)
 
-        attempt = create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: true)
-        user.profile.attempts << attempt
+        profile.attempts << attempt
+        profile.attempts << content_question_attempt
 
         expect(topic.complete?(user.id)).to be_true
       end
 
       it "returns false if topic is not complete" do
-        question = level.topics.first.questions.first
+        unsolved_attempt = build(:attempt, question_id: topic_question.id, profile_id: profile.id, solved: false)
 
-        unsolved_attempt = create(:attempt, question_id: question.id, profile_id: user.profile.id, solved: false)
-        user.profile.attempts << unsolved_attempt
+        profile.attempts << unsolved_attempt
 
         expect(topic.complete?(user.id)).to be_false
       end

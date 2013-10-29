@@ -10,7 +10,6 @@ class Profile
 
   belongs_to :user
   has_many :attempts
-  embeds_many :invitations
   embeds_many :achievements
 
   validates :name, :birthdate, :gender, :address, :country, presence: true

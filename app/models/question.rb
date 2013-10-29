@@ -18,4 +18,15 @@ class Question
       errors.add(:options, "question can only have one correct answer")
     end
   end
+
+  # Returns True when user has a solved attempt for the question
+  def answered?(user_id)
+    user = User.find(user_id)
+    user.profile.attempts.solved.each do |attempt|
+      if attempt.question_id == self.id
+        return true
+      end
+    end
+    return false
+  end
 end

@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe Profile do
-  let(:profile) { FactoryGirl.build(:profile)}
   let(:level) { FactoryGirl.create(:level)}
   let(:topic1) { FactoryGirl.create(:topic, seq_number: 1)}
   let(:topic2) { FactoryGirl.create(:topic, seq_number: 2)}
-  let(:user) { FactoryGirl.create(:user)}
+  let(:profile) { FactoryGirl.create(:profile)}
+  let(:user) { profile.user}
 
   describe "Fields" do
     it "has a field called 'name'" do
@@ -68,8 +68,8 @@ describe Profile do
       expect(profile).to have_many(:attempts)
     end
 
-    it "embeds many 'invitations'" do
-      expect(profile).to embed_many(:invitations)
+    it "embeds many Achievements" do
+      expect(profile).to embed_many(:achievements)
     end
   end
 
@@ -77,7 +77,7 @@ describe Profile do
     #Checks profile assignments and level topics to see if user finished the previous topics
     describe "#finished_previous_topics?(level_id, topic_id)" do
       it "returns true when the user finished all the level previous topics" do
-        achievement = build(:achievement, topic_id: topic1.id, user_id: user.id)
+        achievement = build(:achievement, topic_id: topic1.id)
 
         level.topics << topic1
         level.topics << topic2
@@ -87,7 +87,7 @@ describe Profile do
       end
 
       it "returns false when the user has not finished all the level previous topics" do
-        achievement = build(:achievement, topic_id: topic1.id, user_id: user.id)
+        achievement = build(:achievement, topic_id: topic1.id)
 
         level.topics << topic1
         level.topics << topic2

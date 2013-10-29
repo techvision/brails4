@@ -27,6 +27,9 @@ gem 'jbuilder', '~> 1.2'
 gem 'mongoid', git: 'git://github.com/mongoid/mongoid.git'
 gem 'devise'
 gem 'devise_invitable'
+
+#TODO
+#REPLACE CANCAN FOR Authorize gem
 gem 'cancan'
 gem 'coveralls', require: false
 gem "mongoid-paperclip", :require => "mongoid_paperclip"

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Admin::UsersController do
+describe Admin::ProfilesController do
   login(:admin)
   let(:user) { FactoryGirl.create(:user)}
-  let(:attrs) {FactoryGirl.attributes_for(:user)}
-  let(:invalid_attrs) {FactoryGirl.attributes_for(:user, title: nil)}
+  let(:attrs) { FactoryGirl.attributes_for(:user)}
+  let(:invalid_attrs) { FactoryGirl.attributes_for(:user, title: nil)}
 
   describe "GET #index" do
     it "populates an array of users" do
@@ -19,13 +19,13 @@ describe Admin::UsersController do
     it "renders the :index view" do
       get :index
 
-      expect(response).to render_template(:index)
+      expect(response).to render_template :index
     end
   end
 
   describe "GET #show" do
     context "when find the user" do
-      it "assigns the requested Level to @user" do
+      it "assigns the requested User to @user" do
         get :show, id: user.id
         page_user = assigns[:user]
 
@@ -43,7 +43,7 @@ describe Admin::UsersController do
       it "shows an error message" do
         get :show, id: "test"
 
-        expect(flash[:error]).to eq "Could not find the specified Level"
+        expect(flash[:error]).to eq "Could not find the specified User"
       end
 
       it "redirects to index page" do
@@ -55,7 +55,7 @@ describe Admin::UsersController do
   end
 
   describe "GET #new" do
-    it "assigns a new Level to @user" do
+    it "assigns a new User to @user" do
       get :new
       user = assigns[:user]
 
@@ -70,7 +70,7 @@ describe Admin::UsersController do
   end
 
   describe "GET #edit" do
-    it "assigns the requested Level to @user" do
+    it "assigns the requested User to @user" do
       get :edit, id: user.id
       page_user = assigns[:user]
 
@@ -86,28 +86,28 @@ describe Admin::UsersController do
 
   describe "POST #create" do
     context "with valid attributes" do
-      it "saves the new Level in the database" do
-        expect { post :create, user: attrs}.to change(Level,:count).by(1)
+      it "saves the new User in the database" do
+        expect { post :create, user: attrs}.to change(User,:count).by(1)
       end
 
       it "redirects to the :show view" do
         post :create, user: attrs
 
-        expect(response).to redirect_to :show
+        expect(response).to redirect_to admin_user_path(user)
       end
     end
 
     context "with invalid attributes" do
-      it "doesn't save the new Level in the database" do
+      it "doesn't save the new User in the database" do
         post :create, user: invalid_attrs
 
-        expect(Level.count).to_not change
+        expect(User.count).to_not change
       end
 
       it "redirects to the :new view" do
         post :create, user: invalid_attrs
 
-        expect(response).to redirect_to :new
+        expect(response).to redirect_to new_admin_user_path
       end
     end
   end
@@ -128,7 +128,7 @@ describe Admin::UsersController do
 
         put :update, id: user.id, user: attributes
 
-        expect(response).to redirect_to :index
+        expect(response).to redirect_to admin_users_path
       end
     end
 
@@ -143,7 +143,7 @@ describe Admin::UsersController do
       it "redirects to the :edit view" do
         put :update, id: user.id, user: invalid_attrs
 
-        expect(response).to redirect_to :edit
+        expect(response).to redirect_to edit_admin_user_path
       end
     end
   end
@@ -152,7 +152,7 @@ describe Admin::UsersController do
     it "deletes the user" do
       user = create(:user)
 
-      expect { delete :destroy, id: user.id}.to change(Level.count).by(-1)
+      expect { delete :destroy, id: user.id}.to change(User,:count).by(-1)
     end
 
     it "redirects to the :index view" do
@@ -160,7 +160,7 @@ describe Admin::UsersController do
 
       delete :destroy, id: user.id
 
-      expect(response).to redirect_to :index
+      expect(response).to redirect_to admin_users_path
     end
   end
 end
