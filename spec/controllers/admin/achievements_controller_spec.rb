@@ -2,15 +2,17 @@ require 'spec_helper'
 
 describe Admin::AchievementsController do
   login(:admin)
-  let (:user) { create(:user)}
-  let (:topic) { create(:topic)}
-  let(:achievement) { build(:achievement, topic_id: topic.id, user_id: user.id)}
+  let (:profile) { FactoryGirl.create(:profile)}
+  let (:topic) { FactoryGirl.create(:topic)}
+  let(:achievement) { FactoryGirl.build(:achievement, topic_id: topic.id)}
+
+  before(:each) do
+    profile.achievements << achievement
+  end
 
   describe "GET #index" do
     it "populates an array of achievements" do
-      user.profile.achievements << achievements
-
-      get :index, user_id: user.id
+      get :index, user_id: profile.user_id
 
       page_achievements = assigns[:achievements]
 
@@ -18,9 +20,7 @@ describe Admin::AchievementsController do
     end
 
     it "renders the :index view" do
-      user.profile.achievements << achievements
-      
-      get :index, user_id: user.id
+      get :index, user_id: profile.user_id
 
       expect(response).to render_template :index
     end
@@ -28,18 +28,14 @@ describe Admin::AchievementsController do
 
   describe "GET #show" do
     it "assigns the requested achievement to @achievement" do
-      user.profile.achievements << achievement
-
-      get :show, user_id: user.id, id: achievement.id
+      get :show, user_id: profile.user_id, id: achievement.id
       page_achievement = assigns[:achievement]
 
       expect(achievement).to eql page_achievement
     end
 
     it "renders the :show view" do
-      user.profile.achievements << achievement
-
-      get :show, user_id: user.id, id: achievement.id
+      get :show, user_id: profile.user_id, id: achievement.id
 
       expect(response).to render_template :show
     end

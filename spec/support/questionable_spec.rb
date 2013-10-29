@@ -46,20 +46,6 @@ shared_examples_for "Questionable" do |questionables|
           expect(response).to render_template :show
         end
       end
-
-      context "when question is not found" do
-        it "shows an error message" do
-          get :show, id: "test_id", hash_key => questionable.id
-
-          expect(flash[:error]).to eq "Question could not be found"
-        end
-
-        it "redirects to index view" do 
-          get :show, id: "test_id", hash_key => questionable.id
-
-          expect(reponse).to redirect_to :index
-        end
-      end
     end
 
     describe "GET #new" do
@@ -73,7 +59,7 @@ shared_examples_for "Questionable" do |questionables|
       it "renders the :new template" do
         get :new, hash_key => questionable.id
 
-        expect(reponse).to render_template :new
+        expect(response).to render_template :new
       end
     end
 
@@ -101,7 +87,7 @@ shared_examples_for "Questionable" do |questionables|
         it "redirects to the :index view" do
           post :create, hash_key => questionable.id, question: attrs
 
-          expect(reponse).to redirect_to :show
+          expect(response).to redirect_to [:admin, questionable, :question]
         end
       end
 
@@ -113,13 +99,13 @@ shared_examples_for "Questionable" do |questionables|
         it "redirects to the :new view" do
           post :create, question: invalid_attrs, hash_key => questionable.id
 
-          expect(response).to redirect_to :new
+          expect(response).to redirect_to [:admin, questionable, :question]
         end
 
         it "shows an error message" do
           post :create, question: invalid_attrs, hash_key => questionable.id
 
-          expect(flash[:error]).to eq "Question could not be created"
+          expect(flash[:error]).to eq "Question could not be created."
         end
       end
     end
@@ -127,31 +113,31 @@ shared_examples_for "Questionable" do |questionables|
     describe "PUT #update" do
       context "with valid attributes" do
         it "changes @question attributes" do
-          attrs = attributes_for(:question, text: "updated")
+          attributes = attributes_for(:question, title: "updated")
 
-          put :update, id: question.id, hash_key => questionable.id, question: attrs
+          put :update, id: question.id, hash_key => questionable.id, question: attributes
 
           updated_question = assigns[:question]
 
-          expect(updated_question.text).to eq attrs[:text]
+          expect(updated_question.title).to eq "updated"
         end
 
-        it "redirects to the :index view" do
-          attrs = attributes_for(:question, text: "updated")
+        it "redirects to the :show view" do
+          attributes = attributes_for(:question, title: "updated")
 
-          put :update, id: question.id, hash_key => questionable.id, question: attrs
+          put :update, id: question.id, hash_key => questionable.id, question: attributes
 
           updated_question = assigns[:question]
 
-          expect(reponse).to redirect_to :index
+          expect(response).to redirect_to [:admin, questionable, :question]
         end
 
         it "shows a success message" do
-          attrs = attributes_for(:question, text: "updated")
+          attributes = attributes_for(:question, title: "updated")
 
-          put :update, id: question.id, hash_key => questionable.id, question: attrs
+          put :update, id: question.id, hash_key => questionable.id, question: attributes
 
-          expect(flash[:notice]). to eq "Question successfully updated"
+          expect(flash[:notice]). to eq "Question successfully updated."
         end
       end
 
@@ -167,13 +153,13 @@ shared_examples_for "Questionable" do |questionables|
         it "redirects to the :index view" do
           put :update, id: question.id, hash_key => questionable.id, question: invalid_attrs
 
-          expect(reponse).to redirect_to :index
+          expect(response).to redirect_to [:admin, questionable, :question]
         end
 
         it "shows an error message" do
           put :update, id: question.id, hash_key => questionable.id, question: invalid_attrs
 
-          expect(flash[:error]). to eq "Question could not be updated"
+          expect(flash[:error]). to eq "Question could not be updated."
         end
       end
     end
@@ -181,29 +167,13 @@ shared_examples_for "Questionable" do |questionables|
     describe "DELETE #destroy" do
       context "when find the question" do
         it "deletes the question" do
-          delete :destroy, id: question.id, hash_key => questionable.id
-
-          expect(Question.count).to eq 0
+          expect{delete :destroy, id: question.id, hash_key => questionable.id}.to change(Question,:count).by(-1)
         end
 
         it "redirects to the :index view" do
           delete :destroy, id: question.id, hash_key => questionable.id
 
-          expect(response).to redirect_to :index
-        end
-      end
-
-      context "when can not find the question" do
-        it "shows an error message" do
-          delete :destroy, hash_key => questionable.id, id: "test"
-
-          expect(flash[:error]).to eql "Could not delete question. Question inexistent."
-        end
-
-        it "redirects to index view" do
-          delete :destroy, hash_key => questionable.id, id: "test"
-
-          expect(response).to redirect_to :index
+          expect(response).to redirect_to [:admin, questionable, :questions]
         end
       end
     end

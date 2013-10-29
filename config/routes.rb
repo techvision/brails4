@@ -8,7 +8,7 @@ Brails::Application.routes.draw do
 
   namespace :admin do
     resources :levels do
-      resources :questions, as: "bonus_questions"
+      resources :questions
       resources :topics, shallow: true
     end
 

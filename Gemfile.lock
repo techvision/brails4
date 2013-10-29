@@ -69,6 +69,7 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
+    database_cleaner (1.2.0)
     debugger (1.6.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -242,6 +243,7 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 4.0.0)
   coveralls
+  database_cleaner
   debugger
   devise
   erb2haml

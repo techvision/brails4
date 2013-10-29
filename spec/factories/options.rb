@@ -4,10 +4,9 @@ FactoryGirl.define do
   factory :option do
     text {Faker::Lorem.characters(10)}
     correct true
-  end
 
-  factory :incorrect_option, class: Option do
-    text {Faker::Lorem.characters(10)}
-    correct false
+    factory :incorrect_option do
+      correct false
+    end
   end
 end

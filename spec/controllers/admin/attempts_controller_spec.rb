@@ -2,14 +2,18 @@ require 'spec_helper'
 
 describe Admin::AttemptsController do
   login(:admin)
-  let(:user){ FactoryGirl.create(:user)}
+  let(:profile){ FactoryGirl.create(:profile)}
   let(:level){ FactoryGirl.create(:level)}
   let(:question) { level.topics.first.contents.first.questions.first}
-  let(:attempt) { FactoryGirl.create(:attempt,user_id: user.id, question_id: question.id )}
+  let(:attempt) { FactoryGirl.build(:attempt, profile_id: profile.id, question_id: question.id )}
+
+  before(:each) do
+    profile.attempts << attempt
+  end
 
   describe "GET #index" do
     it "assigns an array of attempts" do
-      get :index, user_id: user.id
+      get :index, user_id: profile.user_id
 
       page_attempts = assigns[:attempts]
 
@@ -17,7 +21,7 @@ describe Admin::AttemptsController do
     end
 
     it "renders the :index view" do
-      get :index, user_id: user.id
+      get :index, user_id: profile.user_id
 
       expect(response).to render_template :index
     end
@@ -25,7 +29,7 @@ describe Admin::AttemptsController do
 
   describe "GET #show" do
     it "assigns the requested attempt to @attempt" do
-      get :show, user_id: user.id, id: attempt.id
+      get :show, user_id: profile.user_id, id: attempt.id
 
       page_attempt = assigns[:attempt]
 
@@ -33,7 +37,7 @@ describe Admin::AttemptsController do
     end
 
     it "renders the :show view" do
-      get :show, user_id: user.id, id: attempt.id
+      get :show, user_id: profile.user_id, id: attempt.id
 
       expect(response).to render_template :show
     end

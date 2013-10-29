@@ -5,7 +5,7 @@ class Level
   field :name, type: String
 
   has_many :topics
-  has_many :bonus_questions, class_name: "Question", inverse_of: :questionable
+  has_many :questions, as: :questionable
   embeds_many :comments, as: :commentable
 
   validates :name, :topics, presence: true
