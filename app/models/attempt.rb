@@ -46,5 +46,4 @@ class Attempt
     # 
     # se tiver completado o topico
     # cria um achievement pro usuario com o topico
-  end
 end

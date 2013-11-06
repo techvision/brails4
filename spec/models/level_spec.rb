@@ -43,7 +43,7 @@ describe Level do
         attempt = build(:attempt, profile_id: profile.id, question_id: question.id, solved: true)
         profile.attempts << attempt
         
-        expect(level.complete?(user.id)).to be_true 
+        expect(level.completed?(user.id)).to be_true 
       end
 
       it "returns false if the user did not completed the level" do
@@ -52,7 +52,7 @@ describe Level do
         unsolved_attempt = build(:attempt, profile_id: profile.id, question_id: question.id, solved: false)
         profile.attempts << unsolved_attempt
         
-        expect(level.complete?(user.id)).to be_false
+        expect(level.completed?(user.id)).to be_false
       end
     end
   end

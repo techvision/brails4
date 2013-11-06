@@ -1,0 +1,29 @@
+- model_class = Attempt
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
+
+%p
+  %strong= model_class.human_attribute_name(:count) + ':'
+  %br
+  = @attempt.count
+%p
+  %strong= model_class.human_attribute_name(:solved) + ':'
+  %br
+  = @attempt.solved
+%p
+  %strong= model_class.human_attribute_name(:points) + ':'
+  %br
+  = @attempt.points
+%p
+  %strong= model_class.human_attribute_name(:profile_id) + ':'
+  %br
+  = @attempt.profile_id
+%p
+  %strong= model_class.human_attribute_name(:question_id) + ':'
+  %br
+  = @attempt.question_id
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), attempts_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_attempt_path(@attempt), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), attempt_path(@attempt), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

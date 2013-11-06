@@ -1,0 +1,24 @@
+= form_for @attempt, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :count, :class => 'control-label'
+    .controls
+      = f.text_field :count, :class => 'text_field'
+  .control-group
+    = f.label :solved, :class => 'control-label'
+    .controls
+      = f.text_field :solved, :class => 'text_field'
+  .control-group
+    = f.label :points, :class => 'control-label'
+    .controls
+      = f.text_field :points, :class => 'text_field'
+  .control-group
+    = f.label :profile_id, :class => 'control-label'
+    .controls
+      = f.text_field :profile_id, :class => 'text_field'
+  .control-group
+    = f.label :question_id, :class => 'control-label'
+    .controls
+      = f.text_field :question_id, :class => 'text_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), attempts_path, :class => 'btn'

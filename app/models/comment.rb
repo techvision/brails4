@@ -3,7 +3,8 @@ class Comment
 
   field :text, type: String
 
-  embedded_in :commentable, polymorphic: true
+  belongs_to :commentable, polymorphic: true
+  belongs_to :profile
 
   validates :text, presence: true
 end
