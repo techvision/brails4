@@ -53,7 +53,6 @@ describe Topic do
   describe 'Behavior' do
     describe "#complete?(user_id)" do
       it "returns true if topic is complete" do
-        
         attempt = build(:attempt, question_id: topic_question.id, profile_id: profile.id, solved: true)
         content_question_attempt = build(:attempt, question_id: content_question.id, profile_id: profile.id, solved: true)
 

@@ -21,7 +21,7 @@ describe Comment do
 
   describe "Associations" do
     it 'is a polymorphic association' do
-      expect(comment).to be_embedded_in(:commentable)
+      expect(comment).to belong_to(:commentable)
     end
   end
 end

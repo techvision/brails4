@@ -4,6 +4,7 @@ describe Level do
   let(:level) { FactoryGirl.create(:level)}
   let(:profile) { FactoryGirl.create(:profile)}
   let(:user) { profile.user}
+  let(:topic) { level.topics.first}
 
   describe "Fields" do
     it "has field called 'name'" do
@@ -38,20 +39,15 @@ describe Level do
   describe "Behavior" do
     describe "#complete?(user.id)" do
       it "returns true if the user completed level" do
-        question = level.topics.first.contents.first.questions.first
-
-        attempt = build(:attempt, profile_id: profile.id, question_id: question.id, solved: true)
-        profile.attempts << attempt
+        achievement = build(:achievement, topic_id: topic.id)
+        profile.achievements << achievement
         
         expect(level.completed?(user.id)).to be_true 
       end
 
       it "returns false if the user did not completed the level" do
-        question = level.topics.first.contents.first.questions.first
+        profile.achievements << []  
 
-        unsolved_attempt = build(:attempt, profile_id: profile.id, question_id: question.id, solved: false)
-        profile.attempts << unsolved_attempt
-        
         expect(level.completed?(user.id)).to be_false
       end
     end

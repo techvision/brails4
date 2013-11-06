@@ -42,34 +42,34 @@ describe Attempt do
   #TODO
   #IMPLEMENT CREATE_ATTEMPT MODEL METHOD
   describe "Behavior" do
-    describe "#create_attempt(option_id, question_id, user_id)" do
+    describe "::create_attempt(question_id,option_id, user_id)" do
       context "when correct option is selected" do
         it "creates a solved attempt database record" do
-          expect{ create_attempt(question_id: question.id, option_id: correct_option.id, user_id: user.id)}.to change {profile.attempts.solved}.by(1)
+          expect{ Attempt.create_attempt(question.id,correct_option.id, user.id)}.to change {profile.attempts.solved}.by(1)
         end
 
         it "increments the user total points" do
-          expect{ create_attempt(question_id: question.id, option_id: correct_option.id, user_id: user.id)}.to change {profile.total_points}.by(1)
+          expect{ Attempt.create_attempt(question_id: question.id, option_id: correct_option.id, user_id: user.id)}.to change {profile.total_points}.by(1)
         end
 
         context "when user finishes the current level" do
           it "creates an achievement database record" do
-            expect{ create_attempt(question_id: question.id, option_id: correct_option.id, user_id: user.id)}.to change{profile.achievements.count}.by(1)
+            expect{ Attempt.create_attempt(question_id: question.id, option_id: correct_option.id, user_id: user.id)}.to change{profile.achievements.count}.by(1)
           end
         end
       end
 
       context "when incorrect options is selected" do
         it "creates an unsolved attempt database record" do
-          expect{ create_attempt(question_id: question.id, option_id: incorrect_option.id, user_id: user.id)}.to change {user.profile.attempts.unsolved}.by(1)
+          expect{ Attempt.create_attempt(question_id: question.id, option_id: incorrect_option.id, user_id: user.id)}.to change {user.profile.attempts.unsolved}.by(1)
         end
 
         it "do not increment the user total points" do
-          expect{ create_attempt(question_id: question.id, option_id: incorrect_option.id, user_id: user.id)}.to_not change {user.profile.total_points}
+          expect{ Attempt.create_attempt(question_id: question.id, option_id: incorrect_option.id, user_id: user.id)}.to_not change {user.profile.total_points}
         end
 
         it "does not create a achievement database record" do
-          expect{ create_attempt(question_id: question.id, option_id: incorrect_option.id, user_id: user.id)}.to_not change{user.profile.achievements.count}
+          expect{ Attempt.create_attempt(question_id: question.id, option_id: incorrect_option.id, user_id: user.id)}.to_not change{user.profile.achievements.count}
         end
       end
     end

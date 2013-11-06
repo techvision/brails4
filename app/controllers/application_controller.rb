@@ -8,4 +8,14 @@ class ApplicationController < ActionController::Base
   def is_admin
     current_user.admin? if current_user
   end
+
+  #TODO
+  #should redirect to admin dashboard
+  def after_sign_in_path_for(resource)
+    if current_user.admin?
+      admin_levels_path
+    else
+      current_user_path
+    end
+  end
 end

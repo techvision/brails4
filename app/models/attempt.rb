@@ -13,9 +13,9 @@ class Attempt
   scope :solved, where(solved: true)
   scope :unsolved, where(solved: false)
 
-  def create_attempt(option_id, question_id, user_id)
+  def self.create_attempt(question_id,option_id, user_id)
     user = User.find(user_id)
-    question = Question.find(attempt.question_id)
+    question = Question.find(question_id)
     attempts = user.profile.attempts
 
     attempts.each do |attempt|
@@ -34,7 +34,7 @@ class Attempt
     user.profile.attempts << new_attempt
     return true
   end
-
+    #TODO
     # verificar se jah existe um attempt pra questao com o usuario
     # se existir:
     #  incrementa o campo count em 1
