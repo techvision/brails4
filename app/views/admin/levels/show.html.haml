@@ -12,6 +12,27 @@
   = @level.name
 
 .form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), levels_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_level_path(@level), :class => 'btn'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), level_path(@level), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+  = link_to t('.back', :default => t("helpers.links.back")), admin_levels_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_level_path(@level), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_level_path(@level), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+
+%h3 Topics
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= Topic.human_attribute_name(:id)
+      %th= Topic.human_attribute_name(:title)
+      %th= Topic.human_attribute_name(:seq_number)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @topics.each do |topic|
+      %tr
+        %td= link_to topic.id, admin_topic_path(topic)
+        %td= topic.title
+        %td= topic.seq_number
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_topic_path(topic), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_topic_path(topic), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_admin_level_topic_path(@level), :class => 'btn btn-primary'

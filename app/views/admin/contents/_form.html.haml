@@ -1,4 +1,4 @@
-= form_for @content, :html => { :class => 'form-horizontal' } do |f|
+= form_for [:admin, @content], :html => { :class => 'form-horizontal' } do |f|
   .control-group
     = f.label :title, :class => 'control-label'
     .controls
@@ -49,4 +49,4 @@
       = f.text_field :topic_id, :class => 'text_field'
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), content_path, :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_content_path, :class => 'btn'

@@ -1,7 +1,6 @@
 class Admin::TopicsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
-  authorize_resource
 
   def index
     @level = Level.find(params[:level_id])
@@ -11,6 +10,7 @@ class Admin::TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @level = Level.find(@topic.level_id)
+    @contents = @topic.contents
   end
 
   def new

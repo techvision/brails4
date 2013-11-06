@@ -15,7 +15,7 @@
   %tbody
     - @attempts.each do |attempt|
       %tr
-        %td= link_to attempt.id, attempt_path(attempt)
+        %td= link_to attempt.id, admin_attempt_path(attempt)
         %td= attempt.count
         %td= attempt.solved
         %td= attempt.points
@@ -23,7 +23,5 @@
         %td= attempt.question_id
         %td=l attempt.created_at
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_attempt_path(attempt), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), attempt_path(attempt), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-
-= link_to t('.new', :default => t("helpers.links.new")), new_attempt_path, :class => 'btn btn-primary'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_attempt_path(attempt), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_attempt_path(attempt), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'

@@ -12,7 +12,7 @@
   %tbody
     - @achievements.each do |achievement|
       %tr
-        %td= link_to achievement.id, achievement_path(achievement)
+        %td= link_to achievement.id, admin_achievement_path(achievement)
         %td= achievement.score
         %td= achievement.topic_id
         %td=l achievement.created_at

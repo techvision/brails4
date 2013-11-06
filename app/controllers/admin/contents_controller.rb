@@ -1,7 +1,6 @@
 class Admin::ContentsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
-  authorize_resource
 
   def index
     @topic = Topic.find(params[:topic_id])

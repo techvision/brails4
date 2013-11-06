@@ -1,7 +1,6 @@
 class Admin::LevelsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
-  authorize_resource
 
   def index
     @levels = Level.all.order_by("seq_number ASC")
@@ -9,6 +8,7 @@ class Admin::LevelsController < ApplicationController
 
   def show
     @level = Level.find(params[:id])
+    @topics = @level.topics
   end
 
   def new

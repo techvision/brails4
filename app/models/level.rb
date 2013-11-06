@@ -11,6 +11,9 @@ class Level
   validates :name, :topics, presence: true
   validates :seq_number, numericality: { only_integer: true, :greater_than => 0 }
 
+  #TODO
+  #Validar unicidade de seq_number
+
   # Returns true if user has achievements for all level topics
   def completed?(user_id)
     user = User.find(user_id)

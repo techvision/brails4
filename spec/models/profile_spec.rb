@@ -74,7 +74,7 @@ describe Profile do
   end
 
   describe "Behavior" do
-    #Checks profile assignments and level topics to see if user finished the previous topics
+    #Checks profile achievements and level topics to see if user finished the previous topics
     describe "#finished_previous_topics?(level_id, topic_id)" do
       it "returns true when the user finished all the level previous topics" do
         achievement = build(:achievement, topic_id: topic1.id)
