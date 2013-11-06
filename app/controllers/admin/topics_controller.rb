@@ -9,22 +9,21 @@ class Admin::TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @level = Level.find(@topic.level_id)
     @contents = @topic.contents
   end
 
   def new
-    @topic = Topic.new
     @level = Level.find(params[:level_id])
+    @topic = @level.topics.new
   end
 
   def create
     @level = Level.find(params[:level_id])
     @topic = @level.topics.build(topic_params)
     if @topic.save
-      redirect_to admin_topic_path(@topic), notice: "Topic successfully created."
+      redirect_to admin_level_path(@level), notice: "Topic successfully created."
     else
-      render action: :new, alert: "Topic could not be created."
+      render :new, alert: "Topic could not be created."
     end
   end
 

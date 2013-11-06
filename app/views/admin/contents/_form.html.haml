@@ -6,7 +6,7 @@
   .control-group
     = f.label :body, :class => 'control-label'
     .controls
-      = f.text_field :body, :class => 'text_field'
+      = f.text_field :body, :class => 'text_box'
   .control-group
     = f.label :summary, :class => 'control-label'
     .controls
@@ -16,37 +16,9 @@
     .controls
       = f.text_field :audio_mp3_file_name, :class => 'text_field'
   .control-group
-    = f.label :audio_mp3_content_type, :class => 'control-label'
-    .controls
-      = f.text_field :audio_mp3_content_type, :class => 'text_field'
-  .control-group
-    = f.label :audio_mp3_file_size, :class => 'control-label'
-    .controls
-      = f.text_field :audio_mp3_file_size, :class => 'text_field'
-  .control-group
-    = f.label :audio_mp3_updated_at, :class => 'control-label'
-    .controls
-      = f.text_field :audio_mp3_updated_at, :class => 'text_field'
-  .control-group
     = f.label :audio_ogg_file_name, :class => 'control-label'
     .controls
       = f.text_field :audio_ogg_file_name, :class => 'text_field'
-  .control-group
-    = f.label :audio_ogg_content_type, :class => 'control-label'
-    .controls
-      = f.text_field :audio_ogg_content_type, :class => 'text_field'
-  .control-group
-    = f.label :audio_ogg_file_size, :class => 'control-label'
-    .controls
-      = f.text_field :audio_ogg_file_size, :class => 'text_field'
-  .control-group
-    = f.label :audio_ogg_updated_at, :class => 'control-label'
-    .controls
-      = f.text_field :audio_ogg_updated_at, :class => 'text_field'
-  .control-group
-    = f.label :topic_id, :class => 'control-label'
-    .controls
-      = f.text_field :topic_id, :class => 'text_field'
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_content_path, :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), :back, :class => 'btn'

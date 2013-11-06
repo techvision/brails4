@@ -10,6 +10,7 @@ class Admin::ContentsController < ApplicationController
   def show
     @content = Content.find(params[:id])
     @topic = Topic.find(@content.topic_id)
+    @questions = @content.questions
   end
 
   def new

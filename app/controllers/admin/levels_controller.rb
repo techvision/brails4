@@ -49,6 +49,6 @@ class Admin::LevelsController < ApplicationController
   private
 
   def level_params
-    params.require(:level).permit(:name, :seq_number, :topics)
+    params.[:level].permit!
   end
 end

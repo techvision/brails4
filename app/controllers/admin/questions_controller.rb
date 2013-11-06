@@ -2,7 +2,6 @@ class Admin::QuestionsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
   before_filter :find_questionable
-  authorize_resource
 
   def index
     @questions = @questionable.questions.all.order_by("seq_number ASC")
@@ -13,7 +12,7 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.new
+    @question = @questionable.questions.new
   end
 
   def create
