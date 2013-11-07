@@ -13,11 +13,12 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def new
-    @question = @questionable.questions.new
-    @options = 3.times { @question.options.build}
+    @question = @questionable.questions.build
+    3.times { @question.options.build}
   end
 
   def create
+    debugger  
     @question = @questionable.questions.build(question_params)
     if @question.save
       redirect_to [:admin, @questionable, :questions], notice: "Question successfully created."
