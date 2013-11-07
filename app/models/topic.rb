@@ -12,6 +12,8 @@ class Topic
   validates :seq_number, :title, :contents, :presence => true
   validates :seq_number, numericality: { only_integer: true, :greater_than => 0 }
 
+  accepts_nested_attributes_for :contents
+
   #Return true if user has completed all contents and solved topic questions
   def complete?(user_id)
     user = User.find(user_id)

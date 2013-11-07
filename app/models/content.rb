@@ -12,11 +12,11 @@ class Content
   embeds_many :comments, as: :commentable
   has_many :questions, as: :questionable
 
-  validates :title, :body, :summary, :questions, presence: true
+  validates :title, :body, :summary, presence: true #, :questions, presence: true
   validates :title, length: { maximum: 30 }
   validates_attachment :audio_mp3, :audio_ogg, presence: true
   validates_attachment :audio_mp3, content_type: {:content_type => ['audio/mpeg', 'audio/mp3']}
-  validates_attachment :audio_ogg, content_type: {:content_type => ['audio/ogg', 'audio/ogg']}
+  validates_attachment :audio_ogg, content_type: {:content_type => ['video/ogg', 'audio/ogg', 'application/ogg', 'audio/x-vorbis+ogg']}
 
   #Returns true when the user has solved atempts for all the content questions
   def complete?(user_id)

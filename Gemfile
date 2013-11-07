@@ -24,10 +24,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'simple_form'
 gem 'mongoid', git: 'git://github.com/mongoid/mongoid.git'
 gem 'devise'
 gem 'devise_invitable'
-
 gem 'authority'
 gem 'coveralls', require: false
 gem "mongoid-paperclip", :require => "mongoid_paperclip"

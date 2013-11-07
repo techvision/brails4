@@ -23,7 +23,7 @@ class Admin::TopicsController < ApplicationController
     if @topic.save
       redirect_to admin_level_path(@level), notice: "Topic successfully created."
     else
-      render :new, alert: "Topic could not be created."
+      render :index, alert: "Topic could not be created."
     end
   end
 
@@ -55,6 +55,6 @@ class Admin::TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :seq_number)
+    params.require(:topic).permit(:title, :seq_number, content_attributes: [:title,:body,:summary, :audio_mp3, :audio_ogg])
   end
 end

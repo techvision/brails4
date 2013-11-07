@@ -56,6 +56,6 @@ class Admin::ContentsController < ApplicationController
   private
 
   def content_params
-    params.require(:content).permit(:title,:body,:summary)
+    params.require(:content).permit(:title,:body,:summary, :audio_mp3, :audio_ogg)
   end
 end

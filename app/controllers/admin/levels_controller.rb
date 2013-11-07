@@ -13,14 +13,16 @@ class Admin::LevelsController < ApplicationController
 
   def new
     @level = Level.new
+    @level.topics.build.contents.build
   end
 
   def create
+    debugger
     @level = Level.new(level_params)
     if @level.save
       redirect_to admin_level_path(@level), notice: "Level successfully created."
     else
-      render action: :new, alert: "Level could not be created."
+      render :index, alert: "Level could not be created."
     end
   end
 
@@ -42,13 +44,13 @@ class Admin::LevelsController < ApplicationController
     if @level.destroy
       redirect_to admin_levels_path, notice: "Level successfully deleted."
     else
-      render action: :index, alert: "Level could not be deleted."
+      render action: :new, alert: "Level could not be deleted."
     end
   end
 
   private
 
   def level_params
-    params.[:level].permit!
+    params.require(:level).permit(:name, :seq_number, topics_attributes: [:title, :seq_number, contents_attributes: [:title, :summary, :body, :audio_mp3, :audio_ogg ]])
   end
 end
