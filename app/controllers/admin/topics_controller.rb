@@ -2,6 +2,9 @@ class Admin::TopicsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
 
+  #TODO
+  #Fix render actions issues
+
   def index
     @level = Level.find(params[:level_id])
     @topics = @level.topics.all.order_by("seq_number ASC")
@@ -14,7 +17,8 @@ class Admin::TopicsController < ApplicationController
 
   def new
     @level = Level.find(params[:level_id])
-    @topic = @level.topics.new
+    @topic = @level.topics.build
+    @topic.contents.build
   end
 
   def create
@@ -55,6 +59,6 @@ class Admin::TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :seq_number, content_attributes: [:title,:body,:summary, :audio_mp3, :audio_ogg])
+    params.require(:topic).permit(:title, :seq_number, contents_attributes: [:title,:body,:summary, :audio_mp3, :audio_ogg])
   end
 end

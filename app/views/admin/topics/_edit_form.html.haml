@@ -1,0 +1,6 @@
+= simple_form_for [:admin, @topic], :html => { :class => 'form-horizontal' } do |f|
+  = f.input :title
+  = f.input :seq_number
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_level_path(@topic.level_id), :class => 'btn'  

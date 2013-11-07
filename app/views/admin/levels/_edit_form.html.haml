@@ -1,0 +1,6 @@
+= simple_form_for [:admin, @level], html: {class: 'form-horizontal form-validate' } do |f|
+  = f.input :name
+  = f.input :seq_number
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_levels_path, :class => 'btn'

@@ -1,6 +1,15 @@
 = simple_form_for [:admin, @level, @topic], :html => { :class => 'form-horizontal' } do |f|
   = f.input :title
   = f.input :seq_number
+
+  %h3 Content
+  = f.simple_fields_for :contents do |content_form|
+    = content_form.input :title
+    = content_form.input :summary
+    = content_form.input :body
+    = content_form.input :audio_mp3
+    = content_form.input :audio_ogg
+
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_level_path(@level), :class => 'btn'  
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_level_path(@topic.level_id), :class => 'btn'  

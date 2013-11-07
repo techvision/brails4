@@ -16,7 +16,7 @@
   = @topic.level_id
 
 .form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn'
+  = link_to t('.back', :default => t("helpers.links.back")), admin_level_path(@topic.level_id), :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_topic_path(@topic), :class => 'btn'
   = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_topic_path(@topic), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
 

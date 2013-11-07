@@ -1,0 +1,9 @@
+= simple_form_for [:admin, @content], :html => { :class => 'form-horizontal' } do |f|
+  = f.input :title
+  = f.input :summary
+  = f.input :body
+  = f.input :audio_mp3
+  = f.input :audio_ogg
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_topic_path(@content.topic_id), :class => 'btn'
