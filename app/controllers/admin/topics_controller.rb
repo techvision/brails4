@@ -13,6 +13,7 @@ class Admin::TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @contents = @topic.contents
+    @questions = @topic.questions
   end
 
   def new
@@ -25,20 +26,18 @@ class Admin::TopicsController < ApplicationController
     @level = Level.find(params[:level_id])
     @topic = @level.topics.build(topic_params)
     if @topic.save
-      redirect_to admin_level_path(@level), notice: "Topic successfully created."
+      redirect_to admin_level_topic_path(@topic), notice: "Topic successfully created."
     else
-      render :index, alert: "Topic could not be created."
+      redirect_to admin_level_path(@level), alert: "Topic could not be created."
     end
   end
 
   def edit
     @topic = Topic.find(params[:id])
-    @level = Level.find(@topic.level_id)
   end
 
   def update
     @topic = Topic.find(params[:id])
-    @level = Level.find(@topic.level_id)
     if @topic.update_attributes(topic_params)
       redirect_to admin_topic_path(@topic), notice: "Topic successfully updated."
     else
@@ -48,11 +47,10 @@ class Admin::TopicsController < ApplicationController
 
   def destroy
     @topic = Topic.find(params[:id])
-    @level = Level.find(@topic.level_id)
     if @topic.destroy
-      redirect_to admin_level_topics_path(@level), notice: "Topic successfully deleted."
+      redirect_to admin_level_path(@topic.level_id), notice: "Topic successfully deleted."
     else
-      render action: :index, alert: "Topic could not be deleted."
+      redirect_to admin_level_path(@topic.level_id), alert: "Topic could not be deleted."
     end
   end
 

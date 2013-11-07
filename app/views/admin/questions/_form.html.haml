@@ -1,15 +1,15 @@
-= form_for [:admin, @questionable, @question], :html => { :class => 'form-horizontal' } do |f|
-  .control-group
-    = f.label :title, :class => 'control-label'
-    .controls
-      = f.text_field :title, :class => 'text_field'
-  .control-group
-    = f.label :difficulty, :class => 'control-label'
-    .controls
-      = f.text_field :difficulty, :class => 'text_field'
+= simple_form_for [:admin, @questionable, @question], html: {class: 'form-horizontal form-validate'} do |f|
+  = f.input :title
+  = f.input :difficulty
+
+  %h3 Options
+  = f.simple_fields_for :options do |option_form|
+    = option_form.input :text
+    = option_form.input :correct, as: :select, include_blank: false
+
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")),:back, :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")),[:admin,@questionable], :class => 'btn'
 
 /TODO
 /Implement the creation of options here

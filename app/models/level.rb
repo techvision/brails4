@@ -4,8 +4,8 @@ class Level
   field :seq_number, type: Integer
   field :name, type: String
 
-  has_many :topics
-  has_many :questions, as: :questionable
+  has_many :topics, dependent: :destroy
+  has_many :questions, as: :questionable, dependent: :destroy
   embeds_many :comments, as: :commentable
 
   validates :name, :topics, presence: true

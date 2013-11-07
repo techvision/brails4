@@ -13,17 +13,24 @@ Brails::Application.routes.draw do
   namespace :admin do
     resources :levels do
       resources :questions
-      resources :topics, shallow: true
+      resources :topics, shallow: true do
+        resources :questions
+        resources :contents, shallow: true do
+          resources :questions
+        end
+      end
     end
 
-    resources :topics, only: [:show, :index] do
-      resources :contents, shallow: true
-      resources :questions
-    end
+    #resources :topics, only: [:show, :index] do
+    #  resources :contents, shallow: true do
+    #    resources :questions
+    #  end
+    #  resources :questions
+    #end
 
-    resources :contents do
-      resources :questions
-    end
+    #resources :contents do
+    #  resources :questions
+    #end
 
     resources :users do
       resources :invitations, except: [:new, :create]

@@ -9,13 +9,12 @@ class Admin::ContentsController < ApplicationController
 
   def show
     @content = Content.find(params[:id])
-    @topic = Topic.find(@content.topic_id)
     @questions = @content.questions
   end
 
   def new
-    @content = Content.new
     @topic = Topic.find(params[:topic_id])
+    @content = @topic.contents.build
   end
 
   def create
@@ -30,12 +29,10 @@ class Admin::ContentsController < ApplicationController
 
   def edit
     @content = Content.find(params[:id])
-    @topic = Topic.find(@content.topic_id)
   end
 
   def update
     @content = Content.find(params[:id])
-    @topic = Topic.find(@content.topic_id)
     if @content.update_attributes(content_params)
       redirect_to admin_content_path(@content), notice: "Content successfully updated."
     else
@@ -45,11 +42,10 @@ class Admin::ContentsController < ApplicationController
 
   def destroy
     @content = Content.find(params[:id])
-    @topic = Topic.find(@content.topic_id)
     if @content.destroy
-      redirect_to admin_topic_contents_path(@topic), notice: "Content successfully deleted."
+      redirect_to admin_topic_path(@content.topic_id), notice: "Content successfully deleted."
     else
-      render action: :index, alert: "Content could not be deleted."
+      redirect_to admin_topic_path(@content.topic_id), alert: "Content could not be deleted."
     end
   end
 

@@ -5,9 +5,9 @@ class Topic
   field :seq_number, type: Integer
 
   belongs_to :level
-  has_many :contents
+  has_many :contents, dependent: :destroy
   embeds_many :comments, as: :commentable
-  has_many :questions, as: :questionable
+  has_many :questions, as: :questionable, dependent: :destroy
 
   validates :seq_number, :title, :contents, :presence => true
   validates :seq_number, numericality: { only_integer: true, :greater_than => 0 }

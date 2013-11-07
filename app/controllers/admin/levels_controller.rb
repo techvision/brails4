@@ -9,6 +9,7 @@ class Admin::LevelsController < ApplicationController
   def show
     @level = Level.find(params[:id])
     @topics = @level.topics
+    @questions = @level.questions
   end
 
   def new
@@ -17,11 +18,11 @@ class Admin::LevelsController < ApplicationController
   end
 
   def create
-    debugger
     @level = Level.new(level_params)
     if @level.save
       redirect_to admin_level_path(@level), notice: "Level successfully created."
     else
+      @levels = Level.all
       render :index, alert: "Level could not be created."
     end
   end
@@ -35,7 +36,7 @@ class Admin::LevelsController < ApplicationController
     if @level.update_attributes(level_params)
       redirect_to admin_level_path(@level), notice: "Level successfully updated."
     else
-      render action: :edit, alert: "Level could not be updated."
+      render :edit, alert: "Level could not be updated."
     end
   end
 
@@ -44,7 +45,8 @@ class Admin::LevelsController < ApplicationController
     if @level.destroy
       redirect_to admin_levels_path, notice: "Level successfully deleted."
     else
-      render action: :new, alert: "Level could not be deleted."
+      @levels = Level.all
+      render :index, alert: "Level could not be deleted."
     end
   end
 
