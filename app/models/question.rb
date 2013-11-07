@@ -11,7 +11,7 @@ class Question
 
   validates :title,:options,:difficulty, presence: true
   validates :options, length: { minimum: 3, maximum: 5}
-  #validate :only_one_correct_answer
+  validate :only_one_correct_answer
 
   accepts_nested_attributes_for :options
   

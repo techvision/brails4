@@ -5,11 +5,8 @@
   %h3 Options
   = f.simple_fields_for :options do |option_form|
     = option_form.input :text
-    = option_form.input :correct, as: :boolean, include_blank: false
+    = option_form.input :correct, as: :select, include_blank: false
 
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")),[:admin, @questionable], :class => 'btn'
-
-/TODO
-/Implement the creation of options here
