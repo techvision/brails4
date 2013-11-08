@@ -1,7 +1,8 @@
-class Admin::QuestionsController < Admin::ApplicationController
+class Admin::QuestionsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
   before_filter :find_questionable, except: [:index, :show]
+  layout 'admin'
 
   def index
     @questions = @questionable.questions.all.order_by("seq_number ASC")

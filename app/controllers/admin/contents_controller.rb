@@ -1,6 +1,7 @@
-class Admin::ContentsController < Admin::ApplicationController
+class Admin::ContentsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
+  layout 'admin'
 
   def index
     @topic = Topic.find(params[:topic_id])
@@ -20,8 +21,9 @@ class Admin::ContentsController < Admin::ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @content = @topic.contents.build(content_params)
+    debugger
     if @content.save
-      redirect_to admin_content_path(@content), notice: "Content successfully created."
+      redirect_to admin_topic_path(@content.topic_id), notice: "Content successfully created."
     else
       render action: :new, alert: "Content could not be created."
     end

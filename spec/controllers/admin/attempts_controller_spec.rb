@@ -17,7 +17,7 @@ describe Admin::AttemptsController do
 
       page_attempts = assigns[:attempts]
 
-      expect(attempt).to eql page_attempts
+      expect(page_attempts).to include(attempt)
     end
 
     it "renders the :index view" do

@@ -1,6 +1,7 @@
-class Admin::ProfilesController < Admin::ApplicationController
+class Admin::ProfilesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
+  layout 'admin'
 
   def show
     @profile = User.find(params[:user_id]).profile

@@ -1,6 +1,7 @@
-class Admin::TopicsController < Admin::ApplicationController
+class Admin::TopicsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
+  layout 'admin'
 
   #TODO
   #Fix render actions issues

@@ -15,7 +15,7 @@ describe Admin::ContentsController do
       get :index, topic_id: topic.id
       page_contents = assigns[:contents]
 
-      expect(contents).to eq page_contents
+      expect(page_contents).to include(content)
     end
 
     it "renders the :index view" do
@@ -74,22 +74,20 @@ describe Admin::ContentsController do
 
   describe "POST #create" do
     context "with valid attributes" do
-      it "saves the new Content in the database" do
+      it "saves the new Content in the database", focus: true do
         expect { post :create, topic_id: topic.id, content: attrs}.to change(Content,:count).by(1)
       end
 
-      it "redirects to the :show view" do
+      it "redirects to the topic :show view" do
         post :create, topic_id: topic.id, content: attrs
 
-        expect(response).to redirect_to admin_topic_content_path
+        expect(response).to redirect_to admin_topic_path(topic)
       end
     end
 
     context "with invalid attributes" do
       it "doesn't save the new Content in the database" do
-        post :create, content: invalid_attrs, topic_id: topic.id
-
-        expect(Content.count).to_not change
+        expect{post :create, content: invalid_attrs, topic_id: topic.id}.to_not change(Content,:count)
       end
 
       it "redirects to the :new view" do
@@ -111,11 +109,11 @@ describe Admin::ContentsController do
         expect(content.title).to eq "New title"
       end
 
-      it "redirects to the :index view" do
+      it "redirects to the :show view" do
         attributes = attributes_for(:content, title: "New title")
         put :update, id: content.id,topic_id: topic.id, content: attributes
 
-        expect(response).to redirect_to admin_topic_contents_path(topic)
+        expect(response).to redirect_to admin_content_path
       end
     end
 
@@ -143,7 +141,7 @@ describe Admin::ContentsController do
     it "redirects to the :index view" do
       delete :destroy, id: content.id, topic_id: topic.id
 
-      expect(response).to redirect_to admin_topic_contents_path(topic)
+      expect(response).to redirect_to admin_topic_path(topic)
     end
   end
 end

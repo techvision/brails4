@@ -1,6 +1,7 @@
-class Admin::AttemptsController < Admin::ApplicationController
+class Admin::AttemptsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
+  layout 'admin'
 
   def index
     @user = User.find(params[:user_id])

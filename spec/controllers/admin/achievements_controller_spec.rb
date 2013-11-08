@@ -16,7 +16,7 @@ describe Admin::AchievementsController do
 
       page_achievements = assigns[:achievements]
 
-      expect(achievements).to eql page_achievements
+      expect(page_achievements).to include(achievement)
     end
 
     it "renders the :index view" do
