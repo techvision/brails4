@@ -17,7 +17,6 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    debugger
     if @user.update_attributes(user_params)
       redirect_to admin_user_path(@user), notice: "Profile successfully updated."
     else

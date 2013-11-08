@@ -2,11 +2,10 @@ require 'spec_helper'
 
 describe Admin::TopicsController do
   login(:admin)
-  let (:level) { FactoryGirl.create(:level) }
-  let(:topic) { level.topics.first}
-  let(:topics) { level.topics}
-  let(:attrs) {FactoryGirl.attributes_for(:topic)}
-  let(:invalid_attrs) {FactoryGirl.attributes_for(:topic, title: nil)}
+  let (:level) { create(:full_level) }
+  let! (:topic) { level.topics.first}
+  let (:attrs) { attributes_for(:topic)}
+  let (:invalid_attrs) { attributes_for(:topic, title: nil)}
 
   describe "GET #index" do
     it "populates an array of topics" do
@@ -14,7 +13,7 @@ describe Admin::TopicsController do
 
       page_topics = assigns[:topics]
 
-      expect(topics).to eq page_topics
+      expect(page_topics).to include(topic)
     end
 
     it "renders the :index view" do
@@ -77,10 +76,10 @@ describe Admin::TopicsController do
         expect { post :create, level_id: level.id, topic: attrs}.to change(Topic,:count).by(1)
       end
 
-      it "redirects to the :show view" do
+      it "redirects to the parent level view" do
         post :create, topic: attrs, level_id: level.id
 
-        expect(response).to redirect_to admin_topic_path
+        expect(response).to redirect_to admin_level_path(level)
       end
     end
 
@@ -92,7 +91,7 @@ describe Admin::TopicsController do
       it "redirects to the :new view" do
         post :create, topic: invalid_attrs, level_id: level.id
 
-        expect(response).to redirect_to new_admin_level_topic_path
+        expect(response).to render_template :new
       end
     end
   end
@@ -128,7 +127,7 @@ describe Admin::TopicsController do
       it "redirects to the :edit view" do
         put :update, id: topic.id, level_id: level.id, topic: invalid_attrs
 
-        expect(response).to redirect_to edit_admin_topic_path
+        expect(response).to render_template :edit
       end
     end
   end
@@ -141,7 +140,7 @@ describe Admin::TopicsController do
     it "redirects to the :index view" do
       delete :destroy, id: topic.id, level_id: level.id
 
-      expect(response).to redirect_to admin_level_topics_path(level)
+      expect(response).to redirect_to admin_level_path(level)
     end
   end
 end

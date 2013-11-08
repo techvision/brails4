@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Feedback do
-  let(:feedback) { FactoryGirl.build(:feedback)}
+  let(:feedback) { build(:feedback)}
 
   describe "Fields" do
     it "has a field called 'name'" do

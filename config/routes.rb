@@ -11,7 +11,7 @@ Brails::Application.routes.draw do
   root to: 'home#dashboard'
 
   namespace :admin do
-    resources :levels do
+    resources :levels, shallow: true do
       resources :questions
       resources :topics, shallow: true do
         resources :questions

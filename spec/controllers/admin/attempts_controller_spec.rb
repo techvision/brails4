@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Admin::AttemptsController do
   login(:admin)
-  let(:profile){ FactoryGirl.create(:profile)}
-  let(:level){ FactoryGirl.create(:level)}
+  let(:profile){ create(:profile)}
+  let(:level){ create(:full_level)}
   let(:question) { level.topics.first.contents.first.questions.first}
-  let(:attempt) { FactoryGirl.build(:attempt, profile_id: profile.id, question_id: question.id )}
+  let(:attempt) { build(:attempt, profile_id: profile.id, question_id: question.id )}
 
   before(:each) do
     profile.attempts << attempt

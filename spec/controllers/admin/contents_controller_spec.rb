@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Admin::ContentsController do
   login(:admin)
-  let(:topic) { FactoryGirl.create(:topic) }
-  let(:content) { topic.contents.first }
-  let(:attrs) {FactoryGirl.attributes_for(:content)}
-  let(:invalid_attrs) {FactoryGirl.attributes_for(:content, title: nil)}
+  let(:topic) { create(:full_topic) }
+  let!(:content) { topic.contents.first }
+  let(:attrs) { attributes_for(:full_content)}
+  let(:invalid_attrs) { attributes_for(:content, title: nil)}
 
   it "can upload a mp3 audio file"
   it "can upload a ogg audio file"
@@ -74,7 +74,7 @@ describe Admin::ContentsController do
 
   describe "POST #create" do
     context "with valid attributes" do
-      it "saves the new Content in the database", focus: true do
+      it "saves the new Content in the database" do
         expect { post :create, topic_id: topic.id, content: attrs}.to change(Content,:count).by(1)
       end
 
@@ -93,7 +93,7 @@ describe Admin::ContentsController do
       it "redirects to the :new view" do
         post :create, content: invalid_attrs, topic_id: topic.id
 
-        expect(response).to redirect_to new_admin_content_path
+        expect(response).to render_template :new
       end
     end
   end
@@ -128,7 +128,7 @@ describe Admin::ContentsController do
       it "redirects to the :edit view" do
         put :update, id: content.id, topic_id: topic.id, content: invalid_attrs
 
-        expect(response).to redirect_to edit_admin_content_path
+        expect(response).to render_template :edit
       end
     end
   end

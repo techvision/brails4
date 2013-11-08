@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Option do
-  let(:option) { FactoryGirl.build(:option)}
+  let(:option) { build(:option)}
 
   describe "Fields" do
     it "has a field called 'Text'" do
@@ -9,17 +9,13 @@ describe Option do
     end
 
     it "has a field called 'Correct'" do
-      expect(option).to have_field(:correct).of_type(Boolean)
+      expect(option).to have_field(:correct).of_type(Mongoid::Boolean)
     end
   end
 
   describe "Validations" do
     it "has a valid factory" do
       expect(option).to be_valid
-    end
-
-    it "has a valid 'correct' field value" do
-      expect(build(:option, correct: "a")).not_to be_valid
     end
 
     it "is invalid without a text value" do

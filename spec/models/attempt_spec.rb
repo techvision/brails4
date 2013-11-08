@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Attempt do
-  let(:profile) { FactoryGirl.create(:profile)}
-  let(:level) { FactoryGirl.create(:level)}
-  let(:attempt) { FactoryGirl.build(:attempt)}
+  let(:profile) { create(:profile)}
+  let(:level) { create(:full_level)}
+  let(:attempt) { build(:attempt)}
   let(:question) { level.topics.first.contents.first.questions.first}
   let(:user) { profile.user }
   let(:correct_option) { question.options.find_by(correct: true)}

@@ -21,7 +21,6 @@ class Admin::ContentsController < ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @content = @topic.contents.build(content_params)
-    debugger
     if @content.save
       redirect_to admin_topic_path(@content.topic_id), notice: "Content successfully created."
     else

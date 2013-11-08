@@ -3,25 +3,23 @@ require 'spec_helper'
 shared_examples_for "Questionable" do |questionables|
   questionables.each do |elem|
     #login
-    let(:question) { FactoryGirl.build(:question)}
-    let(:invalid_attrs) { FactoryGirl.attributes_for(:question, title: nil)}
-    let(:attrs) { FactoryGirl.attributes_for(:question)}
-    let(:questionable) { FactoryGirl.create((elem.to_s.downcase.singularize).to_sym)}
+    let(:question) { build(:question)}
+    let(:invalid_attrs) { attributes_for(:question, title: nil)}
+    let(:attrs) { {"question"=> {"title"=>"bonus question", "difficulty"=>"2", "options_attributes"=>{"0"=>{"text"=>"fdasfdsf", "correct"=>"false"}, "1"=>{"text"=>"dafdsfasf", "correct"=>"false"}, "2"=>{"text"=>"dfsafadsfsf", "correct"=>"true"}}}}}
+    let!(:questionable) { create(("full_" + elem.to_s.downcase.singularize).to_sym)}
     let(:hash_key) { (elem.to_s.downcase + "_id").to_sym }
 
     before(:each) do
-      if questionable.class == Level
-        questionable.bonus_questions << question
-      else
-        questionable.questions << question
-      end
+      questionable.questions << question
     end
 
     describe "GET #index" do
       it "populates an array of questions" do
         get :index, hash_key => questionable.id
 
-        expect(questions).to eq(page_questions)
+        page_questions = assigns[:questions]
+
+        expect(page_questions).to include(question)
       end
 
       it "renders the :index view" do
@@ -35,9 +33,9 @@ shared_examples_for "Questionable" do |questionables|
       context "when question is found" do
         it "assigns the requested Question to @question" do
           get :show, id: question.id, hash_key => questionable.id
-          question1 = assigns[:question]
+          page_question = assigns[:question]
 
-          expect(question).to eq question1
+          expect(question).to eq page_question
         end
 
         it "renders the :show template" do
@@ -53,6 +51,7 @@ shared_examples_for "Questionable" do |questionables|
         get :new, hash_key => questionable.id
 
         page_question = assigns[:question]
+
         expect(page_question).to_not be_nil
       end
 
@@ -66,6 +65,7 @@ shared_examples_for "Questionable" do |questionables|
     describe "GET #edit" do
       it "assigns the requested Question to @question" do
         get :edit, id: question.id, hash_key => questionable.id
+
         page_question = assigns[:question]
 
         expect(question).to eq page_question
@@ -81,7 +81,7 @@ shared_examples_for "Questionable" do |questionables|
     describe "POST #create" do
       context "with valid attributes" do
         it "saves the new Question in the database" do
-          expect { post :create, hash_key => questionable.id, question: attrs}.to change{questionable.questions.count}.by(1)
+          expect { post :create, hash_key => questionable.id, question: attrs}.to change(Question, :count).by(1)
         end
 
         it "redirects to the :index view" do
@@ -93,19 +93,13 @@ shared_examples_for "Questionable" do |questionables|
 
       context "with invalid attributes" do
         it "doesn't save the new Question in the database" do
-          expect{post :create, question: invalid_attrs, hash_key => questionable.id}.to_not change{questionable.questions.count}
+          expect{post :create, question: invalid_attrs, hash_key => questionable.id}.to_not change(Question, :count)
         end
 
         it "redirects to the :new view" do
           post :create, question: invalid_attrs, hash_key => questionable.id
 
           expect(response).to redirect_to [:admin, questionable, :question]
-        end
-
-        it "shows an error message" do
-          post :create, question: invalid_attrs, hash_key => questionable.id
-
-          expect(flash[:error]).to eq "Question could not be created."
         end
       end
     end
@@ -155,12 +149,6 @@ shared_examples_for "Questionable" do |questionables|
 
           expect(response).to redirect_to [:admin, questionable, :question]
         end
-
-        it "shows an error message" do
-          put :update, id: question.id, hash_key => questionable.id, question: invalid_attrs
-
-          expect(flash[:error]). to eq "Question could not be updated."
-        end
       end
     end
 
@@ -173,7 +161,7 @@ shared_examples_for "Questionable" do |questionables|
         it "redirects to the :index view" do
           delete :destroy, id: question.id, hash_key => questionable.id
 
-          expect(response).to redirect_to [:admin, questionable, :questions]
+          expect(response).to redirect_to [:admin, questionable]
         end
       end
     end

@@ -1,12 +1,14 @@
 require 'spec_helper'
 
 describe Topic do
-  let(:profile) { FactoryGirl.create(:profile)}
-  let(:level) { FactoryGirl.create(:level)}
+  let(:profile) { create(:profile)}
+  let(:level) { create(:full_level)}
   let(:topic) { level.topics.first }
   let(:user)  { profile.user}
   let(:topic_question) { topic.questions.first}
   let(:content_question) { topic.contents.first.questions.first}
+
+  it{ should accept_nested_attributes_for(:contents)}
 
   describe 'Fields' do
     it "has a field called 'title'" do

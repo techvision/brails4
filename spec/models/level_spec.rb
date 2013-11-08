@@ -1,10 +1,15 @@
 require 'spec_helper'
 
 describe Level do
-  let(:level) { FactoryGirl.create(:level)}
-  let(:profile) { FactoryGirl.create(:profile)}
+  let(:level) { create(:full_level)}
+  let(:profile) { create(:profile)}
   let(:user) { profile.user}
   let(:topic) { level.topics.first}
+
+  #TODO
+  #Refactor tests to use the implicit subject sintax
+  
+  it{ should accept_nested_attributes_for(:topics)}
 
   describe "Fields" do
     it "has field called 'name'" do

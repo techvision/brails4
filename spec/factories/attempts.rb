@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :attempt do
+    #default value for solved false
   end
 
   factory :solved_attempt do

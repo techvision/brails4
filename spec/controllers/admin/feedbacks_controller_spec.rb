@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe Admin::FeedbacksController do
   login(:admin)
-  let(:feedback) {FactoryGirl.create(:feedback)}
+  let(:feedback) {create(:feedback)}
 
   describe "GET #index" do
     it "assigns a list of feedbacks to @feedbacks" do
       get :index
       page_feedbacks = assigns[:feedbacks]
 
-      expect(feedback).to eql page_feedbacks
+      expect(page_feedbacks).to include(feedback)
     end
 
     it "renders the :index view" do

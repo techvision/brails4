@@ -9,7 +9,7 @@
 %p
   %strong= model_class.human_attribute_name(:name) + ':'
   %br
-  = @user.name
+  = @user.profile.name
 %p
   %strong= model_class.human_attribute_name(:email) + ':'
   %br
@@ -17,23 +17,23 @@
 %p
   %strong= model_class.human_attribute_name(:birthdate) + ':'
   %br
-  = @user.birthdate
+  = @user.profile.birthdate
 %p
   %strong= model_class.human_attribute_name(:gender) + ':'
   %br
-  = @user.gender
+  = @user.profile.gender
 %p
   %strong= model_class.human_attribute_name(:address) + ':'
   %br
-  = @user.address
+  = @user.profile.address
 %p
   %strong= model_class.human_attribute_name(:country) + ':'
   %br
-  = @user.country
+  = @user.profile.country
 %p
   %strong= model_class.human_attribute_name(:total_points) + ':'
   %br
-  = @user.total_points
+  = @user.profile.total_points
 %p
   %strong= model_class.human_attribute_name(:current_sign_in_at) + ':'
   %br

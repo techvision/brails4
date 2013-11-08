@@ -4,7 +4,18 @@ FactoryGirl.define do
   factory :topic do
     title {Faker::Lorem.characters(10)}
     seq_number 1
-    contents { [ FactoryGirl.build(:content)]}
-    questions { [ FactoryGirl.build(:question)] }
+
+    factory :topic_with_content do
+      contents { [ build(:full_content)]}
+    end
+
+    factory :topic_with_question do
+      questions { [ build(:question)] }
+    end
+
+    factory :full_topic do
+      contents { [ build(:full_content)]}
+      questions { [ build(:question)] }
+    end
   end
 end

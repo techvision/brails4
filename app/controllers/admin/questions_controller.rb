@@ -1,7 +1,7 @@
 class Admin::QuestionsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
-  before_filter :find_questionable, except: [:index, :show]
+  before_filter :find_questionable, only: [:index, :create, :new]
   layout 'admin'
 
   def index
@@ -9,13 +9,13 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def show
-    @question = @questionable.questions.find(params[:id])
+    @question = Question.find(params[:id])
     @options = @question.options
   end
 
   def new
     @question = @questionable.questions.build
-    3.times { @question.options.build}
+    3.times { @question.options.build }
   end
 
   def create
@@ -28,22 +28,24 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def edit
-    @question = @questionable.questions.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def update
-    @question = @questionable.questions.find(params[:id])
+    @question = Question.find(params[:id])
+    questionable = @question.questionable
     if @question.update_attributes(question_params)
-      redirect_to [:admin, @questionable, :questions], notice: "Question successfully updated."
+      redirect_to [:admin, questionable, :questions], notice: "Question successfully updated."
     else
       render action: :edit, alert: "Question could not be updated."
     end
   end
 
   def destroy
-    @question = @questionable.questions.find(params[:id])
+    @question = Question.find(params[:id])
+    questionable = @question.questionable
     if @question.destroy
-      redirect_to [:admin, @questionable, :questions], notice: "Question successfully deleted."
+      redirect_to [:admin, questionable], notice: "Question successfully deleted."
     else
       render action: :index, alert: "Question could not be deleted."
     end

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Profile do
-  let(:level) { FactoryGirl.create(:level)}
-  let(:topic1) { FactoryGirl.create(:topic, seq_number: 1)}
-  let(:topic2) { FactoryGirl.create(:topic, seq_number: 2)}
-  let(:profile) { FactoryGirl.create(:profile)}
+  let(:level) { create(:full_level)}
+  let(:topic1) { create(:full_topic, seq_number: 1)}
+  let(:topic2) { create(:full_topic, seq_number: 2)}
+  let(:profile) { create(:profile)}
   let(:user) { profile.user}
 
   describe "Fields" do

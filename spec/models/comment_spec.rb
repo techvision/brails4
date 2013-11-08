@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Comment do
-  let(:comment) {FactoryGirl.build(:comment)}
+  let(:comment) {build(:comment)}
 
   describe "Fields" do
     it "has a field called 'text'" do

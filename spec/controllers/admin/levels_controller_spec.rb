@@ -3,18 +3,18 @@ require 'spec_helper'
 describe Admin::LevelsController do
   login(:admin)
 
-  let(:level) { FactoryGirl.create(:level)}
-  let(:attrs) { FactoryGirl.attributes_for(:level)}
-  let(:invalid_attrs) { FactoryGirl.attributes_for(:level, title: nil)}
+  let!(:level) { create(:full_level)}
+  let(:attrs) { {level: attributes_for(:level).merge(topic_attributes: [attributes_for(:topic).merge( content_attributes: [attributes_for(:content)])])}}
+  let(:invalid_attrs) { attributes_for(:level, name: nil)}
+  let(:topic_attrs) { attributes_for(:topic)}
+  let(:content_attrs) { attributes_for(:content)}
 
   describe "GET #index" do
     it "populates an array of levels" do
-      levels = 2.times {create(:level)}
-
       get :index
       page_levels = assigns[:levels]
 
-      expect(levels).to eq page_levels
+      expect(page_levels).to include(level)
     end
 
     it "renders the :index view" do
@@ -74,13 +74,13 @@ describe Admin::LevelsController do
   describe "POST #create" do
     context "with valid attributes" do
       it "saves the new Level in the database" do
-        expect { post :create, level: attrs}.to change(Level,:count).by(1)
+        expect { post :create, level: attrs, topic_attributes: topic_attrs, content_attributes: content_attrs}.to change(Level,:count).by(1)
       end
 
-      it "redirects to the :show view" do
+      it "redirects to the :index view" do
         post :create, level: attrs
 
-        expect(response).to redirect_to admin_level_path
+        expect(response).to redirect_to admin_level_path(assigns[:level])
       end
     end
 
@@ -88,13 +88,13 @@ describe Admin::LevelsController do
       it "doesn't save the new Level in the database" do
         post :create, level: invalid_attrs
 
-        expect(Level.count).to_not change
+        expect{post :create, level: invalid_attrs}.to_not change(Level, :count)
       end
 
-      it "render the :new view" do
+      it "render the :index view" do
         post :create, level: invalid_attrs
 
-        expect(response).to render_template :new
+        expect(response).to render_template :index
       end
     end
   end
@@ -121,18 +121,14 @@ describe Admin::LevelsController do
 
     context "with invalid attributes" do
       it "doesn't changes @level attributes" do
-        attributes = attributes_for(:level, name: nil)
-
-        put :update, id: level.id, level: attrs
+        put :update, id: level.id, level: invalid_attrs
         updated_level = level.reload
 
         expect(level).to eq updated_level
       end
 
       it "renders the :edit view" do
-        attributes = attributes_for(:level, name: nil)
-
-        put :update, id: level.id, level: attrs
+        put :update, id: level.id, level: invalid_attrs
 
         expect(response).to render_template :edit
       end

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Content do
-  let(:level) { FactoryGirl.create(:level)}
+  let(:level) { create(:full_level)}
   let(:content) { level.topics.first.contents.first }
-  let(:profile){ FactoryGirl.create(:profile) }
+  let(:profile){ create(:profile) }
   let(:question) { content.questions.first}
   let(:user) { profile.user}
 
@@ -74,9 +74,12 @@ describe Content do
       expect(build(:content, summary: nil)).to_not be_valid
     end
 
-    it 'is invalid without a question' do
-      expect(build(:content, questions: nil)).to_not be_valid
-    end 
+    #TODO
+    # Are questions necessary for all contents?
+    
+    #it 'is invalid without a question' do
+    #  expect(build(:content, questions: nil)).to_not be_valid
+    #end 
   end
 
   describe "Associations" do

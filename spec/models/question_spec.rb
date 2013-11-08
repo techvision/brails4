@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Question do
-  let(:level) { FactoryGirl.create(:level)}
+  let(:level) { create(:full_level)}
   let(:question){ level.topics.first.contents.first.questions.first}
-  let(:profile) { FactoryGirl.create(:profile)}
+  let(:profile) { create(:profile)}
   let(:user) { profile.user}
 
   describe "Fields" do

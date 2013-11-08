@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Achievement do
-  let (:achievement) { FactoryGirl.build(:achievement)}
+  let (:achievement) { build(:achievement)}
 
   describe "Fields" do
     it "has a field called 'score'" do
