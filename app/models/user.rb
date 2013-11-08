@@ -1,6 +1,10 @@
 class User
   include Mongoid::Document
   include Mongoid::Document::Roleable
+  include Mongoid::Timestamps
+
+  delegate :name, :birthdate, :gender, :address, :country, :total_points, to: :profile
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
@@ -49,6 +53,8 @@ class User
   # field :authentication_token, :type => String
 
   has_one :profile
+
+  accepts_nested_attributes_for :profile
 
   def admin? 
     self.roles.include?(:admin)

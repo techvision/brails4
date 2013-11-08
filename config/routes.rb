@@ -36,7 +36,6 @@ Brails::Application.routes.draw do
       resources :invitations, except: [:new, :create]
       resources :achievements, only: [:index, :show]
       resources :attempts, only: [:index, :show]
-      resource :profiles, except: [:destroy]
     end
 
     resources :feedbacks, only: [:index, :show]

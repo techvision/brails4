@@ -1,7 +1,7 @@
-class Admin::QuestionsController < ApplicationController
+class Admin::QuestionsController < Admin::ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
-  before_filter :find_questionable
+  before_filter :find_questionable, except: [:index, :show]
 
   def index
     @questions = @questionable.questions.all.order_by("seq_number ASC")
@@ -18,10 +18,9 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def create
-    debugger  
     @question = @questionable.questions.build(question_params)
     if @question.save
-      redirect_to [:admin, @questionable, :questions], notice: "Question successfully created."
+      redirect_to [:admin, @questionable], notice: "Question successfully created."
     else
       render action: :new, alert: "Question could not be created."
     end

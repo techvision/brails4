@@ -1,7 +1,6 @@
-class Admin::FeedbacksController < ApplicationController
+class Admin::FeedbacksController < Admin::ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
-  authorize_resource
 
   def index
     @feedbacks = Feedback.all

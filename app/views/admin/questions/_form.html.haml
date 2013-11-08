@@ -1,6 +1,6 @@
 = simple_form_for [:admin, @questionable, @question], html: {class: 'form-horizontal form-validate'} do |f|
   = f.input :title
-  = f.input :difficulty
+  = f.input :difficulty, collection: [EASY, MEDIUM, HARD]
 
   %h3 Options
   = f.simple_fields_for :options do |option_form|
@@ -10,3 +10,6 @@
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")),[:admin, @questionable], :class => 'btn'
+
+/TODO
+/Dynamically add more options to the form using Jquery

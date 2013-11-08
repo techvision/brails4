@@ -1,4 +1,4 @@
-class Admin::TopicsController < ApplicationController
+class Admin::TopicsController < Admin::ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
 

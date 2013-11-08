@@ -1,4 +1,4 @@
-class Admin::ContentsController < ApplicationController
+class Admin::ContentsController < Admin::ApplicationController
   before_filter :authenticate_user!
   before_filter :is_admin
 

@@ -17,20 +17,26 @@
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
 
-  %body
-    .navbar.navbar-fluid-top
-      .navbar-inner
-        .container-fluid
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") Brails
-          .container.nav-collapse
-      .row-fluid
-        .span9
-          = bootstrap_flash
-          = yield
+    %body
+      .navbar.navbar-fluid-top
+        .navbar-inner
+          .container-fluid
+            %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %a.brand(href="#") Brails
+            .container.nav-collapse
+              = if current_user.admin?
+                %ul.nav
+                  %li= link_to "Levels", admin_levels_path
+                  %li= link_to "Users", admin_users_path
+                  %li= link_to "Feedbacks", admin_feedbacks_path
+      .container-fluid
+        .row-fluid
+          .span9
+            = bootstrap_flash
+            = yield
 
-      %footer
-        %p &copy; Josh Software 2013
+        %footer
+          %p &copy; Josh Software 2013
