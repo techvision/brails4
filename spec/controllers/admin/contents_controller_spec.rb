@@ -1,11 +1,14 @@
 require 'spec_helper'
 
 describe Admin::ContentsController do
-  login(:admin)
   let(:topic) { create(:full_topic) }
   let!(:content) { topic.contents.first }
   let(:attrs) { attributes_for(:full_content)}
   let(:invalid_attrs) { attributes_for(:content, title: nil)}
+
+  before(:each) do
+    login(:admin)
+  end
 
   it "can upload a mp3 audio file"
   it "can upload a ogg audio file"

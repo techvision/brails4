@@ -1,11 +1,14 @@
 require 'spec_helper'
 
 describe Admin::TopicsController do
-  login(:admin)
   let (:level) { create(:full_level) }
   let! (:topic) { level.topics.first}
   let (:attrs) { attributes_for(:topic)}
   let (:invalid_attrs) { attributes_for(:topic, title: nil)}
+
+  before(:each) do
+    login(:admin)
+  end
 
   describe "GET #index" do
     it "populates an array of topics" do

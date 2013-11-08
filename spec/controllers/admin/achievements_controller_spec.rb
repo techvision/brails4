@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Admin::AchievementsController do
-  login(:admin)
   let (:profile) { create(:profile)}
   let (:topic) { create(:full_topic)}
   let(:achievement) { build(:achievement, topic_id: topic.id)}
 
   before(:each) do
+    login(:admin)
     profile.achievements << achievement
   end
 

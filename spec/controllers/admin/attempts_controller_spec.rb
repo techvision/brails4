@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe Admin::AttemptsController do
-  login(:admin)
   let(:profile){ create(:profile)}
   let(:level){ create(:full_level)}
   let(:question) { level.topics.first.contents.first.questions.first}
   let(:attempt) { build(:attempt, profile_id: profile.id, question_id: question.id )}
 
   before(:each) do
+    login(:admin)
     profile.attempts << attempt
   end
 

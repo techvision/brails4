@@ -7,6 +7,10 @@ FactoryGirl.define do
     gender "male"
     address {Faker::Address.city}
     country "India"
-    association :user
+    association :user, factory: :user
+
+    factory :admin_profile do
+      association :user, factory: :admin
+    end
   end
 end

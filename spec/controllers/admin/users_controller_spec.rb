@@ -1,11 +1,14 @@
 require 'spec_helper'
 
 describe Admin::UsersController do
-  login(:admin)
   let(:profile) { create(:profile)}
   let(:user) { profile.user}
   let(:attrs) { attributes_for(:user)}
   let(:invalid_attrs) { attributes_for(:user, title: nil)}
+
+  before(:each) do
+    login(:admin)
+  end
 
   describe "GET #index" do
     it "populates an array of users" do

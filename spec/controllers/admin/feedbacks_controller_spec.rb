@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe Admin::FeedbacksController do
-  login(:admin)
   let(:feedback) {create(:feedback)}
+
+  before(:each) do
+    login(:admin)
+  end
 
   describe "GET #index" do
     it "assigns a list of feedbacks to @feedbacks" do

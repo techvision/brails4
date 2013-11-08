@@ -6,4 +6,4 @@
   = f.input :audio_ogg
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_topic_path(@content.topic_id), :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_content_path(@content), :class => 'btn'

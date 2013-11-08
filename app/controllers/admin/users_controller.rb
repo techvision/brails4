@@ -9,6 +9,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @achievements = @user.profile.achievements
   end
 
   def edit
