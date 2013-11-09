@@ -17,29 +17,28 @@
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
 
-    %body
-      .navbar.navbar-fluid-top
-        .navbar-inner
-          .container-fluid
-            %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            %a.brand(href="#") Brails
-            .container.nav-collapse
-              = if current_user.admin?
-                %ul.nav
-                  %li= link_to "Levels", admin_levels_path
-                  %li= link_to "Users", admin_users_path
-                  %li= link_to "Feedbacks", admin_feedbacks_path
-              = if current_user
-                %ul.nav
-                  %li= link_to "Sign out", destroy_user_session_path, method: :delete
-      .container-fluid
-        .row-fluid
-          .span9
+  %body
+    .wrap
+      .navbar.navbar-default
+        .navbar-header
+          %a.navbar-brand(href="#") Brails
+        .navbar-collapse.collapse
+          = if current_user && current_user.admin?
+            %ul.nav.navbar-nav
+              %li= link_to "Levels", admin_levels_path
+              %li= link_to "Users", admin_users_path
+              %li= link_to "Feedbacks", admin_feedbacks_path
+          = if current_user
+            %ul.nav.navbar-nav.navbar-right
+              %li= link_to "Sign out", destroy_user_session_path, method: :delete
+      .container
+        .row
+          .span12
             = bootstrap_flash
             = yield
-
-        %footer
-          %p &copy; Josh Software 2013
+  
+      #footer
+        .container
+          %p.text-muted.credit 
+          &copy; 
+          %a Josh Software 2013

@@ -33,7 +33,6 @@ gem 'coveralls', require: false
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "mongoid-simple-roles", git: 'git://github.com/gerson-scanapieco/mongoid-simple-roles'
 gem 'less-rails'
-gem "twitter-bootstrap-rails"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
 gem "erb2haml", :group => :development
