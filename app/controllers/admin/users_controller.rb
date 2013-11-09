@@ -21,7 +21,7 @@ class Admin::UsersController < ApplicationController
     if @user.update_attributes(user_params)
       redirect_to admin_user_path(@user), notice: "Profile successfully updated."
     else
-      render_action :edit, alert: "Profile could not be updated."
+      render :edit, alert: "Profile could not be updated."
     end
   end
 

@@ -10,12 +10,12 @@ FactoryGirl.define do
     end
 
     factory :topic_with_question do
-      questions { [ build(:question)] }
+      questions { [ build(:full_question)] }
     end
 
     factory :full_topic do
       contents { [ build(:full_content)]}
-      questions { [ build(:question)] }
+      questions { [ build(:full_question)] }
     end
   end
 end

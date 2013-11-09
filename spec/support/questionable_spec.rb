@@ -3,9 +3,9 @@ require 'spec_helper'
 shared_examples_for "Questionable" do |questionables|
   questionables.each do |elem|
     #login
-    let(:question) { build(:question)}
+    let(:question) { build(:full_question)}
     let(:invalid_attrs) { attributes_for(:question, title: nil)}
-    let(:attrs) { {"question"=> {"title"=>"bonus question", "difficulty"=>"2", "options_attributes"=>{"0"=>{"text"=>"fdasfdsf", "correct"=>"false"}, "1"=>{"text"=>"dafdsfasf", "correct"=>"false"}, "2"=>{"text"=>"dfsafadsfsf", "correct"=>"true"}}}}}
+    let(:attrs) { attributes_for(:question, options_attributes: [attributes_for(:option), attributes_for(:incorrect_option), attributes_for(:incorrect_option)])}
     let!(:questionable) { create(("full_" + elem.to_s.downcase.singularize).to_sym)}
     let(:hash_key) { (elem.to_s.downcase + "_id").to_sym }
 
@@ -87,7 +87,7 @@ shared_examples_for "Questionable" do |questionables|
         it "redirects to the :index view" do
           post :create, hash_key => questionable.id, question: attrs
 
-          expect(response).to redirect_to [:admin, questionable, :question]
+          expect(response).to redirect_to [:admin, questionable]
         end
       end
 
@@ -99,7 +99,7 @@ shared_examples_for "Questionable" do |questionables|
         it "redirects to the :new view" do
           post :create, question: invalid_attrs, hash_key => questionable.id
 
-          expect(response).to redirect_to [:admin, questionable, :question]
+          expect(response).to render_template :new
         end
       end
     end
@@ -123,7 +123,7 @@ shared_examples_for "Questionable" do |questionables|
 
           updated_question = assigns[:question]
 
-          expect(response).to redirect_to [:admin, questionable, :question]
+          expect(response).to redirect_to [:admin, questionable]
         end
 
         it "shows a success message" do
@@ -147,7 +147,7 @@ shared_examples_for "Questionable" do |questionables|
         it "redirects to the :index view" do
           put :update, id: question.id, hash_key => questionable.id, question: invalid_attrs
 
-          expect(response).to redirect_to [:admin, questionable, :question]
+          expect(response).to render_template :edit
         end
       end
     end

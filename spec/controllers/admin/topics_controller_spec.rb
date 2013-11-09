@@ -3,7 +3,13 @@ require 'spec_helper'
 describe Admin::TopicsController do
   let (:level) { create(:full_level) }
   let! (:topic) { level.topics.first}
-  let (:attrs) { attributes_for(:topic)}
+  let (:attrs) { FactoryGirl.attributes_for(:topic, 
+  contents_attributes: [ FactoryGirl.attributes_for(:content, 
+    questions_attributes: [ FactoryGirl.attributes_for(:question, 
+      options_attributes: [ FactoryGirl.attributes_for(:option), FactoryGirl.attributes_for(:incorrect_option), FactoryGirl.attributes_for(:incorrect_option)
+      ])
+    ])
+  ])} 
   let (:invalid_attrs) { attributes_for(:topic, title: nil)}
 
   before(:each) do

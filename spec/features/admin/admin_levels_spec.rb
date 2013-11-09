@@ -12,4 +12,19 @@ describe "Admin::Levels" do
       expect(page).to have_content("test_level")
     end
   end
+
+  describe "GET /level/new" do
+    it "displays the new level form"
+  end
+
+  describe "POST /level/new" do
+    context "when correct input data" do
+      it "creates a new level"
+      it "redirects to index page"
+    end
+
+    context "when incorrect input data" do
+      it "redirects to the :new page"
+    end
+  end
 end

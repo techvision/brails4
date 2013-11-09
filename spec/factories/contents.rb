@@ -10,7 +10,7 @@ FactoryGirl.define do
     audio_ogg {fixture_file_upload("#{Rails.root}/spec/factories/support/Sample.ogg", "audio/ogg")}
   
     factory :content_with_questions do
-      questions {[ build(:question)]}
+      questions {[ build(:full_question)]}
     end
 
     factory :content_with_comments do
@@ -18,7 +18,7 @@ FactoryGirl.define do
     end
 
     factory :full_content do
-      questions {[ build(:question)]}
+      questions {[ build(:full_question)]}
       comments {[ build(:comment)]}
     end
   end

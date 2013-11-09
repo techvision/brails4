@@ -2,10 +2,17 @@ require 'spec_helper'
 
 describe Admin::LevelsController do
   let!(:level) { create(:full_level)}
-  let(:attrs) { {level: attributes_for(:level).merge(topic_attributes: [attributes_for(:topic).merge( content_attributes: [attributes_for(:content)])])}}
   let(:invalid_attrs) { attributes_for(:level, name: nil)}
   let(:topic_attrs) { attributes_for(:topic)}
   let(:content_attrs) { attributes_for(:content)}
+  let(:attrs) { FactoryGirl.attributes_for(:level, topics_attributes: [FactoryGirl.attributes_for(:topic, 
+  contents_attributes: [ FactoryGirl.attributes_for(:content, 
+    questions_attributes: [ FactoryGirl.attributes_for(:question, 
+      options_attributes: [ FactoryGirl.attributes_for(:option), FactoryGirl.attributes_for(:incorrect_option), FactoryGirl.attributes_for(:incorrect_option)
+      ])
+    ])
+  ])
+])}
 
   before(:each) do
     login(:admin)

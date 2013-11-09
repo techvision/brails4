@@ -4,7 +4,6 @@ describe Admin::UsersController do
   let(:profile) { create(:profile)}
   let(:user) { profile.user}
   let(:attrs) { attributes_for(:user)}
-  let(:invalid_attrs) { attributes_for(:user, title: nil)}
 
   before(:each) do
     login(:admin)
@@ -60,16 +59,16 @@ describe Admin::UsersController do
   describe "PUT #update" do
     context "with valid attributes" do
       it "changes @user attributes" do
-        attributes = attributes_for(:user, name: "New title")
+        attributes = attributes_for(:user, profile_attributes: { name: "New name" } )
 
         put :update, id: user.id, user: attributes
         user.reload
 
-        expect(user.name).to eq "New title"
+        expect(user.name).to eq "New name"
       end
 
       it "redirects to the :index view" do
-        attributes = attributes_for(:user, name: "New title")
+        attributes = attributes_for(:user, profile_attributes: { name: "New name" })
 
         put :update, id: user.id, user: attributes
 
@@ -79,6 +78,8 @@ describe Admin::UsersController do
 
     context "with invalid attributes" do
       it "doesn't changes @user attributes" do
+        invalid_attrs = attributes_for(:user, profile_attributes: { name: nil })
+
         put :update, id: user.id, user: invalid_attrs
         updated_user = user.reload
 
@@ -86,6 +87,8 @@ describe Admin::UsersController do
       end
 
       it "redirects to the :edit view" do
+        invalid_attrs = attributes_for(:user, profile_attributes: { name: nil })
+
         put :update, id: user.id, user: invalid_attrs
 
         expect(response).to render_template :edit

@@ -35,7 +35,7 @@ class Admin::QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     questionable = @question.questionable
     if @question.update_attributes(question_params)
-      redirect_to [:admin, questionable, :questions], notice: "Question successfully updated."
+      redirect_to [:admin, questionable], notice: "Question successfully updated."
     else
       render action: :edit, alert: "Question could not be updated."
     end
