@@ -1,15 +1,17 @@
-= simple_form_for [:admin, @level, @topic], :html => { :class => 'form-horizontal' } do |f|
-  = f.input :title
-  = f.input :seq_number
+.col-md-4
+  .container
+  = simple_form_for [:admin, @level, @topic], :html => { :class => 'form-horizontal' } do |f|
+    = f.input :title, input_html: { class: "form-control"}
+    = f.input :seq_number, input_html: { class: "form-control"}
 
-  %h3 Content
-  = f.simple_fields_for :contents do |content_form|
-    = content_form.input :title
-    = content_form.input :summary
-    = content_form.input :body
-    = content_form.input :audio_mp3
-    = content_form.input :audio_ogg
+    %h3 Content
+    = f.simple_fields_for :contents, html: {class: "form-horizontal"} do |content_form|
+      = content_form.input :title, input_html: { class: "form-control"}
+      = content_form.input :summary, input_html: { class: "form-control"}
+      = content_form.input :body, input_html: { class: "form-control"}
+      = content_form.input :audio_mp3
+      = content_form.input :audio_ogg
 
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_level_path(@topic.level_id), :class => 'btn'  
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_level_path(@topic.level_id), :class => 'btn'  

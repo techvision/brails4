@@ -1,15 +1,17 @@
-= simple_form_for [:admin, @user], html: {class: 'form-horizontal form-validate' } do |f|
-  = f.input :email
+.col-md-4
+  .container
+  = simple_form_for [:admin, @user], html: {class: 'form-horizontal' } do |f|
+    = f.input :email, input_html: {class: "form-control"}
 
-  = f.simple_fields_for :profile do |profile_form|
-    = profile_form.input :name
-    = profile_form.input :gender
-    = profile_form.input :birthdate
-    = profile_form.input :address
+    = f.simple_fields_for :profile do |profile_form|
+      = profile_form.input :name, input_html: {class: "form-control"}
+      = profile_form.input :gender, input_html: {class: "form-control"}
+      = profile_form.input :birthdate, input_html: {class: "form-control"}
+      = profile_form.input :address, input_html: {class: "form-control"}
 
-  .form-actions
-    = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_users_path, :class => 'btn'
+    .form-actions
+      = f.button :submit, :class => 'btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_users_path, :class => 'btn'
 
 
 /TODO

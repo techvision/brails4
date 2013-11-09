@@ -1,9 +1,11 @@
-= simple_form_for [:admin, @topic, @content], :html => { :class => 'form-horizontal' } do |f|
-  = f.input :title
-  = f.input :summary
-  = f.input :body
-  = f.input :audio_mp3
-  = f.input :audio_ogg
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_topic_path(@topic), :class => 'btn'
+.col-md-4
+  .container
+  = simple_form_for [:admin, @topic, @content], :html => { :class => 'form-horizontal' } do |f|
+    = f.input :title, input_html: { class: "form-control"}
+    = f.input :summary, input_html: { class: "form-control"}
+    = f.input :body, input_html: { class: "form-control"}
+    = f.input :audio_mp3
+    = f.input :audio_ogg
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_topic_path(@topic), :class => 'btn'

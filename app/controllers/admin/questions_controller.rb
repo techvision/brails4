@@ -29,6 +29,7 @@ class Admin::QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
+    @questionable = @question.questionable
   end
 
   def update
