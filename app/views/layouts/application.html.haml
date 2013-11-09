@@ -17,22 +17,29 @@
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
 
-  %body
+%body
     .wrap
       .navbar.navbar-default
-        .navbar-inner
-          .container
-            %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            %a.navbar-brand(href="#") Brails
-            .container.nav-collapse
-        .container
-          .row
-            .span12
-              = bootstrap_flash
-              = yield
+        .navbar-header
+          %a.navbar-brand(href="#") Brails
+        .navbar-collapse.collapse
+          - if user_signed_in? && current_user.admin?
+            %ul.nav.navbar-nav
+              %li
+                = link_to "Levels", admin_levels_path
+              %li
+                = link_to "Users", admin_users_path
+              %li
+                = link_to "Feedbacks", admin_feedbacks_path
+          - if user_signed_in?
+            %ul.nav.navbar-nav.navbar-right
+              %li
+                = link_to "Sign out", destroy_user_session_path, method: :delete
+      .container
+        .row
+          .span12
+            = bootstrap_flash
+            = yield
             
         #container
           %p.text-muted.credit 

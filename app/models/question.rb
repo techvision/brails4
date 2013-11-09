@@ -31,4 +31,21 @@ class Question
     end
     return false
   end
+
+  #TODO NEED TEST
+  #Returns True if the option is the right answer for the question
+  def right_answer?(option_id)
+    option = self.options.find(option_id)
+    option.correct
+  end
+
+  def find_topic
+    if questionable.class == Topic
+      questionable
+    elsif questionable.class == Content
+      questionable.topic
+    else
+      nil 
+    end
+  end
 end

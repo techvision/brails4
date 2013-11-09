@@ -16,34 +16,23 @@ class Attempt
   def self.create_attempt(question_id,option_id, user_id)
     user = User.find(user_id)
     question = Question.find(question_id)
-    attempts = user.profile.attempts
+    attempt = user.profile.attempts.detect {|item| item.question_id == question_id }
 
-    attempts.each do |attempt|
-      if attempt.question_id == question_id
-        attempt.count++
-        if question.answer(option_id)
-          attempt.solved = true
-          attempt.points = question.difficulty / attempt.count
-          user.profile.points += attempt.points
-        end
-        attempt.save
-        return true     
-      end
+    if attempt.nil?
+      attempt = Attempt.new(question_id: question_id)
+      user.profile.attempts << attempt
+    else
+      attempt.count++
     end
-    new_attempt = Attempt.new(solved: false, question_id: question_id)
-    user.profile.attempts << new_attempt
-    return true
+
+    if question.right_answer?(option_id)
+      attempt.solved = true
+      attempt.points = question.difficulty / attempt.count
+      user.profile.points += attempt.points
+      attempt.save
+      user.profile.update_achievements(attempt)
+    else
+      attempt.save
+    end
   end
-    #TODO
-    # verificar se jah existe um attempt pra questao com o usuario
-    # se existir:
-    #  incrementa o campo count em 1
-    #  se a resposta for correta: 
-    #     marca o campo solved como true
-    #     coloca em points o valor da questao dividido pelo numero de counts
-    #  se a resposta for incorreta:
-    #     nao faz nada
-    # 
-    # se tiver completado o topico
-    # cria um achievement pro usuario com o topico
 end

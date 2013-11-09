@@ -10,11 +10,7 @@
   %strong= model_class.human_attribute_name(:seq_number) + ':'
   %br
   = @topic.seq_number
-%p
-  %strong= model_class.human_attribute_name(:level_id) + ':'
-  %br
-  = @topic.level_id
-
+  
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), admin_level_path(@topic.level_id), :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_topic_path(@topic), :class => 'btn'

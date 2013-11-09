@@ -23,14 +23,18 @@
         .navbar-header
           %a.navbar-brand(href="#") Brails
         .navbar-collapse.collapse
-          = if current_user && current_user.admin?
+          - if user_signed_in? && current_user.admin?
             %ul.nav.navbar-nav
-              %li= link_to "Levels", admin_levels_path
-              %li= link_to "Users", admin_users_path
-              %li= link_to "Feedbacks", admin_feedbacks_path
-          = if current_user
+              %li
+                = link_to "Levels", admin_levels_path
+              %li
+                = link_to "Users", admin_users_path
+              %li
+                = link_to "Feedbacks", admin_feedbacks_path
+          - if user_signed_in?
             %ul.nav.navbar-nav.navbar-right
-              %li= link_to "Sign out", destroy_user_session_path, method: :delete
+              %li
+                = link_to "Sign out", destroy_user_session_path, method: :delete
       .container
         .row
           .span12
