@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Profile do
   let(:level)  { create(:full_level)}
-  let(:topic1) { create(:full_topic, seq_number: 1)}
   let(:topic2) { create(:full_topic, seq_number: 2)}
   let(:profile){ create(:profile)}
   let(:topic)  { level.topics.first}
@@ -82,23 +81,18 @@ describe Profile do
     #Checks profile achievements and level topics to see if user finished the previous topics
     describe "#finished_previous_topics?(topic_id)" do
       it "returns true when the user finished all the level previous topics" do
-        achievement = build(:achievement, topic_id: topic1.id)
+        achievement = build(:achievement, topic_id: topic.id)
 
-        level.topics << topic1
         level.topics << topic2
         profile.achievements << achievement
 
-        expect(profile.finished_previous_topics(topic2.id,level.id)).to be_true
+        expect(profile.finished_previous_topics?(topic2.id)).to be_true
       end
 
       it "returns false when the user has not finished all the level previous topics" do
-        achievement = build(:achievement, topic_id: topic1.id)
-
-        level.topics << topic1
         level.topics << topic2
-        profile.achievements << achievement
 
-        expect(profile.finished_previous_topics(topic2.id,level.id)).to be_false
+        expect(profile.finished_previous_topics?(topic2.id)).to be_false
       end
     end
 

@@ -20,7 +20,6 @@ class Attempt
     option = question.options.find(option_id)
     attempt = Attempt.get_attempt(question, user)
 
-    debugger
     if question.right_answer?(option)
       attempt.update_attribute(:solved, true)
       attempt.calculate_points

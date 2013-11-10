@@ -14,6 +14,18 @@ class Profile
 
   validates :name, :birthdate, :gender, :address, :country, presence: true
 
+  def finished_previous_topics?(topic_id)
+    topic = Topic.find(topic_id)
+    level = topic.level
+    seq_number = topic.seq_number
+
+    level.topics.each do |level_topic|
+      break if level_topic.seq_number >= seq_number
+      return false if self.achievements.where(topic_id: level_topic.id).count == 0
+    end
+    true
+  end
+
   def update_achievements(attempt)
     question = attempt.question
     questionable = question.questionable
