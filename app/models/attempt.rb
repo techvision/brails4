@@ -18,7 +18,7 @@ class Attempt
     user = User.find(user_id)
     question = Question.find(question_id)
     option = question.options.find(option_id)
-    attempt = Attempt.get_attempt(question, user)
+    attempt = Attempt.get_attempt(question,user)
 
     if question.right_answer?(option)
       attempt.update_attribute(:solved, true)

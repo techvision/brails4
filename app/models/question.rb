@@ -11,41 +11,38 @@ class Question
 
   validates :title,:options,:difficulty, presence: true
   validates :options, length: { minimum: 3, maximum: 5}
+  validates :questionable_id, presence: true
   validate :only_one_correct_answer
 
   accepts_nested_attributes_for :options
   
-  def only_one_correct_answer
-    unless self.options.where(correct: true).count == 1 
-      errors.add(:options, "question can only have one correct answer")
-    end
-  end
-
-  # Returns True when user has a solved attempt for the question
+  #Returns True when user has a solved attempt for the question
   def answered?(user_id)
     user = User.find(user_id)
-    user.profile.attempts.solved.each do |attempt|
-      if attempt.question_id == self.id
-        return true
-      end
-    end
-    return false
+    return false if user.profile.attempts.solved.detect {|attempt| attempt.question_id == self.id}.nil?
+    true
   end
 
   #Returns True if the option is the right answer for the question
   def right_answer?(option_id)
-    option = self.options.find(option_id)
-    option.correct
+    self.options.find(option_id).correct
   end
 
   #Returns the Topic that the question belongs or nil case is a Level question
   def find_topic
     if questionable.class == Topic
-      questionable
+      return questionable
     elsif questionable.class == Content
-      questionable.topic
-    else
-      nil 
+      return questionable.topic
+    end
+    nil 
+  end
+
+  private
+
+  def only_one_correct_answer
+    unless self.options.where(correct: true).count == 1 
+      errors.add(:options, "question can only have one correct answer")
     end
   end
 end

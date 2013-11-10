@@ -10,7 +10,6 @@ describe User do
   end
 
   describe "Associations" do
-
     it "has one profile" do
       expect(user).to have_one(:profile)
     end

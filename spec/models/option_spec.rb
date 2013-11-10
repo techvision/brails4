@@ -4,13 +4,8 @@ describe Option do
   let(:option) { build(:option)}
 
   describe "Fields" do
-    it "has a field called 'Text'" do
-      expect(option).to have_field(:text).of_type(String)
-    end
-
-    it "has a field called 'Correct'" do
-      expect(option).to have_field(:correct).of_type(Mongoid::Boolean)
-    end
+    it { should have_field(:text).of_type(String)}
+    it { should have_field(:correct).of_type(Mongoid::Boolean)}
   end
 
   describe "Validations" do

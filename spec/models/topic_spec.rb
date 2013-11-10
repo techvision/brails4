@@ -13,13 +13,8 @@ describe Topic do
   it{ should accept_nested_attributes_for(:contents)}
 
   describe 'Fields' do
-    it "has a field called 'title'" do
-      expect(topic).to have_field(:title).of_type(String)
-    end
-
-    it "has a field called 'seq_number'" do
-      expect(topic).to have_field(:seq_number).of_type(Integer) 
-    end
+    it { should have_field(:title).of_type(String)}
+    it { should have_field(:seq_number).of_type(Integer)}
   end
 
   describe 'Validations' do

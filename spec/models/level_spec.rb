@@ -5,16 +5,12 @@ describe Level do
   let(:profile) { create(:profile)}
   let(:user) { profile.user}
   let(:topic) { level.topics.first}
-
-  #TODO
-  #Refactor tests to use the implicit subject sintax
   
   it{ should accept_nested_attributes_for(:topics)}
 
   describe "Fields" do
-    it "has field called 'name'" do
-      expect(level).to have_field(:name).of_type(String)
-    end
+    it { should have_field(:name).of_type(String)}
+    it { should have_field(:seq_number).of_type(Integer)}
   end
 
   describe "Validations" do
@@ -43,7 +39,7 @@ describe Level do
 
   describe "Behavior" do
     describe "#complete?(user.id)" do
-      it "returns true if the user completed level" do
+      it "returns true if the user completed the level" do
         achievement = build(:achievement, topic_id: topic.id)
         profile.achievements << achievement
         
@@ -51,8 +47,6 @@ describe Level do
       end
 
       it "returns false if the user did not completed the level" do
-        profile.achievements << []  
-
         expect(level.completed?(user.id)).to be_false
       end
     end

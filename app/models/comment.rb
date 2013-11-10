@@ -6,5 +6,5 @@ class Comment
   belongs_to :commentable, polymorphic: true
   belongs_to :profile
 
-  validates :text, presence: true
+  validates :text, presence: true#:commentable_id, :profile_id, presence: true
 end

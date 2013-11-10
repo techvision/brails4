@@ -4,21 +4,10 @@ describe Feedback do
   let(:feedback) { build(:feedback)}
 
   describe "Fields" do
-    it "has a field called 'name'" do
-      expect(feedback).to have_field(:name).of_type(String)
-    end
-
-    it "has a field called 'email'" do
-      expect(feedback).to have_field(:email).of_type(String)
-    end
-
-    it "has a field called 'country'" do
-      expect(feedback).to have_field(:country).of_type(String)
-    end
-
-    it "has a field called 'text'" do
-      expect(feedback).to have_field(:text).of_type(String)
-    end
+    it { should have_field(:name).of_type(String)}
+    it { should have_field(:email).of_type(String)}
+    it { should have_field(:country).of_type(String)}
+    it {should have_field(:text).of_type(String)}
   end
 
   describe "Validations" do
@@ -35,7 +24,7 @@ describe Feedback do
     end
 
     it "validates the format of the email" do
-      expect(build(:feedback,email: "abc")).to_not be_valid
+      expect(build(:feedback, email: "abc")).to_not be_valid
     end
   end
 end

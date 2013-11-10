@@ -4,9 +4,8 @@ describe Achievement do
   let (:achievement) { build(:achievement)}
 
   describe "Fields" do
-    it "has a field called 'score'" do
-      expect(achievement).to have_field(:score).of_type(Integer)
-    end
+    it { should have_field(:score).of_type(Integer)}
+    it { should have_field(:created_at).of_type(Time)}
   end
 
   describe "Validations" do

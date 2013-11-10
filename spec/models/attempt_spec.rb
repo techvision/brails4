@@ -14,17 +14,9 @@ describe Attempt do
   let(:unsolved_attempt) { build(:attempt, question: question, profile: profile)}
 
   describe "Fields" do
-    it "has a field called 'Count'" do
-      expect(attempt).to have_field(:count).of_type(Integer)
-    end
-
-    it "has a field called 'Solved'" do
-      expect(attempt).to have_field(:solved).of_type(Boolean)
-    end 
-
-    it "has a field called 'Points'" do
-      expect(attempt).to have_field(:points).of_type(Integer)
-    end
+    it { should have_field(:count).of_type(Integer)}
+    it { should have_field(:solved).of_type(Boolean)}
+    it { should have_field(:points).of_type(Integer)}
   end
 
   describe "Validations" do

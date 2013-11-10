@@ -9,32 +9,15 @@ describe Profile do
   let(:content_question) { content.questions.first}
   let(:topic_question) { topic.questions.first}
   let(:content_question_attempt) { build(:attempt, solved: true, points: content_question.difficulty, question: content_question)}
-  let(:topic_question_attempt) { build(:attempt, solved: true, points: topic_question.difficulty, question: topic_question )}
+  let(:topic_question_attempt) { build(:attempt, solved: true, points: 3, question: topic_question )}
 
   describe "Fields" do
-    it "has a field called 'name'" do
-      expect(profile).to have_field(:name).of_type(String)
-    end
-
-    it "has a field called 'birthdate'" do
-      expect(profile).to have_field(:birthdate).of_type(Date)
-    end
-
-    it "has a field called 'gender'" do
-      expect(profile).to have_field(:gender).of_type(String)
-    end
-
-    it "has a field called 'address'" do
-      expect(profile).to have_field(:address).of_type(String)
-    end
-
-    it "has a field called 'country'" do
-      expect(profile).to have_field(:country).of_type(String)
-    end
-
-    it "has a field called 'total_points" do
-      expect(profile).to have_field(:total_points).of_type(Integer)
-    end
+    it { should have_field(:name).of_type(String)}
+    it { should have_field(:birthdate).of_type(Date)}
+    it { should have_field(:gender).of_type(String)}
+    it { should have_field(:address).of_type(String)}
+    it { should have_field(:country).of_type(String)}
+    it { should have_field(:total_points).of_type(Integer)}
   end
 
   describe "Validations" do
@@ -78,7 +61,6 @@ describe Profile do
   end
 
   describe "Behavior" do
-    #Checks profile achievements and level topics to see if user finished the previous topics
     describe "#finished_previous_topics?(topic_id)" do
       it "returns true when the user finished all the level previous topics" do
         achievement = build(:achievement, topic_id: topic.id)
@@ -106,8 +88,6 @@ describe Profile do
 
       it "creates an achievement for the finished topic" do
         profile.attempts << topic_question_attempt
-        profile.update_achievements(topic_question_attempt)
-
         profile.attempts << content_question_attempt
         profile.update_achievements(content_question_attempt)
 
@@ -153,7 +133,7 @@ describe Profile do
       it "updates the profile points" do
         profile.attempts << topic_question_attempt
 
-        expect{profile.update_profile(profile.attempts.first)}.to change{profile.total_points}.by 1
+        expect{profile.update_profile(profile.attempts.first)}.to change{profile.total_points}.by 3
       end
 
       context "when user finished a topic" do
@@ -161,7 +141,7 @@ describe Profile do
           profile.attempts << topic_question_attempt
           profile.attempts << content_question_attempt
 
-          expect{profile.update_profile(topic_question_attempt)}.to change{profile.achievements.count}.by 1
+          expect{profile.update_profile(content_question_attempt)}.to change{profile.achievements.count}.by 1
         end
       end
     end

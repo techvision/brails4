@@ -14,6 +14,7 @@ class Profile
 
   validates :name, :birthdate, :gender, :address, :country, presence: true
 
+  #Checks profile achievements and level topics to see if user finished the previous topics
   def finished_previous_topics?(topic_id)
     topic = Topic.find(topic_id)
     level = topic.level

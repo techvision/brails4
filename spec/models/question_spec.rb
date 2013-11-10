@@ -11,13 +11,8 @@ describe Question do
   let(:user) { profile.user}
 
   describe "Fields" do
-    it "has a field called 'Title'" do
-      expect(question).to have_field(:title).of_type(String)
-    end
-
-    it "has a field called 'Difficulty'" do
-      expect(question).to have_field(:difficulty).of_type(Integer)
-    end
+    it { should have_field(:title).of_type(String)}
+    it { should have_field(:difficulty).of_type(Integer)}
   end
 
   describe "Validations" do
@@ -35,15 +30,15 @@ describe Question do
       end
 
       it 'is valid if has only one correct answer' do
-        expect(build(:question, options: [build(:option), build(:incorrect_option), build(:incorrect_option)])).to be_valid
+        expect(question).to be_valid
       end
 
       it "is invalid if more than one correct option is set" do
-        expect(build(:question, options: [build(:option), build(:option), build(:option)])).not_to be_valid
+        expect(build(:question, options: [build(:option), build(:option), build(:option)], questionable_id: topic.id)).not_to be_valid
       end
 
       it "is invalid if all options are incorrect" do
-        expect(build(:question, options: [build(:incorrect_option), build(:incorrect_option), build(:incorrect_option)])).not_to be_valid
+        expect(build(:question, options: [build(:incorrect_option), build(:incorrect_option), build(:incorrect_option)],questionable_id: topic.id)).not_to be_valid
       end
 
       it 'has at least 3 options' do

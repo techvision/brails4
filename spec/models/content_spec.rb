@@ -8,17 +8,9 @@ describe Content do
   let(:user) { profile.user}
 
   describe "Fields" do
-    it "has a field called 'Title' " do
-      expect(content).to have_field(:title).of_type(String)
-    end
-
-    it "has a field called 'Body' " do
-      expect(content).to have_field(:body).of_type(String)
-    end
-
-    it "has a field called 'Summary' " do
-      expect(content).to have_field(:summary).of_type(String)
-    end
+    it { should have_field(:title).of_type(String)}
+    it { should have_field(:body).of_type(String)}
+    it { should have_field(:summary).of_type(String)}
 
     it "has an embbebed mp3 audio file" do
       expect(content).to validate_attachment_presence(:audio_mp3)
