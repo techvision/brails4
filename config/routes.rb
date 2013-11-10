@@ -1,8 +1,4 @@
 Brails::Application.routes.draw do
-  namespace :admin do
-    resources :achievements
-  end
-
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -11,6 +7,7 @@ Brails::Application.routes.draw do
   root to: 'home#dashboard'
 
   namespace :admin do
+    
     resources :levels, shallow: true do
       resources :questions
       resources :topics, shallow: true do
@@ -20,17 +17,6 @@ Brails::Application.routes.draw do
         end
       end
     end
-
-    #resources :topics, only: [:show, :index] do
-    #  resources :contents, shallow: true do
-    #    resources :questions
-    #  end
-    #  resources :questions
-    #end
-
-    #resources :contents do
-    #  resources :questions
-    #end
 
     resources :users do
       resources :invitations, except: [:new, :create]

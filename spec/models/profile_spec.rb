@@ -1,11 +1,16 @@
 require 'spec_helper'
 
 describe Profile do
-  let(:level) { create(:full_level)}
+  let(:level)  { create(:full_level)}
   let(:topic1) { create(:full_topic, seq_number: 1)}
   let(:topic2) { create(:full_topic, seq_number: 2)}
-  let(:profile) { create(:profile)}
-  let(:user) { profile.user}
+  let(:profile){ create(:profile)}
+  let(:topic)  { level.topics.first}
+  let(:content) { topic.contents.first}
+  let(:content_question) { content.questions.first}
+  let(:topic_question) { topic.questions.first}
+  let(:content_question_attempt) { build(:attempt, solved: true, points: content_question.difficulty, question: content_question)}
+  let(:topic_question_attempt) { build(:attempt, solved: true, points: topic_question.difficulty, question: topic_question )}
 
   describe "Fields" do
     it "has a field called 'name'" do
@@ -75,15 +80,15 @@ describe Profile do
 
   describe "Behavior" do
     #Checks profile achievements and level topics to see if user finished the previous topics
-    describe "#finished_previous_topics?(level_id, topic_id)" do
+    describe "#finished_previous_topics?(topic_id)" do
       it "returns true when the user finished all the level previous topics" do
         achievement = build(:achievement, topic_id: topic1.id)
 
         level.topics << topic1
         level.topics << topic2
-        user.profile.achievements << achievement
+        profile.achievements << achievement
 
-        expect(user.profile.finished_previous_topics(topic2.id,level.id)).to be_true
+        expect(profile.finished_previous_topics(topic2.id,level.id)).to be_true
       end
 
       it "returns false when the user has not finished all the level previous topics" do
@@ -91,9 +96,79 @@ describe Profile do
 
         level.topics << topic1
         level.topics << topic2
-        user.profile.achievements << achievement
+        profile.achievements << achievement
 
-        expect(user.profile.finished_previous_topics(topic2.id,level.id)).to be_false
+        expect(profile.finished_previous_topics(topic2.id,level.id)).to be_false
+      end
+    end
+
+    describe "#update_achievements(attempt)" do
+      it "creates a new achievement record for the user" do
+        profile.attempts << topic_question_attempt
+        profile.attempts << content_question_attempt
+        
+        expect{profile.update_achievements(content_question_attempt)}.to change{profile.achievements.count}.by 1
+      end
+
+      it "creates an achievement for the finished topic" do
+        profile.attempts << topic_question_attempt
+        profile.update_achievements(topic_question_attempt)
+
+        profile.attempts << content_question_attempt
+        profile.update_achievements(content_question_attempt)
+
+        expect(profile.achievements.last.topic).to eq topic
+      end
+    end
+
+    describe "#attempts_by_topic(topic_id)" do
+      context "when there are contents and topics questions attempts" do
+        it "returns all solved attemtps" do
+          profile.attempts << topic_question_attempt
+          profile.attempts << content_question_attempt
+
+          expect(profile.attempts_by_topic(topic.id)).to include topic_question_attempt
+          expect(profile.attempts_by_topic(topic.id)).to include content_question_attempt
+        end
+      end
+
+      context "when there are only contents questions attempts" do
+        it "returns all solved attemtps" do
+          profile.attempts << content_question_attempt
+
+          expect(profile.attempts_by_topic(topic.id)).to eq [content_question_attempt]
+        end
+      end
+
+      context "when there are only topic questions attempts" do
+        it "returns all solved attemtps" do
+          profile.attempts << topic_question_attempt
+
+          expect(profile.attempts_by_topic(topic.id)).to eq [topic_question_attempt]
+        end
+      end
+
+      context "when there are no attempts" do
+        it "returns nil" do
+          expect(profile.attempts_by_topic(topic.id)).to eq nil
+        end
+      end
+    end
+
+    describe "#update_profile(attempt)" do
+      it "updates the profile points" do
+        profile.attempts << topic_question_attempt
+
+        expect{profile.update_profile(profile.attempts.first)}.to change{profile.total_points}.by 1
+      end
+
+      context "when user finished a topic" do
+        it "creates a profile achievements" do
+          profile.attempts << topic_question_attempt
+          profile.attempts << content_question_attempt
+
+          expect{profile.update_profile(topic_question_attempt)}.to change{profile.achievements.count}.by 1
+        end
       end
     end
   end

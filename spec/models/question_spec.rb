@@ -2,7 +2,11 @@ require 'spec_helper'
 
 describe Question do
   let(:level) { create(:full_level)}
-  let(:question){ level.topics.first.contents.first.questions.first}
+  let(:topic) { level.topics.first}
+  let(:content) { topic.contents.first}
+  let(:question){ content.questions.first}
+  let(:level_question) {level.questions.first }
+  let(:topic_question) { topic.questions.first}
   let(:profile) { create(:profile)}
   let(:user) { profile.user}
 
@@ -79,6 +83,44 @@ describe Question do
           user.profile.attempts << unsolved_attempt
           
           expect(question.answered?(user.id)).to be_false
+        end
+      end
+    end
+
+    describe "#right_answer?(option_id)" do
+      context "when correct option is given" do
+        it "returns true" do
+          correct_option = question.options.find_by(correct: true)
+
+          expect(question.right_answer?(correct_option.id)).to eq true
+        end
+      end
+
+      context "when incorrect option is given" do
+        it "returns false" do
+          incorrect_option = question.options.find_by(correct: false)
+
+          expect(question.right_answer?(incorrect_option.id)).to eq false
+        end
+      end
+    end
+
+    describe "#find_topic" do
+      context "when question belongs to a Level" do
+        it "returns nil" do
+          expect(level_question.find_topic).to eq nil
+        end
+      end
+
+      context "when question belongs to a Topic" do
+        it "returns the Topic" do
+          expect(topic_question.find_topic).to eq topic
+        end
+      end
+
+      context "when question belongs to a Content" do
+        it "returns the contents topic" do
+          expect(question.find_topic).to eq topic
         end
       end
     end

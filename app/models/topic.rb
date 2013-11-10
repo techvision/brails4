@@ -27,26 +27,4 @@ class Topic
     end
     return true
   end
-
-  #TODO
-  #TEST
-  #Retuns all attempts for that a given user has for questions belonging to the topic or its contents
-  def attempts(user_id)
-    result,questions = [],[]
-    user = User.find(user_id)
-    attempts = user.profile.attempts
-
-    questions.concat(self.questions)
-
-    self.contents.each do |content|
-      questions.concat(content.questions)
-    end
-
-    attempts.each do |attempt|
-      questions.each do |question|
-        result << attempt if attempt.question == question
-      end
-    end
-    result
-  end
 end

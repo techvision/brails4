@@ -7,6 +7,8 @@ describe Topic do
   let(:user)  { profile.user}
   let(:topic_question) { topic.questions.first}
   let(:content_question) { topic.contents.first.questions.first}
+  let(:topic_question_attempt) { build(:attempt, question_id: topic_question.id, profile_id: profile.id, solved: true) }
+  let(:content_question_attempt) { build(:attempt, question_id: content_question.id, profile_id: profile.id, solved: true)}
 
   it{ should accept_nested_attributes_for(:contents)}
 
@@ -55,10 +57,7 @@ describe Topic do
   describe 'Behavior' do
     describe "#complete?(user_id)" do
       it "returns true if topic is complete" do
-        attempt = build(:attempt, question_id: topic_question.id, profile_id: profile.id, solved: true)
-        content_question_attempt = build(:attempt, question_id: content_question.id, profile_id: profile.id, solved: true)
-
-        profile.attempts << attempt
+        profile.attempts << topic_question_attempt
         profile.attempts << content_question_attempt
 
         expect(topic.complete?(user.id)).to be_true

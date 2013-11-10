@@ -32,13 +32,13 @@ class Question
     return false
   end
 
-  #TODO NEED TEST
   #Returns True if the option is the right answer for the question
   def right_answer?(option_id)
     option = self.options.find(option_id)
     option.correct
   end
 
+  #Returns the Topic that the question belongs or nil case is a Level question
   def find_topic
     if questionable.class == Topic
       questionable

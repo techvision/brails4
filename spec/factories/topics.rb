@@ -10,12 +10,18 @@ FactoryGirl.define do
     end
 
     factory :topic_with_question do
-      questions { [ build(:full_question)] }
-    end
 
-    factory :full_topic do
-      contents { [ build(:full_content)]}
-      questions { [ build(:full_question)] }
+      ignore do
+        questions_count 1
+      end
+
+      after(:build) do |topic, evaluator|
+        FactoryGirl.create_list(:full_question, evaluator.questions_count, questionable: topic)
+      end
+
+      factory :full_topic do
+        contents { [ create(:full_content)]}
+      end
     end
   end
 end

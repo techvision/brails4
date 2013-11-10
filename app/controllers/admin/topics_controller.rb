@@ -3,9 +3,6 @@ class Admin::TopicsController < ApplicationController
   before_filter :is_admin
   layout 'admin'
 
-  #TODO
-  #Fix render actions issues
-
   def index
     @level = Level.find(params[:level_id])
     @topics = @level.topics.all.order_by("seq_number ASC")
