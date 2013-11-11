@@ -1,5 +1,6 @@
 class Comment
   include Mongoid::Document
+  include Authority::Abilities
 
   field :text, type: String
 

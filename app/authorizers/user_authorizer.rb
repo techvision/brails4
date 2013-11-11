@@ -1,7 +1,7 @@
 class UserAuthorizer < ApplicationAuthorizer
 
   def creatable_by?(user)
-    resource.class == Attempt
+    
   end
 
   def readable_by?(user)

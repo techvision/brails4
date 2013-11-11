@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     else
       'application'
     end
-  end      
+  end
 
   def is_admin
     current_user.admin? if current_user

@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe UsersController do
-  login
+  let(:attrs) { attributes_for(:user, email: "updated@email.com")}
+  let(:incorrect_attrs) { attributes_for(:user, email: nil)}
 
-  let(:user) { FactoryGirl.create(:user)}
-  let(:attrs) { FactoryGirl.attributes_for(:user, email: "updated@email.com")}
-  let(:incorrect_attrs) { FactoryGirl.attributes_for(:user, email: nil)}
+  before(:each) do
+    login
+  end
 
   describe "GET #show" do
     it "assigns the current user to @user" do
@@ -19,13 +20,6 @@ describe UsersController do
       get :show, id: @user.id
 
       expect(response).to render_template :show
-    end
-
-    it "allows the user to see his profile only" do
-      get :show, id: user.id
-
-      expect(response).to redirect_to :root
-      expect(flash[:alert]).to eql "Permission denied"
     end
   end
   
@@ -42,12 +36,6 @@ describe UsersController do
       get :edit, id: @user.id
 
       expect(response).to render_template :edit
-    end
-
-    it "allows the user to edit his profile only" do
-      get :edit, id: user.id
-
-      expect(response).to redirect_to :root
     end
   end
 

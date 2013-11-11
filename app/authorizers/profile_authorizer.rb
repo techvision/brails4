@@ -2,7 +2,7 @@ class ProfileAuthorizer < ApplicationAuthorizer
 
   def readable_by?(user)
     #can read if its my profile or its admin
-    if user.admin? || resource.user_id == user.id
+    if resource.user_id == user.id
       true
     end
   end
@@ -14,10 +14,8 @@ class ProfileAuthorizer < ApplicationAuthorizer
     end
   end
 
-  def deletable_by?(user)
-    #can delete if its my profile or its admin
-    if user.admin? || resource.user_id == user.id
-      true
-    end
+  #Admin can read all the profiles
+  def self.readable_by?(user)
+    user.admin?
   end
 end

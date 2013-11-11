@@ -1,21 +1,20 @@
 require 'spec_helper'
 
 describe TopicsController do
-  login
-  let(:level) { FactoryGirl.create(:level)}
-  let(:user) { FactoryGirl.create(:user)}
-  let(:topic1) { FactoryGirl.create(:topic,seq_number: 1)}
-  let(:topic2) { FactoryGirl.create(:topic,seq_number: 2)}
+  let(:level)  { create(:full_level)}
+  let(:topic1) { level.topics.first}
+  let(:topic2) { build(:topic,seq_number: 2)}
+  let(:achievement) { build(:achievement, profile: @user.profile, topic_id: topic1.id)}
+
+  before(:each) do
+    login
+    level.topics << topic2
+  end
 
   describe "GET #show" do
     context "when user finished previous topics" do
       it "assigns the requested Topic to @topic" do
-        achievement = build(:achievement, user_id: user.id, topic_id: topic1.id)
-        user.profile.achievements << achievement
-
-        level.topics << topic1
-        level.topics << topic2
-        user.profile.achievements << achievement
+        @user.profile.achievements << achievement
 
         get :show, id: topic2.id, level_id: level.id
         page_topic = assigns[:topic]
@@ -24,34 +23,22 @@ describe TopicsController do
       end
 
       it "renders the :show template" do
-        achievement = build(:achievement, user_id: user.id, topic_id: topic1.id)
-        user.profile.achievements << achievement
-        
-        level.topics << topic1
-        level.topics << topic2
-        user.profile.achievements << achievement
+        @user.profile.achievements << achievement
 
         get :show, id: topic2.id, level_id: level.id
 
         expect(response).to render_template :show
       end
-
-      it "increments the current user points by 1"
-      
     end
 
-    context "when user did not finished previous topics" do
+    context "when @user did not finished previous topics" do
       it "redirects to :index view" do
-        level.topics << topic1
-        level.topics << topic2
         get :show, id: topic2.id, level_id: level.id
 
         expect(response).to redirect_to :index
       end
 
       it "shows an alert message" do
-        level.topics << topic1
-        level.topics << topic2
         get :show, id: topic2.id, level_id: level.id
 
         expect(flash[:error]).to eql "You can not access this topic yet"

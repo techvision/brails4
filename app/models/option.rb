@@ -1,5 +1,6 @@
 class Option
   include Mongoid::Document
+  include Authority::Abilities
 
   field :text, type: String
   field :correct, type: Mongoid::Boolean

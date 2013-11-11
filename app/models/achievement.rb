@@ -1,5 +1,6 @@
 class Achievement
   include Mongoid::Document
+  include Authority::Abilities
 
   field :score, type: Integer, default: 0
   field :created_at, type: Time, default: ->{ Time.now }

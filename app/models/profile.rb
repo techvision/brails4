@@ -1,5 +1,6 @@
 class Profile
   include Mongoid::Document
+  include Authority::Abilities
 
   field :name, type: String
   field :birthdate, type: Date

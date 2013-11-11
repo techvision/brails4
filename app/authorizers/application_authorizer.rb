@@ -12,5 +12,4 @@ class ApplicationAuthorizer < Authority::Authorizer
     # considered forbidden.
     false
   end
-
 end

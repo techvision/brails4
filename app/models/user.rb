@@ -2,6 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Document::Roleable
   include Mongoid::Timestamps
+  include Authority::UserAbilities
 
   delegate :name, :birthdate, :gender, :address, :country, :total_points, to: :profile
 

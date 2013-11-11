@@ -1,5 +1,6 @@
 class Feedback
   include Mongoid::Document
+  include Authority::Abilities
 
   field :name, type: String
   field :email, type: String

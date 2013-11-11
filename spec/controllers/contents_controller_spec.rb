@@ -1,16 +1,17 @@
 require 'spec_helper'
 
 describe ContentsController do
-  login
-  let(:content) { FactoryGirl.build(:content) }
-  let(:topic) {FactoryGirl.create(:topic)}
-  let(:user) { FactoryGirl.create(:user)}
+  let(:level) { create(:full_level)}
+  let(:topic) { level.topics.first}
+  let(:content) { topic.contents.first}
+
+  before(:each) do
+    login
+  end
 
   describe "GET #show" do
     it "assigns the requested Content to @content" do
-      topic.contents << content
-
-      get :show, id: content.id, topic_id: topic.id
+      get :show, id: content.id
       page_content = assigns[:content]
 
       expect(content).to eq page_content
@@ -19,7 +20,7 @@ describe ContentsController do
     it "renders the :show template" do
       topic.contents << content
       
-      get :show, id: content.id, topic_id: topic.id
+      get :show, id: content.id
 
       expect(response).to render_template :show
     end

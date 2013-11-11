@@ -5,7 +5,7 @@ class FeedbackAuthorizer < ApplicationAuthorizer
     user.has_role?(:student)
   end
 
-  def readable_by?(user)
+  def self.readable_by?(user)
     #Only admin can read the feebacks
     user.admin? 
   end

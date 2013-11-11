@@ -1,5 +1,6 @@
 class Question
   include Mongoid::Document
+  include Authority::Abilities
 
   field :title, type: String
   field :difficulty, type: Integer

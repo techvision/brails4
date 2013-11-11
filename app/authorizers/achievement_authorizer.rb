@@ -1,11 +1,13 @@
 class AchievementAuthorizer < ApplicationAuthorizer
 
-  def readable_by?(user)
+  def self.readable_by?(user)
     #belongs to me or the user is the admin
     if user.admin?
       true 
-    elsif resource.profile_id == user.profile.id
-      true
     end
+  end
+
+  def readable_by?(user)
+    resource.profile == user.profile ? true : false
   end
 end

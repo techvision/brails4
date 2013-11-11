@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe LevelsController do 
-  login
-  let(:level) { FactoryGirl.create(:level) }
+  let(:level) { create(:full_level) }
+
+  before(:each) do
+    login
+  end
 
   describe "GET #index" do
     it "assigns the level to @levels" do

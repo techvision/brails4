@@ -1,6 +1,7 @@
 class Content
   include Mongoid::Document
   include Mongoid::Paperclip
+  include Authority::Abilities
 
   field :title, type: String
   field :body, type: String

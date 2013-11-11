@@ -1,5 +1,6 @@
 class Attempt
   include Mongoid::Document
+  include Authority::Abilities
 
   field :count, type: Integer, default: 1
   field :solved, type: Boolean, default: false
