@@ -1,0 +1,6 @@
+machine:
+
+## Customize test commands
+  test:
+    override:
+      - bundle exec rspec spec/
