@@ -21,7 +21,7 @@ describe AttemptsController do
         expect{post :create, question_id: question.id, option_id: correct_option.id }.to change{@user.profile.total_points}.by(1)
       end
 
-      context "when user finishes the level" do
+      context "when user finishes the topic" do
         it "creates an achievement database record" do
           expect{post :create,question_id: question.id, option_id: correct_option.id }.to change{@user.profile.achievements.count}.by(1)
         end
