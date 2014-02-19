@@ -19,7 +19,7 @@ describe TopicsController do
         get :show, id: topic2.id, level_id: level.id
         page_topic = assigns[:topic]
 
-        expect(topic).to be eql page_topic
+        expect(topic2).to be eql page_topic
       end
 
       it "renders the :show template" do

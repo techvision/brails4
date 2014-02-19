@@ -14,15 +14,15 @@ describe AchievementsController do
     it "assigns the achievements to @achievement" do
       get :index, user_id: @user.id
 
-      page_achievements = assigns[:achievements]
+      page_achievements = assigns[:achievements].to_a
 
-      expect(achievement).to eql page_achievements
+      expect(achievement.to_a).to eql page_achievements
     end
 
     it "renders the index view" do
       get :index, user_id: @user.id
 
-      expect(reponse).to render_template :index
+      expect(response).to render_template :index
     end
   end
 
@@ -32,7 +32,7 @@ describe AchievementsController do
 
       page_achievement = assigns[:achievement]
 
-      expect(achievements).to eql page_achievement
+      expect(achievement).to eql page_achievement
     end
 
     it "renders the show view" do

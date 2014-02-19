@@ -42,19 +42,21 @@ describe UsersController do
   describe "PUT #update" do
     context "when attributes are valid" do
       it "updates the user data" do
-        expect{put :update, id: @user.id, user: attrs}.to change{@user.email}.to("updated@email.com")
+        put :update, id: @user.id, user: attrs
+        @user.reload
+        expect(@user.email).to eq "updated@email.com"
       end
 
       it "shows a success message" do
         put :update, id: @user.id, user: attrs
 
-        expect(flash[:notice]).to eql "User sucessfully updated"
+        expect(flash[:notice]).to eql "User successfully updated"
       end
 
       it "redirects to :show view" do
         put :update, id: @user.id, user: attrs
 
-        expect(response).to redirect_to :show
+        expect(response).to redirect_to user_path(assigns[:user])
       end
     end
 
@@ -72,7 +74,7 @@ describe UsersController do
       it "redirects to the :edit page" do
         put :update, id: @user.id, user: incorrect_attrs
 
-        expect(response).to redirect_to :edit
+        expect(response).to render_template :edit
       end
     end
   end

@@ -38,6 +38,8 @@ Brails::Application.routes.draw do
   end
 
   resources :contents, only: [:show, :index] do
+    get :download_mp3, on: :member
+    get :download_ogg, on: :member
     resources :comments
   end
 
