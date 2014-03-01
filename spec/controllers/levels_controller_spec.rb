@@ -11,7 +11,7 @@ describe LevelsController do
     it "assigns the level to @levels" do
       get :index
       levels = assigns[:levels]
-      expect(level).to eql levels
+      expect(levels).to include(level)
     end
 
     it "renders the index view" do

@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe QuestionsController do
-  it_behaves_like "Answerable", [Level,Topic,Content]
+  before(:each) do
+    login
+  end
+
+  it_behaves_like "Answerable", [Content]
 end

@@ -59,6 +59,7 @@ class Profile
     attempts.each do |attempt|
       questions.each do |question|
         result << attempt if attempt.question == question
+        puts result
       end
     end
     #returns nil if there are no solved attempts

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Comment do
+  let(:level) { create(:full_level)}
+  let(:topic) { level.topics.first}
   let(:comment) { build(:comment)}
 
   describe "Fields" do

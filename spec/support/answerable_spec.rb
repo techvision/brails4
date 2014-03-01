@@ -2,8 +2,8 @@ require 'spec_helper'
 
 shared_examples_for "Answerable" do |answerables|
   answerables.each do |elem|
-    let(:question) { FactoryGirl.build(:question)}
-    let(:answerable) { FactoryGirl.create((elem.to_s.downcase.singularize).to_sym)}
+    let(:answerable) { create(("full_" + elem.to_s.downcase.singularize).to_sym)}
+    let(:question) { FactoryGirl.create(:full_question, questionable: answerable)}
     let(:hash_key) { (elem.to_s.downcase + "_id").to_sym }
 
     describe "GET #show" do
@@ -22,17 +22,11 @@ shared_examples_for "Answerable" do |answerables|
         end
       end
 
-      context "when question is not found" do
-        it "shows an error message" do
-          get :show, id: "test_id", hash_key => answerable.id
-
-          expect(flash[:error]).to eq "Question could not be found"
-        end
-
+      context "when question is not found" do   
         it "redirects to index view" do 
-          get :show, id: "test_id", hash_key => answerable.id
+          get :show, id: question.id, hash_key => answerable.id
 
-          expect(reponse).to redirect_to :index
+          expect(response).to redirect_to answerable
         end
       end
     end

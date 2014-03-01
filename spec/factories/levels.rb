@@ -9,6 +9,10 @@ FactoryGirl.define do
       topics { [ build(:full_topic)] }
     end
 
+    factory :level_with_comments do
+      comments {[ build(:comment)]}
+    end
+
     factory :level_with_question do
 
       ignore do
@@ -21,6 +25,7 @@ FactoryGirl.define do
 
       factory :full_level do
         topics { [ create(:full_topic)] }
+        #comments {[ create(:comment)]}
       end
     end
   end

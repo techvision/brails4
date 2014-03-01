@@ -25,17 +25,17 @@ describe FeedbacksController do
     let(:attrs) { attributes_for(:feedback) }
 
     it "creates a new database record" do
-      expect{ put :create, feedback: attrs, user_id: @user.id}.to change(Feedback,:count).by(1)
+      expect{ post :create, feedback: attrs, user_id: @user.id}.to change(Feedback,:count).by(1)
     end
 
     it "redirects to :show view" do
-      put :create, feedback: attrs, user_id: @user.id
+      post :create, feedback: attrs, user_id: @user.id
 
-      expect(response).to redirect_to :show
+      expect(response).to redirect_to user_path(@user)
     end
 
     it "shows a success message" do
-      put :create, feedback: attrs, user_id: @user.id
+      post :create, feedback: attrs, user_id: @user.id
 
       expect(flash[:notice]).to eql "Feedback successfully created"
     end

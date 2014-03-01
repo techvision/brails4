@@ -13,7 +13,8 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       redirect_to user_path(@user), notice: "User successfully updated"
     else
-      render :edit, alert: "User could not be updated"
+      flash[:alert] = "User could not be updated"
+      render :edit
     end
   end
 

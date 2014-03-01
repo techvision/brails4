@@ -18,6 +18,9 @@ describe TopicsController do
 
         get :show, id: topic2.id, level_id: level.id
         page_topic = assigns[:topic]
+        p page_topic
+        p "--------------------"
+        p topic2
 
         expect(topic2).to be eql page_topic
       end

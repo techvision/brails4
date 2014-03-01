@@ -25,7 +25,7 @@ FactoryGirl.define do
       end
 
       factory :full_content do
-        comments {[ create(:comment)]}
+        #comments {[ create(:comment)]}
       end
     end
   end

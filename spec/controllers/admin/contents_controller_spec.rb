@@ -10,9 +10,6 @@ describe Admin::ContentsController do
     login(:admin)
   end
 
-  it "can upload a mp3 audio file"
-  it "can upload a ogg audio file"
-
   describe "GET #index" do
     it "populates an array of contents" do
       get :index, topic_id: topic.id

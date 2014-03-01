@@ -9,6 +9,10 @@ FactoryGirl.define do
       contents { [ build(:full_content)]}
     end
 
+    factory :topic_with_comments do
+      comments {[ build(:comment)]}
+    end
+
     factory :topic_with_question do
 
       ignore do
@@ -21,6 +25,7 @@ FactoryGirl.define do
 
       factory :full_topic do
         contents { [ create(:full_content)]}
+        #comments {[ create(:comment)]}
       end
     end
   end

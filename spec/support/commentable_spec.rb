@@ -3,21 +3,24 @@ require 'spec_helper'
 shared_examples_for "Commentable" do |commentables| 
   commentables.each do |elem|
     #login
-    let(:comment) { FactoryGirl.build(:comment)}
+    let(:profile) {FactoryGirl.create(:profile)}
+    let(:commentable) { create(("full_" + elem.to_s.downcase.singularize).to_sym)}
+    let(:comment) { FactoryGirl.create(:comment, profile: profile, commentable: commentable)}
     let(:invalid_attrs) { FactoryGirl.attributes_for(:comment, text: nil)}
     let(:attrs) { FactoryGirl.attributes_for(:comment)}
-    let(:commentable) { FactoryGirl.create(elem.to_s.downcase.to_sym)}
     let(:hash_key) { (elem.to_s.downcase + "_id").to_sym}
 
     before(:each) do
-      commentable.comments << comment
+      #commentable.comments << comment
     end
 
     describe "GET #index" do
       it "populates an array of comments" do
         get :index, hash_key => commentable.id
 
-        expect(comments).to eq(page_comments)
+        page_comments = assigns[:comments]
+
+        expect(page_comments.sort).to eq commentable.comments.sort
       end
 
       it "renders the :index view" do
@@ -42,20 +45,6 @@ shared_examples_for "Commentable" do |commentables|
           expect(response).to render_template :show
         end
       end
-
-      context "when comment is not found" do
-        it "shows an error message" do
-          get :show, id: "test_id", hash_key => commentable.id
-
-          expect(flash[:error]).to eq "Comment could not be found"
-        end
-
-        it "redirects to index view" do 
-          get :show, id: "test_id", hash_key => commentable.id
-
-          expect(reponse).to redirect_to :index
-        end
-      end
     end
 
     describe "GET #new" do
@@ -69,7 +58,7 @@ shared_examples_for "Commentable" do |commentables|
       it "renders the :new template" do
         get :new, hash_key => commentable.id
 
-        expect(reponse).to render_template :new
+        expect(response).to render_template :new
       end
     end
 
@@ -91,13 +80,19 @@ shared_examples_for "Commentable" do |commentables|
     describe "POST #create" do
       context "with valid attributes" do
         it "saves the new Comment in the database" do
-          expect { post :create, hash_key => commentable.id, comment: attrs}.to change{commentable.comments.count}.by(1)
+          expect(commentable.comments.count).to eq 0
+          #expect { post :create, hash_key => commentable.id, comment: attrs}.to change{commentable.comments.count}.by(1)
+          post :create, hash_key => commentable.id, comment: attrs
+          commentable = assigns :commentable
+          comment = assigns :comment
+          expect(commentable.comments.count).to eq 1
+          expect(comment).to be_valid
         end
 
         it "redirects to the :index view" do
           post :create, hash_key => commentable.id, comment: attrs
 
-          expect(reponse).to redirect_to :show
+          expect(response).to redirect_to commentable
         end
       end
 
@@ -109,7 +104,7 @@ shared_examples_for "Commentable" do |commentables|
         it "redirects to the :new view" do
           post :create, comment: invalid_attrs, hash_key => commentable.id
 
-          expect(response).to redirect_to :new
+          expect(response).to render_template :new
         end
 
         it "shows an error message" do
@@ -139,7 +134,7 @@ shared_examples_for "Commentable" do |commentables|
 
           updated_comment = assigns[:comment]
 
-          expect(reponse).to redirect_to :index
+          expect(response).to redirect_to commentable
         end
 
         it "shows a success message" do
@@ -147,7 +142,7 @@ shared_examples_for "Commentable" do |commentables|
 
           put :update, id: comment.id, hash_key => commentable.id, comment: attrs
 
-          expect(flash[:notice]). to eq "Comment successfully updated"
+          expect(flash[:notice]).to eq "Comment successfully updated"
         end
       end
 
@@ -163,13 +158,13 @@ shared_examples_for "Commentable" do |commentables|
         it "redirects to the :index view" do
           put :update, id: comment.id, hash_key => commentable.id, comment: invalid_attrs
 
-          expect(reponse).to redirect_to :index
+          expect(response).to redirect_to commentable
         end
 
         it "shows an error message" do
           put :update, id: comment.id, hash_key => commentable.id, comment: invalid_attrs
 
-          expect(flash[:error]). to eq "Comment could not be updated"
+          expect(flash[:error]).to eq "Comment could not be updated"
         end
       end
     end
@@ -177,29 +172,22 @@ shared_examples_for "Commentable" do |commentables|
     describe "DELETE #destroy" do
       context "when find the comment" do
         it "deletes the comment" do
-          delete :destroy, id: comment.id, hash_key => commentable.id
-
-          expect(Comment.count).to eq 0
+          comment
+          expect{delete :destroy, id: comment.id, hash_key => commentable.id}.to change(Comment,:count).by(-1)	  
         end
 
         it "redirects to the :index view" do
           delete :destroy, id: comment.id, hash_key => commentable.id
 
-          expect(response).to redirect_to :index
+          expect(response).to redirect_to commentable
         end
       end
 
       context "when can not find the comment" do
-        it "shows an error message" do
-          delete :destroy, hash_key => commentable.id, id: "test"
-
-          expect(flash[:error]).to eql "Could not delete comment. Comment inexistent."
-        end
-
         it "redirects to index view" do
-          delete :destroy, hash_key => commentable.id, id: "test"
+          delete :destroy, hash_key => commentable.id, id: comment.id
 
-          expect(response).to redirect_to :index
+          expect(response).to redirect_to commentable
         end
       end
     end
