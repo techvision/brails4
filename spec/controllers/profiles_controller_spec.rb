@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe ProfilesController do
   let(:user) {create(:user)}
-  let(:profile) {build(:profile)}
-  let(:attrs) {attributes_for(:profile)}
+  let(:profile) {create(:profile, user_id: user.id)}
+  let(:attrs) {attributes_for(:profile, user_id: user.id)}
   let(:incorrect_attrs) {attributes_for(:profile, name: nil, birthdate: nil, address: nil)}
 
   before(:each) do
@@ -14,7 +14,6 @@ describe ProfilesController do
     it "assigns the current user profile to @profile" do
       get :show, user_id: user.id, id: profile.id
       page_profile = assigns[:profile]
-
       expect(profile).to eq page_profile
     end
 
@@ -25,7 +24,7 @@ describe ProfilesController do
     end
   end  
 
-  describe "GET #new or #edit" do
+  describe "GET #new" do
     context "if current user profile is nil" do
       it "assigns a new Profile to @profile" do
         get :new, user_id: user.id
@@ -40,7 +39,9 @@ describe ProfilesController do
         expect(response).to render_template :new
       end
     end
+  end
 
+  describe "GET #edit" do
     context "current user profile is not nil" do
       it "assigns the current user profile to @profile" do
         get :edit, user_id: user.id, id: profile.id
@@ -65,8 +66,8 @@ describe ProfilesController do
 
       it "redirects to :show view" do
         post :create, user_id: user.id, profile: attrs
-        
-        expect(response).to redirect_to user_profile_path(user, profile)
+
+        expect(response).to redirect_to user_profile_path(user, assigns[:profile])
       end
      
       it "shows a success message" do

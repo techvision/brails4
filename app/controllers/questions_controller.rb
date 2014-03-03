@@ -2,11 +2,7 @@ class QuestionsController < ApplicationController
   before_filter :find_questionable
 
   def show
-    if Question.find(params[:id]).nil?
-      redirect_to @questionable
-    else
-      @question = Question.find(params[:id]) 
-    end
+    @question = Question.offset(rand(@questionable.questions.count)).first 
   end
 
   private

@@ -5,5 +5,5 @@ describe QuestionsController do
     login
   end
 
-  it_behaves_like "Answerable", [Content]
+  it_behaves_like "Answerable", [Level,Topic,Content]
 end
