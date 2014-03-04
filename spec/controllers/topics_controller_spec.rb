@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TopicsController do
   let(:level)  { create(:full_level)}
   let(:topic1) { level.topics.first}
-  let(:topic2) { build(:topic,seq_number: 2)}
+  let(:topic2) { create(:full_topic,seq_number: 2)}
   let(:achievement) { build(:achievement, profile: @user.profile, topic_id: topic1.id)}
 
   before(:each) do
@@ -18,11 +18,8 @@ describe TopicsController do
 
         get :show, id: topic2.id, level_id: level.id
         page_topic = assigns[:topic]
-        p page_topic
-        p "--------------------"
-        p topic2
 
-        expect(topic2).to be eql page_topic
+        expect(topic2).to eql page_topic
       end
 
       it "renders the :show template" do
@@ -38,7 +35,7 @@ describe TopicsController do
       it "redirects to :index view" do
         get :show, id: topic2.id, level_id: level.id
 
-        expect(response).to redirect_to :index
+        expect(response).to redirect_to topics_path
       end
 
       it "shows an alert message" do
