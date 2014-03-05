@@ -8,7 +8,6 @@ describe AttemptsController do
   let(:correct_option)   { question.options.find_by(correct: true)}
   let(:incorrect_option) { question.options.find_by(correct: false)}
   let(:attempt) { build(:attempt, profile_id: profile.id, question_id: question.id )}
-  let(:topic_points) {profile.attempts_by_topic(attempt.question.find_topic).inject(0) { |acc,elem| acc. + elem.points}}
 
   before(:each) do
     login
@@ -27,7 +26,7 @@ describe AttemptsController do
 
       context "when user finishes the topic" do
         it "creates an achievement database record" do
-          expect{post :create,question_id: question.id, option_id: correct_option.id }.to change{@user.profile.achievements.count}.by(topic_points)
+          expect{post :create,question_id: question.id, option_id: correct_option.id }.to change{@user.profile.achievements.count}.by(1)
         end
       end
     end
