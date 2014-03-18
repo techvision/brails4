@@ -13,5 +13,7 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation
+    %br/
+    = f.hidden_field :roles, :value => ["Student"], :label_html => {class: 'span3'}
   %div= f.submit "Sign up"
 = render "devise/shared/links"

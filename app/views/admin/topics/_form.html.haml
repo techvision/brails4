@@ -2,16 +2,16 @@
   .container
   = simple_form_for [:admin, @level, @topic], :html => { :class => 'form-horizontal' } do |f|
     = f.input :title, input_html: { class: "form-control"}
-    = f.input :seq_number, input_html: { class: "form-control"}
+    = f.input :seq_number, :readonly => true, input_html: { class: "form-control", :value => "#{@level.topics.order_by(:seq_number => :desc).first.seq_number + 1}"}
 
-    %h3 Content
     = f.simple_fields_for :contents, html: {class: "form-horizontal"} do |content_form|
+      %h3 Content
       = content_form.input :title, input_html: { class: "form-control"}
       = content_form.input :summary, input_html: { class: "form-control"}
-      = content_form.input :body, input_html: { class: "form-control"}
-      = content_form.input :audio_mp3
-      = content_form.input :audio_ogg
+      = content_form.input :transcript, input_html: { class: "form-control"}
+      = content_form.input :youtube_channel_url, input_html: {class: 'form-control'}
 
+    %br
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_level_path(@topic.level_id), :class => 'btn'  

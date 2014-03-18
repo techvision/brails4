@@ -54,6 +54,6 @@ class Admin::LevelsController < ApplicationController
   private
 
   def level_params
-    params.require(:level).permit(:name, :seq_number, topics_attributes: [:title, :seq_number, contents_attributes: [:title, :summary, :body, :audio_mp3, :audio_ogg ]])
+    params.require(:level).permit(:name, :seq_number, topics_attributes: [:title, :seq_number, contents_attributes: [:title, :summary, :transcript, :youtube_channel_url]])
   end
 end

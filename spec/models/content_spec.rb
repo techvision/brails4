@@ -9,16 +9,17 @@ describe Content do
 
   describe "Fields" do
     it { should have_field(:title).of_type(String)}
-    it { should have_field(:body).of_type(String)}
+    it { should have_field(:transcript).of_type(String)}
     it { should have_field(:summary).of_type(String)}
+    it { should have_field(:youtube_channel_url).of_type(String)}
 
-    it "has an embbebed mp3 audio file" do
-      expect(content).to validate_attachment_presence(:audio_mp3)
-    end
+#    it "has an embbebed mp3 audio file" do
+#      expect(content).to validate_attachment_presence(:audio_mp3)
+#    end
 
-    it "has and embbebed ogg audio file" do
-      expect(content).to validate_attachment_presence(:audio_ogg)
-    end
+#    it "has and embbebed ogg audio file" do
+#      expect(content).to validate_attachment_presence(:audio_ogg)
+#    end
   end
 
   describe "Validations" do
@@ -26,29 +27,29 @@ describe Content do
       expect(content).to be_valid
     end
 
-    it 'is invalid without a mp3 audio file' do
-      expect(build(:content, audio_mp3: nil)).not_to be_valid
-    end
+#    it 'is invalid without a mp3 audio file' do
+#      expect(build(:content, audio_mp3: nil)).not_to be_valid
+#    end
 
-    it 'is invalid without a valid ogg audio file' do
-      expect(build(:content, audio_ogg: nil)).not_to be_valid
-    end
+#    it 'is invalid without a valid ogg audio file' do
+#      expect(build(:content, audio_ogg: nil)).not_to be_valid
+#    end
 
-    it 'validates the content type of mp3 audio file' do
-      expect(content).to validate_attachment_content_type(:audio_mp3).allowing('audio/mp3')
-    end
+#    it 'validates the content type of mp3 audio file' do
+#      expect(content).to validate_attachment_content_type(:audio_mp3).allowing('audio/mp3')
+#    end
 
-    it 'validates the content type of ogg audio file' do
-      expect(content).to validate_attachment_content_type(:audio_ogg).allowing('audio/ogg')
-    end
+#    it 'validates the content type of ogg audio file' do
+#      expect(content).to validate_attachment_content_type(:audio_ogg).allowing('audio/ogg')
+#    end
 
-    it 'has a valid mp3 audio file' do
-      expect(build(:content, audio_mp3: fixture_file_upload("#{Rails.root}/spec/factories/support/Lighthouse.jpg", "image/jpg"))).to_not be_valid
-    end
+#    it 'has a valid mp3 audio file' do
+#      expect(build(:content, audio_mp3: fixture_file_upload("#{Rails.root}/spec/factories/support/Lighthouse.jpg", "image/jpg"))).to_not be_valid
+#    end
 
-    it 'has a valid ogg audio file' do
-      expect(build(:content, audio_ogg: fixture_file_upload("#{Rails.root}/spec/factories/support/Lighthouse.jpg", "image/jpg"))).to_not be_valid
-    end
+#    it 'has a valid ogg audio file' do
+#      expect(build(:content, audio_ogg: fixture_file_upload("#{Rails.root}/spec/factories/support/Lighthouse.jpg", "image/jpg"))).to_not be_valid
+#    end
 
     it 'validates the lenght of Title' do
       expect(content).to validate_length_of(:title)
@@ -58,12 +59,16 @@ describe Content do
       expect(build(:content, title: nil)).not_to be_valid
     end
 
-    it 'is invalid without a body' do
-      expect(build(:content, body: nil)).to_not be_valid
+    it 'is invalid without a transcript' do
+      expect(build(:content, transcript: nil)).to_not be_valid
     end
 
     it 'is invalid without a summary' do
       expect(build(:content, summary: nil)).to_not be_valid
+    end
+
+    it 'is invalid without a youtube_channel_url' do
+      expect(build(:content, youtube_channel_url: nil)).not_to be_valid
     end
 
     #TODO

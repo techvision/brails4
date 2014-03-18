@@ -1,14 +1,28 @@
 .col-md-4
   .container
-  = simple_form_for [:admin, @questionable, @question], html: {class: 'form-horizontal'} do |f|
-    = f.input :title, input_html: { class: "form-control"}
-    = f.input :difficulty, collection: [EASY, MEDIUM, HARD], html: {class: 'form-horizontal'}
+  = simple_nested_form_for [:admin, @questionable], html: {class: 'form-horizontal'} do |f|
+    = f.simple_fields_for :questions, [@question], html: {class: 'form-horizontal'} do |question_form|
 
-    %h3 Options
-    = f.simple_fields_for :options, html: {class: 'form-horizontal'} do |option_form|
-      = option_form.input :text, input_html: { class: "form-control"}
-      = option_form.input :correct, as: :select, include_blank: false, html: {class: 'form-horizontal'}
+      %h3 Question
+      = question_form.input :title, input_html: { class: "form-control"}
+      = question_form.input :difficulty, collection: [EASY, MEDIUM, HARD], html: {class: 'form-horizontal'}
 
+      = question_form.simple_fields_for :options, html: {class: 'form-horizontal'} do |option_form|
+        %h3 Options
+        = option_form.input :text, input_html: { class: "form-control"}
+        = option_form.input :correct, as: :select, include_blank: false, html: {class: 'form-horizontal'}
+        
+        %br
+        %hr
+        .pull-right= option_form.link_to_remove "Remove option", :class => 'btn'
+      = question_form.link_to_add "Add Option", :options, :class => "btn"
+
+      %br
+      %hr
+      .pull-right= question_form.link_to_remove "Remove Question", :class => "btn"
+    = f.link_to_add "Add More Question", :questions, :class => "btn"
+
+    %br
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")),[:admin, @questionable], :class => 'btn'

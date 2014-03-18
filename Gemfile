@@ -24,6 +24,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'mongoid', git: 'git://github.com/mongoid/mongoid.git'
 gem 'devise'
@@ -32,9 +33,9 @@ gem 'authority'
 gem 'coveralls', require: false
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "mongoid-simple-roles", git: 'git://github.com/gerson-scanapieco/mongoid-simple-roles'
-gem 'less-rails'
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
+gem "nested_form"
 gem "erb2haml", :group => :development
 
 group :development, :test do
@@ -43,6 +44,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'faker'
   gem 'capybara'
+  gem 'rails_layout'
 end
 
 group :test do

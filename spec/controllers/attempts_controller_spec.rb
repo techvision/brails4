@@ -8,6 +8,7 @@ describe AttemptsController do
   let(:correct_option)   { question.options.find_by(correct: true)}
   let(:incorrect_option) { question.options.find_by(correct: false)}
   let(:attempt) { build(:attempt, profile_id: profile.id, question_id: question.id )}
+#  let(:topic_points) {profile.attempts_by_topic(attempt.question.find_topic).inject(0) { |acc,elem| acc. + elem.points}}
 
   before(:each) do
     login

@@ -4,10 +4,12 @@ include ActionDispatch::TestProcess
 FactoryGirl.define do
   factory :content do
     title {Faker::Lorem.characters(25)}
-    body {Faker::Lorem.sentence(10)}
+    transcript {Faker::Lorem.sentence(10)}
     summary {Faker::Lorem.sentence(5)}
-    audio_mp3 {fixture_file_upload("#{Rails.root}/spec/factories/support/Sample.mp3", "audio/mp3")}
-    audio_ogg {fixture_file_upload("#{Rails.root}/spec/factories/support/Sample.ogg", "audio/ogg")}
+    youtube_channel_url 'http://youtu.be/MG_SxId9Wuw'
+
+#    audio_mp3 {fixture_file_upload("#{Rails.root}/spec/factories/support/Sample.mp3", "audio/mp3")}
+#    audio_ogg {fixture_file_upload("#{Rails.root}/spec/factories/support/Sample.ogg", "audio/ogg")}
   
 
     factory :content_with_comments do

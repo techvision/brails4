@@ -55,6 +55,6 @@ class Admin::TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :seq_number, contents_attributes: [:title,:body,:summary, :audio_mp3, :audio_ogg])
+    params.require(:topic).permit(:title, :seq_number, contents_attributes: [:title,:transcript,:summary, :youtube_channel_url])
   end
 end

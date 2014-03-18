@@ -1,11 +1,14 @@
 .col-md-4
   .container
-  = simple_form_for [:admin, @topic, @content], :html => { :class => 'form-horizontal' } do |f|
-    = f.input :title, input_html: { class: "form-control"}
-    = f.input :summary, input_html: { class: "form-control"}
-    = f.input :body, input_html: { class: "form-control"}
-    = f.input :audio_mp3
-    = f.input :audio_ogg
+  = simple_nested_form_for [:admin, @topic], :html => { :class => 'form-horizontal' } do |f|
+    = f.simple_fields_for :contents, [@content] do |content_form|
+
+      = content_form.input :title, input_html: { class: "form-control"}
+      = content_form.input :summary, input_html: { class: "form-control"}, as: :text
+      = content_form.input :transcript, input_html: { class: "form-control"}, as: :text
+      = content_form.input :youtube_channel_url, input_html: {class: 'form-control'}    
+    = f.link_to_add "Add Content", :contents
+
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_topic_path(@topic), :class => 'btn'

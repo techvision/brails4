@@ -2,20 +2,20 @@
   .container
   = simple_form_for [:admin, @level], html: {class: 'form-horizontal' } do |f|
     = f.input :name, input_html: {class: 'form-control'}
-    = f.input :seq_number, input_html: {class: 'form-control'}
+    - levels = Level.all.order_by(:seq_number => :desc)
+    = f.input :seq_number, :readonly => true, input_html: {class: 'form-control', :value => "#{levels.first.seq_number + 1}"}         
 
-    %h3 Topic
     = f.simple_fields_for :topics do |topic_form|
+      %h3 Topic
       = topic_form.input :title, input_html: {class: 'form-control'}
-      = topic_form.input :seq_number, input_html: {class: 'form-control'}
+      = topic_form.input :seq_number, :readonly => true, input_html: {class: 'form-control', :value => 1}
 
-      %h3 Content
       = topic_form.simple_fields_for :contents do |content_form|
+        %h3 Content
         = content_form.input :title, input_html: {class: 'form-control'}
         = content_form.input :summary, input_html: {class: 'form-control'}, as: :text
-        = content_form.input :body, input_html: {class: 'form-control'}, as: :text
-        = content_form.input :audio_mp3
-        = content_form.input :audio_ogg
+        = content_form.input :transcript, input_html: {class: 'form-control'}, as: :text
+        = content_form.input :youtube_channel_url, input_html: {class: 'form-control'}
 
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'

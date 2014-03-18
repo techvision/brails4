@@ -7,32 +7,17 @@
   %br
   = @content.title
 %p
-  %strong= model_class.human_attribute_name(:body) + ':'
+  %strong= model_class.human_attribute_name(:transcript) + ':'
   %br
-  = @content.body
+  = @content.transcript
 %p
   %strong= model_class.human_attribute_name(:summary) + ':'
   %br
   = @content.summary
 %p
-  %strong= model_class.human_attribute_name(:audio_mp3_file_name) + ':'
+  %strong= model_class.human_attribute_name(:youtube_channel_url) + ':'
   %br
-  = @content.audio_mp3_file_name
-
-%p
-  %strong= model_class.human_attribute_name(:audio_mp3_file_size) + ':'
-  %br
-  = @content.audio_mp3_file_size
-
-%p
-  %strong= model_class.human_attribute_name(:audio_ogg_file_name) + ':'
-  %br
-  = @content.audio_ogg_file_name
-
-%p
-  %strong= model_class.human_attribute_name(:audio_ogg_file_size) + ':'
-  %br
-  = @content.audio_ogg_file_size
+  = @content.youtube_channel_url
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), admin_topic_path(@content.topic_id), :class => 'btn'

@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     if current_user.admin?
       admin_levels_path
     else
-      current_user_path
+      user_path(current_user)
     end
   end
 end

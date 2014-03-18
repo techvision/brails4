@@ -6,16 +6,9 @@
     %tr
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:title)
-      %th= model_class.human_attribute_name(:body)
+      %th= model_class.human_attribute_name(:transcript)
       %th= model_class.human_attribute_name(:summary)
-      %th= model_class.human_attribute_name(:audio_mp3_file_name)
-      %th= model_class.human_attribute_name(:audio_mp3_content_type)
-      %th= model_class.human_attribute_name(:audio_mp3_file_size)
-      %th= model_class.human_attribute_name(:audio_mp3_updated_at)
-      %th= model_class.human_attribute_name(:audio_ogg_file_name)
-      %th= model_class.human_attribute_name(:audio_ogg_content_type)
-      %th= model_class.human_attribute_name(:audio_ogg_file_size)
-      %th= model_class.human_attribute_name(:audio_ogg_updated_at)
+      %th= model_class.human_attribute_name(:youtube_channel_url)
       %th= model_class.human_attribute_name(:topic_id)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
@@ -24,16 +17,9 @@
       %tr
         %td= link_to content.id, admin_content_path(content)
         %td= content.title
-        %td= content.body
+        %td= content.transcript
         %td= content.summary
-        %td= content.audio_mp3_file_name
-        %td= content.audio_mp3_content_type
-        %td= content.audio_mp3_file_size
-        %td= content.audio_mp3_updated_at
-        %td= content.audio_ogg_file_name
-        %td= content.audio_ogg_content_type
-        %td= content.audio_ogg_file_size
-        %td= content.audio_ogg_updated_at
+        %td= content.youtube_channel_url
         %td= content.topic_id
         %td=l content.created_at
         %td
