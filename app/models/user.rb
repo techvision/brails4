@@ -58,6 +58,6 @@ class User
   accepts_nested_attributes_for :profile
 
   def admin? 
-    self.roles.include?(:admin)
+    self.roles && self.roles.include?(:admin)
   end
 end
