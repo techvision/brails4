@@ -10,7 +10,7 @@ class Level
   has_many :questions, as: :questionable, dependent: :destroy
   embeds_many :comments, as: :commentable
 
-  validates :name, :topics, presence: true
+  validates :name, presence: true
   validates :seq_number, numericality: { only_integer: true, :greater_than => 0 }
   #TODO
   #with this validation the create tests dont pass
