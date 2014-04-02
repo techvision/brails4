@@ -13,7 +13,7 @@ class Topic
   embeds_many :comments, as: :commentable
   has_many :questions, as: :questionable, dependent: :destroy
 
-  validates :seq_number, :title, :contents, :presence => true
+  validates :seq_number, :title, :presence => true
   validates :seq_number, numericality: { only_integer: true, :greater_than => 0 }
 
   accepts_nested_attributes_for :contents, :questions

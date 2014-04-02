@@ -17,8 +17,9 @@ class Content
   embeds_many :comments, as: :commentable
   has_many :questions, as: :questionable, dependent: :destroy
 
-  validates :title, :transcript, :summary, :youtube_channel_url, presence: true #, :questions, presence: true
-  validates :title, length: { maximum: 30 }
+  validates :title, :transcript, :summary, presence: true #, :questions, presence: true
+  validates :youtube_channel_url, presence: true
+  validates :title, length: { maximum: 50 }
 #  validates_attachment :audio_mp3, :audio_ogg, presence: true
 #  validates_attachment :audio_mp3, content_type: {:content_type => ['audio/mpeg', 'audio/mp3']}
 #  validates_attachment :audio_ogg, content_type: {:content_type => ['video/ogg', 'audio/ogg', 'application/ogg', 'audio/x-vorbis+ogg']}
