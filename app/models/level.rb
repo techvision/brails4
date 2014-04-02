@@ -1,10 +1,12 @@
 class Level
   include Mongoid::Document
-  include Authority::Abilities
+  include Mongoid::Slug
   include Authority::Abilities
 
   field :seq_number, type: Integer
   field :name, type: String
+
+  slug :name
 
   has_many :topics, dependent: :destroy
   has_many :questions, as: :questionable, dependent: :destroy

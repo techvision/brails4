@@ -1,0 +1,42 @@
+- model_class = Profile
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
+
+%p
+  %strong= model_class.human_attribute_name(:roles) + ':'
+  %br
+  = @user.roles
+%p
+  %strong= model_class.human_attribute_name(:name) + ':'
+  %br
+  = @user.profile.name
+%p
+  %strong= model_class.human_attribute_name(:email) + ':'
+  %br
+  = @user.email
+%p
+  %strong= model_class.human_attribute_name(:birthdate) + ':'
+  %br
+  = @user.profile.birthdate
+%p
+  %strong= model_class.human_attribute_name(:gender) + ':'
+  %br
+  = @user.profile.gender
+%p
+  %strong= model_class.human_attribute_name(:address) + ':'
+  %br
+  = @user.profile.address
+%p
+  %strong= model_class.human_attribute_name(:country) + ':'
+  %br
+  = @user.profile.country
+%p
+  %strong= model_class.human_attribute_name(:total_points) + ':'
+  %br
+  = @user.profile.total_points
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), user_path(@user), :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_profile_path(@user, @profile), :class => 'btn'
+
+

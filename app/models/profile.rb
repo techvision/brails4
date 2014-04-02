@@ -1,5 +1,6 @@
 class Profile
   include Mongoid::Document
+  include Mongoid::Slug
   include Authority::Abilities
 
   field :name, type: String
@@ -8,6 +9,8 @@ class Profile
   field :address, type: String
   field :country, type: String
   field :total_points, type: Integer, default: 0
+
+  slug :name
 
   belongs_to :user
   has_many :attempts
