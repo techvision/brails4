@@ -80,12 +80,6 @@ GEM
       term-ansicolor
       thor
     database_cleaner (1.2.0)
-    debugger (1.6.2)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.3)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.3)
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -265,7 +259,6 @@ DEPENDENCIES
   country_select
   coveralls
   database_cleaner
-  debugger
   devise
   devise_invitable
   erb2haml
