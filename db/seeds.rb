@@ -67,7 +67,7 @@ Some of the Output devices are Monitor and Printer.', summary: 'In this section,
 a) What Computer is
 b) Input Devices
 c) Output Devices', youtube_channel_url: 'http://youtu.be/MG_SxId9Wuw', topic_id: topic1.id)
-content1.save!
+content1.save(:validate => false)
 
 topic2 = Topic.create(title: 'Software and Hardware', seq_number: '2', level_id: level1.id)
 topic2.save!
@@ -91,7 +91,7 @@ Microsoft Windows, Unix, Mac are some of the examples of operating system though
 a) What is Hardware
 b) What is Software
 c) Application Software & System Software', youtube_channel_url: 'http://youtu.be/-iZ5QJDa7Tg', topic_id: topic2.id)
-content2.save!
+content2.save(:validate => false)
 
 topic3 = Topic.create(title: 'Memory', seq_number: '3', level_id: level1.id)
 topic3.save!
@@ -118,7 +118,7 @@ Along with operating system programs, whatever applications we start in our syst
 Please remember that the Data and Programs stored in RAM are volatile ( i.e. the information is lost when you switch off the computer) while the data stored on Secondary Memory devices does not get deleted when we switch off the computer. It permanently resides there unless somebody explicitly deletes it.', summary: 'In this section, you will learn -
 a) Primary Memory
 b) Secondary Memory', youtube_channel_url: '', topic_id: topic3.id)
-content3.save!
+content3.save(:validate => false)
 
 
 level2 = Level.create(seq_number: '2', name: 'Programming Basics')
@@ -172,7 +172,7 @@ As compared to Structured Programming - we can easily relate the concepts in Obj
 The good news is Ruby - the language which we are planning to be in friendship with - is an Object Oriented Programming language. Hence we will have many real world examples on the go as we proceed further to understand Object Orientation in greater details.', summary: 'In this section, you will learn about -
 a) What is a Program & Programming
 b) Programming Approaches', youtube_channel_url: '', topic_id: topic4.id)
-content4.save!
+content4.save(:validate => false)
 
 topic5 = Topic.create(title: 'Programming Elements & Constructs', seq_number: '2', level_id: level2.id)
 topic5.save!
@@ -212,7 +212,7 @@ But instead of doing this, I will ask computer to write "Welcome to Programming 
 a) What are Data, Data Types and Variables
 b) Conditional and Looping Constructs
 c) Operators', youtube_channel_url: '', topic_id: topic5.id)
-content5.save!
+content5.save(:validate => false)
 
 topic6 = Topic.create(title: 'Algorithm', seq_number: '3', level_id: level2.id)
 topic6.save!
@@ -245,7 +245,7 @@ Now let us try to write an algorithm to identify whether the given no is odd or 
 Step 1 - Input the value of variable "a" (Note - we are going to store the value of the no to be identified as odd or even into variable "a")', summary: 'In this section, you will learn about -
 a) What is Algorithm
 b) Sample Algorithm', youtube_channel_url: '', topic_id: topic6.id)
-content6.save
+content6.save(:validate => false)
 
 content7 = Content.create(title: "Algorithm", transcript: "So since you have correctly answered Question 1, 2 & 3, let us write step 2 
 
@@ -254,7 +254,7 @@ Step 2 - Divide variable 'a' by 2 and store the remainder of this division into 
 Step 3 - if the value of variable 'b' is 0, then display variable 'a' as even number - else display variable 'a' as odd number.
 
 So if you have understood the above algorithm correctly - I have a question for you.', summary: 'Sample Algorithm Continued...", youtube_channel_url: "", topic_id: topic6.id)
-content7.save
+content7.save(:validate => false)
 
 
 level3 = Level.create(seq_number: '1', name: 'Object Orientation')
@@ -288,7 +288,7 @@ One more example to clarify the concept of a class - You people must be aware of
 I hope we are very much clear with the concept of Class and an Object now.", summary: "In this section, you will learn about -
 a) What is Class and an Object?
 b) Attributes and Behavior of an Object", youtube_channel_url: "http://youtu.be/rQaof2Yf490", topic_id: topic7.id)
-content8.save!
+content8.save(:validate => false)
 
 topic8 = Topic.create(title: 'OOPS Concepts', seq_number: '2', level_id: level3.id)
 topic8.save!
@@ -323,4 +323,4 @@ So having discussed enough about Object Orientation, let us now mark our journey
 a) Encapsulation
 b) Inheritance
 c) Polymorphism", youtube_channel_url: "http://youtu.be/CEC2IYtZ848", topic_id: topic8.id)
-content9.save!
+content9.save(:validate => false)
