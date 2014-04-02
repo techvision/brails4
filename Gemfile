@@ -37,6 +37,9 @@ gem "haml", ">= 3.0.0"
 gem "haml-rails"
 gem "nested_form"
 gem "erb2haml", :group => :development
+gem 'mongoid_slug', '3.2.0'
+gem 'country_select'
+
 
 group :development, :test do
   gem 'mongoid-rspec'

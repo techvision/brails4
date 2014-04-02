@@ -1,9 +1,12 @@
 class Question
   include Mongoid::Document
+  include Mongoid::Slug
   include Authority::Abilities
 
   field :title, type: String
   field :difficulty, type: Integer
+
+  slug :title
 
   embeds_many :options
   has_many :attempts

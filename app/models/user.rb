@@ -1,6 +1,6 @@
 class User
   include Mongoid::Document
-  include Mongoid::Document::Roleable
+#  include Mongoid::Document::Roleable
   include Mongoid::Timestamps
   include Authority::UserAbilities
 
@@ -14,6 +14,7 @@ class User
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
+  field :roles, :type => String
 
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -57,7 +58,8 @@ class User
 
   accepts_nested_attributes_for :profile
 
-  def admin? 
-    self.roles.include?(:admin)
+  def admin?
+   # self.roles.inspect?(:admin)
+    self.roles == "Admin"
   end
 end
