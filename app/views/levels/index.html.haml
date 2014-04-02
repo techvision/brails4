@@ -1,14 +1,17 @@
-- model_class = Level
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-%table.table.table-striped
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:seq_number)
-      %th= model_class.human_attribute_name(:name)
-  %tbody
-    - @levels.each do |level|
-      %tr
-        %td= level.seq_number
-        %td= link_to level.name, level_path(level)
+%h1.automargin
+  Levels
+.solidgray
+.marginadjust
+- if @levels.present?  
+  .solidgray
+  .marginadjust
+  .row-fluid
+    - (1..@levels.count).to_a.each_slice(3).each_with_index do |levels, row_index|
+      %ul.levels.thumbnails{:style => "list-style:none;"}
+        - levels.each_with_index do |level, col_index|
+          - @level = @levels[level-1]
+          %li{:style => 'float:left;width:30% !important;margin-right: 2% !important;'}
+            .thumbnail{:style => 'height:150px;text-align:center;'}
+              .caption
+                .name{:style => 'font-size:20px;'}= @level.name
 
