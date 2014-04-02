@@ -8,6 +8,6 @@
 
 User.destroy_all
 
-user = User.create(email: 'gerson@example.com', password: 'josh1234', roles: [:admin])
+user = User.create(email: 'gerson@example.com', password: 'josh1234', roles: 'admin')
 user.profile = Profile.create(name: "gerson", birthdate: "19/07/1989", gender: "male", address: "kdjasldjaskjd", country: "Brazil" )
 user.save!
