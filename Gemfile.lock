@@ -261,12 +261,8 @@ DEPENDENCIES
   authority
   bootstrap-sass
   capybara
-<<<<<<< HEAD
-  coffee-rails (~> 4.0.0)
-  country_select
-=======
   coffee-rails (~> 4.0.1)
->>>>>>> 8c966146158b77e36e3e9afb458be0200a556d83
+  country_select
   coveralls
   database_cleaner
   debugger
