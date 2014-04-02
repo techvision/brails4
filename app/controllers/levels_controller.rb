@@ -6,5 +6,6 @@ class LevelsController < ApplicationController
 
   def show
     @level = Level.find(params[:id])
+    @topics = @level.topics
   end
 end

@@ -72,6 +72,7 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     columnize (0.3.6)
+    country_select (1.2.0)
     coveralls (0.7.0)
       multi_json (~> 1.3)
       rest-client
@@ -79,12 +80,6 @@ GEM
       term-ansicolor
       thor
     database_cleaner (1.2.0)
-    debugger (1.6.2)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.3)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.3)
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -141,6 +136,9 @@ GEM
       mongoid (>= 3.0.1)
       rake
       rspec (>= 2.14)
+    mongoid_slug (3.2.0)
+      mongoid (> 3.0)
+      stringex (~> 2.0)
     moped (2.0.0.beta3)
       bson (~> 2.0.0.rc3)
       optionable (~> 0.1.1)
@@ -225,6 +223,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    stringex (2.1.2)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
     therubyracer (0.12.0)
@@ -257,9 +256,9 @@ DEPENDENCIES
   bootstrap-sass
   capybara
   coffee-rails (~> 4.0.1)
+  country_select
   coveralls
   database_cleaner
-  debugger
   devise
   devise_invitable
   erb2haml
@@ -273,6 +272,7 @@ DEPENDENCIES
   mongoid-paperclip
   mongoid-rspec
   mongoid-simple-roles!
+  mongoid_slug (= 3.2.0)
   nested_form
   rails (~> 4.0.4)
   rails_layout
