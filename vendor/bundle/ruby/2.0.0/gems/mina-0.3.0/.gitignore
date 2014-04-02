@@ -1,8 +1,0 @@
-doc
-test_env/deploy
-.rvmrc
-.ruby-gemset
-.ruby-version
-Gemfile.lock
-pkg/
-docs
