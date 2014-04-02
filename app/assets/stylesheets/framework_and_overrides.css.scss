@@ -43,3 +43,22 @@ section {
   @extend .row;
   margin-top: 20px;
   }
+
+.no_list{
+  list-style:none;
+}
+
+.list{
+  float:left;
+  width:30% !important;
+  margin-right: 2% !important;
+}
+
+.name{
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.title{
+   text-decoration: underline;
+}
