@@ -58,8 +58,13 @@ class User
 
   accepts_nested_attributes_for :profile
 
+<<<<<<< HEAD
   def admin?
    # self.roles.inspect?(:admin)
     self.roles == "Admin"
+=======
+  def admin? 
+    self.roles && self.roles.include?(:admin)
+>>>>>>> 8c966146158b77e36e3e9afb458be0200a556d83
   end
 end
