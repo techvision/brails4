@@ -1,0 +1,9 @@
+- model_class = Topic
+
+.form
+  %h3= @topic.title
+  %hr
+  %label Content:
+  = select_tag 'topic', options_from_collection_for_select(@topic.contents().entries, :id, :title), :id => "cmbuser", :prompt => "Select content"
+  #show_content
+

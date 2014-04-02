@@ -1,6 +1,7 @@
 class Content
   include Mongoid::Document
   include Mongoid::Paperclip
+  include Mongoid::Slug
   include Authority::Abilities
 
   field :title, type: String
@@ -9,6 +10,8 @@ class Content
   field :youtube_channel_url, type: String 
 #  has_mongoid_attached_file :audio_mp3
 #  has_mongoid_attached_file :audio_ogg
+
+  slug :title
   
   belongs_to :topic
   embeds_many :comments, as: :commentable
