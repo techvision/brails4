@@ -1,13 +1,9 @@
-%h1.automargin
-  Levels
-- if @levels.present?  
-  .row
-    - (1..@levels.count).to_a.each_slice(3).each_with_index do |levels, row_index|
-      %ul.levels.thumbnails.no_list
-        - levels.each_with_index do |level, col_index|
-          - @level = @levels[level-1]
-          %li.col-md-3
-            .thumbnail.align-center
-              .caption
-                .name= @level.name
-
+%h1 Levels
+%div
+  - @levels.in_groups_of(3).each do |level_row|
+    %dl.row-wise-container
+      - level_row.each do |level|
+        - unless level.nil?
+          %dd.col-lg-4.col-sm-4
+            .f-box
+              %h2= level.name
