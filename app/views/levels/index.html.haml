@@ -1,14 +1,9 @@
-- model_class = Level
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-%table.table.table-striped
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:seq_number)
-      %th= model_class.human_attribute_name(:name)
-  %tbody
+%h1 Levels
+.row
+  %ul.levels.thumbnails
     - @levels.each do |level|
-      %tr
-        %td= level.seq_number
-        %td= link_to level.name, level_path(level)
-
+      = link_to level do 
+        %li.col-md-3
+          .thumbnail
+            .caption
+              .name= level.name

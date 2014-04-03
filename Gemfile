@@ -48,6 +48,7 @@ group :development, :test do
   gem 'faker'
   gem 'capybara'
   gem 'rails_layout'
+  gem 'mina'
 end
 
 group :test do
@@ -72,4 +73,4 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
- gem 'debugger', group: [:development, :test]
+#gem 'debugger', group: [:development, :test]
