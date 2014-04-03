@@ -18,6 +18,8 @@ class Topic
 
   accepts_nested_attributes_for :contents, :questions
 
+  default_scope order_by(seq_number: :asc)
+
   #Return true if user has completed all contents and solved topic questions
   def complete?(user_id)
     user = User.find(user_id)
