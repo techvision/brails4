@@ -2,7 +2,8 @@
 .row
   %ul.levels.thumbnails
     - @levels.each do |level|
-      %li.col-md-3
-        .thumbnail
-          .caption
-            .name= level.name
+      = link_to level do 
+        %li.col-md-3
+          .thumbnail
+            .caption
+              .name= level.name
