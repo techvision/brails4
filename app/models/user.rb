@@ -61,6 +61,5 @@ class User
 
   def admin?
    # self.roles.inspect?(:admin)
-#    self.roles == "Admin"
   end
 end
