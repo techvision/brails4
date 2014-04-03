@@ -4,10 +4,10 @@ FactoryGirl.define do
   factory :user do
     email { Faker::Internet.email }
     password { Faker::Lorem.characters(10) }
-    roles { 'student'}
+    roles {['student']}
 
     factory :admin, class: User do
-      roles {'admin'}
+      roles {['admin']}
     end
   end
 end
