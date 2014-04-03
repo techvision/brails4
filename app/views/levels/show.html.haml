@@ -7,7 +7,7 @@
   %ul.levels.thumbnails.no_list
     - @topics.each do |topic|
       %li.list
-        .thumbnail{:style => 'height:150px;text-align:center;'}
+        .thumbnail.align-center
           .caption
             .name
               = link_to topic.title, topic_path(topic)
