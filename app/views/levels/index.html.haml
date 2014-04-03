@@ -1,17 +1,9 @@
-%h1.automargin
-  Levels
-.solidgray
-.marginadjust
-- if @levels.present?  
-  .solidgray
-  .marginadjust
-  .row-fluid
-    - (1..@levels.count).to_a.each_slice(3).each_with_index do |levels, row_index|
-      %ul.levels.thumbnails{:style => "list-style:none;"}
-        - levels.each_with_index do |level, col_index|
-          - @level = @levels[level-1]
-          %li{:style => 'float:left;width:30% !important;margin-right: 2% !important;'}
-            .thumbnail{:style => 'height:150px;text-align:center;'}
-              .caption
-                .name{:style => 'font-size:20px;'}= @level.name
-
+%h1 Levels
+.row
+  %ul.levels.thumbnails
+    - @levels.each do |level|
+      = link_to level do 
+        %li.col-md-3
+          .thumbnail
+            .caption
+              .name= level.name

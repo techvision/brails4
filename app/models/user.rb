@@ -1,10 +1,12 @@
 class User
   include Mongoid::Document
-#  include Mongoid::Document::Roleable
+  include Mongoid::Document::Roleable
   include Mongoid::Timestamps
   include Authority::UserAbilities
 
   delegate :name, :birthdate, :gender, :address, :country, :total_points, to: :profile
+
+  roles = ['student', 'admin']
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -14,7 +16,6 @@ class User
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
-  field :roles, :type => String
 
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -60,6 +61,6 @@ class User
 
   def admin?
    # self.roles.inspect?(:admin)
-    self.roles == "Admin"
+#    self.roles == "Admin"
   end
 end

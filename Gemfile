@@ -48,6 +48,7 @@ group :development, :test do
   gem 'faker'
   gem 'capybara'
   gem 'rails_layout'
+  gem 'mina'
 end
 
 group :test do
