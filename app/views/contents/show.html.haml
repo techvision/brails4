@@ -5,7 +5,7 @@
         = @topic.title
       %section.topic
         .row
-          %iframe{:src => "#{@content.youtube_channel_url}"}
+          //%iframe{:src => "#{@content.youtube_channel_url}"}
       .row
         .tabbable.tabs-left.topic-details.colored-block{:id => "tabpanel", :role => "application"}
           %ul.nav.nav-tabs{:role => "tablist"}
@@ -27,5 +27,5 @@
             .tab-pane.test{:id =>"test_#{@content.id.to_s}", :role => "tabpanel", "aria-labelledby" => "t_tab"}
               %h3{"tabindex" => "0"} Take test
       %br             
-      .pull-right= link_to "BACK", level_path(@level), :class => "btn"
+      .pull-right= link_to "BACK", level_path(@topic.level), :class => "btn"
 
