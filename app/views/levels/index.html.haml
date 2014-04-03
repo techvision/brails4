@@ -11,7 +11,7 @@
         - levels.each_with_index do |level, col_index|
           - @level = @levels[level-1]
           %li.list
-            .thumbnail{:style => 'height:150px;text-align:center;'}
+            .thumbnail.align-center
               .caption
-                .name{:style => 'font-size:20px;'}= @level.name
+                .name= @level.name
 
