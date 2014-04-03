@@ -5,7 +5,7 @@
         = @topic.title
       %section.topic
         .row
-          //%iframe{:src => "#{@content.youtube_channel_url}"}
+          %iframe{:src => "#{@content.youtube_channel_url}"}
       .row
         .tabbable.tabs-left.topic-details.colored-block{:id => "tabpanel", :role => "application"}
           %ul.nav.nav-tabs{:role => "tablist"}
@@ -17,7 +17,7 @@
               %a{"data-toggle" => "tab", :href => "#t_#{@content.id.to_s}"} Transcript
             %li.tab{:id => "test_tab", :role => "tab", "aria-owns" => "test_#{@content.id.to_s}", "aria-controls" => "test_#{@content.id.to_s}"}
               %a{"data-toggle" => "tab", :href => "#test_#{@content.id.to_s}"} Take test
-          .tab-content
+          .tab-content.well
             .tab-pane.summary{ :id => "s_#{@content.id.to_s}", :role => "tabpanel", "aria-labelledby" => "s_tab"}
               %h3{"tabindex" => "0"} Summary
               = raw @content.summary
