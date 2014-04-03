@@ -124,7 +124,7 @@ describe Admin::LevelsController do
 
         put :update, id: level.id, level: attributes
 
-        expect(response).to redirect_to admin_level_path
+        expect(response).to redirect_to admin_level_path(level.id)
       end
     end
 
