@@ -17,7 +17,7 @@
               %a{"data-toggle" => "tab", :href => "#t_#{@content.id.to_s}"} Transcript
             %li.tab{:id => "test_tab", :role => "tab", "aria-owns" => "test_#{@content.id.to_s}", "aria-controls" => "test_#{@content.id.to_s}"}
               %a{"data-toggle" => "tab", :href => "#test_#{@content.id.to_s}"} Take test
-          .tab-content
+          .tab-content.well
             .tab-pane.summary{ :id => "s_#{@content.id.to_s}", :role => "tabpanel", "aria-labelledby" => "s_tab"}
               %h3{"tabindex" => "0"} Summary
               = raw @content.summary
@@ -27,5 +27,5 @@
             .tab-pane.test{:id =>"test_#{@content.id.to_s}", :role => "tabpanel", "aria-labelledby" => "t_tab"}
               %h3{"tabindex" => "0"} Take test
       %br             
-      .pull-right= link_to "BACK", level_path(@level), :class => "btn"
+      .pull-right= link_to "BACK", level_path(@topic.level), :class => "btn"
 
