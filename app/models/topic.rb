@@ -1,7 +1,7 @@
 class Topic
   include Mongoid::Document
   include Mongoid::Slug
-  include Authority::Abilities
+
 
   field :title, type: String
   field :seq_number, type: Integer
