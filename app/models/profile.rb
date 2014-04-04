@@ -1,7 +1,7 @@
 class Profile
   include Mongoid::Document
   include Mongoid::Slug
-  include Authority::Abilities
+
 
   field :name, type: String
   field :birthdate, type: Date
