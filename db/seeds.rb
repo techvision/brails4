@@ -8,16 +8,23 @@
 
 User.destroy_all
 
-user = User.create(email: 'gerson@example.com', password: 'josh1234', roles: [:admin])
+user = User.create(email: 'gerson@example.com', password: 'josh1234', roles: ['admin'])
 user.profile = Profile.create(name: "gerson", birthdate: "19/07/1989", gender: "male", address: "kdjasldjaskjd", country: "Brazil" )
 user.save!
 
 Level.destroy_all
 
-level1 = Level.create(seq_number: '1', name: 'Computer Basics')
-level1.save(:validate => false)
+#adding for testing, a new seed file need to be created for production.
+(1..10).to_a.each do |d|
+  Level.create!(:name => "level_#{d}", :seq_number => d)
+end
+
+level1 = Level.first
+level2 = Level.last
+level3 = Level.all[2]
+
 topic1 = Topic.create(title: 'Basics', seq_number: '1', level_id: level1.id)
-topic1.save(:validate => false)
+topic1.save!
 content1 = Content.create(title: 'Introduction', transcript: ' Friends - Your visit to this site itself proves that you are eager to start your journey towards becoming techno-savvy.
 
 And believe us, we need this enthusiasm only, the rest you leave it to us - we will try our best to make this journey as smooth as possible - TOGETHER WE CAN DO IT.
@@ -70,7 +77,7 @@ c) Output Devices', youtube_channel_url: 'http://youtu.be/MG_SxId9Wuw', topic_id
 content1.save(:validate => false)
 
 topic2 = Topic.create(title: 'Software and Hardware', seq_number: '2', level_id: level1.id)
-topic2.save(:validate => false)
+topic2.save!
 content2 = Content.create(title: 'Software and Hardware', transcript: 'Hardware
 The word hardware refers to the physical components that make your computer such as CPU, mouse, keyboard, monitor etc.
 
@@ -94,7 +101,7 @@ c) Application Software & System Software', youtube_channel_url: 'http://youtu.b
 content2.save(:validate => false)
 
 topic3 = Topic.create(title: 'Memory', seq_number: '3', level_id: level1.id)
-topic3.save(:validate => false)
+topic3.save!
 content3 = Content.create(title: 'Memory', transcript: 'Do you remember we have referred a word "Memory" many a times throughout our discussion so far?
 
 Yes Friends - the way we human beings have memory - computer too has a memory. Now stretch your brain a bit to think what is the significance of memory in our case? And then try to relate it to the Memory of a computer. If you have understood the discussion so far, you will definitely agree that human memory and Computer memory resembles to quite an extent.
@@ -121,10 +128,8 @@ b) Secondary Memory', youtube_channel_url: '', topic_id: topic3.id)
 content3.save(:validate => false)
 
 
-level2 = Level.create(seq_number: '2', name: 'Programming Basics')
-level2.save(:validate => false)
 topic4 = Topic.create(title: 'Basics', seq_number: '1', level_id: level2.id)
-topic4.save(:validate => false)
+topic4.save!
 content4 = Content.create(title: 'Basics', transcript: 'Hello Friends
 
 Welcome to the programming Basics section. By now, I am sure that you are well-versed with the Computer Basics. And your visit to this section of site indicates that your interest & curiosity - both are increasing to know more. This time the curiosity is about Programming - a very fascinating word.  We appreciate this fact and will be happy in assisting you to have a smooth ride on a Programming Tour.
@@ -175,7 +180,7 @@ b) Programming Approaches', youtube_channel_url: '', topic_id: topic4.id)
 content4.save(:validate => false)
 
 topic5 = Topic.create(title: 'Programming Elements & Constructs', seq_number: '2', level_id: level2.id)
-topic5.save(:validate => false)
+topic5.save!
 content5 = Content.create(title: 'Programming Elements & Constructs', transcript: 'So having understood the basics of programming - let us try to understand the basic elements of any programming language that help us do the actual programming.
 
 Friends - Any program that we write does some kind of processing - but it does the processing on what - obviously the input that we provide. And what this input is - this input is nothing but some kind of DATA. So DATA is the most basic element of any programming language.
@@ -215,7 +220,7 @@ c) Operators', youtube_channel_url: '', topic_id: topic5.id)
 content5.save(:validate => false)
 
 topic6 = Topic.create(title: 'Algorithm', seq_number: '3', level_id: level2.id)
-topic6.save(:validate => false)
+topic6.save!
 content6 = Content.create(title: 'Algorithm', transcript: 'So having understood the Programming Elements as DATA, DATA Types, Variables, Operators and Programming Constructs - we have everything to write a simple program - isn’t it? Oh - you must be thinking that I have not taught you a single word about Ruby as a programming language till now and expecting you to write a program? :)
 
 No Friends - I don’t and won’t expect it from you. But we will like to share with you one very interesting and at the same time very important thing. It is a very good & recommended practice to first write set of steps in plain English language for solving a particular problem before writing an actual Program in any programming language. These set of steps written in plain English language for solving a particular problem is called an ALGORITHM. Once we write these set of steps for solving any particular problem - we know exactly what we want to achieve and how are we going to get it achieved from computer. So - morale of the story - always write an algorithm before writing an actual Program.
@@ -257,10 +262,8 @@ So if you have understood the above algorithm correctly - I have a question for 
 content7.save(:validate => false)
 
 
-level3 = Level.create(seq_number: '1', name: 'Object Orientation')
-level3.save(:validate => false)
 topic7 = Topic.create(title: 'Introduction to Classes and Objects', seq_number: '1', level_id: level3.id)
-topic7.save(:validate => false)
+topic7.save!
 content8 = Content.create(title: "Introduction to Classes and Objects", transcript: "Friends - In level 2 - we understood that Ruby is an Object Oriented Programming Language. For learning any Object Oriented Programming language - we need to understand some basic concepts of Object-Orientation. In Programming jargon - they are also called as Object Oriented Programming specification concepts or in short OOPS concepts.
 
 But before proceeding to understand OOPS principles - will you please guess which thing could be at the core of any object oriented programming language? I am sure everybody of you must be able to answer this question and it’s Object. Object is at the core of any Object Oriented Programming language.
@@ -291,7 +294,7 @@ b) Attributes and Behavior of an Object", youtube_channel_url: "http://youtu.be/
 content8.save(:validate => false)
 
 topic8 = Topic.create(title: 'OOPS Concepts', seq_number: '2', level_id: level3.id)
-topic8.save(:validate => false)
+topic8.save!
 content9 = Content.create(title: "OOPS Concepts", transcript: "Now let us elaborate on 3 most important OOPS principles/concepts - Encapsulation, Inheritance and Polymorphism.
 
 Encapsulation - Friends the name of this principle itself reveals what it means. Does the manufacture of a capsule (medicine) ever expose the contents inside the capsule to you or anybody taking it? It’s always wrapped in a nice cover and you bother to take the capsule as a whole without bothering the contents inside. But by taking the capsule - obviously you take the contents inside as well but you cannot alter/see/touch the contents.  So this way the manufacturer of a capsule encapsulates the contents inside.
