@@ -35,7 +35,7 @@ class Admin::ContentsController < ApplicationController
   def update
     @content = Content.find(params[:id])
     if @content.update_attributes(content_params)
-      redirect_to admin_content_path(@content), notice: "Content successfully updated."
+      redirect_to admin_content_path(@content.id), notice: "Content successfully updated."
     else
       render action: :edit, alert: "Content could not be updated."
     end
@@ -44,7 +44,7 @@ class Admin::ContentsController < ApplicationController
   def destroy
     @content = Content.find(params[:id])
     if @content.destroy
-      redirect_to admin_topic_path(@content.topic_id), notice: "Content successfully deleted."
+      redirect_to admin_topic_contents_path(@content.topic_id), notice: "Content successfully deleted."
     else
       redirect_to admin_topic_path(@content.topic_id), alert: "Content could not be deleted."
     end

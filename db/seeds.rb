@@ -8,14 +8,21 @@
 
 User.destroy_all
 
-user = User.create(email: 'gerson@example.com', password: 'josh1234', roles: 'admin')
+user = User.create(email: 'gerson@example.com', password: 'josh1234', roles: ['admin'])
 user.profile = Profile.create(name: "gerson", birthdate: "19/07/1989", gender: "male", address: "kdjasldjaskjd", country: "Brazil" )
 user.save!
 
 Level.destroy_all
 
-level1 = Level.create(seq_number: '1', name: 'Computer Basics')
-level1.save!
+#adding for testing, a new seed file need to be created for production.
+(1..10).to_a.each do |d|
+  Level.create!(:name => "level_#{d}", :seq_number => d)
+end
+
+level1 = Level.first
+level2 = Level.last
+level3 = Level.all[2]
+
 topic1 = Topic.create(title: 'Basics', seq_number: '1', level_id: level1.id)
 topic1.save!
 content1 = Content.create(title: 'Introduction', transcript: ' Friends - Your visit to this site itself proves that you are eager to start your journey towards becoming techno-savvy.
@@ -121,8 +128,6 @@ b) Secondary Memory', youtube_channel_url: '', topic_id: topic3.id)
 content3.save(:validate => false)
 
 
-level2 = Level.create(seq_number: '2', name: 'Programming Basics')
-level2.save!
 topic4 = Topic.create(title: 'Basics', seq_number: '1', level_id: level2.id)
 topic4.save!
 content4 = Content.create(title: 'Basics', transcript: 'Hello Friends
@@ -257,8 +262,6 @@ So if you have understood the above algorithm correctly - I have a question for 
 content7.save(:validate => false)
 
 
-level3 = Level.create(seq_number: '1', name: 'Object Orientation')
-level3.save!
 topic7 = Topic.create(title: 'Introduction to Classes and Objects', seq_number: '1', level_id: level3.id)
 topic7.save!
 content8 = Content.create(title: "Introduction to Classes and Objects", transcript: "Friends - In level 2 - we understood that Ruby is an Object Oriented Programming Language. For learning any Object Oriented Programming language - we need to understand some basic concepts of Object-Orientation. In Programming jargon - they are also called as Object Oriented Programming specification concepts or in short OOPS concepts.
@@ -324,3 +327,4 @@ a) Encapsulation
 b) Inheritance
 c) Polymorphism", youtube_channel_url: "http://youtu.be/CEC2IYtZ848", topic_id: topic8.id)
 content9.save(:validate => false)
+

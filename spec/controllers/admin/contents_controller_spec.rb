@@ -81,7 +81,7 @@ describe Admin::ContentsController do
       it "redirects to the topic :show view" do
         post :create, topic_id: topic.id, content: attrs
 
-        expect(response).to redirect_to admin_topic_path(topic)
+        expect(response).to redirect_to admin_topic_path(topic.id)
       end
     end
 
@@ -113,7 +113,7 @@ describe Admin::ContentsController do
         attributes = attributes_for(:content, title: "New title")
         put :update, id: content.id,topic_id: topic.id, content: attributes
 
-        expect(response).to redirect_to admin_content_path
+        expect(response).to redirect_to admin_content_path(content.id)
       end
     end
 
@@ -141,7 +141,7 @@ describe Admin::ContentsController do
     it "redirects to the :index view" do
       delete :destroy, id: content.id, topic_id: topic.id
 
-      expect(response).to redirect_to admin_topic_path(topic)
+      expect(response).to redirect_to admin_topic_contents_path(topic.id)
     end
   end
 end

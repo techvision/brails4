@@ -16,7 +16,6 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     if @profile.save
-      p @profile.user
       redirect_to user_profile_path(@profile.user, @profile), notice: "Profile successfully created."
     else
       render :new
@@ -26,7 +25,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(profile_params)
-      redirect_to user_profile_path(@profile.user, @profile), notice: "profile successfully updated."
+      redirect_to user_profile_path(@profile.user, @profile.id), notice: "profile successfully updated."
     else
       render :edit
     end
