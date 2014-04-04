@@ -1,14 +1,9 @@
-- model_class = Topic
-%h3.title #{@level.name}
+%h3 #{@level.name} topics
 %hr
-.page-header
-  %h3=t '.title', :default => model_class.model_name.human.pluralize.titleize
-.row-fluid
-  %ul.levels.thumbnails.no_list
-    - @topics.each do |topic|
-      %li.list
-        .thumbnail.align-center
-          .caption
-            .name
-              = link_to topic.title, topic_path(topic)
-
+- @topics.in_groups_of(3).each do |topics|
+  %dl.row-wise-container
+    - topics.compact.each do |topic|
+      = link_to topic_contents_path(topic) do
+        %dd.col-lg-4.col-sm-4
+          .f-box
+            %h2= topic.title
