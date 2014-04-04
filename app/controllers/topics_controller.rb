@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
 #    level = Level.find(params[:level_id])
 #    achievements = current_user.profile.achievements
     topic = Topic.find(params[:id])
-    if current_user.profile.finished_previous_topics?(topic.id) 
+    if current_user && current_user.profile.finished_previous_topics?(topic.id) 
       @topic = topic
     else
       redirect_to topics_path 

@@ -2,8 +2,8 @@
 %div
   - @levels.in_groups_of(3).each do |level_row|
     %dl.row-wise-container
-      - level_row.each do |level|
-        - unless level.nil?
+      - level_row.compact.each do |level|
+        = link_to level do
           %dd.col-lg-4.col-sm-4
             .f-box
               %h2= level.name
