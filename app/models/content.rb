@@ -2,7 +2,6 @@ class Content
   include Mongoid::Document
   include Mongoid::Paperclip
   include Mongoid::Slug
-  include Authority::Abilities
 
   field :title, type: String
   field :transcript, type: String

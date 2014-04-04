@@ -251,7 +251,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
   cancancan (~> 1.7)
   capybara
   coffee-rails (~> 4.0.1)
