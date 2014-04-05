@@ -26,7 +26,7 @@ function navigateGrid(e) {
   var tab;
   var key = new keyCodes();
   var activeElement = $(":focus");
-  var elementIndex;
+
   switch(e.keyCode) {
     case key.tab: {
       if(tab==null) {
@@ -36,28 +36,29 @@ function navigateGrid(e) {
       break;
     }
     case key.right: {
-      if(activeElement.next.length != 0) {
-        activeElement.next().focus();
+      if(activeElement.parent().next.length != 0) {
+        activeElement.parent().next().children().focus();
       }
 break;
     }
     case key.left: {
-      if(activeElement.prev.length != 0) {
-        activeElement.prev().focus();
+      if(activeElement.parent().prev.length != 0) {
+        activeElement.parent().prev().children().focus();
       }
       break;
     }
     case key.up: {
-      pElement = activeElement.parent().prev();
+      pElement = activeElement.parent().parent().prev();
       if(pElement != "") {
-        pElement.children().eq(activeElement.index()).focus();
+        pElement.children().eq(activeElement.parent().index()).children().focus();
       }
       break;
     }
     case key.down: {
-      nElement = activeElement.parent().next();
+      nElement = activeElement.parent().parent().next();
+      console.log(activeElement)
       if(nElement != "") {
-        nElement.children().eq(activeElement.index()).focus();
+        nElement.children().eq(activeElement.parent().index()).children().focus();
       }
       break;
     }
