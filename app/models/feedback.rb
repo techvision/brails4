@@ -1,7 +1,7 @@
 class Feedback
   include Mongoid::Document
   include Mongoid::Slug
-  include Authority::Abilities
+
 
   field :name, type: String
   field :email, type: String

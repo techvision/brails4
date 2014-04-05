@@ -1,7 +1,4 @@
-class Admin::AchievementsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :is_admin
-  layout 'admin'
+class Admin::AchievementsController < AdminController
 
   def index
     @user = User.find(params[:user_id])

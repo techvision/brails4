@@ -1,7 +1,7 @@
 class Topic
   include Mongoid::Document
   include Mongoid::Slug
-  include Authority::Abilities
+
 
   field :title, type: String
   field :seq_number, type: Integer
@@ -17,6 +17,8 @@ class Topic
   validates :seq_number, numericality: { only_integer: true, :greater_than => 0 }
 
   accepts_nested_attributes_for :contents, :questions
+
+  default_scope order_by(seq_number: :asc)
 
   #Return true if user has completed all contents and solved topic questions
   def complete?(user_id)

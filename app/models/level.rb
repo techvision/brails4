@@ -1,7 +1,6 @@
 class Level
   include Mongoid::Document
   include Mongoid::Slug
-  include Authority::Abilities
 
   field :seq_number, type: Integer
   field :name, type: String

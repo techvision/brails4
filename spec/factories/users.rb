@@ -3,11 +3,14 @@
 FactoryGirl.define do
   factory :user do
     email { Faker::Internet.email }
-    password { Faker::Lorem.characters(10) }
-    roles {['student']}
+    password "123456789"
 
     factory :admin, class: User do
-      roles {['admin']}
+      role Role.create(name: Role::Admin)
+    end
+
+    factory :student, class: User do
+      role Role.create(name: Role::Student)
     end
   end
 end

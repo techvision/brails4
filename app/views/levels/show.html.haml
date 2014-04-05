@@ -1,14 +1,9 @@
-- model_class = Topic
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-%table.table.table-striped
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:seq_number)
-      %th= model_class.human_attribute_name(:title)
-  %tbody
-    - @topics.each do |topic|
-      %tr
-        %td= topic.seq_number
-        %td= link_to topic.title, topic_path(topic)
-
+%h3 #{@level.name} topics
+%hr
+- @topics.in_groups_of(3).each do |topics|
+  %dl.row-wise-container
+    - topics.compact.each do |topic|
+      = link_to topic_contents_path(topic) do
+        %dd.col-lg-4.col-sm-4
+          .f-box
+            %h2= topic.title

@@ -1,12 +1,8 @@
 class User
   include Mongoid::Document
-  include Mongoid::Document::Roleable
   include Mongoid::Timestamps
-  include Authority::UserAbilities
 
   delegate :name, :birthdate, :gender, :address, :country, :total_points, to: :profile
-
-  roles = ['student', 'admin']
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -56,11 +52,24 @@ class User
   # field :authentication_token, :type => String
 
   has_one :profile
+  belongs_to :role
+
+  before_create :assign_role
 
   accepts_nested_attributes_for :profile
 
-  def admin?
-   # self.roles.inspect?(:admin)
-#    self.roles == "Admin"
+  def assign_role
+    if role.nil?
+      self.role = Role.find_by name: Role::Student
+    end
   end
+
+  def admin?
+    role.name == Role::Admin
+  end
+
+  def has_role?(user_role)
+    role.name == user_role
+  end
+
 end
