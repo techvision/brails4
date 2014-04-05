@@ -1,0 +1,24 @@
+content:
+  title: 'Software and Hardware'
+  transcript: 'Hardware
+The word hardware refers to the physical components that make your computer such as CPU, mouse, keyboard, monitor etc.
+
+
+
+Software
+To tell you frankly - Hardware has no value without software. It is a set of instructions that make hardware/computer function.
+
+Mainly there are two types of Software - Application Software and System Software.
+
+System software is software that runs & controls the hardware units of the system. To tell you the fact - Application software cannot run without System Software. Application software is specifically written to create applications for users according to their requirement and they run on system software.
+
+To give the example - When you listen to the audio in your computer, there must be a program behind it which makes it possible to produce the sound. This is example of system software and called Sound Driver. And Microsoft Office, Programming Languages and Databases can be considered as Application software.
+
+One of the best examples of System Software is Operating System. Operating System is the heart of your computer. Computer at many a times is also referred as a system. So Operating System enables you to operate the System. Without Operating System, your computer is simply a body without soul in it.
+
+Microsoft Windows, Unix, Mac are some of the examples of operating system though Windows is most widely used Operating System.' 
+  summary: 'n this section, you will learn about -
+a) What is Hardware
+b) What is Software
+c) Application Software & System Software'
+  youtube_channel_url: 'http://youtu.be/-iZ5QJDa7Tg'
