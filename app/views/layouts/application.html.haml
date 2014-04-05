@@ -20,29 +20,7 @@
   %body.textsize-1625
     .wrap
       .navbar.navbar-default
-        .navbar-header
-          %a.navbar-brand(href="#") Brails
-        .navbar-collapse.collapse
-          - if user_signed_in? && current_user.roles == 'admin'
-            %ul.nav.navbar-nav
-              %li
-                = link_to "Levels", admin_levels_path
-              %li
-                = link_to "Users", admin_users_path
-              %li
-                = link_to "Feedbacks", admin_feedbacks_path
-          - if user_signed_in?
-            %ul.nav.navbar-nav
-              %li
-                = link_to "Levels", levels_path
-              %li
-                - if current_user.profile.nil?
-                  = link_to "Profile", new_user_profile_path(current_user)
-                - else
-                  = link_to "Profile", user_profile_path(current_user, current_user.profile)
-            %ul.nav.navbar-nav.navbar-right
-              %li
-                = link_to "Sign out", destroy_user_session_path, method: :delete
+        = render "layouts/header"
       .control-bar
         .increase-font.change-font-size{:data => {:size => "up"}}
         .default-font-size.change-font-size{:data => {:size => "reset"}}
@@ -52,7 +30,6 @@
         .switch-color.orange{:data => {:color => "orange"}}
         .switch-color.black{:data => {:color => "black"}}
 
-        = render "layouts/header"
       .container
         .row
           .span12
