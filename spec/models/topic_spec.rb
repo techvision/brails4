@@ -33,10 +33,6 @@ describe Topic do
     it 'is invalid without a seq_number' do
       expect(topic).to validate_presence_of(:seq_number)
     end
-
-    it 'is invalid without a content' do
-      expect(topic).to validate_presence_of(:contents)
-    end
   end
 
   describe 'Associations' do

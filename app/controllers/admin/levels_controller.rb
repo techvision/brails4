@@ -1,7 +1,4 @@
-class Admin::LevelsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :is_admin
-  layout 'admin'
+class Admin::LevelsController < AdminController
 
   def index
     @levels = Level.all.order_by("seq_number ASC")
@@ -35,7 +32,7 @@ class Admin::LevelsController < ApplicationController
   def update
     @level = Level.find(params[:id])
     if @level.update_attributes(level_params)
-      redirect_to admin_level_path(@level), notice: "Level successfully updated."
+      redirect_to admin_level_path(@level.id), notice: "Level successfully updated."
     else
       render :edit, alert: "Level could not be updated."
     end

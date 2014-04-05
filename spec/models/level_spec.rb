@@ -21,10 +21,6 @@ describe Level do
     it 'is invalid without a name' do
       expect(level).to validate_presence_of(:name)
     end
-
-    it 'is invalid without a topic' do
-      expect(level).to validate_presence_of(:topics)
-    end
   end
 
   describe "Associations" do

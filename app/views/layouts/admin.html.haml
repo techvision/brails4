@@ -23,7 +23,7 @@
         .navbar-header
           %a.navbar-brand(href="#") Brails
         .navbar-collapse.collapse
-          - if user_signed_in? && current_user.roles == "admin"
+          - if user_signed_in? && current_user.admin?
             %ul.nav.navbar-nav
               %li
                 = link_to "Levels", admin_levels_path

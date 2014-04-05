@@ -1,7 +1,4 @@
-class Admin::TopicsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :is_admin
-  layout 'admin'
+class Admin::TopicsController < AdminController
 
   def index
     @level = Level.find(params[:level_id])
@@ -37,7 +34,7 @@ class Admin::TopicsController < ApplicationController
   def update
     @topic = Topic.find(params[:id])
     if @topic.update_attributes(topic_params)
-      redirect_to admin_topic_path(@topic), notice: "Topic successfully updated."
+      redirect_to admin_topic_path(@topic.id), notice: "Topic successfully updated."
     else
       render action: :edit, alert: "Topic could not be updated."
     end

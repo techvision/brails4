@@ -1,7 +1,6 @@
 class Option
   include Mongoid::Document
   include Mongoid::Slug
-  include Authority::Abilities
 
   field :text, type: String
   field :correct, type: Mongoid::Boolean, default: false

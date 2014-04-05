@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, error: "Access denied!"
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -12,14 +16,9 @@ class ApplicationController < ActionController::Base
     # Override accepted parameters
     devise_parameter_sanitizer.for(:accept_invitation) do |u|
       u.permit(:password, :password_confirmation,
-             :invitation_token, :roles)
+             :invitation_token)
     end
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :roles) }
-    puts "################"
-    puts params[:controller]
-    #raise "its me sanghapal"
-   # devise_parameter_sanitizer.for(:accept_invitation)<< :roles
-#.concat [:roles]
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation ) }
   end
 
   def layout_by_resource
@@ -35,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_user.roles == 'admin'
+    if current_user.admin?
       admin_levels_path
     else
       if resource && resource.sign_in_count == 1
