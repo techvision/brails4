@@ -3,12 +3,11 @@
   .col-md-8
     %h3 #{@level.name} topics
     %hr
-- @topics.each do |topic|
-  = link_to topic_contents_path(topic) do
-    .row
-      .col-md-2
-      .col-md-8
-        .f-box
-          %h2= topic.title
-          %p= truncate topic.description, length: 250
-      .col-md-2
+%div.center
+  - @topics.each do |topic|
+    %dl.row-wise-container
+      = link_to topic_contents_path(topic) do
+        %dd.col-md-8
+          .f-box
+            %h2= topic.title
+            %p= truncate topic.description, length: 250

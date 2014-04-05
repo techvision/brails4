@@ -2,8 +2,8 @@
   %section.panel
     %header.panel-heading.tab-bg-dark-navy-blue
       %ul.nav.nav-tabs.nav-justified
-        - ['summary', 'transcript', 'take_test'].each do |k|
-          %li
+        - ['summary', 'transcript', 'take_test'].each_with_index do |k, i|
+          %li{class: i == 0 ? 'active' : ''}
             %a{"data-toggle" => "tab", :href => "##{k}"}= k.titleize
     .panel-body
       .tab-content.tasi-tab
