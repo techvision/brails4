@@ -1,0 +1,30 @@
+%header.header-frontend
+  .navbar.navbar-default.navbar-static-top  
+    .container
+      .navbar-header
+        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to root_path, class: "navbar-brand" do
+          %span bRails
+      .navbar-collapse.collapse
+        %ul.nav.navbar-nav
+          - if !user_signed_in?
+            %li
+              = link_to "Sign In", new_user_session_path
+          - elsif current_user.admin?
+            = link_with_li("Levels", admin_levels_path, admin_levels_active?)
+            = link_with_li("Users", admin_users_path, admin_users_active?)
+            = link_with_li("Feedbacks", admin_feedbacks_path, admin_feedbacks_active?)
+            %li
+              = link_to "Sign out", destroy_user_session_path, method: :delete
+          - else
+            = link_with_li("Levels", levels_path, levels_active?)  
+            - if current_user.profile.nil?
+              = link_with_li("Profile", new_user_profile_path(current_user), profile_active?)
+            - else 
+              = link_with_li("Profile",user_profile_path(current_user, current_user.profile), profile_active?)
+            %li
+              = link_to "Sign out", destroy_user_session_path, method: :delete
+            
