@@ -1,6 +1,11 @@
 class ProfilesController < ApplicationController
-  before_filter :load_user
-  before_filter :load_profile, except: [:new, :create]
+  load_resource :user
+  load_and_authorize_resource :profile, through: :user, singleton: true
+
+  def show
+    @profile = Profile.find(params[:id])
+    @user = @profile.user
+  end
 
   def new
     @profile = Profile.new
@@ -29,11 +34,4 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(:id, :name, :gender, :address, :country, :total_points, :user_id)
   end
   
-  def load_user
-    @user = User.find(params[:user_id])
-  end
-
-  def load_profile
-    @profile = @user.profile
-  end
 end

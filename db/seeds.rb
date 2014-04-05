@@ -6,9 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Role.destroy_all
+roles = [{name: Role::Admin}, {name: Role::Student}] 
+Role.create(roles)
+
 User.destroy_all
 
-user = User.create(email: 'gerson@example.com', password: 'josh1234', roles: ['admin'])
+user = User.create(email: 'gerson@example.com', password: 'josh1234', role: Role.find_by(name: Role::Admin))
 user.profile = Profile.create(name: "gerson", gender: "male", address: "kdjasldjaskjd", country: "Brazil" )
 user.save!
 

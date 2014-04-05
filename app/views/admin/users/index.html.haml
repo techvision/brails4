@@ -5,7 +5,7 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:roles)
+      %th= model_class.human_attribute_name(:role)
       %th= model_class.human_attribute_name(:email)      
       %th= model_class.human_attribute_name(:name)
       %th=t '.actions', :default => t("helpers.actions")
@@ -13,7 +13,7 @@
     - @users.each do |user|
       %tr
         %td= link_to user.id, admin_user_path(user)
-        %td= user.roles
+        %td= user.role.name
         %td= user.email
         %td= user.profile.nil? ? " " : user.name
         %td
