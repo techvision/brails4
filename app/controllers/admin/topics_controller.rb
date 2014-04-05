@@ -1,7 +1,4 @@
-class Admin::TopicsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :is_admin
-  layout 'admin'
+class Admin::TopicsController < AdminController
 
   def index
     @level = Level.find(params[:level_id])

@@ -2,7 +2,6 @@ class Level
   include Mongoid::Document
   include Mongoid::Slug
 
-
   field :seq_number, type: Integer
   field :name, type: String
 

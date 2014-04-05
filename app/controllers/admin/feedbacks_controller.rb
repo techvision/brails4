@@ -1,7 +1,4 @@
-class Admin::FeedbacksController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :is_admin
-  layout 'admin'
+class Admin::FeedbacksController < AdminController
 
   def index
     @feedbacks = Feedback.all
