@@ -3,8 +3,8 @@ class ProfilesController < ApplicationController
   load_and_authorize_resource :profile, through: :user, singleton: true
 
   def show
-    @profile = Profile.find(params[:id])
-    @user = @profile.user
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
   end
 
   def new
@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
+    @profile.user = @user
     if @profile.save
       redirect_to user_profile_path(@profile.user, @profile), notice: "Profile successfully created."
     else
