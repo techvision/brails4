@@ -177,7 +177,7 @@ p {line-height: 22px}
     transition: all .3s ease;
     border: 1px solid #fff;
     box-shadow: none;
-    background: url("../img/search-icon.jpg") no-repeat 10px 8px;
+    background: image-url("search-icon.jpg") no-repeat 10px 8px;
     padding:0 5px 0 35px;
     color: #fff;
 }
@@ -265,12 +265,13 @@ p {line-height: 22px}
 
 }
 
-.f-box:hover h2, .f-box.active h2{
+.f-box:hover h2, .f-box.active h2, .f-box:hover p{
     color: #fff;
 }
 
 .f-box h2{
     font-size: 20px;
+    margin-top: 0px;
     text-transform: uppercase;
     font-weight: 400;
     font-family: 'Fjalla One', sans-serif;
@@ -1769,7 +1770,7 @@ ul#filters > .active > span {
 /*parallax*/
 
 .parallax1 {
-    background: url("../img/flat_parallax.jpg") no-repeat fixed 0 0 #f77b6f;
+    background: image-url("flat_parallax.jpg") no-repeat fixed 0 0 #f77b6f;
     background-size:cover;
     width: 100%;
     min-height: 400px;
@@ -1791,3 +1792,9 @@ ul#filters > .active > span {
 .mbot50 {
     margin-bottom: 50px;
 }
+
+/*------*/
+.auto-height, .auto-height:hover{
+  min-height: 0;
+}
+

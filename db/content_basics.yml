@@ -1,0 +1,51 @@
+content:
+  title: 'Basics'
+  transcript: 'Hello Friends
+
+Welcome to the programming Basics section. By now, I am sure that you are well-versed with the Computer Basics. And your visit to this section of site indicates that your interest & curiosity - both are increasing to know more. This time the curiosity is about Programming - a very fascinating word.  We appreciate this fact and will be happy in assisting you to have a smooth ride on a Programming Tour.
+
+Do you remember we told you to keep the definition of Computer well in mind since we would need it while understanding what Programming is.
+
+For those who don’t remember - lets revise it again - Computer is an electronic device which takes an input, processes it and produces the output. Also the hard fact is Computer in itself is a dumb machine.
+
+One thing is sure that Computer being a dumb machine - we have to give instructions to Computer if we want any specific task to get done from it.
+
+Simplifying this further - A set of instructions given to a computer to achieve or accomplish a specific task is nothing but a Program.
+
+And this act of instructing a Computer is called Programming - sounds simple and interesting?
+
+Ok, now I have one simple question for you all - what is the first and foremost criteria if we want to communicate with anybody in this world?
+
+All of you may have different answers in your mind - but you will agree with the fact that "LANGUAGE" is the first and foremost criteria. That means any 2 persons who want to communicate with each other need to know a common language through which they can communicate.
+
+Here is the catch - I hope you remember we said that Computer only understands the language of 0s and 1s.
+
+And we human beings cannot speak in 0s and 1s.
+
+So how are we going to communicate with Computer?
+
+Here we introduce the concept of Programming Languages - A language which will help us communicate with a Computer.
+
+There are many programming languages which have set of instructions in English language. And since we all understand English, we can use the instruction set of these programming languages and write our own programs.
+
+Here I will like to introduce you with one more very frequently used term - Software though we have seen its definition in Level 1.
+
+We already know what Program is - it’s the set of instructions given to a Computer to achieve or accomplish a specific task. Friends - Software is nothing but a set of such programs.
+
+And programming languages are nothing but Application Software (Remember we already discussed this into Level 1 - Topic 2).
+
+So as I said, there are many programming languages but our interest is Ruby.
+
+And before going into details of Ruby as a programming langugage - we should be aware of the existing Programming Approaches or Methodologies.
+
+Broadly there are 2 existing Programming Approaches - a) Structured way of Programming and b) Object oriented way of Programming.
+
+There are some fundamental differences between these 2 approaches and instead of going into details - I will just like to mention one important difference here.
+
+As compared to Structured Programming - we can easily relate the concepts in Object Oriented Programming with the real world objects and their interactions. And you will agree with the fact that any concept - when elaborated with a real life concept or scenario - is very easy to comprehend/understand.
+
+The good news is Ruby - the language which we are planning to be in friendship with - is an Object Oriented Programming language. Hence we will have many real world examples on the go as we proceed further to understand Object Orientation in greater details.'
+  summary: 'In this section, you will learn about -
+a) What is a Program & Programming
+b) Programming Approaches' 
+  youtube_channel_url: ''
