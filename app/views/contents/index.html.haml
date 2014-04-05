@@ -22,7 +22,13 @@
       %hr
       %section.topic
         .row
-          %iframe{:src => "#{@content.youtube_channel_url}"}
+          .ytplayerbox
+            / specify 'normal' for YouTube VGA aspect ratio (480 x 360) and 'wide' for YouTube HD (640 x 360)
+            %span.ytplayeraspect:.normal  
+            / list video titles and identifiers here, playlist rendered only if more than one movie
+            %span{class: "ytmovieurl:#{@content.youtube_channel_url.split('/').last}"}  
+              = @content.title
+
       .row
         = yield :panel
 
