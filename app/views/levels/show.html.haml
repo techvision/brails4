@@ -1,5 +1,8 @@
-%h3 #{@level.name} topics
-%hr
+.row
+  .col-md-2
+  .col-md-8
+    %h3 #{@level.name} topics
+    %hr
 - @topics.each do |topic|
   = link_to topic_contents_path(topic) do
     .row
