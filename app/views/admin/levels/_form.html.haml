@@ -15,7 +15,7 @@
         = content_form.input :summary, input_html: {class: 'form-control'}, as: :text
         = content_form.input :transcript, input_html: {class: 'form-control'}, as: :text
         = content_form.input :youtube_channel_url, input_html: {class: 'form-control'}
-
+    %br
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_levels_path, :class => 'btn'

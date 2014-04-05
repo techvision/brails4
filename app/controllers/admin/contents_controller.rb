@@ -32,7 +32,7 @@ class Admin::ContentsController < AdminController
   def update
     @content = Content.find(params[:id])
     if @content.update_attributes(content_params)
-      redirect_to admin_content_path(@content.id), notice: "Content successfully updated."
+      redirect_to admin_topic_path(@content.topic_id), notice: "Content successfully updated."
     else
       render action: :edit, alert: "Content could not be updated."
     end

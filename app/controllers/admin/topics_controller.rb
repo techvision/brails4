@@ -34,12 +34,12 @@ class Admin::TopicsController < AdminController
   def update
     @topic = Topic.find(params[:id])
     if @topic.update_attributes(topic_params)
-      redirect_to admin_topic_path(@topic.id), notice: "Topic successfully updated."
+      redirect_to admin_level_path(@topic.level_id), notice: "Topic successfully updated."
     else
       render action: :edit, alert: "Topic could not be updated."
     end
   end
-
+  
   def destroy
     @topic = Topic.find(params[:id])
     if @topic.destroy
