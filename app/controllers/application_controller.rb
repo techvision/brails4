@@ -15,11 +15,6 @@ class ApplicationController < ActionController::Base
              :invitation_token, :roles)
     end
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :roles ) }
-    puts "################"
-    puts params[:controller]
-    #raise "its me sanghapal"
-   # devise_parameter_sanitizer.for(:accept_invitation)<< :roles
-#.concat [:roles]
   end
 
   def layout_by_resource

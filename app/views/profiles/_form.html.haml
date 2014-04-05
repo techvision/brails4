@@ -4,10 +4,6 @@
     = f.hidden_field :user_id, :value => current_user.id
     = f.input :name, input_html: {class: "form-control"}
     = f.input :gender, collection: ['Male', 'Fimale'], :prompt => "Select Gender", input_html: {class: "form-control"}
-    = f.input :birthdate, :label => 'Date Of Birth' do
-      = f.input_field :birthdate, :readonly => true
-      %a{:href => '#', :id => 'imgCalendar', :class => 'datePicker'}
-        = image_tag('Calendar_scheduleHS.png', :alt => 'Pick date from calendar' )
     = f.input :address, input_html: {class: "form-control"}
     = f.input :country, :prompt => "Select Country", input_html: {class: "form-control"}
 
