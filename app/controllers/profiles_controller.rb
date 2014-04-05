@@ -25,7 +25,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(profile_params)
-      redirect_to user_profile_path(@profile.user, @profile.id), notice: "profile successfully updated."
+      redirect_to user_profile_path(@profile.user, @profile.id), notice: "Profile successfully updated."
     else
       render :edit
     end
@@ -34,6 +34,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:id, :name, :birthdate, :gender, :address, :country, :total_points, :user_id)
+    params.require(:profile).permit(:id, :name, :gender, :address, :country, :total_points, :user_id)
   end
 end

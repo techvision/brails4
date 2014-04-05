@@ -28,6 +28,6 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:id, :email, profile_attributes: [:id, :name, :gender, :birthdate, :country, :address])
+    params.require(:user).permit(:id, :email, profile_attributes: [:id, :name, :gender, :country, :address])
   end
 end

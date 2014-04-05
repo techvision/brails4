@@ -4,7 +4,7 @@ describe ProfilesController do
   let(:user) {create(:user)}
   let(:profile) {create(:profile, user_id: user.id)}
   let(:attrs) {attributes_for(:profile, user_id: user.id)}
-  let(:incorrect_attrs) {attributes_for(:profile, name: nil, birthdate: nil, address: nil)}
+  let(:incorrect_attrs) {attributes_for(:profile, name: nil, address: nil)}
 
   before(:each) do
     login
@@ -111,7 +111,7 @@ describe ProfilesController do
         updated_attrs = attributes_for(:profile, name: "new name")
 
         put :update, user_id: user.id, id: profile.id, profile: updated_attrs
-        expect(flash[:notice]).to eql "profile successfully updated."
+        expect(flash[:notice]).to eql "Profile successfully updated."
       end
     end
 

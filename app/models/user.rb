@@ -3,7 +3,7 @@ class User
   include Mongoid::Document::Roleable
   include Mongoid::Timestamps
 
-  delegate :name, :birthdate, :gender, :address, :country, :total_points, to: :profile
+  delegate :name, :gender, :address, :country, :total_points, to: :profile
 
   roles = ['student', 'admin']
 
