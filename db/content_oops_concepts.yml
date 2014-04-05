@@ -1,0 +1,35 @@
+content:
+  title: "OOPS Concepts"
+  transcript: "Now let us elaborate on 3 most important OOPS principles/concepts - Encapsulation, Inheritance and Polymorphism.
+
+Encapsulation - Friends the name of this principle itself reveals what it means. Does the manufacture of a capsule (medicine) ever expose the contents inside the capsule to you or anybody taking it? It’s always wrapped in a nice cover and you bother to take the capsule as a whole without bothering the contents inside. But by taking the capsule - obviously you take the contents inside as well but you cannot alter/see/touch the contents.  So this way the manufacturer of a capsule encapsulates the contents inside.
+In the same way the biggest advantage of Object Orientation is - the attributes of an Object are never exposed to the outside world - rather the operations acting on these attributes are exposed to the outside world and thus proving Encapsulation (Hiding the data inside).
+To achieve this, whenever I design a class, I always make its attributes as private and expose only necessary behaviors as public so that any object in the outside world is not able to alter the attributes of this class but only able to use the functionality (behavior) exposed by this class.
+More on this when we deal with actual examples using Ruby Programming language.
+
+Inheritance - Again the name of this Object Orientation principle very much clarifies its meaning/purpose.  
+Before going into technical details - let us try to understand inheritance through a real life example. You know Nitin, by the law of inheritance, inherits/gets all the properly created by his father. Also since he is an advocate in a District Court, through his income he bought a CAR - which gets added to the property he has inherited. So In short Nitin by default gets everything what his father has created - he does not have to take efforts for it - rather he has added to his inherited property by buying a CAR.
+Now let us try to relate it to the Object Orientation Programming world. 
+As explained above, Human Being is a class and Nitin is an Object of this class. So by the definition of inheritance - Nitin inherits all the properties/attributes and behaviors of a Human Being Class. But Nitin has one more skill - singing. So Nitin, along with all the behaviors inherited from Human being class, also exhibits an extra behavior and that is singing.
+
+Friends - remember - one of the most powerful features of any OO programming language is code reuse i.e. using the existing code if required further - and if you have understood our discussion so far, you would have realized by now that Inheritance is one of the ways to reuse the existing code.
+
+Polymorphism - This is another important Object Orientation principle. Polymorphism is a Greek word and its literal meaning is Many Shapes or Many Forms. So If I want to define Polymorphism in technical terms - then it’s an ability of the same object or similar objects to behave or respond to the same message differently under different situations or different contexts.
+Let us try to understand this with a real life example and we will refer to our same Person Object - Nitin.
+Nitin as a person object works as an advocate in a District Court.
+When Nitin is present in a Court, his behavior or response is different since he is playing the role of an Advocate.
+When Nitin is playing with his 2 years old kid, his behavior or response is different since he is playing the role of Father.
+When Nitin is interacting with his wife, his behavior or response must be different since he is playing the role of an obedient husband. :)
+When Nitin is interacting with his parents, his behavior or response is different since he is playing the role of a son.
+
+So if you observe, the same Nitin as a Human Being object, responds or behaves differently under different contexts or playing multiple roles under different contexts or situations and this is nothing but Polymorphism.
+Now let us take one technical example - suppose you have a system with many shapes like Circle, Rectangle & Square. So these are all kind of Shapes only and hence we can say that they are kind of similar objects which belong to a Shape category or Shape Class. When you send a message 'draw' to all these 3 objects, they all are drawn differently. Similar objects responding differently to the same message and thus proving the concept of Polymorphism.
+
+Now the most important thing - you must have noticed that while we were learning programming basics, we told you that the biggest difference between structured way of programming and object oriented programming is we can easily relate all the concepts in OO paradigm with real life scenarios making it more easy to understand and learn. From the very start of educating you with Object Orientation - we have kept this promise to give you real life analogous examples - rather OO itself helped us in achieving this.
+
+So having discussed enough about Object Orientation, let us now mark our journey on 'Ruby' - one of the fascinating OO Programming languages. And the enthusiasm as well the participation that you have shown so far - we are sure - you would love this Ruby Programming Tour which will slowly step up on the track of Rails Framework." 
+  summary: "In this section, you will learn about -
+a) Encapsulation
+b) Inheritance
+c) Polymorphism"
+  youtube_channel_url: "http://youtu.be/CEC2IYtZ848"
