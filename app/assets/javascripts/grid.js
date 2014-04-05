@@ -31,7 +31,7 @@ function navigateGrid(e) {
     case key.tab: {
       if(tab==null) {
         tab=1;
-       $("dl").first.first.focus();
+       $("dl:first").focus();
       }
       break;
     }
@@ -65,8 +65,8 @@ break;
 }
 
 $(document).ready(function() {
-  $(".application").bind("keyup", function(e) {
+  $(".application").on("keyup", function(e) {
     navigateGrid(e);
-});// End bind handler
+  });// End bind handler
 });
 
