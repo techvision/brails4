@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
+  load_resource :user
+  load_and_authorize_resource :profile, through: :user, singleton: true
 
-  def show    
+  def show
     @profile = Profile.find(params[:id])
     @user = @profile.user
   end

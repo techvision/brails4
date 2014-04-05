@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/gerson-scanapieco/mongoid-simple-roles
-  revision: a0c1459274bf03567fe19ef10cc08b7c6e5bd43a
-  specs:
-    mongoid-simple-roles (0.0.1)
-      bson_ext
-      mongoid (~> 4.0.0)
-
-GIT
   remote: git://github.com/mongoid/mongoid.git
   revision: a93e5c7cadf2d64bfcd3027d6da8c8c64c14fde1
   specs:
@@ -47,7 +39,6 @@ GEM
     atomic (1.1.16)
     bcrypt-ruby (3.1.2)
     bson (2.0.0.rc3)
-    bson_ext (1.5.1)
     builder (3.1.4)
     cancancan (1.7.1)
     capybara (2.1.0)
@@ -270,7 +261,6 @@ DEPENDENCIES
   mongoid!
   mongoid-paperclip
   mongoid-rspec
-  mongoid-simple-roles!
   mongoid_slug (= 3.2.0)
   nested_form
   rails (~> 4.0.4)
