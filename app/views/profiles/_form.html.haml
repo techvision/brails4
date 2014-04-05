@@ -1,19 +1,11 @@
 .col-md-4
   .container
-  = simple_form_for [current_user, @profile], html: {class: 'form-horizontal' } do |f|
-    = f.hidden_field :user_id, :value => current_user.id
-    = f.input :name, input_html: {class: "form-control"}
-    = f.input :gender, collection: ['Male', 'Fimale'], :prompt => "Select Gender", input_html: {class: "form-control"}
-    = f.input :address, input_html: {class: "form-control"}
-    = f.input :country, :prompt => "Select Country", input_html: {class: "form-control"}
+    = simple_form_for [current_user, @profile], html: {class: 'form-horizontal'} do |f|
+      = f.input :name, input_html: {class: "form-control"}
+      = f.input :gender, collection: ['Male', 'Female'], :prompt => "Select Gender", input_html: {class: "form-control"}
+      = f.input :address, input_html: {class: "form-control"}
+      = f.input :country, :prompt => "Select Country", input_html: {class: "form-control"}
 
-    .form-actions
-      = f.button :submit, :class => 'btn-primary'
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), user_path(current_user), :class => 'btn'
-
-
-
-
-
-
-
+      .form-actions.margin_top_20px
+        = f.button :submit, class: 'btn-primary'
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), user_path(current_user), class: 'btn'
