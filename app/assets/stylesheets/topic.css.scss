@@ -1,3 +1,13 @@
 // Place all the styles related to the Topic controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.ytplayerbox{
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 390px !important;
+  object{
+    max-height: 100px !important;
+    max-width: 390px !important;
+  }    
+}
+
