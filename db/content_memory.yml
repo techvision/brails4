@@ -1,0 +1,27 @@
+content:
+  title: 'Memory'
+  transcript: 'Do you remember we have referred a word "Memory" many a times throughout our discussion so far?
+
+Yes Friends - the way we human beings have memory - computer too has a memory. Now stretch your brain a bit to think what is the significance of memory in our case? And then try to relate it to the Memory of a computer. If you have understood the discussion so far, you will definitely agree that human memory and Computer memory resembles to quite an extent.
+
+Tell us how?
+
+We human beings constantly take input from around us - may it be an audio input or video input - this input goes into our memory where we attach labels to these inputs - may be good or bad - personal or professional (processing) and accordingly produce the output (respond to the external inputs).
+
+In the same way - Computer too stores the input in memory, processes it and produces the output.
+
+Memory is broadly divided into 2 categories - Primary Memory and Secondary Memory.
+
+We will first elaborate on the Secondary Memory - 
+
+Secondary memory (or secondary storage) is the slowest and cheapest form of memory. It cannot be processed directly by the CPU. It must first be copied into primary memory (Storage) which is also known as RAM. 
+Secondary memory devices include magnetic disks like hard drives and floppy disks; optical disks such as CDs and DVDs; and magnetic tapes, which were the first forms of secondary memory. Nowadays - magnetic tapes are hardly used - mostly Hard Disk Drives, Pen Drives and CDs/DVDs are used. 
+All your System Programs as well Application Programs reside on Secondary Memory.
+
+As mentioned in the earlier discussion, Primary Memory many a times is referred to as Random Access Memory (RAM). This is the "MAIN" working memory used by the computer. When we switch on the computer, the Operating System programs are loaded or copied into this memory. So the speed of computer is faster if you have more RAM. 
+Along with operating system programs, whatever applications we start in our system, they are loaded into this main working memory(RAM).
+Please remember that the Data and Programs stored in RAM are volatile ( i.e. the information is lost when you switch off the computer) while the data stored on Secondary Memory devices does not get deleted when we switch off the computer. It permanently resides there unless somebody explicitly deletes it.' 
+  summary: 'In this section, you will learn -
+a) Primary Memory
+b) Secondary Memory'
+  youtube_channel_url: ''

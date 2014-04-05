@@ -3,8 +3,9 @@ class Topic
   include Mongoid::Slug
 
 
-  field :title, type: String
-  field :seq_number, type: Integer
+  field :title,       type: String
+  field :seq_number,  type: Integer
+  field :description, type: String
 
   slug :title
 
