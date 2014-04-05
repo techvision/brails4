@@ -50,8 +50,11 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean_with(:truncation)
+    Role.destroy_all
+    roles = [{name: Role::Admin}, {name: Role::Student}] 
+    Role.create(roles)
+
+    DatabaseCleaner.strategy = :truncation, {:except => %w[roles]}
     DatabaseCleaner.orm = 'mongoid'
   end
 

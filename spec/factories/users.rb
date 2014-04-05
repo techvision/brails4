@@ -6,11 +6,11 @@ FactoryGirl.define do
     password "123456789"
 
     factory :admin, class: User do
-      role Role.create(name: Role::Admin)
+      role Role.where(name: Role::Admin).first
     end
 
     factory :student, class: User do
-      role Role.create(name: Role::Student)
+      role Role.where(name: Role::Student).first
     end
   end
 end
