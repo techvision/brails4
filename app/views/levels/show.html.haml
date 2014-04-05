@@ -4,11 +4,11 @@
     %h3 #{@level.name} topics
     %hr
 %div.application{role: 'application'}
-  %div.center{role: 'grid', 'aria-owns' => "#{aria_owns_ids(@topics, 1)}", tabindex: '0'}
+  %div#topics.center{role: 'grid', 'aria-owns' => "#{aria_owns_ids(@topics, 1)}", tabindex: '0'}
     - @topics.each_with_index do |topic, index|
       %dl.row-wise-container{role: "row", id: "row_#{index+1}", 'aria-owns' => "cell_#{index+1}"}
         = link_to topic_contents_path(topic) do
           %dd.col-md-8{role: "gridcell", id: "cell_#{index+1}", tabindex: "0"}
-            .f-box
+            .f-box.auto-height
               %h2= topic.title
               %p= truncate topic.description, length: 250

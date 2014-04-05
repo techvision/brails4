@@ -223,7 +223,7 @@ p {line-height: 22px}
     border-radius: 10px;
     padding: 20px;
     text-align: center;
-    min-height: auto;
+    min-height: 210px;
     margin-bottom: 20px;
     transition-duration: 500ms;
     transition-property: width, background;
@@ -246,7 +246,7 @@ p {line-height: 22px}
     border-radius: 10px;
     padding: 20px;
     text-align: center;
-    min-height: auto;
+    min-height: 210px;
     margin-bottom: 20px;
     transition-duration: 500ms;
     transition-property: width, background;
@@ -1792,3 +1792,9 @@ ul#filters > .active > span {
 .mbot50 {
     margin-bottom: 50px;
 }
+
+/*------*/
+.auto-height, .auto-height:hover{
+  min-height: 0;
+}
+
