@@ -271,6 +271,7 @@ p {line-height: 22px}
 
 .f-box h2{
     font-size: 20px;
+    margin-top: 0px;
     text-transform: uppercase;
     font-weight: 400;
     font-family: 'Fjalla One', sans-serif;
