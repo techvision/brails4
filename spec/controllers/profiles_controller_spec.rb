@@ -104,7 +104,8 @@ describe ProfilesController do
         updated_attrs = attributes_for(:profile, name: "new name")
         
         put :update, user_id: user.id, id: profile.id, profile: updated_attrs
-        expect(response).to redirect_to user_profile_path(user, profile.id)
+        profile.reload
+        expect(response).to redirect_to user_profile_path(user, profile)
       end
 
       it "shows success message" do             

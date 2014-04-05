@@ -59,7 +59,7 @@ Brails::Application.routes.draw do
   resources :users, only: [:show,:edit,:update] do
     resources :invitations, only: [:new, :create]
     resources :achievements, only: [:index, :show]
-    resources :profiles
+    resource :profile
   end
   resources :feedbacks, only: [:new, :create]
   match '/showcontent/:content_id' => 'topics#showcontent', :via => :get
