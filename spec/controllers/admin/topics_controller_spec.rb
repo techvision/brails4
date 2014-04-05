@@ -121,7 +121,7 @@ describe Admin::TopicsController do
 
         put :update, id: topic.id, level_id: level.id, topic: attributes
 
-        expect(response).to redirect_to admin_topic_path(topic)
+        expect(response).to redirect_to admin_topic_path(topic.id)
       end
     end
 
@@ -149,7 +149,7 @@ describe Admin::TopicsController do
     it "redirects to the :index view" do
       delete :destroy, id: topic.id, level_id: level.id
 
-      expect(response).to redirect_to admin_level_path(level)
+      expect(response).to redirect_to admin_level_path(level.id)
     end
   end
 end

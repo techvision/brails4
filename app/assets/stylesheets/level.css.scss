@@ -1,0 +1,20 @@
+// Place all the styles related to the Level controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+      
+ul.levels.thumbnails {
+  list-style:none;
+}
+
+
+ul.levels.thumbnails li .thumbnail{
+  height:138px;
+  text-align:center;
+}
+                
+ul.levels.thumbnails li .thumbnail .caption {
+   padding: 49px;
+  .name{
+    font-size:20px;
+  }
+}

@@ -35,7 +35,7 @@ describe TopicsController do
       it "redirects to :index view" do
         get :show, id: topic2.id, level_id: level.id
 
-        expect(response).to redirect_to topics_path
+        expect(response).to redirect_to level_topics_path(level.id)
       end
 
       it "shows an alert message" do

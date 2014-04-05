@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
 
-  def show
-    @content = Content.find(params[:id])
-    @topic = @content.topic
+  def index
+    @topic = Topic.find(params[:topic_id])
+    @content = @topic.contents.first
   end  
 end

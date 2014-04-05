@@ -28,16 +28,27 @@ He spoke recently at RubyConf India, 2013 and got a lot of accolades for his pre
 
 The punch line: *"Github is not accessible but Google is. So, you've still gotta make your web apps accessible!"*
 
-Here is the video: _video will be uploaded shortly_
+Here is the [Video at RubyConf India 2013](http://www.youtube.com/watch?v=hm_0l8b8b-4&feature=youtu.be)
 
 # Contributing to Brails
 
 So, if this has got you excited and you want to help, here are a few ways:
 
-* Code contribution. Fork away and send us pull requests!
-* Content contribution. We always need good content from which we shall generate a transcript and get it professionally recorded for our audio.
-* Monetary Contribution. Do send an email to siddhant@techvision.net.in and we shall work it out.
-* Volunteering help. If you don't code, you can still help - we always need people to promote, market and find us people whom we can help!
+### Code contribution. 
+
+* Fork your own repository and send us pull requests! 
+* Please ensure that you write test cases and don't break the build.
+* Please reference the issue in your **commit message** using `techvision/brails4#5` See [Github Secrets](https://github.com/blog/967-github-secrets)
+
+### Content contribution. 
+We always need good content from which we shall generate a transcript and get it professionally recorded for our audio.
+
+
+### Monetary Contribution. 
+Do send an email to siddhant@techvision.net.in and we shall work it out.
+
+### Volunteering help. 
+If you don't code, you can still help - we always need people to promote, market and find us people whom we can help!
 
 ## The Dream
 
