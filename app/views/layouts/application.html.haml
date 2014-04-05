@@ -21,7 +21,7 @@
     .wrap
       .navbar.navbar-default
         .navbar-header
-          %a.navbar-brand(href="#") Brails
+          %a.navbar-brand(href="/") Brails
         .navbar-collapse.collapse
           - if user_signed_in? && current_user.roles == 'admin'
             %ul.nav.navbar-nav
