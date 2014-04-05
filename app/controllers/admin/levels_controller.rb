@@ -1,8 +1,4 @@
-class Admin::LevelsController < ApplicationController
-  before_filter :authenticate_user! 
-  before_filter :is_admin
-
-  layout 'admin'
+class Admin::LevelsController < AdminController
 
   def index
     @levels = Level.all.order_by("seq_number ASC")
