@@ -22,15 +22,13 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= Topic.human_attribute_name(:id)
       %th= Topic.human_attribute_name(:title)
       %th= Topic.human_attribute_name(:seq_number)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @topics.each do |topic|
       %tr
-        %td= link_to topic.id, admin_topic_path(topic)
-        %td= topic.title
+        %td= link_to topic.title, admin_topic_path(topic)
         %td= topic.seq_number
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_topic_path(topic), :class => 'btn btn-mini'
