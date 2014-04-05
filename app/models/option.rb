@@ -4,7 +4,7 @@ class Option
   include Authority::Abilities
 
   field :text, type: String
-  field :correct, type: Mongoid::Boolean
+  field :correct, type: Mongoid::Boolean, default: false
 
   slug :text
 

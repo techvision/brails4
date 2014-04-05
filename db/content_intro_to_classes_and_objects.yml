@@ -1,0 +1,30 @@
+content: 
+  title: "Introduction to Classes and Objects"
+  transcript: "Friends - In level 2 - we understood that Ruby is an Object Oriented Programming Language. For learning any Object Oriented Programming language - we need to understand some basic concepts of Object-Orientation. In Programming jargon - they are also called as Object Oriented Programming specification concepts or in short OOPS concepts.
+  But before proceeding to understand OOPS principles - will you please guess which thing could be at the core of any object oriented programming language? I am sure everybody of you must be able to answer this question and it’s Object. Object is at the core of any Object Oriented Programming language.
+
+So what exactly is an Object? I guess everybody of us someday or other must have come across this terminology called Object.
+
+Remember friends - the simplest definition of an object - Anything that can be seen with the necked eyes is an object. So with this as a definition - every physical thing in this world is an object.
+
+For e.g myself is an object, Nitin is an object, Siddhant is an object, the table is an object, the fan is an object and the list is endless.
+
+And if you give subtle attention, you will find that every object has certain characteristics and with the help of these characteristics it performs certain operations.
+
+So when I say Nitin as an object - it has hands, legs, nose, ear and so on. So in Object Oriented terminology, these characteristics are called as Attributes of an Object.
+With hand - Nitin writes & eats, with legs - he walks, with nose - he smells & with ear - he listens. So in OO terminology, these operations of writing, eating, walking are called behaviors.
+So every object has certain attributes and behaviors.
+
+Now tell me something - every human being has hands, legs, nose and ear and every human being writes, walks, smells & listens. So we can abstract out these common attributes and behaviors of all these human beings into a common/single entity. And this entity is nothing but a Class - another most important term in OO terminology. Wondering what abstract term is? Wait - we are going to elaborate this further.
+
+So we can say Human Being is a Class. But it’s an abstract thing - I mean when I say human being - I don’t have a clear idea of anybody as such in front of me. But when I say Nitin or Siddhant or Sangapal - I have clear idea of these guys since they are concrete - not abstract.
+
+So if Human Being is a class - then Nitin, Sangapal , Siddhant are instances/objects of this class.
+
+One more example to clarify the concept of a class - You people must be aware of the Brick Manufacturing Unit where bricks are made. They create a single mould of brick - and out of this mould - they create multiple bricks. So though we cannot use the mould in construction, we definitely use the bricks created out of this mould in construction. So we can say the Mould is an abstract thing - a Class and all the bricks created out of these mould are concrete instances/Objects of this class.
+
+I hope we are very much clear with the concept of Class and an Object now." 
+  summary: "In this section, you will learn about -
+a) What is Class and an Object?
+b) Attributes and Behavior of an Object"
+  youtube_channel_url: "http://youtu.be/rQaof2Yf490"

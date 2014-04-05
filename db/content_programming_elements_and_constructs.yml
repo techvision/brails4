@@ -1,0 +1,40 @@
+content:
+  title: 'Programming Elements & Constructs'
+  transcript: 'So having understood the basics of programming - let us try to understand the basic elements of any programming language that help us do the actual programming.
+  
+  Friends - Any program that we write does some kind of processing - but it does the processing on what - obviously the input that we provide. And what this input is - this input is nothing but some kind of DATA. So DATA is the most basic element of any programming language.
+
+Now this DATA can be alphabets or numbers or combination of both. So to represent these different kinds of data, every programming language provides certain DATA TYPES.
+
+Now from the knowledge that we have gained so far, let us assume that we are going to write one program which takes some input and processes it. You would agree with me that the Data (input) that our program processes must be stored somewhere in Memory. Suppose this program takes 2 items as input - then I need to store these 2 items in memory.  
+Now consider this memory as a big cupboard with lot of shelves and these 2 items are stored somewhere in 2 different shelves. But how can we identify or find which these 2 shelves are out of many shelves and get the items quickly? For this we can label these shelves so that with the label we can easily find the item which we want. So in programming jargon - this shelf is nothing but the variable and the label given to this shelf is nothing but a variable name.
+
+So a Variable is nothing but a location in memory which is reserved to store a specific data and can be used to store and retrieve this data by its LABEL. This LABEL is nothing but a Variable Name.
+
+Now are you wondering why have we explicitly named this as a Variable? As of now just remember that the value of a variable may vary or change many a times - hence it is called as variable.
+
+If we want to store the 2 input items into memory - which our program is going to process, then we may store these 2 input items into variables labeled as a and b. At this point this much explanation is sufficient to proceed further.
+
+Now we are clear with 3 basic elements of any programming language - DATA, DATA TYPES and VARIABLES.
+
+Let us understand now what are operators?
+
+Suppose I want to add no’s 5 and 7. In arithmetic I would say like this -  "5 + 7".  This "5 + 7" is actually called an expression, the plus sign in this expression is called operator and 5 & 7 are called operands. 
+
+In short every programming language supports different types of operators in order to evaluate different expressions. For e.g. plus, minus, multiply, division, remainder- these are arithmetic operators. Less than, greater than, less than or equal to, greater than or equal to , not equal to - these are relational operators. The relational operators come handy when we want to compare 2 values or operands with each other.
+AND, OR, NOT - these are logical operators. Logical operators come handy when we want to evaluate multiple expressions at the same time. The usage of these operators would be more evident once we actually start Ruby Programming. Still just to feed your curiosity - here is a simple example. Suppose we have 3 variables named as a, b and c. If we want to check whether "a" is greatest among these 3 nos then we will write the expression as - "if a is greater than b AND a is greater than c". So this expression demonstrates usage of both relational and logical operators.
+
+Friends - during the process of writing our own programs, we may come across the situations where we need to take a decision depending upon certain conditions. For e.g. suppose we are developing a software of online booking system for a travel agency. We have a condition that if user books his tickets before certain date - then he gets 10% discount - else he is not eligible for any discount. Have you observed carefully? There are 3 important words in this whole conversation - if - then - else, And in programming jargon - this is called as Conditional Construct - A construct which helps us taking decision depending upon certain conditon. In the same way, in programming, many a times we need to repeat certain set of steps again and again - so instead of writing them again and again - programming languages provide us the looping constructs which allow us to write the set of steps once only and execute or repeat them multiple times. For e.g. suppose I want computer to display a message "Welcome to Programming Basics Learning" 5 times on the screen. So one way is to write this message 5 times manually like - 
+
+"Welcome to Programming Basics Learning"
+"Welcome to Programming Basics Learning"
+"Welcome to Programming Basics Learning"
+"Welcome to Programming Basics Learning"
+"Welcome to Programming Basics Learning"
+
+But instead of doing this, I will ask computer to write "Welcome to Programming Basics Learning" 5 times. And the way computer achieves this writing 5 times is through the looping construct which actually has a feature to execute the same set of statements multiple times.' 
+  summary: 'In this section, you will learn about -
+a) What are Data, Data Types and Variables
+b) Conditional and Looping Constructs
+c) Operators' 
+  youtube_channel_url: ''

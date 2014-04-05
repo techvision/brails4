@@ -1,0 +1,34 @@
+topic: 
+  title: 'Basics'
+  questions:  
+    - title: 'Computer is an'
+      difficulty: 1 
+      options: 
+        - text: 'electrical'
+        - text: 'mechanical' 
+        - text: 'electronic'
+          correct: true
+        - text: 'electromagnetic device' 
+    - title: 'Computer understands'
+      difficulty: 1 
+      options: 
+        - text: 'Marathi language'
+        - text: 'English language' 
+        - text: 'Binary language'
+          correct: true
+        - text: 'French language'
+    - title: 'Which of the following are examples of input device?'
+      difficulty: 1 
+      options: 
+        - text: 'Printer' 
+        - text: 'Monitor'
+        - text: 'Keyboard'
+          correct: true  
+    - title: 'The following unit is considered to be the brain of the computer'
+      difficulty: 1 
+      options: 
+        - text: 'Central Processing Unit'
+          correct: true
+        - text: 'Input unit' 
+        - text: 'Output Unit'
+      
