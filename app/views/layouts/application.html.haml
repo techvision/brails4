@@ -52,13 +52,11 @@
         .switch-color.orange{:data => {:color => "orange"}}
         .switch-color.black{:data => {:color => "black"}}
 
+        = render "layouts/header"
       .container
         .row
           .span12
             = bootstrap_flash
             = yield
             
-        #container
-          %h5
-            &copy; 
-            %a Josh Software 2013
+      = render "layouts/footer"
