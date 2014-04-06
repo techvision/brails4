@@ -2,11 +2,6 @@ class ProfilesController < ApplicationController
   load_resource :user
   load_and_authorize_resource :profile, through: :user, singleton: true
 
-  def show
-    @user = User.find(params[:user_id])
-    @profile = @user.profile
-  end
-
   def new
     @profile = Profile.new
   end
@@ -15,7 +10,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user = @user
     if @profile.save
-      redirect_to user_profile_path(@profile.user, @profile), notice: "Profile successfully created."
+      redirect_to user_profile_path(@user), notice: "Profile successfully created."
     else
       render :new
     end
@@ -23,7 +18,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update_attributes(profile_params)
-      redirect_to user_profile_path(@profile.user, @profile), notice: "Profile successfully updated."
+      redirect_to user_profile_path(@user), notice: "Profile successfully updated."
     else
       render :edit
     end
