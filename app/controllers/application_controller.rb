@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
              :invitation_token)
     end
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation ) }
+
   end
 
   def layout_by_resource

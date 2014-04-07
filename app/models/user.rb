@@ -2,7 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  delegate :name, :birthdate, :gender, :address, :country, :total_points, to: :profile
+  delegate :name, :gender, :address, :country, :total_points, to: :profile
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

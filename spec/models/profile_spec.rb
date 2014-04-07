@@ -13,7 +13,6 @@ describe Profile do
 
   describe "Fields" do
     it { should have_field(:name).of_type(String)}
-    it { should have_field(:birthdate).of_type(Date)}
     it { should have_field(:gender).of_type(String)}
     it { should have_field(:address).of_type(String)}
     it { should have_field(:country).of_type(String)}
@@ -27,10 +26,6 @@ describe Profile do
 
     it 'is invalid without a name' do
       expect(profile).to validate_presence_of(:name)
-    end
-
-    it 'is invalid without a birthdate' do
-      expect(profile).to validate_presence_of(:birthdate)
     end
 
     it 'is invalid without a gender' do
