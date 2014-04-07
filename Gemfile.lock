@@ -145,6 +145,8 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     polyglot (0.3.4)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -261,6 +263,10 @@ DEPENDENCIES
   mongoid-rspec
   mongoid_slug (= 3.2.0)
   nested_form
+<<<<<<< HEAD
+=======
+  quiet_assets
+>>>>>>> c37a3e2e736b485ebfdfc1e3d5149c31b787a7e0
   rails (~> 4.0.4)
   rails_layout
   rspec-rails (>= 2.0.1)

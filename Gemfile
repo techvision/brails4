@@ -47,6 +47,7 @@ group :development, :test do
   gem 'capybara'
   gem 'rails_layout'
   gem 'mina'
+  gem 'quiet_assets'
 end
 
 group :test do
