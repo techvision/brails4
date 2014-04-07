@@ -263,10 +263,7 @@ DEPENDENCIES
   mongoid-rspec
   mongoid_slug (= 3.2.0)
   nested_form
-<<<<<<< HEAD
-=======
   quiet_assets
->>>>>>> c37a3e2e736b485ebfdfc1e3d5149c31b787a7e0
   rails (~> 4.0.4)
   rails_layout
   rspec-rails (>= 2.0.1)
