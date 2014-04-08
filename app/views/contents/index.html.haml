@@ -1,6 +1,6 @@
 - content_for :panel do
   %section.panel
-    %header.panel-heading.tab-bg-dark-navy-blue{:id => "tabpanel", :role => "application"}
+    %header.panel-heading.tab-bg-dark-navy-blue{:id => "tabpanel1", :role => "application"}
       %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
         - ['summary', 'transcript', 'take_test'].each_with_index do |k, i|
           %li{class: i == 0 ? 'active' : '', :role => "tab", :id => "tab_#{i + 1}", "aria-controls" => "#{k}"}
