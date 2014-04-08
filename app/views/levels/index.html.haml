@@ -1,4 +1,4 @@
-%h1 Levels
+%h1.header Levels
 %div.application{role: 'application'}
   %div{role: "grid", 'aria-owns' => "#{aria_owns_ids(@levels)}", tabindex: "0"}
     - @levels.in_groups_of(3).each_with_index do |level_row, index|
