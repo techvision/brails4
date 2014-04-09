@@ -41,15 +41,14 @@ function keyCodes() {
 //         2. panels are divs with class 'panel'
 //
 function tabpanel(id, accordian) {
-
   // define the class properties
   
   this.panel_id = id; // store the id of the containing div
   this.accordian = accordian; // true if this is an accordian control
   this.$panel = $('#' + id);  // store the jQuery object for the panel
   this.keys = new keyCodes(); // keycodes needed for event handlers
-  this.$tabs = this.$panel.find('.tab'); // Array of panel tabs.
-  this.$panels = this.$panel.children('.panel'); // Array of panel.
+  this.$tabs = this.$panel.find('[role = tab]'); // Array of panel tabs.
+  this.$panels = this.$panel.children('.tab-pane'); // Array of panel.
 
   // Bind event handlers
   this.bindHandlers();
