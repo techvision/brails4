@@ -21,3 +21,10 @@
  *= require contents
  *= require_self
  */
+
+li.selected {
+  background-color: #fff;  
+  color: black;
+  border-bottom: 1px solid white;
+}
+
