@@ -3,7 +3,7 @@
     %header.panel-heading.tab-bg-dark-navy-blue
       %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
         - ['summary', 'transcript', 'take_test'].each_with_index do |k, i|
-          %li{class: i == 0 ? 'selected' : '', :role => "tab", :id => "tab_#{i + 1}", "aria-controls" => "#{k}"}
+          %li{class: i == 0 ? 'active' : '', :role => "tab", :id => "tab_#{i + 1}", "aria-controls" => "#{k}"}
             %a{"data-toggle" => "tab", :href => "##{k}"}= k.titleize
     .panel-body
       .tab-content.tasi-tab

@@ -77,11 +77,11 @@ tabpanel.prototype.init = function() {
   this.$panels.hide();
 
   // get the selected tab
-  $tab = this.$tabs.filter('.selected');
+  $tab = this.$tabs.filter('.active');
 
   if ($tab == undefined) {
     $tab = this.$tabs.first();
-    $tab.addClass('selected');
+    $tab.addClass('active');
   }
 
   // show the panel that the selected tab controls and set aria-hidden to false
@@ -105,7 +105,7 @@ tabpanel.prototype.init = function() {
 tabpanel.prototype.switchTabs = function($curTab, $newTab) {
 
   // Remove the highlighting from the current tab
-  $curTab.removeClass('selected');
+  $curTab.removeClass('active');
   $curTab.removeClass('focus');
 
   // remove tab from the tab order
@@ -114,7 +114,7 @@ tabpanel.prototype.switchTabs = function($curTab, $newTab) {
   // update the aria attributes
   
   // Highlight the new tab
-  $newTab.addClass('selected');
+  $newTab.addClass('active');
 
   // If this is a tab panel, swap displayed tabs
   if (this.accordian == false) {
@@ -373,7 +373,7 @@ tabpanel.prototype.handleTabKeyPress = function($tab, e) {
 tabpanel.prototype.handleTabClick = function($tab, e) {
 
   // Remove the highlighting from all tabs
-  this.$tabs.removeClass('selected');
+  this.$tabs.removeClass('active');
 
   // remove all tabs from the tab order
   this.$tabs.attr('tabindex', '-1');
@@ -382,7 +382,7 @@ tabpanel.prototype.handleTabClick = function($tab, e) {
   this.$panels.hide();
   
   // Highlight the clicked tab
-  $tab.addClass('selected');
+  $tab.addClass('active');
 
   // show the clicked tab panel
   this.$panel.find('#' + $tab.attr('aria-controls')).show();
@@ -486,7 +486,7 @@ tabpanel.prototype.handlePanelKeyDown = function($elem, e) {
       }
 
       // get the jQuery object of the tab
-      var $tab = this.$tabs.filter('.selected');
+      var $tab = this.$tabs.filter('.active');
 
       // get the index of the tab in the tab list
       var curNdx = this.$tabs.index($tab);
