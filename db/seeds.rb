@@ -13,7 +13,7 @@ Role.create(roles)
 User.destroy_all
 
 user = User.create(email: 'gerson@example.com', password: 'josh1234', role: Role.find_by(name: Role::Admin))
-user.profile = Profile.create(name: "gerson", birthdate: "19/07/1989", gender: "male", address: "kdjasldjaskjd", country: "Brazil" )
+user.profile = Profile.create(name: "gerson", gender: "male", address: "kdjasldjaskjd", country: "Brazil" )
 user.save!
 
 Level.destroy_all

@@ -4,7 +4,6 @@ class Profile
 
 
   field :name, type: String
-  field :birthdate, type: Date
   field :gender, type: String
   field :address, type: String
   field :country, type: String
@@ -16,7 +15,7 @@ class Profile
   has_many :attempts
   embeds_many :achievements
 
-  validates :name, :birthdate, :gender, :address, :country, presence: true
+  validates :name, :gender, :address, :country, presence: true
 
   #Checks profile achievements and level topics to see if user finished the previous topics
   def finished_previous_topics?(topic_id)

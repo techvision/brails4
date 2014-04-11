@@ -16,6 +16,9 @@
  *= require style
  *= require framework_and_overrides
  *= require level
+ *= require ytp
+ *= require topic
+ *= require contents
  *= require_self
  */
 
@@ -53,4 +56,10 @@ body.textsize-2425 {font:402.5%/1.5 Arial, sans-serif;}
 
 .decrease-font{
   background-image:  url('minus-text-image.jpg')
+}
+
+li.selected {
+  background-color: #fff;  
+  color: black;
+  border-bottom: 1px solid white;
 }

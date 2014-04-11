@@ -1,17 +1,17 @@
 - content_for :panel do
-  %section.panel
+  %section.panel{:id => "tabpanel1", :role => "application"}
     %header.panel-heading.tab-bg-dark-navy-blue
-      %ul.nav.nav-tabs.nav-justified
+      %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
         - ['summary', 'transcript', 'take_test'].each_with_index do |k, i|
-          %li{class: i == 0 ? 'active' : ''}
+          %li{class: i == 0 ? 'active' : '', :role => "tab", :id => "tab_#{i + 1}", "aria-controls" => "#{k}"}
             %a{"data-toggle" => "tab", :href => "##{k}"}= k.titleize
     .panel-body
       .tab-content.tasi-tab
-        #summary.tab-pane.active
+        #summary.tab-pane.active{"aria-labeledby" => "tab_1", :role => "tabpanel"}
           = raw @content.summary
-        #transcript.tab-pane
+        #transcript.tab-pane{"aria-labeledby" => "tab_2", :role => "tabpanel"}
           = raw @content.transcript
-        #take_test.tab-pane
+        #take_test.tab-pane{"aria-labeledby" => "tab_3", :role => "tabpanel"}
           = link_to "Take Test", '#', :class => "btn btn-primary"
 .topic
   .row
