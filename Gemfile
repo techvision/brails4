@@ -38,7 +38,6 @@ gem "erb2haml", :group => :development
 gem 'mongoid_slug', '3.2.0'
 gem 'country_select'
 
-
 group :development, :test do
   gem 'mongoid-rspec'
   gem "rspec-rails", ">= 2.0.1"

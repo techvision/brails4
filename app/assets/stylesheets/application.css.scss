@@ -22,6 +22,42 @@
  *= require_self
  */
 
+body.textsize-1225 {font:182.5%/1.5 Arial, sans-serif;}
+body.textsize-1425 {font:202.5%/1.5 Arial, sans-serif;}
+body.textsize-1625 {font:222.5%/1.5 Arial, sans-serif;}
+body.textsize-1825 {font:242.5%/1.5 Arial, sans-serif;}
+body.textsize-2025 {font:262.5%/1.5 Arial, sans-serif;}
+body.textsize-2225 {font:302.5%/1.5 Arial, sans-serif;}
+body.textsize-2425 {font:402.5%/1.5 Arial, sans-serif;}
+
+.control-bar{
+  background: black;
+  overflow:hidden;
+  // width: 250px;
+  position:fixed;
+  right: 0;
+  top: 30%;
+  padding: 10px 10px 0px 0px;
+  border-radius: 5px 0 0 5px;
+}
+
+.change-font-size, .switch-color{
+  margin: 0px -2px 7px 7px;
+  padding: 10px;
+}
+
+.increase-font{
+  background-image:  url('plus-text-image.jpg')
+}
+
+.default-font-size{
+  background-image:  url('reset-text-image.jpg')
+}
+
+.decrease-font{
+  background-image:  url('minus-text-image.jpg')
+}
+
 li.selected {
   background-color: #fff;  
   color: black;
@@ -35,4 +71,5 @@ li.selected {
  position:absolute;
  width: 0px;
 }
+
 

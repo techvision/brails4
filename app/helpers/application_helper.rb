@@ -18,4 +18,5 @@ module ApplicationHelper
     return return_string.respond_to?(:html_safe) ? return_string.html_safe : return_string
 
   end
+
 end
