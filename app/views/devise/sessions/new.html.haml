@@ -1,9 +1,9 @@
 .form-signin
-  %h2.form-signin-heading Sign In
-  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :role => "form" } ) do |f|
+    %h2.form-signin-heading Sign In
     .login-wrap
-      = f.input :email, autofocus: true, label: false, input_html: {data: {'rule-email' => true, 'rule-required' => true}, class: 'form-control'}, placeholder: 'Email Address'
-      = f.input :password, label: false, input_html: {data: {'rule-required' => true}, class: 'form-control'}, placeholder: 'Password'
+      = f.input :email, autofocus: true, label: false, input_html: {data: {'rule-email' => true, 'rule-required' => true}, class: 'form-control', 'required' => :true}, placeholder: 'Email Address'
+      = f.input :password, label: false, input_html: {data: {'rule-required' => true}, class: 'form-control', 'required' => :true}, placeholder: 'Password'
       .submit
         - if devise_mapping.rememberable?
           .remember.checkbox
