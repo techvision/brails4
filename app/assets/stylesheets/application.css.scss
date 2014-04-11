@@ -28,3 +28,11 @@ li.selected {
   border-bottom: 1px solid white;
 }
 
+.element-invisible{
+ overflow:hidden;
+ height:0px;
+ margin-left:-1000px;
+ position:absolute;
+ width: 0px;
+}
+

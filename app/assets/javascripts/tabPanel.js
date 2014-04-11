@@ -82,6 +82,7 @@ tabpanel.prototype.init = function() {
   if ($tab == undefined) {
     $tab = this.$tabs.first();
     $tab.addClass('active');
+    $tab.attr('aria-selected', 'true');
   }
 
   // show the panel that the selected tab controls and set aria-hidden to false
@@ -107,6 +108,7 @@ tabpanel.prototype.switchTabs = function($curTab, $newTab) {
   // Remove the highlighting from the current tab
   $curTab.removeClass('active');
   $curTab.removeClass('focus');
+  $curTab.attr('aria-selected', 'false');
 
   // remove tab from the tab order
   $curTab.attr('tabindex', '-1');
@@ -115,6 +117,7 @@ tabpanel.prototype.switchTabs = function($curTab, $newTab) {
   
   // Highlight the new tab
   $newTab.addClass('active');
+  $newTab.attr('aria-selected', 'true');
 
   // If this is a tab panel, swap displayed tabs
   if (this.accordian == false) {
@@ -374,6 +377,7 @@ tabpanel.prototype.handleTabClick = function($tab, e) {
 
   // Remove the highlighting from all tabs
   this.$tabs.removeClass('active');
+  this.$tabs.attr('aria-selected', 'false');
 
   // remove all tabs from the tab order
   this.$tabs.attr('tabindex', '-1');
@@ -383,6 +387,7 @@ tabpanel.prototype.handleTabClick = function($tab, e) {
   
   // Highlight the clicked tab
   $tab.addClass('active');
+  $tab.attr('aria-selected', 'true');
 
   // show the clicked tab panel
   this.$panel.find('#' + $tab.attr('aria-controls')).show();
