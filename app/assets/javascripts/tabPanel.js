@@ -180,9 +180,9 @@ tabpanel.prototype.bindHandlers = function() {
   });
 
   // bind a tab click handler
-  this.$tabs.click(function(e) {
-    return thisObj.handleTabClick($(this), e);
-  });
+//  this.$tabs.click(function(e) {
+//    return thisObj.handleTabClick($(this), e);
+//  });
 
   // bind a tab focus handler
   this.$tabs.focus(function(e) {
@@ -373,34 +373,35 @@ tabpanel.prototype.handleTabKeyPress = function($tab, e) {
 //
 // @return (boolean) returns true
 //
-tabpanel.prototype.handleTabClick = function($tab, e) {
+//tabpanel.prototype.handleTabClick = function($tab, e) {
 
   // Remove the highlighting from all tabs
-  this.$tabs.removeClass('active');
-  this.$tabs.attr('aria-selected', 'false');
+//  this.$tabs.removeClass('active');
+//  this.$tabs.attr('aria-selected', 'false');
 
   // remove all tabs from the tab order
-  this.$tabs.attr('tabindex', '-1');
+//  this.$tabs.attr('tabindex', '-1');
 
   // hide all tab panels
-  this.$panels.hide();
+//  this.$panels.hide();
   
   // Highlight the clicked tab
-  $tab.addClass('active');
-  $tab.attr('aria-selected', 'true');
+//  $tab.addClass('active');
+//  $tab.attr('aria-selected', 'true');
 
   // show the clicked tab panel
-  this.$panel.find('#' + $tab.attr('aria-controls')).show();
+//  this.$panel.find('#' + $tab.attr('aria-controls')).show().attr('aria-hidden', 'false');
+
 
   // make clicked tab navigable
-  $tab.attr('tabindex', '0');
+//  $tab.attr('tabindex', '0');
 
   // give the tab focus
-  $tab.focus();
+//  $tab.focus();
 
-  return true;
+//  return true;
 
-} // end handleTabClick()
+//} // end handleTabClick()
 
 //
 // Function handleTabFocus() is a member function to process focus events for tabs
