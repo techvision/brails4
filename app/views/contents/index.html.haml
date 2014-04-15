@@ -4,7 +4,7 @@
       %ul.nav.nav-tabs.nav-justified
         - ['summary', 'transcript', 'take_test'].each_with_index do |k, i|
           %li{class: i == 0 ? 'active' : ''}
-            %a{"data-toggle" => "tab", :href => "##{k}"}= k.titleize
+            %a{'data-toggle' => 'tab', :href => "##{k}"}= k.titleize
     .panel-body
       .tab-content.tasi-tab
         #summary.tab-pane.active
@@ -12,10 +12,10 @@
         #transcript.tab-pane
           = raw @content.transcript
         #take_test.tab-pane
-          = link_to "Take Test", '#', :class => "btn btn-primary"
+          = render partial: 'contents/question', locals: {attempt: @attempt, question: @attempt.question}
 .topic
   .row
-    .pull-right= link_to "BACK", level_path(@topic.level), :class => "btn btn-primary"
+    .pull-right= link_to 'BACK', level_path(@topic.level), :class => 'btn btn-primary'
     .span8.offset2
       %h1.beta.topic-title
         = @topic.title

@@ -1,12 +1,16 @@
 class AttemptsController < ApplicationController
 
   def create
-    question_id = params[:question_id]
-    option_id = params[:option_id]
-    Attempt.create_attempt(question_id, option_id, current_user.id)
-    question = Question.find_by(id: question_id)
-    if question.find_topic.complete?(current_user.id)
-       current_user.profile.update_profile(question.attempt)
+    if current_user
+      if Attempt.create_attempt(current_user, params[:attempt])
+        flash[:notice] = 'Correct Answer!!'
+        @attempt = Attempt.new(question: Question.last)
+      else
+        flash[:error] = 'Wrong Answer!!'
+      end
+    else
+      session[:topic_id] = params[:attempt][:topic_id]
+      render :js => "window.location = '/users/sign_in'"
     end
   end
 end
