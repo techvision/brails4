@@ -35,13 +35,17 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_user.admin?
-      admin_levels_path
+    if session[:topic_id]
+      topic_contents_path session[:topic_id]
     else
-      if resource && resource.sign_in_count == 1
-        new_user_profile_path(resource)
+      if current_user.admin?
+        admin_levels_path
       else
-        user_path(current_user)
+        if resource && resource.sign_in_count == 1
+          new_user_profile_path(resource)
+        else
+          user_path(current_user)
+        end
       end
     end
   end

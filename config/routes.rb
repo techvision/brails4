@@ -53,7 +53,7 @@ Brails::Application.routes.draw do
 
   resources :questions, only: [:show] do
     resources :comments
-    post '/attempt/:option_id', to: 'attempts#create'
+    resources :attempts, only: :create
   end
 
   resources :users, only: [:show,:edit,:update] do

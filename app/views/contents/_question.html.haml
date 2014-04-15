@@ -1,0 +1,8 @@
+#flash
+#questions
+  %h3= question.title
+  = simple_form_for [question, attempt], remote: true do |f|
+    = f.input :question_id, as: :hidden
+    = f.input :topic_id, input_html: {value: params['topic_id']}, as: :hidden
+    = f.input :option_id, as: :radio_buttons, collection: question.options.collect{|opt| [opt.text, opt.id]}
+    = f.submit 'Take Test', class: 'btn btn-primary'

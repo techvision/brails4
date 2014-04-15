@@ -11,11 +11,14 @@
           = raw @content.summary
         #transcript.tab-pane{"aria-labeledby" => "tab_2", :role => "tabpanel"}
           = raw @content.transcript
-        #take_test.tab-pane{"aria-labeledby" => "tab_3", :role => "tabpanel"}
-          = link_to "Take Test", '#', :class => "btn btn-primary"
+        #take_test.tab-pane
+          - if @attempt.question.nil?
+            %h3 No Questions Added
+          - else
+            = render partial: 'contents/question', locals: {attempt: @attempt, question: @attempt.question}
 .topic
   .row
-    .pull-right= link_to "BACK", level_path(@topic.level), :class => "btn btn-primary"
+    .pull-right= link_to 'BACK', level_path(@topic.level), :class => 'btn btn-primary'
     .span8.offset2
       %h1.beta.topic-title
         = @topic.title

@@ -1,6 +1,7 @@
 class Attempt
   include Mongoid::Document
 
+  attr_accessor :option_id, :topic_id
 
   field :count, type: Integer, default: 1
   field :solved, type: Boolean, default: false
@@ -15,10 +16,9 @@ class Attempt
   scope :unsolved, where(solved: false)
 
   #Class method
-  def self.create_attempt(question_id,option_id, user_id)
-    user = User.find(user_id)
-    question = Question.find(question_id)
-    option = question.options.find(option_id)
+  def self.create_attempt(user, param)
+    question = Question.find_by(id: param[:question_id])
+    option = question.options.find(param[:option_id])
     attempt = Attempt.get_attempt(question,user)
 
     if question.right_answer?(option)
@@ -28,8 +28,8 @@ class Attempt
       user.profile.update_profile(attempt)
     else
       user.profile.attempts << attempt
+      false
     end
-    true
   end
 
   #Instance method
