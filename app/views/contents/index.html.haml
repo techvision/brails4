@@ -12,7 +12,10 @@
         #transcript.tab-pane
           = raw @content.transcript
         #take_test.tab-pane
-          = render partial: 'contents/question', locals: {attempt: @attempt, question: @attempt.question}
+          - if @attempt.question.nil?
+            %h3 No Questions Added
+          - else
+            = render partial: 'contents/question', locals: {attempt: @attempt, question: @attempt.question}
 .topic
   .row
     .pull-right= link_to 'BACK', level_path(@topic.level), :class => 'btn btn-primary'
