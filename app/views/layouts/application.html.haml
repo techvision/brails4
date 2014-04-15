@@ -17,10 +17,15 @@
     =# favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
 
-  %body
+  %body.textsize-1625
     .wrap
       .navbar.navbar-default
         = render "layouts/header"
+      .control-bar
+        .increase-font.change-font-size{:data => {:size => "up"}}
+        .default-font-size.change-font-size{:data => {:size => "reset"}}
+        .decrease-font.change-font-size{:data => {:size => "down"}}
+
       .container
         .row
           .span12
