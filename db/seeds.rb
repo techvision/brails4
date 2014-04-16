@@ -24,7 +24,7 @@ Level.destroy_all
 end
 
 level1 = Level.first
-level2 = Level.last
+level2 = Level.all[1]
 level3 = Level.all[2]
 
 
