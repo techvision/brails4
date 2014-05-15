@@ -15,6 +15,7 @@ class Content
   belongs_to :topic
   embeds_many :comments, as: :commentable
   has_many :questions, as: :questionable, dependent: :destroy
+  has_many :attempts, as: :attemptable, dependent: :destroy 
 
   validates :title, :transcript, :summary, presence: true #, :questions, presence: true
   validates :youtube_channel_url, presence: true

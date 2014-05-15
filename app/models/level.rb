@@ -9,6 +9,7 @@ class Level
 
   has_many :topics, dependent: :destroy
   has_many :questions, as: :questionable, dependent: :destroy
+  has_many :attempts, as: :attemptable, dependent: :destroy 
   embeds_many :comments, as: :commentable
 
   validates :name, presence: true
