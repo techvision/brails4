@@ -37,6 +37,7 @@ gem "nested_form"
 gem "erb2haml", :group => :development
 gem 'mongoid_slug', '3.2.0'
 gem 'country_select'
+gem "mediaelement_rails"
 
 group :development, :test do
   gem 'mongoid-rspec'

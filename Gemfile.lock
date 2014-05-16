@@ -112,6 +112,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mediaelement_rails (0.8.0)
+      jquery-rails (>= 1.0)
+      railties (>= 3.1)
     mime-types (1.25.1)
     mina (0.3.0)
       open4
@@ -255,6 +258,7 @@ DEPENDENCIES
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
+  mediaelement_rails
   mina
   mongoid!
   mongoid-paperclip
