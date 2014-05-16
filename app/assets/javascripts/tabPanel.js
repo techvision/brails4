@@ -362,7 +362,7 @@ tabpanel.prototype.handleTabKeyPress = function($tab, e) {
 
   return true;
 
-} // end handleTabKeyPress()
+} //end handleTabKeyPress()
 
 //
 // Function handleTabClick() is a member function to process click events for tabs

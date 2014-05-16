@@ -27,8 +27,8 @@
       %section.topic
         .row
           - if ! @content.youtube_channel_url.blank?
-            %video{:width => 640, :height => 360, :id => "player1", :preload => "none"}
-              %source{:type => "video/youtube", :src => @content.youtube_channel_url}
+            %video{:width => 640, :height => 360, :id => "player1", :preload => "none", :controls => "controls"}
+              %source{:type => "mp4", :src => URI.escape(@content.youtube_channel_url)}
       .row
         = yield :panel
 
