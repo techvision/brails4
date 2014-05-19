@@ -1,4 +1,6 @@
 class AttemptsController < ApplicationController
+#  before_filter :find_questionable, only: :create
+
 
   def create
     if current_user

@@ -27,6 +27,9 @@
       %section.topic
         .row
           - if ! @content.youtube_channel_url.blank?
+        %hr
+        %section.topic
+          .row
             .ytplayerbox
               / specify 'normal' for YouTube VGA aspect ratio (480 x 360) and 'wide' for YouTube HD (640 x 360)
               %span.ytplayeraspect:.normal  
