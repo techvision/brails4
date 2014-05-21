@@ -26,7 +26,6 @@
     .span8.offset2
       %h1.beta.topic-title
         = @topic.title
-<<<<<<< Updated upstream
       - if @content.youtube_channel_url != "" 
         %hr
         %section.topic
@@ -38,14 +37,6 @@
               %span{class: "ytmovieurl:#{@content.youtube_channel_url.split('/').last}"}  
                 = @content.title
 
-=======
-      %hr
-      %section.topic
-        .row
-          - if ! @content.youtube_channel_url.blank?
-            %video{:width => 640, :height => 360, :id => "player1", :preload => "none", :controls => "controls"}
-              %source{:type => "video/youtube", :src => URI.escape("http://www.youtube.com/watch?v=MG_SxId9Wuw")}
->>>>>>> Stashed changes
       .row
         = yield :panel
 
