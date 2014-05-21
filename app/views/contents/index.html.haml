@@ -12,10 +12,13 @@
         #transcript.tab-pane{"aria-labeledby" => "tab_2", :role => "tabpanel"}
           = raw @content.transcript
         #take_test.tab-pane{"aria-labeledby" => "tab_3", :role => "tabpanel"}
-          - if @attempt.question.nil?
+          - if @topic.questions.count == 0
             %h3 No Questions Added
           - else
-            = render partial: 'contents/question', locals: {attempt: @attempt, question: @attempt.question}
+            - if @attempt.count == @topic.questions.count
+              %h3 All Question solved
+            - else
+              = render partial: 'contents/question', locals: {attempt: @attempt, question: @attempt.question}
 
 .topic
   .row

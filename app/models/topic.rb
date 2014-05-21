@@ -13,6 +13,7 @@ class Topic
   has_many :contents, dependent: :destroy
   embeds_many :comments, as: :commentable
   has_many :questions, as: :questionable, dependent: :destroy
+  has_many :attempts, as: :attemptable, dependent: :destroy 
 
   validates :seq_number, :title, :presence => true
   validates :seq_number, numericality: { only_integer: true, :greater_than => 0 }

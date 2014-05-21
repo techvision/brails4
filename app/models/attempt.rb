@@ -1,7 +1,7 @@
 class Attempt
   include Mongoid::Document
 
-  attr_accessor :option_id, :topic_id
+  attr_accessor :option_id, :attemptable
 
   field :count, type: Integer, default: 1
   field :solved, type: Boolean, default: false
@@ -9,6 +9,7 @@ class Attempt
 
   belongs_to :profile
   belongs_to :question
+  belongs_to :attemptable, polymorphic: true
 
   validates :count, numericality: { only_integer: true }
 
