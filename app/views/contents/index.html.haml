@@ -23,10 +23,7 @@
     .span8.offset2
       %h1.beta.topic-title
         = @topic.title
-      %hr
-      %section.topic
-        .row
-          - if ! @content.youtube_channel_url.blank?
+      - if @content.youtube_channel_url != "" 
         %hr
         %section.topic
           .row

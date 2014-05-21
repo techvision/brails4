@@ -1,11 +1,11 @@
 %h1.header Levels
-%div.application{role: 'application'}
+%div.application{role: "application", 'aria-label' => "grid", 'aria-describedby' => "gridnav", tabindex: "0"}
   %div{role: "grid", 'aria-owns' => "#{aria_owns_ids(@levels)}", tabindex: "0"}
     - @levels.in_groups_of(3).each_with_index do |level_row, index|
-      %dl.row-wise-container{role: "row", id: "row_#{index+1}", 'aria-owns' => "#{cell_ids(level_row)}"}
+      %dl.row-wise-container{role: "row", id: "row_#{index+1}", 'aria-owns' => "#{cell_ids(level_row)}", tabindex: "-1"}
         - level_row.compact.each_with_index do |level, cell_index|
           = link_to level do 
-            %dd.col-lg-4.col-sm-4{role: "gridcell", id: "cell_#{level.seq_number}", tabindex: "0"}
+            %dd.col-lg-4.col-sm-4{role: "gridcell", id: "cell_#{level.seq_number}", tabindex: "-1"}
               .f-box
                 = level.name
-
+    %div.hidden{id: "gridnav", role: "tooltip"}Use arrow keys to navigate through grid

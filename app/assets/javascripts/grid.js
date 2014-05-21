@@ -23,16 +23,18 @@ function keyCodes () {
 }
 
 function navigateGrid(e) {
-  var tab;
   var key = new keyCodes();
   var activeElement = $(":focus");
 
   switch(e.keyCode) {
     case key.tab: {
-      if(tab==null) {
-        tab=1;
-       $("dl:first").focus();
-      }
+//e.preventDefault();
+//if(activeElement.attr("id") == undefined) {
+//activeElement.children().focus();
+//alert(activeElement.find().attr("id"));
+//return true;
+//}
+
       break;
     }
     case key.right: {
@@ -66,7 +68,7 @@ break;
 }
 
 $(document).ready(function() {
-  $(".application").on("keyup", function(e) {
+  $(".application").on("keydown", function(e) {
     navigateGrid(e);
   });// End bind handler
 });

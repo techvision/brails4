@@ -21,10 +21,10 @@
     .wrap
       .navbar.navbar-default
         = render "layouts/header"
-      .control-bar
-        .increase-font.change-font-size{:data => {:size => "up"}}
-        .default-font-size.change-font-size{:data => {:size => "reset"}}
-        .decrease-font.change-font-size{:data => {:size => "down"}}
+      .control-bar{role: "region", 'aria-label' => "Accessibility Pannal"}
+        .increase-font.change-font-size{:data => {:size => "up"}, 'aria-label' => "Increase font size", role: "button"}
+        .default-font-size.change-font-size{:data => {:size => "reset"}, 'aria-label' => "Reset font size", role: "button"}
+        .decrease-font.change-font-size{:data => {:size => "down"}, 'aria-label' => "Decrease font size", role: "button"}
 
       .container
         .row
