@@ -1,5 +1,5 @@
 !!! 
-%html(lang="en")
+%html.white{xmlns:fb="http://ogp.me/ns/fb#"}
   %head
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
@@ -25,6 +25,19 @@
         .increase-font.change-font-size{:data => {:size => "up"}, 'aria-label' => "Increase font size", role: "button"}
         .default-font-size.change-font-size{:data => {:size => "reset"}, 'aria-label' => "Reset font size", role: "button"}
         .decrease-font.change-font-size{:data => {:size => "down"}, 'aria-label' => "Decrease font size", role: "button"}
+        %ul.switcher.color-switcher{:style => "list-style-type:none;"}
+          %li.switch.white{:data => {:color => "white"}}
+            %a{:href=>'#'}
+              %img{:src =>'/images/white-icon-image.png', :alt => 'white theme'}
+          %li.switch.yellow{:data => {:color => "yellow"}}
+            %a{:href=>'#'}
+              %img{:src =>'/images/yellow-icon-image.png', :alt => 'yellow theme'}    
+          %li.switch.orange{:data => {:color => "orange"}}
+            %a{:href=>'#'}
+              %img{:src =>'/images/orange-icon-image.png', :alt => 'orange theme'}
+          %li.switch.black{:data => {:color => "black"}}
+            %a{:href=>'#'}
+              %img{:src =>'/images/black-icon-image.png', :alt => 'black theme'}
 
       .container
         .row

@@ -1,8 +1,29 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+@coderay_ele = '.CodeRay pre'
 
 $(document).ready ->
+  $.cookie.defaults = { path: '/', expires: 365 }
+
+  # set the color, font sizes
+  $("html, #{coderay_ele}").removeClass("white yellow orange black").addClass($.cookie('color'));
+
+  if $.cookie('font_size') isnt undefined
+    $("body, #{coderay_ele}").removeClass (index, css) ->
+      (css.match(/\btextsize-\S+/g) or []).join " "
+    $("body, #{coderay_ele}").addClass $.cookie('font_size')
+
+#  $("#audio").bind "ended", ->
+#    $('#summary').show()
+#  $('audio').mediaelementplayer();
+
+  # color switcher
+  $(".color-switcher .switch").on "click", ->
+    t = $(this)
+    color = t.data("color")
+    $.cookie 'color', color
+    $("html, #{coderay_ele}").removeClass("white yellow orange black").addClass(color);
 
   # Change font size   
   $(".change-font-size").on "click", ->

@@ -1,0 +1,12 @@
+$background-color: rgb(255, 157, 62);
+body {
+  
+  .lesson-summary {
+    background-color: $background-color;
+  }
+  pre.orange{
+    background-color: $background-color;
+ }
+}
+
+@include setup($background-color);

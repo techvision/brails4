@@ -2,3 +2,6 @@
   %p.text-muted.credit 
   &copy; 
   %a Josh Software 2013
+  .pull-right
+    %div.shareable{role: 'application', title: 'shareable'}
+      = render_shareable :url => request.url

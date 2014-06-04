@@ -1,0 +1,13 @@
+$background-color: rgb(0,0,0);
+$color: rgb(255, 255, 0);
+body {
+  .lesson-summary {
+    background-color: $background-color;
+  }
+  pre.black{
+    background-color: $background-color;
+ }
+
+}
+
+@include setup($background-color, $color);

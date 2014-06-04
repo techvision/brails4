@@ -37,6 +37,11 @@ gem "nested_form"
 gem "erb2haml", :group => :development
 gem 'mongoid_slug', '3.2.0'
 gem 'country_select'
+gem "compass-rails"
+gem "compass-recipes"
+gem "shareable"
+# gem 'typeplate-rails', git: 'git://github.com/aergonaut/typeplate-rails.git'
+
 
 group :development, :test do
   gem 'mongoid-rspec'
